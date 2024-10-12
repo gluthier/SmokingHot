@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 8789138721258846801}
   - component: {fileID: 3028785957432683038}
   - component: {fileID: 2717811535384380547}
+  - component: {fileID: 188735720321268333}
   - component: {fileID: 398767383839990105}
+  - component: {fileID: 8953165262652015720}
+  - component: {fileID: 5089068948276369120}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -138,6 +141,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &188735720321268333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594987945382828344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc4559f7e26dd34eb9e683b2c1925e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &398767383839990105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +165,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd07f82536ad1714abde84c23378e0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  cam: {fileID: 0}
+--- !u!114 &8953165262652015720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594987945382828344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14408eecefe65da4bb6bbc8ff2fd53f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  maxHealth: 200
+  stress: 0
+  maxStress: 10
+  cigAddiction: 0
+  cigAddMax: 10
+  alcAddiction: 0
+  alcAddMax: 10
+  attackSpeed: 10
+  attackSpeedMax: 20
+  attackDmg: 10
+  attackDmgMax: 30
+--- !u!114 &5089068948276369120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594987945382828344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7fe8e2934113946bee0b9b2a87c7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cigarette: 18
+  alcool: 7
 --- !u!1 &9043977007690874158
 GameObject:
   m_ObjectHideFlags: 0

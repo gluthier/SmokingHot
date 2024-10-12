@@ -1,0 +1,44 @@
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine;
+using static PlayerInventory;
+using static PlayerStats;
+
+public class GameManager : MonoBehaviour
+{
+    private PlayerManager playerManager;
+    private UIManager uiManager;
+
+    void Start()
+    {
+        if (playerManager == null)
+            playerManager = FindAnyObjectByType<PlayerManager>();
+
+        if (uiManager == null)
+            uiManager = FindAnyObjectByType<UIManager>();
+
+        playerManager.Init(this);
+        uiManager.Init(this);
+    }
+
+    public void UpdatePlayerStatsUIText(Dictionary<StatType, StatValues> stats)
+    {
+        stats.TryGetValue(StatType.HEALTH, out var healthValues);
+        stats.TryGetValue(StatType.STRESS, out var stressValues);
+        stats.TryGetValue(StatType.CIGARETTE_ADDICTION, out var cigAddictionValues);
+        stats.TryGetValue(StatType.ALCOOL_ADDICTION, out var alcAddictionValues);
+
+        uiManager.UpdateStatsText(healthValues.amount, healthValues.max,
+            stressValues.amount, stressValues.max,
+            cigAddictionValues.amount, cigAddictionValues.max,
+            alcAddictionValues.min, alcAddictionValues.max);
+    }
+
+    public void UpdatePlayerInventoryUIText(Dictionary<InventoryType, InventoryValues> inventory)
+    {
+        inventory.TryGetValue(InventoryType.CIGARETTE, out var cigaretteValues);
+        inventory.TryGetValue(InventoryType.ALCOOL, out var alcoolValues);
+
+        uiManager.UpdateInventoryText(cigaretteValues.amount, alcoolValues.amount);
+    }
+}

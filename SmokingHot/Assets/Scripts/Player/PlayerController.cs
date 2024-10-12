@@ -3,16 +3,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameManager gameManager;
+    private Camera mainCamera;
+
     private CharacterController controller;
-    private Camera cam;
 
     private Vector3 movement;
     private float playerSpeed = 6.0f;
 
+    public void Init(GameManager a_gameManager)
+    {
+        gameManager = a_gameManager;
+    }
+
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-        cam = Camera.main;
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -35,7 +42,7 @@ public class PlayerController : MonoBehaviour
     void RotateToMouse()
     {
         // Get the mouse position in screen space and convert to world space
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
         float rayLength;
