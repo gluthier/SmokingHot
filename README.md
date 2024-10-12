@@ -1,6 +1,8 @@
 # Smoking Hot
 Serious game produit lors du cours *Games Technologies (MA_GT)* au semestre d'automne 2024, dans le cadre du [Master of Science in Engineering (MSE)](https://www.hes-so.ch/master/hes-so-master/formations/engineering) de la [HES-SO](https://www.hes-so.ch/master).
 
+Unity version: `6000.0.20f1`
+
 ## Contraintes du projet
 - Style: serious game
 - Thème: Health
