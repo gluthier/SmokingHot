@@ -61,4 +61,14 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(direction);
         }
     }
+
+    public void OnUseCigarette()
+    {
+        gameManager.PlayerWantToConsumeCigarette();
+    }
+
+    public void OnUseAlcool()
+    {
+        gameManager.PlayerWantToConsumeAlcool();
+    }
 }

@@ -131,7 +131,7 @@ public class PlayerStats : MonoBehaviour
             if (potentialOverAmount > statValues.max)
             {
                 // Each addiction point over max limit results in -1 HP per point
-                Decrease(StatType.HEALTH, statValues.max - potentialOverAmount);
+                Decrease(StatType.HEALTH, potentialOverAmount - statValues.max);
             }
         }
     }

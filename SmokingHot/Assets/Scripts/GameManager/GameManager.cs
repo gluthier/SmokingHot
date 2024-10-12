@@ -21,6 +21,16 @@ public class GameManager : MonoBehaviour
         uiManager.Init(this);
     }
 
+    public void PlayerWantToConsumeCigarette()
+    {
+        playerManager.ConsumeCigarette(1);
+    }
+
+    public void PlayerWantToConsumeAlcool()
+    {
+        playerManager.ConsumeAlcool(1);
+    }
+
     public void UpdatePlayerStatsUIText(Dictionary<StatType, StatValues> stats)
     {
         stats.TryGetValue(StatType.HEALTH, out var healthValues);
