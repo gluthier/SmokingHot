@@ -1,0 +1,53 @@
+# Core mechanics
+- Stats du joueur:
+    - Santé: 200 HP
+    - Niveau de stress: 0/10 (au début du jeu)
+    - Accoutumance cigarettes: 5/10 (au début du jeu)
+    - Accoutumance alcool: 0/10 (au début du jeu)
+    - Vitesse d'attaque: 10 (équivaut à 0.5 attaque par seconde)
+    - Dégâts d'attaque: -10 HP
+- Niveau de stress:
+	- +5 par run lancée
+	- +1 par coup d'ennemi reçu
+	- -1 par cigarette consommée
+	- -2 par alcool consommé
+	- -1 chaque 30 secondes sans stimulant consommé
+- Effets du stress:
+    - les attaques sont moins précises (elles ne vont pas toujours droit dans la direction du curseur)
+    - si niveau de stresse >8: 5% de chance chaque 5 secondes de rester figé sur place pendant 1 seconde
+- Effets de consommation de stimulants:
+    - cigarette:
+	    - -1 stress (-2 si on a consommé au moins une fois de l'alcool dans la salle)
+	    - +10 HP (+20 si on a consommé au moins une fois de l'alcool dans la salle)
+	    - +1 vitesse d'attaque
+	    - (nombre de cigarette consommée dans la salle + 1) accoutumance cigarette
+    - alcool:
+	    - -2 stress
+	    - +20 HP
+	    - +1 dégâts d'attaque
+	    - (nombre d'alcool consommé dans la salle + 1) accoutumance alcool
+- Accoutumance:
+	- Chaque point d'accoutumance dépassant la limite supérieure = -1 HP par point
+     - QTE de manque (accoutumance > 5): on a 3 secondes pour consommer (soit alcool soit cigarette) avec tous les effets doublés
+- Ennemi:
+	- Entre 100 et 300 HP
+	- Vitesse d'attaque: entre 0.25 et 3 attaques par seconde
+	- Force: entre 1 et 5
+	- Dégât d'attaque: -10HP * force
+	- +1 stress par coût reçu
+- Après chaque salle:
+	- -1 accoutumance cigarette si aucune cigarette consommée dans la salle
+	- -1 accoutumance alcool si aucun alcool consommé dans la salle
+    - +1 vitesse d'attaque si accoutumance cigarette == 0
+    - +1 dégâts d'attaque si accoutumance alcool == 0
+    - si accoutumance cigarette > 8: consommation automatique d'une cigarette
+    - si accoutumance alcool > 8: consommation automatique d'alcool
+ - Après chaque run:
+    - -5 HP max si accoutumance alcool > 5
+    - -5 HP max si accoutumance cigarette > 5
+	 - On récupère toute notre santé (HP = HP max)
+	 - Vitesse d'attaque reset
+	 - Dégâts d'attaque reset
+	 - Niveau de stress reste à sa valeur
+	 - Accoutumance cigarette reste à sa valeur
+	 - Accoutumance alcool reste à sa valeur
