@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     private PlayerStats stats;
     private PlayerInventory inventory;
 
+    private GameObject bulletPrefab;
+
     private int numCigaretteConsumedInThisRoom;
     private int numAlcoolConsumedInThisRoom;
 
@@ -16,7 +18,7 @@ public class PlayerManager : MonoBehaviour
         gameManager = a_gameManager;
 
         controller = gameObject.GetComponent<PlayerController>();
-        controller.Init(a_gameManager);
+        controller.Init(a_gameManager, this);
 
         stats = gameObject.GetComponent<PlayerStats>();
         stats.Init(a_gameManager);
@@ -24,7 +26,14 @@ public class PlayerManager : MonoBehaviour
         inventory = gameObject.GetComponent<PlayerInventory>();
         inventory.Init(a_gameManager);
 
+        bulletPrefab = Resources.Load(Env.BulletPrefab) as GameObject;
+
         ResetPlayerConsumption();
+    }
+
+    public void PlayerAttack()
+    {
+        Instantiate(bulletPrefab, transform.position, transform.rotation, gameManager.GetBulletHolder());
     }
 
     public void PlayerIsHit(int damage)

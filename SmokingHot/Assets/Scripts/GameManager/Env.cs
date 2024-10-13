@@ -59,4 +59,14 @@ public static class Env
     public static int EndRunCigaretteAddictionHpLossTriggerValue = 5;
     public static int EndRunHpLossAlcoolAddiction = 5;
     public static int EndRunAlcoolAddictionHpLossTriggerValue = 5;
+
+    // Bullet
+    public static string BulletPrefab = "Bullet";
+    public static string BulletHolder = "BulletHolder";
+    public static float BulletVelocity = 10f;
+    public static float BulletLifetime = 10f;
+
+    // Tags
+    public static string TagPlayer = "Player";
+    public static string TagLevel = "Level";
 }

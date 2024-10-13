@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static PlayerStats;
 
 
 public enum StatType

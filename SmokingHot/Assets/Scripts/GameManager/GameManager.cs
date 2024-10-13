@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private PlayerManager playerManager;
     private UIManager uiManager;
 
+    private Transform bulletHolder;
+
     void Start()
     {
         if (playerManager == null)
@@ -19,16 +21,13 @@ public class GameManager : MonoBehaviour
 
         playerManager.Init(this);
         uiManager.Init(this);
+
+        bulletHolder = transform.Find(Env.BulletHolder);
     }
 
-    public void PlayerWantToConsumeCigarette()
+    public Transform GetBulletHolder()
     {
-        playerManager.ConsumeCigarette(1);
-    }
-
-    public void PlayerWantToConsumeAlcool()
-    {
-        playerManager.ConsumeAlcool(1);
+        return bulletHolder;
     }
 
     public void UpdatePlayerStatsUIText(Dictionary<StatType, StatValues> stats)

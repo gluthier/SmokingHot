@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private GameManager gameManager;
+    private PlayerManager playerManager;
     private Camera mainCamera;
 
     private CharacterController controller;
@@ -11,9 +12,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement;
     private float playerSpeed = 6.0f;
 
-    public void Init(GameManager a_gameManager)
+    public void Init(GameManager a_gameManager, PlayerManager a_playerManager)
     {
         gameManager = a_gameManager;
+        playerManager = a_playerManager;
     }
 
     void Start()
@@ -64,11 +66,16 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseCigarette()
     {
-        gameManager.PlayerWantToConsumeCigarette();
+        playerManager.ConsumeCigarette(1);
     }
 
     public void OnUseAlcool()
     {
-        gameManager.PlayerWantToConsumeAlcool();
+        playerManager.ConsumeAlcool(1);
+    }
+
+    public void OnAttack()
+    {
+        playerManager.PlayerAttack();
     }
 }
