@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+
 using static PlayerInventory;
 using static PlayerStats;
 
@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
     private PlayerManager playerManager;
     private UIManager uiManager;
 
+    private GameObject enemyPrefab;
+
     private Transform bulletHolder;
+    private Transform enemyHolder;
 
     void Start()
     {
@@ -22,7 +25,12 @@ public class GameManager : MonoBehaviour
         playerManager.Init(this);
         uiManager.Init(this);
 
+        enemyPrefab = Resources.Load(Env.EnemyPrefab) as GameObject;
+
         bulletHolder = transform.Find(Env.BulletHolder);
+        enemyHolder = transform.Find(Env.EnemyHolder);
+
+        InstantiateEnemy();
     }
 
     public Transform GetBulletHolder()
@@ -49,5 +57,12 @@ public class GameManager : MonoBehaviour
         inventory.TryGetValue(InventoryType.ALCOOL, out var alcoolValues);
 
         uiManager.UpdateInventoryText(cigaretteValues.amount, alcoolValues.amount);
+    }
+
+    private void InstantiateEnemy()
+    {
+        GameObject enemy = Instantiate(enemyPrefab, Env.DefaultEnemySpawnPosition, Quaternion.Euler(0, -90, 0), enemyHolder);
+
+        enemy.GetComponent<EnemyManager>().Init(this);
     }
 }

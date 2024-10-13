@@ -1,18 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-public class BulletManager : MonoBehaviour
+public class EnemyBulletManager : MonoBehaviour
 {
+    private int damage = 0;
+
+    public void SetDamage(int a_damage)
+    {
+        damage = a_damage;
+    }
+
     void Update()
     {
-        Vector3 forward = Env.BulletVelocity * Time.deltaTime * transform.forward;
+        Vector3 forward = Env.EnemyBulletVelocity * Time.deltaTime * transform.forward;
         transform.position = transform.position + forward;
-        
+
         StartCoroutine(BulletLifetime());
     }
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag(Env.TagPlayer))
+        {
+            other.GetComponent<PlayerManager>().PlayerIsHit(damage);
+            DestroyBullet();
+        }
+
         if (other.CompareTag(Env.TagLevel))
             DestroyBullet();
     }

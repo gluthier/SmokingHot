@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public static class Env
 {
@@ -61,12 +62,21 @@ public static class Env
     public static int EndRunAlcoolAddictionHpLossTriggerValue = 5;
 
     // Bullet
-    public static string BulletPrefab = "Bullet";
+    public static string PlayerBulletPrefab = "PlayerBullet";
+    public static string EnemyBulletPrefab = "EnemyBullet";
     public static string BulletHolder = "BulletHolder";
-    public static float BulletVelocity = 10f;
+    public static float PlayerBulletVelocity = 10f;
+    public static float EnemyBulletVelocity = 9f;
     public static float BulletLifetime = 10f;
+
+    // Enemy
+    public static string EnemyPrefab = "Enemy";
+    public static string EnemyHolder = "EnemyHolder";
+    public static int EnemyBaseDamage = 10;
+    public static Vector3 DefaultEnemySpawnPosition = new Vector3(6, 1, 0);
 
     // Tags
     public static string TagPlayer = "Player";
     public static string TagLevel = "Level";
+    public static string TagEnemy = "Enemy";
 }
