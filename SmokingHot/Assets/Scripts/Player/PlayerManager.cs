@@ -81,6 +81,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void GetAlcool()
+    {
+        inventory.Increase(InventoryType.ALCOOL, 1);
+    }
+
     public void StartRun()
     {
         stats.Increase(StatType.STRESS, Env.StartRunStressIncrement);

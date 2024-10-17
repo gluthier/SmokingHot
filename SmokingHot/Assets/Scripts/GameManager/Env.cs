@@ -35,7 +35,7 @@ public static class Env
 
     public static int DefaultMinNumAlcool = 0;
     public static int DefaultNumAlcool = 0;
-    public static int DefaultMaxNumAlcool = 20;
+    public static int DefaultMaxNumAlcool = 3;
 
     // Runs
     public static int StartRunStressIncrement = 5;
@@ -79,4 +79,7 @@ public static class Env
     public static string TagPlayer = "Player";
     public static string TagLevel = "Level";
     public static string TagEnemy = "Enemy";
+
+    // Beer
+    public static string BeerPrefab = "Beer";
 }

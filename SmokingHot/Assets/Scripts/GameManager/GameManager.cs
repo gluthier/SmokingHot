@@ -6,7 +6,7 @@ using static PlayerStats;
 
 public class GameManager : MonoBehaviour
 {
-    private PlayerManager playerManager;
+    public PlayerManager playerManager;
     private UIManager uiManager;
 
     private GameObject enemyPrefab;
