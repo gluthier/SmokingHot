@@ -18,8 +18,8 @@ public class StartButtonClick : MonoBehaviour
 	void TaskOnClick(){
 		if (companyNameInput.text.Trim().Length > 0)
 		{
-			GameManager.Instance.companyName = companyNameInput.text;
-			Debug.Log($"Company name is: {GameManager.Instance.companyName}", this);
+			MainManager.Instance.companyName = companyNameInput.text;
+			Debug.Log($"Company name is: {MainManager.Instance.companyName}", this);
 			SceneManager.LoadScene("MainScene");
 		}
 		else

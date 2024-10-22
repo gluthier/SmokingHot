@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    public string companyName;
-
-    void Awake()
+    public GameUI gameUI;
+    public uint money = 1000;
+    private uint cigaretteShopCost = 100;
+    
+    public void buyCigaretteShop()
     {
-        // Check if the GameManager Singleton exists
-        if (Instance == null)
+        if (money >= cigaretteShopCost)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist this GameObject across scenes
+            money -= cigaretteShopCost;
+            gameUI.updateMoneyText();
         }
         else
         {
-            Destroy(gameObject); // Destroy this instance if one already exists
+            Debug.Log($"{money} not enough to buy shop ({cigaretteShopCost})");
         }
     }
 }
