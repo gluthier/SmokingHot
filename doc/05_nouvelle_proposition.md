@@ -1,0 +1,87 @@
+# Nouvelle proposition
+
+- Temps réel
+- Style [Plague Inc.](https://play.google.com/store/apps/details?id=com.miniclip.plagueinc&hl=en) 
+- Arbre de talent pour influencer la simulation
+- Événements qui apparaissent nécessitant de faire un choix
+- But: se faire un maximum d'argent en 20 ans simulés
+- On se bat contre d'autres cigarettiers simulés par l'IA pour faire le meilleure score (le plus d'argent)
+- On perd si on entre en faillite
+#### Stats:
+- Argent
+- Nombre de personnes accro à la cigarette (augmente l'argent gagné sur le moment, mais en fonction de la toxicité, augmente aussi les décès et donc pertes de gains futurs)
+- Image publique (aka réputation: mieux elle est, moins il y a d'événements ciblé contre nous et inversement)
+#### Arbre de talents
+- Un arbre de talent (simple: une dizaine de nœuds max) permet de représenter la stratégie globale de l'entreprise. Il s'agit de traits qui fonctionnent de manière passive durant la partie.
+- Les points de talent se débloquent en dépensant de l'argent.
+- **Lobbying**:
+	- Financement de campagnes politiques / de politiciens (moins d'événements politiques contre les cigarettes => moins d'impacte financier)
+	- Financement de journaux / médias (moins d'articles contre les cigarettes => moins d'impacte moyen terme à l'image publique)
+	- Financement de projets de recherche scientifiques (moins de rapports scientifiques contre les cigarettes => moins d'impacte long terme à l'image publique)
+	- Tentative des corruption (augmente les chances de réussite du lobbying, mais comporte un risque pour l'image publique si ça devient publique)
+	- Tentatives de menace/blackmail (augment beaucoup les chances de réussite, mais le risque d'atteinte à l'image publique est encore plus grand)
+- **Propagande**:
+	- cibler les enfants pour créer des associations positives aux paquet de cigarettes (plus de fumeur à long terme et peu de convertis à la cigarette car le rendement de la méthode est pas maximal)
+	- cibles les adolescents pour rendre cool le fait de fumer (plus de fumeurs à moyen terme, mais moyen de convertis à la cigarette car les ados sont incontrôlables)
+	- cibler les jeunes adultes pour rendre socialement acceptable le fait de fumer (plus de fumeurs immédiatement, mais peu de convertis à la cigarette car déjà plus de connaissance des risques)
+	- cibler les fumeurs pour minimiser les risques liés aux cigarettes (plus de chance de garder fumeur un fumeur)
+- **Événementiel**:
+	- Parrainage de festivals (permet d'augmenter les ventes de cigarettes)
+	- Parrainage d'événement sportifs (permet d'augmenter l'image publique)
+	- Organisation de soirée/événements pour vendre des cigarettes (alcool gratuits + vente de cigarettes => permet de vendre des cigarettes)
+	- Vente mobiles de cigarettes dans des festivals/soirées (permet de vendre des cigarettes))
+- **Publicité**:
+	- augmenter la quantité de campagnes publicitaires (plus de visibilité)
+	- augmenter le budget de création de campagnes (meilleure réception des campagnes)
+	- augmenter le budget de distribution de campagnes publicitaires (plus de visibilité)
+	- création de campagnes de propagande (mensongère: augmente la côte des cigarettes, mais risque d'atteinte à l'image publique)
+- **R&D**:
+	- rendre les cigarettes moins nocives (moins de décès lié à la cigarette)
+	- rendre les cigarettes plus addictives (plus de gens souffrant d'addiction)
+	- augmenter l'attrait des packets de cigarettes (plus de gens tenté de commencer à fumer)
+	- optimiser les coûts de production (économise de l'argent pour la création de cigarettes)
+	- optimiser les coûts de distribution (économise de l'argent pour la vente de cigarettes)
+#### Événements
+- Système d'événements qui apparaissent un peu de manière aléatoire / un peu de manière calculée par l'IA.
+- Chaque événement est un changement d'état qui demande un choix à faire de la part du joueur. 8 secondes pour effectuer le choix, sinon le refus par défaut est choisit.
+- **Votations**:
+	- Interdire la publicité de cigarettes: 
+		- Dépenser beaucoup d'argent pour tenter de soudoyer les politiciens porteur du projet (X% de chance de réussite)
+		- Dépenser un peu d'argent pour faire des campagnes de propagande minimiser les risques de la cigarette (XX% de chance de réussite)
+		- Ne rien faire: XXX% de chance de réussite
+	- Interdire les cigarettes avec un niveau d'addiction trop élevé
+	- Interdire le parrainage d'événement sportifs
+	- Interdire le parrainage de festivals
+- **Santé**:
+	- Une personnalité publique est décédée à cause de la cigarette:
+		- Dépenser beaucoup d'argent pour taire la nouvelle
+		- Dépenser de l'argent pour faire une campagne publicitaire mettant en avant une action positive (à regarder dans les talents. par example R&D: rendre les cigarettes moins nocives, etc.)
+		- Ne rien faire: impacte négatif sur l'image publique
+	- Un nouveau cancer lié à la cigarette est découvert
+- **Médias**:
+	- Un rapport scientifique mettant en lumière les composants nocifs de la cigarette est rendu publique:
+		- Dépenser beaucoup d'argent pour menacer l'auteur du rapport pour qu'il "avoue" avoir menti sur les chiffres
+		- Dépenser un peu d'argent pour financer un rapport scientifique dénonçant les résultats du premier
+		- Ne rien faire: impacte négatif sur l'image publique
+	- Un article de journal ventant les bienfaits d'être non-fumeur est publié
+	- Une compagnie de film annonce ne plus vouloir montrer de fumeurs dans ses futurs films
+#### Argent
+- L'argent est gagné de manière passive (en fonction de l'état de la simulation)
+- L'arbre de talent permet de choisir de manière stratégique comment gagner de l'argent passivement
+- Les événements permettent d'avoir un gain ou une perte immédiate d'argent
+#### World simulation
+- Sans le montrer au joueur, il y a une simulation du monde qui tourne en arrière plan
+- Son rôle est de créer les événements qui apparaissent
+#### World map
+- Vue du dessus, contient une représentation d'un pays fictif, à l'intérieur duquel il y a quelques bâtiments (très grands, pas du tout à l'échelle) et des personnes NPC qui se baladent de manière autonome.
+- Les NPCs représentent l'état de la population du pays (stats importantes: santé globale, addiction à la cigarette).
+- Chaque bâtiment représente un concept spécifique que le joueur peut influencer pendant la partie, par le bias de lobbying, investissement d'argent, etc.
+- Par exemple:
+    - bâtiment d'éducation (école)
+    - bâtiment de la recherche (université)
+    - bâtiment d'économie (banque)
+    - bâtiment de la politique (parlement)
+    - bâtiment des médias (journal)
+    - bâtiment de l'événementiel (festival) 
+    - bâtiment social
+    - bâtiment de la concurrence (autres fabricants de cigarettes)
