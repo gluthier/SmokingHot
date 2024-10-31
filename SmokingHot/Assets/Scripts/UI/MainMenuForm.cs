@@ -8,6 +8,7 @@ public class StartButtonClick : MonoBehaviour
 {
 	public Button startButton;
 	public TMP_InputField companyNameInput;
+	public GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,12 +16,16 @@ public class StartButtonClick : MonoBehaviour
 		startButton.onClick.AddListener(TaskOnClick);
     }
 
-	void TaskOnClick(){
+	void TaskOnClick()
+	{
 		if (companyNameInput.text.Trim().Length > 0)
 		{
-			MainManager.Instance.companyName = companyNameInput.text;
-			Debug.Log($"Company name is: {MainManager.Instance.companyName}", this);
-			SceneManager.LoadScene("MainScene");
+			gameManager.companyName = companyNameInput.text;
+			Debug.Log($"Company name is: {gameManager.companyName}", this);
+			
+			// Hide this menu and show the game UI
+			gameObject.SetActive(false);
+			gameManager.enterGame();
 		}
 		else
 		{

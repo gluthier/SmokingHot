@@ -4,9 +4,10 @@ using TMPro;
 public class GameUI : MonoBehaviour
 {
     public TMP_Text companyName;
+    public GameManager gameManager;
 
     void Start()
     {
-        companyName.text = MainManager.Instance.companyName;
+        companyName.text = gameManager.companyName;
     }
 }
