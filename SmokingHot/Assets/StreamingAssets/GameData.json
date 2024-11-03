@@ -1,0 +1,96 @@
+{
+    "totalYearSimulated": 50.0,
+    "gameMinutesLength": 10.0,
+    "continents": [
+        {
+            "continentName": "Africa",
+            "cigarettePackPrice": 2.7,
+            "population": 1480770000,
+            "populationDistribution": {
+                "kid": 14.28,
+                "teenager": 25.16,
+                "youngadult": 19.51,
+                "adult": 37.47,
+                "senior": 3.58
+            },
+            "smokerPercentage": 8.4,
+            "deathSmokerPercentage": 3.6,
+            "cigarettePerDay": 2.7
+        },
+        {
+            "continentName": "Asia",
+            "cigarettePackPrice": 4.4,
+            "population": 4775660000,
+            "populationDistribution": {
+                "kid": 7.05,
+                "teenager": 15.93,
+                "youngadult": 15.26,
+                "adult": 51.93,
+                "senior": 9.83
+            },
+            "smokerPercentage": 13.1,
+            "deathSmokerPercentage": 8.7,
+            "cigarettePerDay": 4.6
+        },
+        {
+            "continentName": "Europe",
+            "cigarettePackPrice": 9.6,
+            "population": 745450000,
+            "populationDistribution": {
+                "kid": 4.62,
+                "teenager": 10.89,
+                "youngadult": 10.56,
+                "adult": 53.85,
+                "senior": 20.08
+            },
+            "smokerPercentage": 23.2,
+            "deathSmokerPercentage": 6.2,
+            "cigarettePerDay": 4.4
+        },
+        {
+            "continentName": "LatinAmerica",
+            "cigarettePackPrice": 3.1,
+            "population": 658860000,
+            "populationDistribution": {
+                "kid": 7.21,
+                "teenager": 15.66,
+                "youngadult": 16.08,
+                "adult": 51.51,
+                "senior": 9.54
+            },
+            "smokerPercentage": 14.5,
+            "deathSmokerPercentage": 4.8,
+            "cigarettePerDay": 2.8
+        },
+        {
+            "continentName": "NorthAmerica",
+            "cigarettePackPrice": 12.2,
+            "population": 382820000,
+            "populationDistribution": {
+                "kid": 5.36,
+                "teenager": 12.0,
+                "youngadult": 12.96,
+                "adult": 52.07,
+                "senior": 17.61
+            },
+            "smokerPercentage": 15.1,
+            "deathSmokerPercentage": 5.1,
+            "cigarettePerDay": 3.1
+        },
+        {
+            "continentName": "Oceania",
+            "cigarettePackPrice": 25.8,
+            "population": 45560000,
+            "populationDistribution": {
+                "kid": 7.51,
+                "teenager": 15.17,
+                "youngadult": 14.06,
+                "adult": 49.81,
+                "senior": 13.45
+            },
+            "smokerPercentage": 22.9,
+            "deathSmokerPercentage": 2.9,
+            "cigarettePerDay": 3.7
+        }
+    ]
+}
