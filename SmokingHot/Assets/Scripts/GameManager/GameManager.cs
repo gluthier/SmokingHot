@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public CameraManager cameraManager;
     public string companyName;
 
+    private SimulationManager simulationManager;
+
     void Start()
     {
         gameUI.gameObject.SetActive(false);
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         displayMainUI();
         cameraManager.SwitchPlayingCamera();
+        simulationManager.StartSimulation();
     }
 
     private void displayMainUI()
