@@ -20,6 +20,8 @@ public class SkillTreeManager : MonoBehaviour
     public TextMeshProUGUI lobSkillName;
     public TextMeshProUGUI lobSkillDesc;
 
+    public bool potDeVin = false; //TODO more
+
     public int[] tiers = {1,1,1,1};
 
     void Start()
@@ -27,11 +29,18 @@ public class SkillTreeManager : MonoBehaviour
        
     }
     
-    public void UnlockSkill(SkillTreeManager skillTree, Skill skill)
+    public void UnlockSkill()
     {
+        Skill skill = node.GetComponent<Skill>();
         if(CanUnlockSkill(skill))
         {
             skill.isUnlocked = true;
+
+            if (skill.tierUp)
+            {
+                tiers[index]++;
+            }
+
             ApplySkillEffect(skill);
         }
     }
@@ -49,11 +58,6 @@ public class SkillTreeManager : MonoBehaviour
         int index = GetCurrentActivePanel();
         SetSkillDesc(skill, index);
 
-        if (skill.tierUp)
-        {
-            tiers[index]++;
-
-        }
     }
 
     private void SetSkillDesc(Skill skill, int index)
@@ -93,11 +97,15 @@ public class SkillTreeManager : MonoBehaviour
 
     private void ApplySkillEffect(Skill skill)
     {
-        switch (skill.effect)
+        string[] skillParts = skill.effect.Split(" ");
+
+        switch (skillParts[0])
         {
-            /*case "ChangeBuildPrefab":
-                FindObjectOfType<BuildingsManager>().ChangeBuildPrefab(skill, "buildingName");
-                break;*/
+            case "Unlock":
+                potDeVin = true;
+                break;
+            case "Upgrade":
+                // stat += skillParts[1]
             // Add other cases for different effects as needed
             default:
                 Debug.Log($"{skill.skillName} effect applied.");
