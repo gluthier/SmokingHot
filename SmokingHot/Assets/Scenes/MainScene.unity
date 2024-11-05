@@ -999,7 +999,7 @@ MonoBehaviour:
   - {fileID: 1244831132}
   - {fileID: 770498368}
   - {fileID: 1262715404}
-  cigSkillName: {fileID: 962901549}
+  cigSkillName: {fileID: 962901551}
   cigSkillDesc: {fileID: 1469683615}
   pubSkillName: {fileID: 0}
   pubSkillDesc: {fileID: 0}
@@ -3354,6 +3354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 464215075287677394, guid: fa13826882ef17c4eb3cc54ba69968f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 514471333306749846, guid: fa13826882ef17c4eb3cc54ba69968f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3809,6 +3813,10 @@ PrefabInstance:
     - target: {fileID: 7588652070076606147, guid: fa13826882ef17c4eb3cc54ba69968f0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821181530559378035, guid: fa13826882ef17c4eb3cc54ba69968f0, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5311,6 +5319,7 @@ MonoBehaviour:
   gameUI: {fileID: 144005979}
   cameraManager: {fileID: 1839733603}
   companyName: 
+  skillTreeManager: {fileID: 447365562}
 --- !u!1001 &1796455580
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,4 +11,5 @@ public class Skill : MonoBehaviour
     public List<Skill> prerequisites;
     public bool isUnlocked;
     public string effect;
+    public bool tierUp;
 }

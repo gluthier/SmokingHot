@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -7,25 +8,28 @@ public class SkillTreeManager : MonoBehaviour
     public List<GameObject> panels;
     private GameObject lastActive;
 
-    public GameObject cigSkillName;
-    public GameObject cigSkillDesc;
+    public TextMeshProUGUI cigSkillName;
+    public TextMeshProUGUI cigSkillDesc;
     
-    public GameObject pubSkillName;
-    public GameObject pubSkillDesc;
+    public TextMeshProUGUI pubSkillName;
+    public TextMeshProUGUI pubSkillDesc;
     
-    public GameObject popSkillName;
-    public GameObject popSkillDesc;
+    public TextMeshProUGUI popSkillName;
+    public TextMeshProUGUI popSkillDesc;
     
-    public GameObject lobSkillName;
-    public GameObject lobSkillDesc;
+    public TextMeshProUGUI lobSkillName;
+    public TextMeshProUGUI lobSkillDesc;
+
+    public int[] tiers = {1,1,1,1};
 
     void Start()
     {
+       
     }
     
     public void UnlockSkill(SkillTreeManager skillTree, Skill skill)
     {
-        if(CanUnlockSkill(skillTree, skill))
+        if(CanUnlockSkill(skill))
         {
             skill.isUnlocked = true;
             ApplySkillEffect(skill);
@@ -38,13 +42,45 @@ public class SkillTreeManager : MonoBehaviour
 
         if (lastActive != null && lastActive != node) {
             lastActive.transform.GetChild(0).gameObject.SetActive(false);
-            lastActive = node;
+            lastActive = node;            
+        }
 
-            Skill skill = node.GetComponent<Skill>();
+        Skill skill = node.GetComponent<Skill>();
+        int index = GetCurrentActivePanel();
+        SetSkillDesc(skill, index);
+
+        if (skill.tierUp)
+        {
+            tiers[index]++;
+
         }
     }
 
-    private bool CanUnlockSkill(SkillTreeManager skillTree, Skill skill)
+    private void SetSkillDesc(Skill skill, int index)
+    {
+        switch (index)
+        {
+            case 0: // cig
+                cigSkillDesc.text = skill.skillDescription;
+                cigSkillName.text = skill.skillName;
+                break;
+            case 1: // pub
+                pubSkillDesc.text = skill.skillDescription;
+                pubSkillName.text = skill.skillName;
+                break;
+            case 2: // lobby
+                lobSkillDesc.text = skill.skillDescription;
+                lobSkillName.text = skill.skillName;
+                break;
+            case 4: // rep
+                popSkillDesc.text = skill.skillDescription;
+                popSkillName.text = skill.skillName;
+                break;
+            default:
+                break;
+        }
+    }
+    private bool CanUnlockSkill(Skill skill)
     {
         if (skill.isUnlocked) return false;
         foreach (Skill prerequisite in skill.prerequisites)
@@ -69,6 +105,16 @@ public class SkillTreeManager : MonoBehaviour
         }
     }
 
+    private int GetCurrentActivePanel()
+    {
+        for (int i = 0; i < panels.Count; i++)
+        {
+            if(panels[i].activeSelf) return i;
+        }
+
+        return -1;
+    }
+
     public void ShowPanel(GameObject o)
     {
         Building b = o.GetComponent<Building>();
@@ -91,7 +137,7 @@ public class SkillTreeManager : MonoBehaviour
                 break;
 
         }
-        Debug.Log(panels[index].name);
+        
         panels[index].SetActive(true);
     }
 }
