@@ -19,6 +19,8 @@ public class SimulationManager : MonoBehaviour
         Smoker
     }
 
+    private bool isSimulationOn;
+    private int yearPassed;
     private float timePassed;
 
     private float totalYearSimulated;
@@ -26,8 +28,14 @@ public class SimulationManager : MonoBehaviour
     private List<CompanyEntity> companies;
     private List<ContinentEntity> continents;
 
+    public void Start()
+    {
+        isSimulationOn = false;
+    }
+
     public void StartSimulation()
     {
+        isSimulationOn = true;
         ResetSimulation();
     }
 
@@ -64,18 +72,56 @@ public class SimulationManager : MonoBehaviour
 
     void Update()
     {
-        timePassed += Time.deltaTime;
+        HandleSimulatedTime();
 
         #region DEBUG
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            ResetSimulation();
+            StartSimulation();
         }
         #endregion
     }
 
-    public void ResetSimulation()
+    private void HandleSimulatedTime()
     {
+        if (!isSimulationOn)
+            return;
+
+        timePassed += Time.deltaTime;
+
+        //float yearSimulatedPerRealMinute = min / gameMinutesLength;
+
+        Debug.Log($"{timePassed} -- {yearPassed}");
+        if (timePassed >= 60f)
+        {
+            Debug.Log($"{timePassed} -- {yearPassed}");
+            yearPassed += 1;
+            timePassed = 0;
+
+            if (yearPassed < totalYearSimulated)
+            {
+                HandleEndOfSimulatedYear();
+            }
+            else
+            {
+                HandleEndOfGame();
+            }
+        }
+    }
+
+    private void HandleEndOfSimulatedYear()
+    {
+
+    }
+
+    private void HandleEndOfGame()
+    {
+        isSimulationOn = false;
+    }
+
+    private void ResetSimulation()
+    {
+        yearPassed = 0;
         timePassed = 0f;
 
         LoadData(
