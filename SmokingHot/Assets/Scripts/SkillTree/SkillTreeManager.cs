@@ -31,14 +31,14 @@ public class SkillTreeManager : MonoBehaviour
     
     public void UnlockSkill()
     {
-        Skill skill = node.GetComponent<Skill>();
+        Skill skill = lastActive.GetComponent<Skill>();
         if(CanUnlockSkill(skill))
         {
             skill.isUnlocked = true;
 
             if (skill.tierUp)
             {
-                tiers[index]++;
+                tiers[GetCurrentActivePanel()]++;
             }
 
             ApplySkillEffect(skill);
