@@ -4053,6 +4053,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6443502051094851828}
     m_Modifications:
+    - target: {fileID: 2248453156555876351, guid: 300a5764da8b5492a9ce0fb9b51924fd, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: a5f1d19c4ea444fe3a4cfe44d9e850ab, type: 3}
+    - target: {fileID: 2248453156555876351, guid: 300a5764da8b5492a9ce0fb9b51924fd, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 3b54c93e3864b4db3b3bf568d2602fd6, type: 2}
     - target: {fileID: 7333737773873714798, guid: 300a5764da8b5492a9ce0fb9b51924fd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4133,6 +4141,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7859761548218219158, guid: 300a5764da8b5492a9ce0fb9b51924fd, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 3b54c93e3864b4db3b3bf568d2602fd6, type: 2}
     - target: {fileID: 8244976312178261464, guid: 300a5764da8b5492a9ce0fb9b51924fd, type: 3}
       propertyPath: m_Name
       value: AdvertisingSkillTree
