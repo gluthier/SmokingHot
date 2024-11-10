@@ -4,8 +4,7 @@ using TMPro;
 
 public class SkillTreeManager : MonoBehaviour
 {
-    public List<SkillTree> skillTrees;
-    public List<GameObject> panels;
+    public List<SkillTreeUI> skillTreePanel;
     private GameObject lastActive;
 
     public TextMeshProUGUI cigSkillName;
@@ -26,7 +25,7 @@ public class SkillTreeManager : MonoBehaviour
 
     void Start()
     {
-       
+
     }
     
     public void UnlockSkill()
@@ -115,9 +114,9 @@ public class SkillTreeManager : MonoBehaviour
 
     private int GetCurrentActivePanel()
     {
-        for (int i = 0; i < panels.Count; i++)
+        for (int i = 0; i < skillTreePanel.Count; i++)
         {
-            if(panels[i].activeSelf) return i;
+            if(skillTreePanel[i].gameObject.activeSelf) return i;
         }
 
         return -1;
@@ -146,6 +145,6 @@ public class SkillTreeManager : MonoBehaviour
 
         }
         
-        panels[index].SetActive(true);
+        skillTreePanel[index].gameObject.SetActive(true);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,11 +8,6 @@ public class GameManager : MonoBehaviour
     public string companyName;
     public SkillTreeManager skillTreeManager;
     private SimulationManager simulationManager;
-
-    void Start()
-    {
-        gameUI.gameObject.SetActive(false);
-    }
 
     public void enterGame()
     {
