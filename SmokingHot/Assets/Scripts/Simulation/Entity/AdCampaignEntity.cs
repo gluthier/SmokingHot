@@ -1,4 +1,3 @@
-using NUnit.Framework.Internal.Builders;
 using System.Collections.Generic;
 using static SimulationManager;
 
@@ -22,6 +21,16 @@ public class AdCampaignEntity
     private AgeBracket ageBracketTarget;
     private AdQualityReception qualityReception;
     private AdType adType;
+
+    public AdCampaignEntity(float priceByDay, int durationInDays,
+        AgeBracket ageBracketTarget, AdQualityReception qualityReception, AdType adType)
+    {
+        this.priceByDay = priceByDay;
+        this.durationInDays = durationInDays;
+        this.ageBracketTarget = ageBracketTarget;
+        this.qualityReception = qualityReception;
+        this.adType = adType;
+    }
 
     public float EndFiscalYear()
     {

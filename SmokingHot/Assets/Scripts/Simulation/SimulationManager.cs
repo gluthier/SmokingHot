@@ -40,6 +40,8 @@ public class SimulationManager : MonoBehaviour
 
     public void StartSimulation()
     {
+        Env.PrintDebug($"StartSimulation");
+
         isSimulationOn = true;
         ResetSimulation();
     }
@@ -97,6 +99,8 @@ public class SimulationManager : MonoBehaviour
 
     private void HandleEndOfSimulatedYear()
     {
+        Env.PrintDebug($"HandleSimulatedTime, yearPassed: {yearPassed}");
+
         foreach (ConglomerateEntity conglomerate in conglomerates)
         {
             conglomerate.EndFiscalYear();

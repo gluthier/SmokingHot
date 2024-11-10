@@ -28,6 +28,7 @@ public class ConglomerateData
     public int cigarettesPerPack;
     public float cigarettePackPrice;
     public long population;
+    public float populationGrowth;
     public PopulationDistributionData populationDistribution;
     public float smokerPercentage;
     public float deathSmokerPercentage;

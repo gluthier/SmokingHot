@@ -5,10 +5,11 @@
         {
             "conglomerateName": "Africa Tabacco Company",
             "continentName": "Africa",
-            "startingMoney": 4000000000.0,
+            "startingMoney": 100000000.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 2.7,
             "population": 1480770000,
+            "populationGrowth": 2.3,
             "populationDistribution": {
                 "kid": 14.28,
                 "teenager": 25.16,
@@ -21,16 +22,17 @@
             "cigarettePerDay": 2.7,
             "newSmokerAcquisition": 0.02,
             "smokerRetention": 0.87,
-            "productionCostPercentage": 0.25,
-            "distributionCostPercentage": 0.45
+            "productionCostPercentage": 11.0,
+            "distributionCostPercentage": 37.0
         },
         {
             "conglomerateName": "Asia Tabacco Company",
             "continentName": "Asia",
-            "startingMoney": 4000000000.0,
+            "startingMoney": 100000000.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 4.4,
             "population": 4775660000,
+            "populationGrowth": 0.7,
             "populationDistribution": {
                 "kid": 7.05,
                 "teenager": 15.93,
@@ -43,16 +45,17 @@
             "cigarettePerDay": 4.6,
             "newSmokerAcquisition": 0.03,
             "smokerRetention": 0.84,
-            "productionCostPercentage": 0.25,
-            "distributionCostPercentage": 0.45
+            "productionCostPercentage": 11.0,
+            "distributionCostPercentage": 37.0
         },
         {
             "conglomerateName": "Europe Tabacco Company",
             "continentName": "Europe",
-            "startingMoney": 4000000000.0,
+            "startingMoney": 100000000.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 9.6,
             "population": 745450000,
+            "populationGrowth": 0.1,
             "populationDistribution": {
                 "kid": 4.62,
                 "teenager": 10.89,
@@ -65,16 +68,17 @@
             "cigarettePerDay": 4.4,
             "newSmokerAcquisition": 0.035,
             "smokerRetention": 0.85,
-            "productionCostPercentage": 0.25,
-            "distributionCostPercentage": 0.45
+            "productionCostPercentage": 11.0,
+            "distributionCostPercentage": 37.0
         },
         {
             "conglomerateName": "Latin America Tabacco Company",
             "continentName": "Latin America",
-            "startingMoney": 4000000000.0,
+            "startingMoney": 100000000.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 3.1,
             "population": 658860000,
+            "populationGrowth": 0.7,
             "populationDistribution": {
                 "kid": 7.21,
                 "teenager": 15.66,
@@ -87,16 +91,17 @@
             "cigarettePerDay": 2.8,
             "newSmokerAcquisition": 0.03,
             "smokerRetention": 0.86,
-            "productionCostPercentage": 0.25,
-            "distributionCostPercentage": 0.45
+            "productionCostPercentage": 11.0,
+            "distributionCostPercentage": 37.0
         },
         {
             "conglomerateName": "Freedom Tabacco Empire",
             "continentName": "North America",
-            "startingMoney": 4000000000.0,
+            "startingMoney": 100000000.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 12.2,
             "population": 382820000,
+            "populationGrowth": 0.6,
             "populationDistribution": {
                 "kid": 5.36,
                 "teenager": 12.0,
@@ -109,16 +114,17 @@
             "cigarettePerDay": 3.1,
             "newSmokerAcquisition": 0.03,
             "smokerRetention": 0.85,
-            "productionCostPercentage": 0.25,
-            "distributionCostPercentage": 0.45
+            "productionCostPercentage": 11.0,
+            "distributionCostPercentage": 37.0
         },
         {
             "conglomerateName": "Oceania Tabacco Company",
             "continentName": "Oceania",
-            "startingMoney": 4000000000.0,
+            "startingMoney": 100000000.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 25.8,
             "population": 45560000,
+            "populationGrowth": 1.4,
             "populationDistribution": {
                 "kid": 7.51,
                 "teenager": 15.17,
@@ -131,8 +137,8 @@
             "cigarettePerDay": 3.7,
             "newSmokerAcquisition": 0.035,
             "smokerRetention": 0.84,
-            "productionCostPercentage": 0.25,
-            "distributionCostPercentage": 0.45
+            "productionCostPercentage": 11.0,
+            "distributionCostPercentage": 37.0
         }
     ]
 }

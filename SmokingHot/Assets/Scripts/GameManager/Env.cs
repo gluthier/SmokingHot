@@ -2,10 +2,23 @@ using UnityEngine;
 
 public static class Env
 {
+
     public static string GameDataJsonFileName = "GameData.json";
 
     public static int DaysInAYear = 365;
 
     public static float NewSmokerAcquisitionIncrement = 0.005f;
     public static float SmokerRetentioIncrement = 0.05f;
+
+
+    #region DEBUG
+    public const bool PRINT_DEBUG = true;
+    public static void PrintDebug(string msg)
+    {
+        if (PRINT_DEBUG)
+        {
+            Debug.Log(msg);
+        }
+    }
+    #endregion
 }
