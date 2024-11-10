@@ -17,18 +17,25 @@ public class GameData
 {
     public float totalYearSimulated;
     public float gameMinutesLength;
-    public ContinentData[] continents;
+    public ConglomerateData[] conglomerates;
 }
 
-public class ContinentData
+public class ConglomerateData
 {
+    public string conglomerateName;
     public string continentName;
+    public double startingMoney;
+    public int cigarettesPerPack;
     public float cigarettePackPrice;
     public long population;
     public PopulationDistributionData populationDistribution;
     public float smokerPercentage;
     public float deathSmokerPercentage;
     public float cigarettePerDay;
+    public float newSmokerAcquisition;
+    public float smokerRetention;
+    public float productionCostPercentage;
+    public float distributionCostPercentage;
 }
 
 public class PopulationDistributionData

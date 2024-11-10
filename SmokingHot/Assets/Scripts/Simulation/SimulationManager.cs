@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,10 +12,13 @@ public class SimulationManager : MonoBehaviour
         Senior
     }
 
-    public enum SmokerType
+    public enum PopularityLevel
     {
-        NonSmoker,
-        Smoker
+        Hated = -2,
+        Disliked = -1,
+        Neutral = 0,
+        Appreciated = 1,
+        Loved = 2
     }
 
     private bool isSimulationOn;
@@ -25,12 +27,15 @@ public class SimulationManager : MonoBehaviour
 
     private float totalYearSimulated;
     private float gameMinutesLength;
-    private List<CompanyEntity> companies;
-    private List<ContinentEntity> continents;
+    private List<ConglomerateEntity> conglomerates;
+
+    private WorldEventManager worldEventManager;
+
 
     public void Start()
     {
         isSimulationOn = false;
+        worldEventManager = gameObject.AddComponent<WorldEventManager>();
     }
 
     public void StartSimulation()
@@ -44,29 +49,11 @@ public class SimulationManager : MonoBehaviour
         totalYearSimulated = gameData.totalYearSimulated;
         gameMinutesLength = gameData.gameMinutesLength;
 
-        companies = new List<CompanyEntity>();
-        continents = new List<ContinentEntity>();
+        conglomerates = new List<ConglomerateEntity>();
 
-        // Compute random market shares
-        List<int> rands = new List<int>();
-        float randTotal = 0;
-
-        Random.InitState(3000);
-        foreach (ContinentData _ in gameData.continents)
+        foreach (ConglomerateData conglomerateData in gameData.conglomerates)
         {
-            int pick = Random.Range(1, 6);
-            rands.Add(pick);
-            randTotal += pick;
-        }
-
-        int idx = 0;
-        foreach (ContinentData continentData in gameData.continents)
-        {
-            float marketSharePercentage = rands[idx] / randTotal;
-            idx++;
-
-            continents.Add(new ContinentEntity(continentData));
-            companies.Add(new CompanyEntity(marketSharePercentage, continentData));
+            conglomerates.Add(new ConglomerateEntity(conglomerateData));
         }
     }
 
@@ -89,12 +76,11 @@ public class SimulationManager : MonoBehaviour
 
         timePassed += Time.deltaTime;
 
-        //float yearSimulatedPerRealMinute = min / gameMinutesLength;
+        float yearSimulatedPerRealMinute = totalYearSimulated / gameMinutesLength;
+        float secondsForAYearSimulated = 60f / yearSimulatedPerRealMinute;
 
-        Debug.Log($"{timePassed} -- {yearPassed}");
-        if (timePassed >= 60f)
+        if (timePassed >= secondsForAYearSimulated)
         {
-            Debug.Log($"{timePassed} -- {yearPassed}");
             yearPassed += 1;
             timePassed = 0;
 
@@ -111,7 +97,10 @@ public class SimulationManager : MonoBehaviour
 
     private void HandleEndOfSimulatedYear()
     {
-
+        foreach (ConglomerateEntity conglomerate in conglomerates)
+        {
+            conglomerate.EndFiscalYear();
+        }
     }
 
     private void HandleEndOfGame()

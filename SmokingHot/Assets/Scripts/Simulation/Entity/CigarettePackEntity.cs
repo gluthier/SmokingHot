@@ -17,14 +17,10 @@ public class CigarettePackEntity
 
     private ToxicityLevel cigaretteToxicity;
     private AddictionLevel cigaretteAddiction;
-    private float productionCost;
-    private float distributionCost;
 
-    public CigarettePackEntity(float cigarettePackPrice)
+    public CigarettePackEntity(ConglomerateData continentData)
     {
         cigaretteToxicity = ToxicityLevel.Average;
         cigaretteAddiction = AddictionLevel.Average;
-        productionCost = Env.ProductionCostPercentage * cigarettePackPrice;
-        distributionCost = Env.DistributionCostPercentage * cigarettePackPrice;
     }
 }

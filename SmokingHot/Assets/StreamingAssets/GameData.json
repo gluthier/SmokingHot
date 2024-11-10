@@ -1,9 +1,12 @@
 {
     "totalYearSimulated": 50.0,
     "gameMinutesLength": 10.0,
-    "continents": [
+    "conglomerates": [
         {
+            "conglomerateName": "Africa Tabacco Company",
             "continentName": "Africa",
+            "startingMoney": 4000000000.0,
+            "cigarettesPerPack": 20,
             "cigarettePackPrice": 2.7,
             "population": 1480770000,
             "populationDistribution": {
@@ -15,10 +18,17 @@
             },
             "smokerPercentage": 8.4,
             "deathSmokerPercentage": 3.6,
-            "cigarettePerDay": 2.7
+            "cigarettePerDay": 2.7,
+            "newSmokerAcquisition": 0.02,
+            "smokerRetention": 0.87,
+            "productionCostPercentage": 0.25,
+            "distributionCostPercentage": 0.45
         },
         {
+            "conglomerateName": "Asia Tabacco Company",
             "continentName": "Asia",
+            "startingMoney": 4000000000.0,
+            "cigarettesPerPack": 20,
             "cigarettePackPrice": 4.4,
             "population": 4775660000,
             "populationDistribution": {
@@ -30,10 +40,17 @@
             },
             "smokerPercentage": 13.1,
             "deathSmokerPercentage": 8.7,
-            "cigarettePerDay": 4.6
+            "cigarettePerDay": 4.6,
+            "newSmokerAcquisition": 0.03,
+            "smokerRetention": 0.84,
+            "productionCostPercentage": 0.25,
+            "distributionCostPercentage": 0.45
         },
         {
+            "conglomerateName": "Europe Tabacco Company",
             "continentName": "Europe",
+            "startingMoney": 4000000000.0,
+            "cigarettesPerPack": 20,
             "cigarettePackPrice": 9.6,
             "population": 745450000,
             "populationDistribution": {
@@ -45,10 +62,17 @@
             },
             "smokerPercentage": 23.2,
             "deathSmokerPercentage": 6.2,
-            "cigarettePerDay": 4.4
+            "cigarettePerDay": 4.4,
+            "newSmokerAcquisition": 0.035,
+            "smokerRetention": 0.85,
+            "productionCostPercentage": 0.25,
+            "distributionCostPercentage": 0.45
         },
         {
-            "continentName": "LatinAmerica",
+            "conglomerateName": "Latin America Tabacco Company",
+            "continentName": "Latin America",
+            "startingMoney": 4000000000.0,
+            "cigarettesPerPack": 20,
             "cigarettePackPrice": 3.1,
             "population": 658860000,
             "populationDistribution": {
@@ -60,10 +84,17 @@
             },
             "smokerPercentage": 14.5,
             "deathSmokerPercentage": 4.8,
-            "cigarettePerDay": 2.8
+            "cigarettePerDay": 2.8,
+            "newSmokerAcquisition": 0.03,
+            "smokerRetention": 0.86,
+            "productionCostPercentage": 0.25,
+            "distributionCostPercentage": 0.45
         },
         {
-            "continentName": "NorthAmerica",
+            "conglomerateName": "Freedom Tabacco Empire",
+            "continentName": "North America",
+            "startingMoney": 4000000000.0,
+            "cigarettesPerPack": 20,
             "cigarettePackPrice": 12.2,
             "population": 382820000,
             "populationDistribution": {
@@ -75,10 +106,17 @@
             },
             "smokerPercentage": 15.1,
             "deathSmokerPercentage": 5.1,
-            "cigarettePerDay": 3.1
+            "cigarettePerDay": 3.1,
+            "newSmokerAcquisition": 0.03,
+            "smokerRetention": 0.85,
+            "productionCostPercentage": 0.25,
+            "distributionCostPercentage": 0.45
         },
         {
+            "conglomerateName": "Oceania Tabacco Company",
             "continentName": "Oceania",
+            "startingMoney": 4000000000.0,
+            "cigarettesPerPack": 20,
             "cigarettePackPrice": 25.8,
             "population": 45560000,
             "populationDistribution": {
@@ -90,7 +128,11 @@
             },
             "smokerPercentage": 22.9,
             "deathSmokerPercentage": 2.9,
-            "cigarettePerDay": 3.7
+            "cigarettePerDay": 3.7,
+            "newSmokerAcquisition": 0.035,
+            "smokerRetention": 0.84,
+            "productionCostPercentage": 0.25,
+            "distributionCostPercentage": 0.45
         }
     ]
 }

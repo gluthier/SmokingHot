@@ -1,24 +1,52 @@
+using NUnit.Framework.Internal.Builders;
+using System.Collections.Generic;
 using static SimulationManager;
 
 public class AdCampaignEntity
 {
-    public enum AdQualityReception
-    {
-        Bad,
-        Neutral,
-        Good
-    }
-
     public enum AdType
     {
         NewSmokerAcquisition,
         SmokerRetention
     }
 
-    private float priceByYear;
-    private float duration;
+    public enum AdQualityReception
+    {
+        Bad = -1,
+        Neutral = 0,
+        Good = 1
+    }
+
+    private float priceByDay;
+    private int durationInDays;
     private AgeBracket ageBracketTarget;
-    private SmokerType smokerTypeTarget;
     private AdQualityReception qualityReception;
     private AdType adType;
+
+    public float EndFiscalYear()
+    {
+        int durationInDaysThisYear;
+        if (durationInDays >= Env.DaysInAYear)
+        {
+            durationInDaysThisYear = Env.DaysInAYear;
+            durationInDays -= Env.DaysInAYear;
+        }
+        else
+        {
+            durationInDaysThisYear = durationInDays;
+            durationInDays = 0;
+        }
+
+        return durationInDaysThisYear * priceByDay;
+    }
+
+    public (AdType, AdQualityReception) GetResult()
+    {
+        return (adType, qualityReception);
+    }
+
+    public int GetDurationRemaining()
+    {
+        return durationInDays;
+    }
 }
