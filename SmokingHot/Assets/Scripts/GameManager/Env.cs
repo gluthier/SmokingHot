@@ -12,7 +12,7 @@ public static class Env
 
 
     #region DEBUG
-    public const bool PRINT_DEBUG = true;
+    public const bool PRINT_DEBUG = false;
     public static void PrintDebug(string msg)
     {
         if (PRINT_DEBUG)
