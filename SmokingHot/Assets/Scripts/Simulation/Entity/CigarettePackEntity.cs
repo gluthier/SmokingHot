@@ -47,4 +47,34 @@ public class CigarettePackEntity
     {
         toxicity = toxicityLevel;
     }
+
+    public string GetToxicityDescription()
+    {
+        switch (toxicity)
+        {
+            case ToxicityLevel.Average:
+                return "Average";
+            case ToxicityLevel.Bad:
+                return "Bad";
+            case ToxicityLevel.VeryBad:
+                return "Very bad";
+            default:
+                return "";
+        }
+    }
+
+    public string GetAddictionDescription()
+    {
+        switch (addiction)
+        {
+            case AddictionLevel.Average:
+                return "Average";
+            case AddictionLevel.Addictive:
+                return "Addictive";
+            case AddictionLevel.VeryAddictive:
+                return "Very addictive";
+            default:
+                return "";
+        }
+    }
 }

@@ -6,26 +6,26 @@ using static SimulationManager;
 
 public class ConglomerateEntity
 {
-    private string conglomerateName;
-    private double totalMoney;
-    private float newSmokerAcquisition;
-    private float smokerRetention;
+    public string conglomerateName;
+    public double totalMoney;
+    public float newSmokerAcquisition;
+    public float smokerRetention;
     private float productionCostPercentage;
     private float distributionCostPercentage;
 
     private string continentName;
     private int cigarettesPerPack;
     private float cigarettePackPrice;
-    private long population;
+    public long population;
     private float populationGrowth;
-    private float smokerPercentage;
-    private float deathSmokerPercentage;
+    public float smokerPercentage;
+    public float deathSmokerPercentage;
     private float cigarettePerDay;
 
     private Dictionary<AgeBracket, float> populationDistribution;
-    private List<AdCampaignEntity> adCampaigns;
-    private CigarettePackEntity cigarettePackProduced;
-    private Dictionary<AgeBracket, PopularityLevel> popularityByAgeBracket;
+    public List<AdCampaignEntity> adCampaigns;
+    public CigarettePackEntity cigarettePackProduced;
+    public Dictionary<AgeBracket, PopularityLevel> popularityByAgeBracket;
 
     public ConglomerateEntity(ConglomerateData conglomerateData)
     {
@@ -41,6 +41,11 @@ public class ConglomerateEntity
         };
 
         LoadData(conglomerateData);
+    }
+
+    public void SetConglomerateName(string conglomerateName)
+    {
+        this.conglomerateName = conglomerateName;
     }
 
     public void EndFiscalYear()

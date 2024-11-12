@@ -1,29 +1,69 @@
 using UnityEngine;
 using System.Collections.Generic;
+using static SimulationManager;
 
 public class GameManager : MonoBehaviour
 {
     public GameUI gameUI;
     public CameraManager cameraManager;
-    public string companyName;
     public SkillTreeManager skillTreeManager;
     private SimulationManager simulationManager;
 
-    public void enterGame()
+    public struct GameUIData
+    {
+        public string conglomerateName;
+        public double money;
+        public long population;
+        public float smokerPercentage;
+        public float newSmokerAcquisition;
+        public float smokerRetention;
+        public float deathSmokerPercentage;
+        public CigarettePackEntity cigarettePackProduced;
+        public Dictionary<AgeBracket, PopularityLevel> popularityByAgeBracket;
+        public List<AdCampaignEntity> adCampaigns;
+    }
+
+    public void enterGame(string conglomerateName)
     {
         displayMainUI();
         cameraManager.SwitchPlayingCamera();
+
+        SetupSimulationManager(conglomerateName);
         simulationManager.StartSimulation();
     }
 
     private void displayMainUI()
     {
         gameUI.gameObject.SetActive(true);
-        gameUI.companyName.text = companyName;
+    }
+
+    private void SetupSimulationManager(string conglomerateName)
+    {
+        simulationManager = gameObject.GetComponent<SimulationManager>();
+
+        if (simulationManager == null)
+        {
+            simulationManager = gameObject.AddComponent<SimulationManager>();
+        }
+
+        simulationManager.Init(this, conglomerateName);
+    }
+
+    public void PopulateMainUI(GameUIData gameUIData)
+    {
+        gameUI.PopulateMainUI(gameUIData);
     }
 
     void Update()
     {
+        #region DEBUG
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            FindFirstObjectByType<StartButtonClick>().gameObject.SetActive(false);
+            enterGame("Big Tobacco");
+        }
+        #endregion
+
         //Check for mouse click 
         if (Input.GetMouseButtonDown(0))
         {

@@ -20,12 +20,9 @@ public class StartButtonClick : MonoBehaviour
 	{
 		if (companyNameInput.text.Trim().Length > 0)
 		{
-			gameManager.companyName = companyNameInput.text;
-			Debug.Log($"Company name is: {gameManager.companyName}", this);
-			
 			// Hide this menu and show the game UI
 			gameObject.SetActive(false);
-			gameManager.enterGame();
+			gameManager.enterGame(companyNameInput.text);
 		}
 		else
 		{

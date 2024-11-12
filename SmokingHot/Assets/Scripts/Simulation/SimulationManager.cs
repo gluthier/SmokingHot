@@ -29,6 +29,7 @@ public class SimulationManager : MonoBehaviour
     private float gameMinutesLength;
     private List<ConglomerateEntity> conglomerates;
 
+    private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
 
@@ -36,6 +37,24 @@ public class SimulationManager : MonoBehaviour
     {
         isSimulationOn = false;
         worldEventManager = gameObject.AddComponent<WorldEventManager>();
+    }
+
+    public void Init(GameManager gameManager, string conglomerateName)
+    {
+        this.gameManager = gameManager;
+
+        LoadData(
+            GameDataLoader.Load());
+
+        SetPlayerConglomerateName(conglomerateName);
+
+        gameManager.PopulateMainUI(
+            RetrieveUIValues());
+    }
+
+    public void SetPlayerConglomerateName(string conglomerateName)
+    {
+        conglomerates[Env.PlayerConglomerateID].SetConglomerateName(conglomerateName);
     }
 
     public void StartSimulation()
@@ -59,16 +78,47 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
+    public static string GetPopularityDescription(PopularityLevel popularity)
+    {
+        switch (popularity)
+        {
+            case PopularityLevel.Hated:
+                return "Hated";
+            case PopularityLevel.Disliked:
+                return "Disliked";
+            case PopularityLevel.Neutral:
+                return "Neutral";
+            case PopularityLevel.Appreciated:
+                return "Appreciated";
+            case PopularityLevel.Loved:
+                return "Loved";
+            default:
+                return "";
+        }
+    }
+
     void Update()
     {
         HandleSimulatedTime();
+    }
 
-        #region DEBUG
-        if (Input.GetKeyDown(KeyCode.S))
+    private GameManager.GameUIData RetrieveUIValues()
+    {
+        ConglomerateEntity playerConglomerate = conglomerates[Env.PlayerConglomerateID];
+
+        return new GameManager.GameUIData
         {
-            StartSimulation();
-        }
-        #endregion
+            conglomerateName = playerConglomerate.conglomerateName,
+            money = playerConglomerate.totalMoney,
+            population = playerConglomerate.population,
+            smokerPercentage = playerConglomerate.smokerPercentage,
+            newSmokerAcquisition = playerConglomerate.newSmokerAcquisition,
+            smokerRetention = playerConglomerate.smokerRetention,
+            deathSmokerPercentage = playerConglomerate.deathSmokerPercentage,
+            cigarettePackProduced = playerConglomerate.cigarettePackProduced,
+            popularityByAgeBracket = playerConglomerate.popularityByAgeBracket,
+            adCampaigns = playerConglomerate.adCampaigns
+        };
     }
 
     private void HandleSimulatedTime()
