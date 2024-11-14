@@ -109,6 +109,7 @@ public class SimulationManager : MonoBehaviour
         return new GameManager.GameUIData
         {
             conglomerateName = playerConglomerate.conglomerateName,
+            continent = playerConglomerate.continentName,
             money = playerConglomerate.totalMoney,
             population = playerConglomerate.population,
             smokerPercentage = playerConglomerate.smokerPercentage,

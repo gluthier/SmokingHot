@@ -5,10 +5,10 @@
         {
             "conglomerateName": "Africa Tabacco Company",
             "continentName": "Africa",
-            "startingMoney": 100000000.0,
+            "startingMoneyMillion": 100.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 2.7,
-            "population": 1480770000,
+            "populationMillion": 1480.77,
             "populationGrowth": 2.3,
             "populationDistribution": {
                 "kid": 14.28,
@@ -28,10 +28,10 @@
         {
             "conglomerateName": "Asia Tabacco Company",
             "continentName": "Asia",
-            "startingMoney": 100000000.0,
+            "startingMoneyMillion": 100.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 4.4,
-            "population": 4775660000,
+            "populationMillion": 4775.66,
             "populationGrowth": 0.7,
             "populationDistribution": {
                 "kid": 7.05,
@@ -51,10 +51,10 @@
         {
             "conglomerateName": "Europe Tabacco Company",
             "continentName": "Europe",
-            "startingMoney": 100000000.0,
+            "startingMoneyMillion": 100.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 9.6,
-            "population": 745450000,
+            "populationMillion": 745.45,
             "populationGrowth": 0.1,
             "populationDistribution": {
                 "kid": 4.62,
@@ -74,10 +74,10 @@
         {
             "conglomerateName": "Latin America Tabacco Company",
             "continentName": "Latin America",
-            "startingMoney": 100000000.0,
+            "startingMoneyMillion": 100.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 3.1,
-            "population": 658860000,
+            "populationMillion": 658.86,
             "populationGrowth": 0.7,
             "populationDistribution": {
                 "kid": 7.21,
@@ -97,10 +97,10 @@
         {
             "conglomerateName": "Freedom Tabacco Empire",
             "continentName": "North America",
-            "startingMoney": 100000000.0,
+            "startingMoneyMillion": 100.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 12.2,
-            "population": 382820000,
+            "populationMillion": 382.82,
             "populationGrowth": 0.6,
             "populationDistribution": {
                 "kid": 5.36,
@@ -120,10 +120,10 @@
         {
             "conglomerateName": "Oceania Tabacco Company",
             "continentName": "Oceania",
-            "startingMoney": 100000000.0,
+            "startingMoneyMillion": 100.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 25.8,
-            "population": 45560000,
+            "populationMillion": 45.56,
             "populationGrowth": 1.4,
             "populationDistribution": {
                 "kid": 7.51,

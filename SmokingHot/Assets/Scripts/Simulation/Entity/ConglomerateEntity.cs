@@ -13,7 +13,7 @@ public class ConglomerateEntity
     private float productionCostPercentage;
     private float distributionCostPercentage;
 
-    private string continentName;
+    public string continentName;
     private int cigarettesPerPack;
     private float cigarettePackPrice;
     public long population;
@@ -60,7 +60,7 @@ public class ConglomerateEntity
     private void LoadData(ConglomerateData conglomerateData)
     {
         conglomerateName = conglomerateData.conglomerateName;
-        totalMoney = conglomerateData.startingMoney;
+        totalMoney = conglomerateData.startingMoneyMillion;
         newSmokerAcquisition = conglomerateData.newSmokerAcquisition;
         smokerRetention = conglomerateData.smokerRetention;
         productionCostPercentage = conglomerateData.productionCostPercentage / 100f;
@@ -69,7 +69,7 @@ public class ConglomerateEntity
         continentName = conglomerateData.continentName;
         cigarettesPerPack = conglomerateData.cigarettesPerPack;
         cigarettePackPrice = conglomerateData.cigarettePackPrice;
-        population = conglomerateData.population;
+        population = conglomerateData.populationMillion;
         populationGrowth = conglomerateData.populationGrowth / 1000f;
         smokerPercentage = conglomerateData.smokerPercentage / 100f;
         deathSmokerPercentage = conglomerateData.deathSmokerPercentage / 100f;

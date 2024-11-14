@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
     public struct GameUIData
     {
         public string conglomerateName;
-        public double money;
+        public string continent;
         public long population;
         public float smokerPercentage;
+        public float deathSmokerPercentage;
+        public double money;
         public float newSmokerAcquisition;
         public float smokerRetention;
-        public float deathSmokerPercentage;
         public CigarettePackEntity cigarettePackProduced;
         public Dictionary<AgeBracket, PopularityLevel> popularityByAgeBracket;
         public List<AdCampaignEntity> adCampaigns;
