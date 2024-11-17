@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
     public struct GameUIData
     {
         public string conglomerateName;
+        public int year;
         public string continent;
-        public long population;
+        public float population;
         public float smokerPercentage;
         public float deathSmokerPercentage;
-        public double money;
+        public float money;
         public float newSmokerAcquisition;
         public float smokerRetention;
         public CigarettePackEntity cigarettePackProduced;
@@ -50,9 +51,9 @@ public class GameManager : MonoBehaviour
         simulationManager.Init(this, conglomerateName);
     }
 
-    public void PopulateMainUI(GameUIData gameUIData)
+    public void PopulateMainUI(GameUIData gameUIData, bool showUpdate)
     {
-        gameUI.PopulateMainUI(gameUIData);
+        gameUI.PopulateMainUI(gameUIData, showUpdate);
     }
 
     void Update()

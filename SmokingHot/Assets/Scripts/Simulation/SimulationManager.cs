@@ -28,12 +28,12 @@ public class SimulationManager : MonoBehaviour
     private float totalYearSimulated;
     private float gameMinutesLength;
     private List<ConglomerateEntity> conglomerates;
+    private string playerConglomerateName = "";
 
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
-
-    public void Start()
+    public void Awake()
     {
         isSimulationOn = false;
         worldEventManager = gameObject.AddComponent<WorldEventManager>();
@@ -42,6 +42,7 @@ public class SimulationManager : MonoBehaviour
     public void Init(GameManager gameManager, string conglomerateName)
     {
         this.gameManager = gameManager;
+        yearPassed = 0;
 
         LoadData(
             GameDataLoader.Load());
@@ -49,12 +50,13 @@ public class SimulationManager : MonoBehaviour
         SetPlayerConglomerateName(conglomerateName);
 
         gameManager.PopulateMainUI(
-            RetrieveUIValues());
+            RetrieveUIValues(), false);
     }
 
     public void SetPlayerConglomerateName(string conglomerateName)
     {
-        conglomerates[Env.PlayerConglomerateID].SetConglomerateName(conglomerateName);
+        playerConglomerateName = conglomerateName;
+        conglomerates[Env.PlayerConglomerateID].SetConglomerateName(playerConglomerateName);
     }
 
     public void StartSimulation()
@@ -109,6 +111,7 @@ public class SimulationManager : MonoBehaviour
         return new GameManager.GameUIData
         {
             conglomerateName = playerConglomerate.conglomerateName,
+            year = yearPassed,
             continent = playerConglomerate.continentName,
             money = playerConglomerate.totalMoney,
             population = playerConglomerate.population,
@@ -140,10 +143,16 @@ public class SimulationManager : MonoBehaviour
             if (yearPassed < totalYearSimulated)
             {
                 HandleEndOfSimulatedYear();
+
+                gameManager.PopulateMainUI(
+                    RetrieveUIValues(), true);
             }
             else
             {
                 HandleEndOfGame();
+
+                gameManager.PopulateMainUI(
+                    RetrieveUIValues(), false);
             }
         }
     }
@@ -170,5 +179,7 @@ public class SimulationManager : MonoBehaviour
 
         LoadData(
             GameDataLoader.Load());
+
+        SetPlayerConglomerateName(playerConglomerateName);
     }
 }

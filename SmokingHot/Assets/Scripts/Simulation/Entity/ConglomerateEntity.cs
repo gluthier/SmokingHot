@@ -7,7 +7,7 @@ using static SimulationManager;
 public class ConglomerateEntity
 {
     public string conglomerateName;
-    public double totalMoney;
+    public float totalMoney;
     public float newSmokerAcquisition;
     public float smokerRetention;
     private float productionCostPercentage;
@@ -16,7 +16,7 @@ public class ConglomerateEntity
     public string continentName;
     private int cigarettesPerPack;
     private float cigarettePackPrice;
-    public long population;
+    public float population;
     private float populationGrowth;
     public float smokerPercentage;
     public float deathSmokerPercentage;
@@ -91,15 +91,15 @@ public class ConglomerateEntity
 
         float nonSmokerPercentage = 1 - smokerPercentage;
 
-        long nonSmokersPopulation = (long)(population * nonSmokerPercentage);
-        long smokersPopulation = (long)(population * smokerPercentage);
+        int nonSmokersPopulation = (int)(population * nonSmokerPercentage);
+        int smokersPopulation = (int)(population * smokerPercentage);
 
         float addictionPercentage = (int)cigarettePackProduced.addiction / (float)AddictionLevel.Average;
 
-        long newSmokers = (long)(nonSmokersPopulation * newSmokerAcquisition);
-        long smokersKept = (long)(smokersPopulation * smokerRetention * addictionPercentage);
+        int newSmokers = (int)(nonSmokersPopulation * newSmokerAcquisition);
+        int smokersKept = (int)(smokersPopulation * smokerRetention * addictionPercentage);
 
-        long newTotalSmokers = newSmokers + smokersKept;
+        int newTotalSmokers = newSmokers + smokersKept;
 
         debug_msg += $"  nonSmokerPercentage: {nonSmokerPercentage}\n" +
             $"  nonSmokersPopulation: {nonSmokersPopulation}\n" +
@@ -122,8 +122,8 @@ public class ConglomerateEntity
 
         float toxicityPercentage = (int)cigarettePackProduced.toxicity / (float)ToxicityLevel.Average;
 
-        long smokersPopulation = (long)(population * smokerPercentage);
-        long numDeathFromSmoking = (long)(deathSmokerPercentage * smokersPopulation * toxicityPercentage);
+        int smokersPopulation = (int)(population * smokerPercentage);
+        int numDeathFromSmoking = (int)(deathSmokerPercentage * smokersPopulation * toxicityPercentage);
 
         debug_msg += $"  populationGrowthPercentage: {populationGrowth}\n" +
             $"  toxicityPercentage: {toxicityPercentage}\n" +
@@ -131,7 +131,7 @@ public class ConglomerateEntity
             $"  numDeathFromSmoking: {numDeathFromSmoking}\n" +
             $"  population before: {population}\n";
 
-        population = (long)(population * (1 + populationGrowth));
+        population = (int)(population * (1 + populationGrowth));
         population -= numDeathFromSmoking;
 
         if (population < 0) {
@@ -198,7 +198,7 @@ public class ConglomerateEntity
     {
         string debug_msg = $"EndConglomerateFiscalYear  {continentName}\n=====\n";
 
-        long smokersPopulation = (long)(population * smokerPercentage);
+        int smokersPopulation = (int)(population * smokerPercentage);
 
         float cigarettePackSoldPerSmoker = Env.DaysInAYear * cigarettePerDay / cigarettesPerPack;
         float totalCigarettePackMoney = smokersPopulation * cigarettePackSoldPerSmoker * cigarettePackPrice;

@@ -24,10 +24,10 @@ public class ConglomerateData
 {
     public string conglomerateName;
     public string continentName;
-    public double startingMoneyMillion;
+    public float startingMoneyMillion;
     public int cigarettesPerPack;
     public float cigarettePackPrice;
-    public long populationMillion;
+    public float populationMillion;
     public float populationGrowth;
     public PopulationDistributionData populationDistribution;
     public float smokerPercentage;

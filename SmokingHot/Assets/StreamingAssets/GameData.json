@@ -5,7 +5,7 @@
         {
             "conglomerateName": "Africa Tabacco Company",
             "continentName": "Africa",
-            "startingMoneyMillion": 100.0,
+            "startingMoneyMillion": 10.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 2.7,
             "populationMillion": 1480.77,
@@ -28,7 +28,7 @@
         {
             "conglomerateName": "Asia Tabacco Company",
             "continentName": "Asia",
-            "startingMoneyMillion": 100.0,
+            "startingMoneyMillion": 10.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 4.4,
             "populationMillion": 4775.66,
@@ -51,7 +51,7 @@
         {
             "conglomerateName": "Europe Tabacco Company",
             "continentName": "Europe",
-            "startingMoneyMillion": 100.0,
+            "startingMoneyMillion": 10.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 9.6,
             "populationMillion": 745.45,
@@ -74,7 +74,7 @@
         {
             "conglomerateName": "Latin America Tabacco Company",
             "continentName": "Latin America",
-            "startingMoneyMillion": 100.0,
+            "startingMoneyMillion": 10.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 3.1,
             "populationMillion": 658.86,
@@ -97,7 +97,7 @@
         {
             "conglomerateName": "Freedom Tabacco Empire",
             "continentName": "North America",
-            "startingMoneyMillion": 100.0,
+            "startingMoneyMillion": 10.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 12.2,
             "populationMillion": 382.82,
@@ -120,7 +120,7 @@
         {
             "conglomerateName": "Oceania Tabacco Company",
             "continentName": "Oceania",
-            "startingMoneyMillion": 100.0,
+            "startingMoneyMillion": 10.0,
             "cigarettesPerPack": 20,
             "cigarettePackPrice": 25.8,
             "populationMillion": 45.56,
