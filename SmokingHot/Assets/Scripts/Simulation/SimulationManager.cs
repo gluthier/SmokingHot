@@ -33,16 +33,12 @@ public class SimulationManager : MonoBehaviour
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
-    public void Awake()
-    {
-        isSimulationOn = false;
-        worldEventManager = gameObject.AddComponent<WorldEventManager>();
-    }
-
     public void Init(GameManager gameManager, string conglomerateName)
     {
         this.gameManager = gameManager;
         yearPassed = 0;
+
+        SetupWorldEventManager(gameManager);
 
         LoadData(
             GameDataLoader.Load());
@@ -53,31 +49,20 @@ public class SimulationManager : MonoBehaviour
             RetrieveUIValues(), false);
     }
 
-    public void SetPlayerConglomerateName(string conglomerateName)
-    {
-        playerConglomerateName = conglomerateName;
-        conglomerates[Env.PlayerConglomerateID].SetConglomerateName(playerConglomerateName);
-    }
-
     public void StartSimulation()
     {
-        Env.PrintDebug($"StartSimulation");
-
         isSimulationOn = true;
         ResetSimulation();
     }
 
-    public void LoadData(GameData gameData)
+    public void SpendMoney(int amount)
     {
-        totalYearSimulated = gameData.totalYearSimulated;
-        gameMinutesLength = gameData.gameMinutesLength;
+        conglomerates[Env.PlayerConglomerateID].SpendMoney(amount);
+    }
 
-        conglomerates = new List<ConglomerateEntity>();
-
-        foreach (ConglomerateData conglomerateData in gameData.conglomerates)
-        {
-            conglomerates.Add(new ConglomerateEntity(conglomerateData));
-        }
+    public void ContinueSimulation()
+    {
+        isSimulationOn = true;
     }
 
     public static string GetPopularityDescription(PopularityLevel popularity)
@@ -99,9 +84,39 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Awake()
+    {
+        isSimulationOn = false;
+    }
+
+    private void Update()
     {
         HandleSimulatedTime();
+    }
+
+    private void SetupWorldEventManager(GameManager gameManager)
+    {
+        worldEventManager = gameObject.AddComponent<WorldEventManager>();
+        worldEventManager.Init(gameManager);
+    }
+
+    private void SetPlayerConglomerateName(string conglomerateName)
+    {
+        playerConglomerateName = conglomerateName;
+        conglomerates[Env.PlayerConglomerateID].SetConglomerateName(playerConglomerateName);
+    }
+
+    private void LoadData(GameData gameData)
+    {
+        totalYearSimulated = gameData.totalYearSimulated;
+        gameMinutesLength = gameData.gameMinutesLength;
+
+        conglomerates = new List<ConglomerateEntity>();
+
+        foreach (ConglomerateData conglomerateData in gameData.conglomerates)
+        {
+            conglomerates.Add(new ConglomerateEntity(conglomerateData));
+        }
     }
 
     private GameManager.GameUIData RetrieveUIValues()
@@ -146,6 +161,8 @@ public class SimulationManager : MonoBehaviour
 
                 gameManager.PopulateMainUI(
                     RetrieveUIValues(), true);
+
+                HandleWorldEvent();
             }
             else
             {
@@ -159,12 +176,20 @@ public class SimulationManager : MonoBehaviour
 
     private void HandleEndOfSimulatedYear()
     {
-        Env.PrintDebug($"HandleSimulatedTime, yearPassed: {yearPassed}");
-
         foreach (ConglomerateEntity conglomerate in conglomerates)
         {
             conglomerate.EndFiscalYear();
         }
+    }
+
+    private void HandleWorldEvent()
+    {
+        if (yearPassed % Env.WorldEventFrequencyYear != 0)
+            return;
+
+        isSimulationOn = false;
+        worldEventManager.CreateWorldEvent();
+        gameManager.DisplayWorldEventUI();
     }
 
     private void HandleEndOfGame()

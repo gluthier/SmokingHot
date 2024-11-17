@@ -6,7 +6,7 @@ public static class Env
     public static string GameDataJsonFileName = "GameData.json";
 
     public static int DaysInAYear = 365;
-
+    public static int WorldEventFrequencyYear = 5;
     public static int PlayerConglomerateID = 2; // Europe
 
     public static float NewSmokerAcquisitionIncrement = 0.005f;
@@ -57,18 +57,8 @@ public static class Env
     public static string UI_YoungAdultPopularityLevelGO = "GameData/YoungAdultPopularityLevel/Value";
     public static string UI_AdultPopularityLevelGO = "GameData/AdultPopularityLevel/Value";
     public static string UI_SeniorPopularityLevelGO = "GameData/SeniorPopularityLevel/Value";
-
     public static string UI_adCampaignsGO = "GameData/adCampaigns/Value";
 
-
-    #region DEBUG
-    public const bool PRINT_DEBUG = false;
-    public static void PrintDebug(string msg)
-    {
-        if (PRINT_DEBUG)
-        {
-            Debug.Log(msg);
-        }
-    }
-    #endregion
+    public static string UI_EventTitle = "Background/Title";
+    public static string UI_EventDescription = "Background/Description";
 }

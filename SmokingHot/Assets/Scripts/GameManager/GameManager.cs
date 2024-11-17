@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public GameUI gameUI;
     public CameraManager cameraManager;
     public SkillTreeManager skillTreeManager;
+    public WorldEventUI worldEventUI;
+
     private SimulationManager simulationManager;
 
     public struct GameUIData
@@ -27,11 +29,19 @@ public class GameManager : MonoBehaviour
 
     public void enterGame(string conglomerateName)
     {
+        SetupWorldEventUI();
+
         displayMainUI();
         cameraManager.SwitchPlayingCamera();
 
         SetupSimulationManager(conglomerateName);
         simulationManager.StartSimulation();
+    }
+
+    private void SetupWorldEventUI()
+    {
+        worldEventUI.Init();
+        HideWorldEventUI();
     }
 
     private void displayMainUI()
@@ -54,6 +64,32 @@ public class GameManager : MonoBehaviour
     public void PopulateMainUI(GameUIData gameUIData, bool showUpdate)
     {
         gameUI.PopulateMainUI(gameUIData, showUpdate);
+    }
+
+    public void PopulateWorldEventUI(WorldEvent eventEntity)
+    {
+        worldEventUI.DisplayEvent(eventEntity, HandleEndEvent);
+    }
+
+    private void HandleEndEvent()
+    {
+        HideWorldEventUI();
+        simulationManager.ContinueSimulation();
+    }
+
+    public void SpendMoney(int amount)
+    {
+        simulationManager.SpendMoney(amount);
+    }
+
+    public void DisplayWorldEventUI()
+    {
+        worldEventUI.gameObject.SetActive(true);
+    }
+
+    public void HideWorldEventUI()
+    {
+        worldEventUI.gameObject.SetActive(false);
     }
 
     void Update()

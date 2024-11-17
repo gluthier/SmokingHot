@@ -48,6 +48,11 @@ public class ConglomerateEntity
         this.conglomerateName = conglomerateName;
     }
 
+    public void SpendMoney(int amountMillion)
+    {
+        totalMoney -= amountMillion;
+    }
+
     public void EndFiscalYear()
     {
         EndAdCampaignFiscalYear();
@@ -87,8 +92,6 @@ public class ConglomerateEntity
 
     private void UpdateSmokerStatistics()
     {
-        string debug_msg = $"UpdateSmokerStatistics  {continentName}\n=====\n";
-
         float nonSmokerPercentage = 1 - smokerPercentage;
 
         int nonSmokersPopulation = (int)(population * nonSmokerPercentage);
@@ -101,35 +104,15 @@ public class ConglomerateEntity
 
         int newTotalSmokers = newSmokers + smokersKept;
 
-        debug_msg += $"  nonSmokerPercentage: {nonSmokerPercentage}\n" +
-            $"  nonSmokersPopulation: {nonSmokersPopulation}\n" +
-            $"  smokersPopulation: {smokersPopulation}\n" +
-            $"  addictionPercentage: {addictionPercentage}\n" +
-            $"  newSmokers: {newSmokers}\n" +
-            $"  smokersKept: {smokersKept}\n" +
-            $"  newTotalSmokers: {newTotalSmokers}" +
-            $"  smokerPercentage before : {smokerPercentage}";
-
         smokerPercentage = (float)newTotalSmokers / population;
-
-        debug_msg += $"  smokerPercentage after : {smokerPercentage}";
-        Env.PrintDebug(debug_msg);
     }
 
     private void UpdatePopulation()
     {
-        string debug_msg = $"UpdatePopulation  {continentName}\n=====\n";
-
         float toxicityPercentage = (int)cigarettePackProduced.toxicity / (float)ToxicityLevel.Average;
 
         int smokersPopulation = (int)(population * smokerPercentage);
         int numDeathFromSmoking = (int)(deathSmokerPercentage * smokersPopulation * toxicityPercentage);
-
-        debug_msg += $"  populationGrowthPercentage: {populationGrowth}\n" +
-            $"  toxicityPercentage: {toxicityPercentage}\n" +
-            $"  smokersPopulation: {smokersPopulation}\n" +
-            $"  numDeathFromSmoking: {numDeathFromSmoking}\n" +
-            $"  population before: {population}\n";
 
         population = (int)(population * (1 + populationGrowth));
         population -= numDeathFromSmoking;
@@ -137,23 +120,16 @@ public class ConglomerateEntity
         if (population < 0) {
             population = 0;
         }
-
-        debug_msg += $"  population after: {population}\n";
-        Env.PrintDebug(debug_msg);
     }
 
     private void EndAdCampaignFiscalYear()
     {
-        string debug_msg = $"EndAdCampaignFiscalYear  {continentName}\n=====\n";
-
         List<AdCampaignEntity> toRemove = new List<AdCampaignEntity>();
 
         // Get ad campaigns results
         foreach (AdCampaignEntity adCampaign in adCampaigns)
         {
             float adCampaignCost = adCampaign.EndFiscalYear();
-
-            debug_msg += $"  adCampaignCost: {adCampaignCost}\n";
 
             totalMoney -= adCampaignCost;
             HandleAdCampaignResult(adCampaign);
@@ -169,35 +145,21 @@ public class ConglomerateEntity
         {
             adCampaigns.Remove(adCampaign);
         }
-
-        Env.PrintDebug(debug_msg);
     }
 
     private void HandleAdCampaignResult(AdCampaignEntity adCampaign)
     {
-        string debug_msg = $"HandleAdCampaignResult  {continentName}\n=====\n";
-
         (AdType, AdQualityReception) result = adCampaign.GetResult();
-
-        debug_msg += $"  newSmokerAcquisition before: {newSmokerAcquisition}\n" +
-            $"  smokerRetention before: {smokerRetention}\n";
 
         newSmokerAcquisition += result.Item1 == AdType.NewSmokerAcquisition ?
             (int)result.Item2 * Env.NewSmokerAcquisitionIncrement : 0;
 
         smokerRetention += result.Item1 == AdType.SmokerRetention ?
             (int)result.Item2 * Env.SmokerRetentioIncrement : 0;
-
-        debug_msg += $"  newSmokerAcquisition after: {newSmokerAcquisition}\n" +
-            $"  smokerRetention after: {smokerRetention}\n";
-
-        Env.PrintDebug(debug_msg);
     }
 
     private void EndConglomerateFiscalYear()
     {
-        string debug_msg = $"EndConglomerateFiscalYear  {continentName}\n=====\n";
-
         int smokersPopulation = (int)(population * smokerPercentage);
 
         float cigarettePackSoldPerSmoker = Env.DaysInAYear * cigarettePerDay / cigarettesPerPack;
@@ -211,19 +173,6 @@ public class ConglomerateEntity
 
         float gain = benefitMoney - expensesMoney;
 
-        debug_msg += $"  totalMoney before: {totalMoney}\n" +
-            $"  cigarettePackSold: {cigarettePackSoldPerSmoker}\n" +
-            $"  totalCigarettePackMoney: {totalCigarettePackMoney}\n" +
-            $"  expensesPercentage: {expensesPercentage}\n" +
-            $"  benefitPercentage: {benefitPercentage}\n" +
-            $"  expensesMoney: {expensesMoney}\n" +
-            $"  benefitMoney: {benefitMoney}\n" +
-            $"  gain: {gain}\n";
-
         totalMoney += gain;
-
-        debug_msg += $"  totalMoney after: {totalMoney}\n";
-
-        Env.PrintDebug(debug_msg);
     }
 }
