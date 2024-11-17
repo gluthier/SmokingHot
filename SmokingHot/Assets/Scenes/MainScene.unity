@@ -3156,7 +3156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUI: {fileID: 144005979}
   cameraManager: {fileID: 1839733603}
-  companyName: 
   skillTreeManager: {fileID: 6652428780844676772}
 --- !u!1001 &1796455580
 PrefabInstance:
@@ -3797,7 +3796,7 @@ Transform:
   m_GameObject: {fileID: 2075923009}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: 3.15, z: 0.76}
+  m_LocalPosition: {x: 0.019, y: 3.349, z: 0.589}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
