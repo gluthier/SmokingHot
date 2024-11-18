@@ -4,6 +4,7 @@ public static class Env
 {
 
     public static string GameDataJsonFileName = "GameData.json";
+    public static string WorldEventSOFolder = "WorldEventData";
 
     public static int DaysInAYear = 365;
     public static int WorldEventFrequencyYear = 5;

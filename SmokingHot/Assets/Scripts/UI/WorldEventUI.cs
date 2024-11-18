@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class WorldEventUI : MonoBehaviour
 {
+    private GameManager gameManager;
+
     private TextMeshProUGUI eventTitle;
     private TextMeshProUGUI eventDescription;
 
-    WorldEvent.AcceptEvent acceptEvent;
-    WorldEvent.RefuseEvent refuseEvent;
+    private WorldEventSO worldEvent;
 
     public delegate void FinishWorldEvent();
     public FinishWorldEvent finishWorldEvent;
 
-    public void Init()
+    public void Init(GameManager gameManager)
     {
+        this.gameManager = gameManager;
+
         eventTitle = transform.Find(Env.UI_EventTitle)
             .GetComponent<TextMeshProUGUI>();
 
@@ -21,25 +24,25 @@ public class WorldEventUI : MonoBehaviour
             .GetComponent<TextMeshProUGUI>();
     }
 
-    public void DisplayEvent(WorldEvent worldEvent, FinishWorldEvent finishWorldEvent)
+    public void DisplayEvent(WorldEventSO worldEvent, FinishWorldEvent finishWorldEvent)
     {
+        this.worldEvent = worldEvent;
+
         eventTitle.text = worldEvent.title;
         eventDescription.text = worldEvent.description;
-        acceptEvent = worldEvent.acceptEvent;
-        refuseEvent = worldEvent.refuseEvent;
 
         this.finishWorldEvent = finishWorldEvent;
     }
 
     public void OnAcceptButtonPressed()
     {
-        acceptEvent();
+        worldEvent.AcceptEvent(gameManager);
         finishWorldEvent();
     }
 
     public void OnRefuseButtonPressed()
     {
-        refuseEvent();
+        worldEvent.RefuseEvent(gameManager);
         finishWorldEvent();
     }
 }

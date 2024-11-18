@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void SetupWorldEventUI()
     {
-        worldEventUI.Init();
+        worldEventUI.Init(this);
         HideWorldEventUI();
     }
 
@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
         gameUI.PopulateMainUI(gameUIData, showUpdate);
     }
 
-    public void PopulateWorldEventUI(WorldEvent eventEntity)
+    public void PopulateWorldEventUI(WorldEventSO worldEvent)
     {
-        worldEventUI.DisplayEvent(eventEntity, HandleEndEvent);
+        worldEventUI.DisplayEvent(worldEvent, HandleEndEvent);
     }
 
     private void HandleEndEvent()
@@ -77,10 +77,25 @@ public class GameManager : MonoBehaviour
         simulationManager.ContinueSimulation();
     }
 
-    public void SpendMoney(int amount)
+    public void SpendMoney(float amount)
     {
         simulationManager.SpendMoney(amount);
     }
+
+    public void ImpactReputation(AgeBracket ageBracket, int amount)
+    {
+        simulationManager.ImpactReputation(ageBracket, amount);
+    }
+
+    // successPercentage must be between 0.0 and 1.0
+    public void BlockAdvertisment(float successPercentage)
+    {
+        if (Random.value < successPercentage)
+        {
+            simulationManager.BlockAdvertisment();
+        }
+    }
+
 
     public void DisplayWorldEventUI()
     {

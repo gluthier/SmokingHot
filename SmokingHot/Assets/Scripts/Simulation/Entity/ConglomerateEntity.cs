@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using Unity.Mathematics;
 using static AdCampaignEntity;
 using static CigarettePackEntity;
 using static SimulationManager;
@@ -48,14 +48,29 @@ public class ConglomerateEntity
         this.conglomerateName = conglomerateName;
     }
 
-    public void SpendMoney(int amountMillion)
+    public void SpendMoney(float amountMillion)
     {
         totalMoney -= amountMillion;
     }
 
-    public void EndFiscalYear()
+    public void ImpactReputation(AgeBracket ageBracket, int amount)
     {
-        EndAdCampaignFiscalYear();
+        PopularityLevel agePopularity = popularityByAgeBracket[ageBracket];
+
+        int newPopularityLevel = (int)agePopularity + amount;
+        newPopularityLevel = 
+            math.clamp(newPopularityLevel, (int)PopularityLevel.Hated, (int)PopularityLevel.Loved);
+
+        popularityByAgeBracket[ageBracket] = (PopularityLevel)newPopularityLevel;
+    }
+
+    public void EndFiscalYear(bool isAdvertismentAllowed)
+    {
+        if (isAdvertismentAllowed)
+        {
+            EndAdCampaignFiscalYear();
+        }
+
         EndConglomerateFiscalYear();
 
         UpdateSmokerStatistics();

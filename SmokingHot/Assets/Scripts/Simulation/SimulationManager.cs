@@ -22,6 +22,7 @@ public class SimulationManager : MonoBehaviour
     }
 
     private bool isSimulationOn;
+    private bool isAdvertismentAllowed;
     private int yearPassed;
     private float timePassed;
 
@@ -52,12 +53,24 @@ public class SimulationManager : MonoBehaviour
     public void StartSimulation()
     {
         isSimulationOn = true;
+        isAdvertismentAllowed = true;
+
         ResetSimulation();
     }
 
-    public void SpendMoney(int amount)
+    public void SpendMoney(float amount)
     {
         conglomerates[Env.PlayerConglomerateID].SpendMoney(amount);
+    }
+
+    public void ImpactReputation(AgeBracket ageBracket, int amount)
+    {
+        conglomerates[Env.PlayerConglomerateID].ImpactReputation(ageBracket, amount);
+    }
+
+    public void BlockAdvertisment()
+    {
+        isAdvertismentAllowed = false;
     }
 
     public void ContinueSimulation()
@@ -178,7 +191,7 @@ public class SimulationManager : MonoBehaviour
     {
         foreach (ConglomerateEntity conglomerate in conglomerates)
         {
-            conglomerate.EndFiscalYear();
+            conglomerate.EndFiscalYear(isAdvertismentAllowed);
         }
     }
 
