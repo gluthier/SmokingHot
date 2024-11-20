@@ -1,6 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+
 using static SimulationManager;
+using static GameManager;
+using System;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +15,12 @@ public class GameManager : MonoBehaviour
     public WorldEventUI worldEventUI;
 
     private SimulationManager simulationManager;
+    private WorldEventManager worldEventManager;
+
+    #region DEBUG ATTRIBUTES
+    private bool DEBUG_isHeadlessModeOn;
+    private List<GameManager.GameUIData> gameDataReport;
+    #endregion
 
     public struct GameUIData
     {
@@ -30,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void enterGame(string conglomerateName)
     {
         SetupWorldEventUI();
+        SetupWorldEventManager();
 
         displayMainUI();
         cameraManager.SwitchPlayingCamera();
@@ -42,6 +54,12 @@ public class GameManager : MonoBehaviour
     {
         worldEventUI.Init(this);
         HideWorldEventUI();
+    }
+
+    private void SetupWorldEventManager()
+    {
+        worldEventManager = gameObject.AddComponent<WorldEventManager>();
+        worldEventManager.Init(this);
     }
 
     private void displayMainUI()
@@ -63,11 +81,24 @@ public class GameManager : MonoBehaviour
 
     public void PopulateMainUI(GameUIData gameUIData, bool showUpdate)
     {
+        if (DEBUG_isHeadlessModeOn)
+        {
+            gameDataReport.Add(gameUIData);
+            return;
+        }
+
         gameUI.PopulateMainUI(gameUIData, showUpdate);
     }
 
     public void PopulateWorldEventUI(WorldEventSO worldEvent)
     {
+        if (DEBUG_isHeadlessModeOn)
+        {
+            worldEvent.AcceptEvent(this);
+            HandleEndEvent();
+            return;
+        }
+
         worldEventUI.DisplayEvent(worldEvent, HandleEndEvent);
     }
 
@@ -90,16 +121,16 @@ public class GameManager : MonoBehaviour
     // successPercentage must be between 0.0 and 1.0
     public void BlockAdvertisment(float successPercentage)
     {
-        if (Random.value < successPercentage)
+        if (UnityEngine.Random.value < successPercentage)
         {
             simulationManager.BlockAdvertisment();
         }
     }
 
-
-    public void DisplayWorldEventUI()
+    public void CreateWorldEvent()
     {
         worldEventUI.gameObject.SetActive(true);
+        worldEventManager.CreateWorldEvent();
     }
 
     public void HideWorldEventUI()
@@ -114,6 +145,17 @@ public class GameManager : MonoBehaviour
         {
             FindFirstObjectByType<StartButtonClick>().gameObject.SetActive(false);
             enterGame("Big Tobacco");
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            enterGame("Big Tobacco");
+
+            gameDataReport = new List<GameUIData>(50);
+            simulationManager.gameMinutesLength = 1/200f;
+            DEBUG_isHeadlessModeOn = true;
+
+            StartCoroutine(
+                DEBUG_simulateGameGetReport());
         }
         #endregion
 
@@ -140,4 +182,31 @@ public class GameManager : MonoBehaviour
            skillTreeManager.ShowPanel(gameObject);            
         }
     }
+
+    #region DEBUG METHODS
+    private IEnumerator DEBUG_simulateGameGetReport()
+    {
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("Simulated simulation done!");
+
+        string csv = "Year,Population,Money,Smokers,Death,Acquisition,Retention,Packs produced,Ad campaigns";
+
+        foreach (GameUIData d in gameDataReport)
+        {
+            csv += $"\n{d.year},{d.population},{d.money},{d.smokerPercentage},{d.deathSmokerPercentage},{d.newSmokerAcquisition},{d.smokerRetention},{d.cigarettePackProduced},{d.adCampaigns.Count}";
+        }
+
+        string folder = Application.persistentDataPath;
+        string timestamp = System.DateTime.Now.ToString("yyyyMMdd_hhmmss");
+        string filePath = Path.Combine(folder, $"{timestamp}_report.csv");
+
+        using (var writer = new StreamWriter(filePath, false))
+        {
+            writer.Write(csv);
+        }
+
+        Debug.Log($"CSV file report written to \"{filePath}\"");
+    }
+    #endregion
 }

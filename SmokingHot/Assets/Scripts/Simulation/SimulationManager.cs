@@ -27,7 +27,7 @@ public class SimulationManager : MonoBehaviour
     private float timePassed;
 
     private float totalYearSimulated;
-    private float gameMinutesLength;
+    public float gameMinutesLength;
     private List<ConglomerateEntity> conglomerates;
     private string playerConglomerateName = "";
 
@@ -201,8 +201,7 @@ public class SimulationManager : MonoBehaviour
             return;
 
         isSimulationOn = false;
-        worldEventManager.CreateWorldEvent();
-        gameManager.DisplayWorldEventUI();
+        gameManager.CreateWorldEvent();
     }
 
     private void HandleEndOfGame()
