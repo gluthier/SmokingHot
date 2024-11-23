@@ -49,6 +49,11 @@ public class SimulationManager : MonoBehaviour
             RetrieveUIValues(), false);
     }
 
+    public List<ConglomerateEntity> getConglomerates()
+    {
+        return conglomerates;
+    }
+
     public void StartSimulation()
     {
         isSimulationOn = true;

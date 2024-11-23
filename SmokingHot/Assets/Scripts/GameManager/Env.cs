@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class Env
 {
@@ -36,7 +37,7 @@ public static class Env
     }
 
     public static string UI_yearGO = "SimulationData/Year/Value";
-    public static string UI_congomerateGO = "Background/ConglomerateName";
+    public static string UI_congomerateGO = "Background/ConglomerateName"; // FIXME: congomerate?
     public static string UI_continentGO = "GameData/continent/Value";
     public static string UI_populationGO = "GameData/population/Value";
     public static string UI_populationDiffGO = "GameData/population/Diff";
@@ -61,4 +62,12 @@ public static class Env
 
     public static string UI_EventTitle = "Background/Title";
     public static string UI_EventDescription = "Background/Description";
+
+    public static string UI_EndgameScreenTitle = "Endgame/Title";
+    public static List<string> UI_EndgameRankedConglomerates = new List<string>{
+        "Endgame/Rank1",
+        "Endgame/Rank2",
+        "Endgame/Rank3",
+        "Endgame/Rank4",
+    };
 }
