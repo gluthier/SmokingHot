@@ -1,34 +1,28 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WorldEventManager : MonoBehaviour
 {
+    public List<WorldEventSO> worldEvents;
+
     private GameManager gameManager;
 
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
+        LoadAllWorldEventSO();
     }
 
     public void CreateWorldEvent()
     {
-        WorldEvent votation = new WorldEvent(
-            "Votation against tobacco advertisment",
-            "There is an ongoing votation against tobacco advertisment. We should spend some money to fight it! If you accept, then the costs will be 10 millions. If you refuse, we might not be able to do some advertisment.",
-            WorldEvent.EventType.Political,
-            WorldEvent.ImpactFactor.Negative,
-            VotationAccept,
-            VotationRefuse);
-
-        gameManager.PopulateWorldEventUI(votation);
+        int randIdx = Random.Range(0, worldEvents.Count);
+        gameManager.PopulateWorldEventUI(worldEvents[randIdx]);
     }
 
-    public void VotationAccept()
+    private void LoadAllWorldEventSO()
     {
-        gameManager.SpendMoney(50);
-    }
-
-    public void VotationRefuse()
-    {
-        // todo!
+        WorldEventSO[] worldEventsSO = Resources.LoadAll<WorldEventSO>(Env.WorldEventSOFolder);
+        worldEvents = worldEventsSO.ToList();
     }
 }

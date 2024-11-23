@@ -28,15 +28,15 @@ public class EndgameScreen : MonoBehaviour
 
         if (sortedConglomerates[0] == playerConglomerate)
         {
-            title.text = "You won!"
+            title.text = "You won!";
         }
         else
         {
-            title.text = "You lost!"
+            title.text = "You lost!";
         }
 
         for (int i = 0; i < rankedConglomerates.Count; ++i) {
-            rankedConglomerates[i].text = $"{conglomerates[i].conglomerateName}";
+            rankedConglomerates[i].text = $"{sortedConglomerates[i].conglomerateName}";
         }
     }
 
