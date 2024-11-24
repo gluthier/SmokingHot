@@ -11,10 +11,10 @@ public class CompanyEntity
     public string companyName;
     public float money;
     public PopularityLevel popularity;
-    public float consumers;
-    public float manufacturing;
-    public float lobbying;
-    public float adCampaigns;
+    public float numConsumers;
+    public float manufacturingCosts;
+    public float lobbyingCosts;
+    public float adCampaignsCosts;
     public CigarettePackEntity cigarettePackProduced;
 
     // Hidden simulation data
@@ -65,10 +65,10 @@ public class CompanyEntity
     {
         companyName = companyData.companyName;
         money = companyData.startingMoneyMillion;
-        consumers = companyData.startingConsumersMillion;
-        manufacturing = companyData.startingManufacturingMillion;
-        lobbying = companyData.startingLobbyingMillion;
-        adCampaigns = companyData.startingAdCampaignsMillion;
+        numConsumers = companyData.startingConsumersMillion;
+        manufacturingCosts = companyData.startingManufacturingMillion;
+        lobbyingCosts = companyData.startingLobbyingMillion;
+        adCampaignsCosts = companyData.startingAdCampaignsMillion;
 
         cigarettePackPrice = companyData.cigarettePackPrice;
         deathSmokerPercentage = companyData.deathSmokerPercentage;
@@ -81,12 +81,12 @@ public class CompanyEntity
     {
         int cigarettePackSoldPerSmoker = 180; // ~= 10 cigarettes per day
         float cigarettePackPriceMillion = cigarettePackPrice / 1000000f;
-        float totalCigarettePackMoneyMillion = consumers * cigarettePackSoldPerSmoker * cigarettePackPriceMillion;
+        float totalCigarettePackMoneyMillion = numConsumers * cigarettePackSoldPerSmoker * cigarettePackPriceMillion;
 
         float returnOnInvestmentsMillion = money * returnOnInvestment;
 
         float moneyGained = totalCigarettePackMoneyMillion + returnOnInvestmentsMillion -
-            manufacturing - lobbying - adCampaigns;
+            manufacturingCosts - lobbyingCosts - adCampaignsCosts;
 
         money += moneyGained;
         return moneyGained;
@@ -96,16 +96,16 @@ public class CompanyEntity
     {
         float toxicityPercentage = (int)cigarettePackProduced.toxicity / (float)ToxicityLevel.Average;
 
-        float consumersDeadFromSmoking = deathSmokerPercentage/100f * consumers * toxicityPercentage;
-        consumers -= consumersDeadFromSmoking;
+        float consumersDeadFromSmoking = deathSmokerPercentage/100f * numConsumers * toxicityPercentage;
+        numConsumers -= consumersDeadFromSmoking;
 
-        if (consumers < 0) {
-            consumers = 0;
+        if (numConsumers < 0) {
+            numConsumers = 0;
         }
 
-        float newConsumers = consumers * newSmokerAcquisition;
-        float lostConsumers = consumers * (1 - smokerRetention);
+        float newConsumers = numConsumers * newSmokerAcquisition;
+        float lostConsumers = numConsumers * (1 - smokerRetention);
 
-        consumers += newConsumers - lostConsumers;
+        numConsumers += newConsumers - lostConsumers;
     }
 }

@@ -66,16 +66,16 @@ public class GameUI : MonoBehaviour
         SetPopularityField(prevUIData.popularity, gameUIData.popularity, showUpdate);
 
         SetTextField(consumers, consumersDiff,
-            prevUIData.consumers, gameUIData.consumers, showUpdate);
+            prevUIData.numConsumers, gameUIData.numConsumers, showUpdate);
 
         SetTextField(manufacturing, manufacturingDiff,
-            prevUIData.manufacturing, gameUIData.manufacturing, showUpdate);
+            prevUIData.manufacturingCosts, gameUIData.manufacturingCosts, showUpdate);
 
         SetTextField(lobbying, lobbyingDiff,
-            prevUIData.lobbying, gameUIData.lobbying, showUpdate);
+            prevUIData.lobbyingCosts, gameUIData.lobbyingCosts, showUpdate);
 
         SetTextField(adCampaigns, adCampaignsDiff,
-            prevUIData.adCampaigns, gameUIData.adCampaigns, showUpdate);
+            prevUIData.adCampaignsCosts, gameUIData.adCampaignsCosts, showUpdate);
 
         cigaretteToxicityLevel.text = gameUIData.cigarettePackProduced.GetToxicityDescription();
         cigaretteAddictionLevel.text = gameUIData.cigarettePackProduced.GetAddictionDescription();

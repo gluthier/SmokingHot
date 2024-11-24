@@ -27,10 +27,10 @@ public class GameManager : MonoBehaviour
         public string companyName;
         public float money;
         public PopularityLevel popularity;
-        public float consumers;
-        public float manufacturing;
-        public float lobbying;
-        public float adCampaigns;
+        public float numConsumers;
+        public float manufacturingCosts;
+        public float lobbyingCosts;
+        public float adCampaignsCosts;
         public CigarettePackEntity cigarettePackProduced;
     }
 
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameUIData d in gameDataReport)
         {
-            csv += $"\n{d.year},{d.money},{d.popularity},{d.consumers},{d.manufacturing},{d.lobbying},{d.adCampaigns},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()}";
+            csv += $"\n{d.year},{d.money},{d.popularity},{d.numConsumers},{d.manufacturingCosts},{d.lobbyingCosts},{d.adCampaignsCosts},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()}";
         }
 
         string folder = Application.persistentDataPath;

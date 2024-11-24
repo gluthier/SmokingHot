@@ -133,10 +133,10 @@ public class SimulationManager : MonoBehaviour
             companyName = playerCompany.companyName,
             money = playerCompany.money,
             popularity = playerCompany.popularity,
-            consumers = playerCompany.consumers,
-            manufacturing = playerCompany.manufacturing,
-            lobbying = playerCompany.lobbying,
-            adCampaigns = playerCompany.adCampaigns,
+            numConsumers = playerCompany.numConsumers,
+            manufacturingCosts = playerCompany.manufacturingCosts,
+            lobbyingCosts = playerCompany.lobbyingCosts,
+            adCampaignsCosts = playerCompany.adCampaignsCosts,
             cigarettePackProduced = playerCompany.cigarettePackProduced,
         };
     }
