@@ -180,6 +180,7 @@ public class SimulationManager : MonoBehaviour
                 gameManager.PopulateMainUI(
                     RetrieveUIValues(), true);
 
+                gameManager.coinSpawner.spawnCoins(conglomerates[Env.PlayerConglomerateID].moneyGained);
                 HandleWorldEvent();
             }
             else

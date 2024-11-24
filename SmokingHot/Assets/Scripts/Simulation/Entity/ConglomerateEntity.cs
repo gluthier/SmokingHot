@@ -22,6 +22,8 @@ public class ConglomerateEntity
     public float deathSmokerPercentage;
     private float cigarettePerDay;
 
+    public float moneyGained;
+
     private Dictionary<AgeBracket, float> populationDistribution;
     public List<AdCampaignEntity> adCampaigns;
     public CigarettePackEntity cigarettePackProduced;
@@ -189,5 +191,6 @@ public class ConglomerateEntity
         float gain = benefitMoney - expensesMoney;
 
         totalMoney += gain;
+        moneyGained = gain;
     }
 }
