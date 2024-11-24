@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public AudioClip[] soundClips; // Array to hold sound clips
+    public AudioClip[] soundClips;
     private AudioSource audioSource;
 
     private void Start()
