@@ -15,35 +15,22 @@ public static class GameDataLoader
 
 public class GameData
 {
-    public float totalYearSimulated;
-    public float gameMinutesLength;
-    public ConglomerateData[] conglomerates;
+    public int totalYearSimulated;
+    public int gameMinutesLength;
+    public CompanyData companyTemplate;
 }
 
-public class ConglomerateData
+public class CompanyData
 {
-    public string conglomerateName;
-    public string continentName;
+    public string companyName;
     public float startingMoneyMillion;
-    public int cigarettesPerPack;
+    public float startingConsumersMillion;
+    public float startingManufacturingMillion;
+    public float startingLobbyingMillion;
+    public float startingAdCampaignsMillion;
     public float cigarettePackPrice;
-    public float populationMillion;
-    public float populationGrowth;
-    public PopulationDistributionData populationDistribution;
-    public float smokerPercentage;
     public float deathSmokerPercentage;
-    public float cigarettePerDay;
     public float newSmokerAcquisition;
     public float smokerRetention;
-    public float productionCostPercentage;
-    public float distributionCostPercentage;
-}
-
-public class PopulationDistributionData
-{
-    public float kid;
-    public float teenager;
-    public float youngadult;
-    public float adult;
-    public float senior;
+    public float returnOnInvestment;
 }

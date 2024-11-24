@@ -21,7 +21,7 @@ public static class Env
     public static Color UI_DecreaseColor = new Color(224 / 255f, 47 / 255f, 47 / 255f);
     public static Color UI_NormalColor = new Color(255 / 255f, 255 / 255f, 255 / 255f);
 
-    public static Color GetTextUIColorFromDiff(double diff)
+    public static Color GetTextUIColorFromDiff(float diff)
     {
         if (diff > 0)
         {
@@ -38,28 +38,26 @@ public static class Env
     }
 
     public static string UI_yearGO = "SimulationData/Year/Value";
-    public static string UI_congomerateGO = "Background/ConglomerateName"; // FIXME: congomerate?
-    public static string UI_continentGO = "GameData/continent/Value";
-    public static string UI_populationGO = "GameData/population/Value";
-    public static string UI_populationDiffGO = "GameData/population/Diff";
-    public static string UI_smokersGO = "GameData/smokers/Value";
-    public static string UI_smokersDiffGO = "GameData/smokers/Diff";
-    public static string UI_deathSmokerPercentageGO = "GameData/deathSmokerPercentage/Value";
-    public static string UI_deathSmokerPercentageDiffGO = "GameData/deathSmokerPercentage/Diff";
+    public static string UI_companyGO = "Background/CompanyName";
+
     public static string UI_moneyGO = "GameData/money/Value";
     public static string UI_moneyDiffGO = "GameData/money/Diff";
-    public static string UI_newSmokerAcquisitionGO = "GameData/newSmokerAcquisition/Value";
-    public static string UI_newSmokerAcquisitionDiffGO = "GameData/newSmokerAcquisition/Diff";
-    public static string UI_smokerRetentionGO = "GameData/smokerRetention/Value";
-    public static string UI_smokerRetentionDiffGO = "GameData/smokerRetention/Diff";
-    public static string UI_CigaretteToxicityLevelGO = "GameData/CigaretteToxicityLevel/Value";
-    public static string UI_CigaretteAddictionLevelGO = "GameData/CigaretteAddictionLevel/Value";
-    public static string UI_KidPopularityLevelGO = "GameData/KidPopularityLevel/Value";
-    public static string UI_TeenagerPopularityLevelGO = "GameData/TeenagerPopularityLevel/Value";
-    public static string UI_YoungAdultPopularityLevelGO = "GameData/YoungAdultPopularityLevel/Value";
-    public static string UI_AdultPopularityLevelGO = "GameData/AdultPopularityLevel/Value";
-    public static string UI_SeniorPopularityLevelGO = "GameData/SeniorPopularityLevel/Value";
+    public static string UI_popularityGO = "GameData/popularity/Value";
+    public static string UI_popularityDiffGO = "GameData/popularity/Diff";
+    public static string UI_consumersGO = "GameData/consumers/Value";
+    public static string UI_consumersDiffGO = "GameData/consumers/Diff";
+
+    public static string UI_manufacturingGO = "GameData/manufacturing/Value";
+    public static string UI_manufacturingDiffGO = "GameData/manufacturing/Diff";
+    public static string UI_lobbyingGO = "GameData/lobbying/Value";
+    public static string UI_lobbyingDiffGO = "GameData/lobbying/Diff";
     public static string UI_adCampaignsGO = "GameData/adCampaigns/Value";
+    public static string UI_adCampaignsDiffGO = "GameData/adCampaigns/Diff";
+
+    public static string UI_cigaretteToxicityLevelGO = "GameData/cigaretteToxicityLevel/Value";
+    public static string UI_cigaretteToxicityLevelDiffGO = "GameData/cigaretteToxicityLevel/Diff";
+    public static string UI_cigaretteAddictionLevelGO = "GameData/cigaretteAddictionLevel/Value";
+    public static string UI_cigaretteAddictionLevelDiffGO = "GameData/cigaretteAddictionLevel/Diff";
 
     public static string UI_EventTitle = "Background/Title";
     public static string UI_EventDescription = "Background/Description";

@@ -8,28 +8,17 @@ public class WorldEventSO : ScriptableObject
         GainMoney,
         LooseMoney,
 
-        GainReputationKids,
-        GainReputationTeenagers,
-        GainReputationYoungAdults,
-        GainReputationAdults,
-        GainReputationSeniors,
-
-        LooseReputationKids,
-        LooseReputationTeenagers,
-        LooseReputationYoungAdults,
-        LooseReputationAdults,
-        LooseReputationSeniors,
-
-        BlockAdvertisment
+        GainReputation,
+        LooseReputation,
     }
 
     public string title;
     public string description;
 
     public ImpactFunction acceptFunction;
-    public float acceptCost;
+    public int acceptCost;
     public ImpactFunction refuseFunction;
-    public float refuseCost;
+    public int refuseCost;
 
     public void AcceptEvent(GameManager gameManager)
     {
@@ -41,7 +30,7 @@ public class WorldEventSO : ScriptableObject
         HandleEvent(gameManager, refuseCost);
     }
 
-    private void HandleEvent(GameManager gameManager, float cost)
+    private void HandleEvent(GameManager gameManager, int cost)
     {
         switch (acceptFunction)
         {
@@ -53,48 +42,12 @@ public class WorldEventSO : ScriptableObject
                 gameManager.SpendMoney(cost);
                 break;
 
-            case ImpactFunction.GainReputationKids:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Kid, (int)cost);
+            case ImpactFunction.GainReputation:
+                gameManager.ImpactReputation(cost);
                 break;
 
-            case ImpactFunction.GainReputationTeenagers:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Teenager, (int)cost);
-                break;
-
-            case ImpactFunction.GainReputationYoungAdults:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.YoungAdult, (int)cost);
-                break;
-
-            case ImpactFunction.GainReputationAdults:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Adult, (int)cost);
-                break;
-
-            case ImpactFunction.GainReputationSeniors:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Senior, (int)cost);
-                break;
-
-            case ImpactFunction.LooseReputationKids:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Kid, (int)-cost);
-                break;
-
-            case ImpactFunction.LooseReputationTeenagers:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Teenager, (int)-cost);
-                break;
-
-            case ImpactFunction.LooseReputationYoungAdults:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.YoungAdult, (int)-cost);
-                break;
-
-            case ImpactFunction.LooseReputationAdults:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Adult, (int)-cost);
-                break;
-
-            case ImpactFunction.LooseReputationSeniors:
-                gameManager.ImpactReputation(SimulationManager.AgeBracket.Senior, (int)-cost);
-                break;
-
-            case ImpactFunction.BlockAdvertisment:
-                gameManager.BlockAdvertisment(cost);
+            case ImpactFunction.LooseReputation:
+                gameManager.ImpactReputation(-cost);
                 break;
 
             default:

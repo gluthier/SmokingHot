@@ -2132,7 +2132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 1498403948531744, guid: fa2c57d3f28a5e6419393e8bc3eeb32a, type: 3}
-  moneyGainedRatio: 0.002
+  moneyGainedRatio: 0.2
   shiftRange: 0.2
 --- !u!1 &892750258
 GameObject:
@@ -4759,7 +4759,7 @@ Transform:
   m_GameObject: {fileID: 1791333716}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.958009, y: -162.46878, z: 209.56628}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

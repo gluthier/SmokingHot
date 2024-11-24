@@ -20,13 +20,17 @@ public class EndgameScreen : MonoBehaviour
 
     void Start()
     {
-        var simulationConglomerates = simulationManager.getConglomerates();
-        var sortedConglomerates = new List<ConglomerateEntity>(simulationConglomerates);
-        var playerConglomerate = simulationConglomerates[Env.PlayerConglomerateID];
+        CompanyEntity playerCompany = simulationManager.GetPlayerCompany();
 
-        sortedConglomerates.Sort((a, b) => a.totalMoney.CompareTo(b.totalMoney));
+        List<CompanyEntity> sortedCompanies = new List<CompanyEntity>
+        {
+            playerCompany,
+            simulationManager.GetIACompany()
+        };
 
-        if (sortedConglomerates[0] == playerConglomerate)
+        sortedCompanies.Sort((a, b) => a.money.CompareTo(b.money));
+
+        if (sortedCompanies[0].isPlayer)
         {
             title.text = "You won!";
         }
@@ -36,7 +40,7 @@ public class EndgameScreen : MonoBehaviour
         }
 
         for (int i = 0; i < rankedConglomerates.Count; ++i) {
-            rankedConglomerates[i].text = $"{sortedConglomerates[i].conglomerateName}";
+            rankedConglomerates[i].text = $"{sortedCompanies[i].companyName}";
         }
     }
 

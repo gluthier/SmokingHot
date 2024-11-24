@@ -4,15 +4,15 @@ public class CigarettePackEntity
     public enum ToxicityLevel
     {
         Average = 100,
-        Bad = 101,
-        VeryBad = 102
+        Bad = 105,
+        VeryBad = 110
     }
 
     public enum AddictionLevel
     {
         Average = 100,
-        Addictive = 101,
-        VeryAddictive = 102
+        Addictive = 105,
+        VeryAddictive = 110
     }
 
     public ToxicityLevel toxicity;

@@ -1,11 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-
-using static SimulationManager;
-using static GameManager;
-using System;
 using System.IO;
+using static SimulationManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,18 +23,15 @@ public class GameManager : MonoBehaviour
 
     public struct GameUIData
     {
-        public string conglomerateName;
         public int year;
-        public string continent;
-        public float population;
-        public float smokerPercentage;
-        public float deathSmokerPercentage;
+        public string companyName;
         public float money;
-        public float newSmokerAcquisition;
-        public float smokerRetention;
+        public PopularityLevel popularity;
+        public float consumers;
+        public float manufacturing;
+        public float lobbying;
+        public float adCampaigns;
         public CigarettePackEntity cigarettePackProduced;
-        public Dictionary<AgeBracket, PopularityLevel> popularityByAgeBracket;
-        public List<AdCampaignEntity> adCampaigns;
     }
 
     public void enterGame(string conglomerateName)
@@ -110,23 +104,14 @@ public class GameManager : MonoBehaviour
         simulationManager.ContinueSimulation();
     }
 
-    public void SpendMoney(float amount)
+    public void SpendMoney(int amount)
     {
         simulationManager.SpendMoney(amount);
     }
 
-    public void ImpactReputation(AgeBracket ageBracket, int amount)
+    public void ImpactReputation(int amount)
     {
-        simulationManager.ImpactReputation(ageBracket, amount);
-    }
-
-    // successPercentage must be between 0.0 and 1.0
-    public void BlockAdvertisment(float successPercentage)
-    {
-        if (UnityEngine.Random.value < successPercentage)
-        {
-            simulationManager.BlockAdvertisment();
-        }
+        simulationManager.ImpactReputation(amount);
     }
 
     public void CreateWorldEvent()
@@ -192,11 +177,11 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Simulated simulation done!");
 
-        string csv = "Year,Population,Money,Smokers,Death,Acquisition,Retention,Packs produced,Ad campaigns";
+        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction";
 
         foreach (GameUIData d in gameDataReport)
         {
-            csv += $"\n{d.year},{d.population},{d.money},{d.smokerPercentage},{d.deathSmokerPercentage},{d.newSmokerAcquisition},{d.smokerRetention},{d.cigarettePackProduced},{d.adCampaigns.Count}";
+            csv += $"\n{d.year},{d.money},{d.popularity},{d.consumers},{d.manufacturing},{d.lobbying},{d.adCampaigns},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()}";
         }
 
         string folder = Application.persistentDataPath;

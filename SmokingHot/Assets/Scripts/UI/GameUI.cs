@@ -1,129 +1,122 @@
 using UnityEngine;
 using TMPro;
-using static GameManager;
 using Unity.Mathematics;
+using static GameManager;
+using static SimulationManager;
 
 public class GameUI : MonoBehaviour
 {
     private GameManager.GameUIData prevUIData;
 
-    private TextMeshProUGUI conglomerateName;
+    private TextMeshProUGUI companyName;
     private TextMeshProUGUI year;
-
-    private TextMeshProUGUI continent;
-    private TextMeshProUGUI population;
-    private TextMeshProUGUI populationDiff;
-    private TextMeshProUGUI smokerPercentage;
-    private TextMeshProUGUI smokerPercentageDiff;
-    private TextMeshProUGUI deathSmokerPercentage;
-    private TextMeshProUGUI deathSmokerPercentageDiff;
 
     private TextMeshProUGUI money;
     private TextMeshProUGUI moneyDiff;
-    private TextMeshProUGUI newSmokerAcquisition;
-    private TextMeshProUGUI newSmokerAcquisitionDiff;
-    private TextMeshProUGUI smokerRetention;
-    private TextMeshProUGUI smokerRetentionDiff;
+    private TextMeshProUGUI popularity;
+    private TextMeshProUGUI popularityDiff;
+    private TextMeshProUGUI consumers;
+    private TextMeshProUGUI consumersDiff;
 
-    private TextMeshProUGUI CigaretteToxicityLevel;
-    private TextMeshProUGUI CigaretteAddictionLevel;
-
-    private TextMeshProUGUI KidPopularityLevel;
-    private TextMeshProUGUI TeenagerPopularityLevel;
-    private TextMeshProUGUI YoungAdultPopularityLevel;
-    private TextMeshProUGUI AdultPopularityLevel;
-    private TextMeshProUGUI SeniorPopularityLevel;
-
+    private TextMeshProUGUI manufacturing;
+    private TextMeshProUGUI manufacturingDiff;
+    private TextMeshProUGUI lobbying;
+    private TextMeshProUGUI lobbyingDiff;
     private TextMeshProUGUI adCampaigns;
+    private TextMeshProUGUI adCampaignsDiff;
+
+    private TextMeshProUGUI cigaretteToxicityLevel;
+    private TextMeshProUGUI cigaretteToxicityLevelDiff;
+    private TextMeshProUGUI cigaretteAddictionLevel;
+    private TextMeshProUGUI cigaretteAddictionLevelDiff;
 
     void Awake()
     {
-        conglomerateName = FindTextField(Env.UI_congomerateGO);
+        companyName = FindTextField(Env.UI_companyGO);
         year = FindTextField(Env.UI_yearGO);
-
-        continent = FindTextField(Env.UI_continentGO);
-        population = FindTextField(Env.UI_populationGO);
-        populationDiff = FindTextField(Env.UI_populationDiffGO);
-        smokerPercentage = FindTextField(Env.UI_smokersGO);
-        smokerPercentageDiff = FindTextField(Env.UI_smokersDiffGO);
-        deathSmokerPercentage = FindTextField(Env.UI_deathSmokerPercentageGO);
-        deathSmokerPercentageDiff = FindTextField(Env.UI_deathSmokerPercentageDiffGO);
 
         money = FindTextField(Env.UI_moneyGO);
         moneyDiff = FindTextField(Env.UI_moneyDiffGO);
-        newSmokerAcquisition = FindTextField(Env.UI_newSmokerAcquisitionGO);
-        newSmokerAcquisitionDiff = FindTextField(Env.UI_newSmokerAcquisitionDiffGO);
-        smokerRetention = FindTextField(Env.UI_smokerRetentionGO);
-        smokerRetentionDiff = FindTextField(Env.UI_smokerRetentionDiffGO);
+        popularity = FindTextField(Env.UI_popularityGO);
+        popularityDiff = FindTextField(Env.UI_popularityDiffGO);
+        consumers = FindTextField(Env.UI_consumersGO);
+        consumersDiff = FindTextField(Env.UI_consumersDiffGO);
 
-        CigaretteToxicityLevel = FindTextField(Env.UI_CigaretteToxicityLevelGO);
-        CigaretteAddictionLevel = FindTextField(Env.UI_CigaretteAddictionLevelGO);
-
-        KidPopularityLevel = FindTextField(Env.UI_KidPopularityLevelGO);
-        TeenagerPopularityLevel = FindTextField(Env.UI_TeenagerPopularityLevelGO);
-        YoungAdultPopularityLevel = FindTextField(Env.UI_YoungAdultPopularityLevelGO);
-        AdultPopularityLevel = FindTextField(Env.UI_AdultPopularityLevelGO);
-        SeniorPopularityLevel = FindTextField(Env.UI_SeniorPopularityLevelGO);
-
+        manufacturing = FindTextField(Env.UI_manufacturingGO);
+        manufacturingDiff = FindTextField(Env.UI_manufacturingDiffGO);
+        lobbying = FindTextField(Env.UI_lobbyingGO);
+        lobbyingDiff = FindTextField(Env.UI_lobbyingDiffGO);
         adCampaigns = FindTextField(Env.UI_adCampaignsGO);
+        adCampaignsDiff = FindTextField(Env.UI_adCampaignsDiffGO);
+
+        cigaretteToxicityLevel = FindTextField(Env.UI_cigaretteToxicityLevelGO);
+        cigaretteToxicityLevelDiff = FindTextField(Env.UI_cigaretteToxicityLevelDiffGO);
+        cigaretteAddictionLevel = FindTextField(Env.UI_cigaretteAddictionLevelGO);
+        cigaretteAddictionLevelDiff = FindTextField(Env.UI_cigaretteAddictionLevelDiffGO);
     }
 
     public void PopulateMainUI(GameManager.GameUIData gameUIData, bool showUpdate)
     {
-
-        conglomerateName.text = gameUIData.conglomerateName;
         year.text = $"{gameUIData.year + 1}";
-
-        continent.text = $"{gameUIData.continent}";
-
-        SetTextField(population, populationDiff,
-            Env.MillionUnit, prevUIData.population, gameUIData.population, showUpdate);
-
-        SetTextField(smokerPercentage, smokerPercentageDiff,
-            Env.MillionUnit, prevUIData.smokerPercentage, gameUIData.smokerPercentage, showUpdate);
-
-        SetTextField(deathSmokerPercentage, deathSmokerPercentageDiff,
-            Env.PercentUnit, prevUIData.deathSmokerPercentage, gameUIData.deathSmokerPercentage, showUpdate);
+        companyName.text = gameUIData.companyName;
 
         SetTextField(money, moneyDiff,
-            Env.MillionUnit, prevUIData.money, gameUIData.money, showUpdate);
+            prevUIData.money, gameUIData.money, showUpdate);
 
-        SetTextField(newSmokerAcquisition, newSmokerAcquisitionDiff,
-            Env.PercentUnit, prevUIData.newSmokerAcquisition, gameUIData.newSmokerAcquisition, showUpdate);
+        SetPopularityField(prevUIData.popularity, gameUIData.popularity, showUpdate);
 
-        SetTextField(smokerRetention, smokerRetentionDiff,
-            Env.PercentUnit, prevUIData.smokerRetention, gameUIData.smokerRetention, showUpdate);
+        SetTextField(consumers, consumersDiff,
+            prevUIData.consumers, gameUIData.consumers, showUpdate);
 
-        CigaretteToxicityLevel.text = gameUIData.cigarettePackProduced.GetToxicityDescription();
-        CigaretteAddictionLevel.text = gameUIData.cigarettePackProduced.GetAddictionDescription();
+        SetTextField(manufacturing, manufacturingDiff,
+            prevUIData.manufacturing, gameUIData.manufacturing, showUpdate);
 
-        KidPopularityLevel.text = SimulationManager.GetPopularityDescription(
-            gameUIData.popularityByAgeBracket[SimulationManager.AgeBracket.Kid]);
-        TeenagerPopularityLevel.text = SimulationManager.GetPopularityDescription(
-            gameUIData.popularityByAgeBracket[SimulationManager.AgeBracket.Teenager]);
-        YoungAdultPopularityLevel.text = SimulationManager.GetPopularityDescription(
-            gameUIData.popularityByAgeBracket[SimulationManager.AgeBracket.YoungAdult]);
-        AdultPopularityLevel.text = SimulationManager.GetPopularityDescription(
-            gameUIData.popularityByAgeBracket[SimulationManager.AgeBracket.Adult]);
-        SeniorPopularityLevel.text = SimulationManager.GetPopularityDescription(
-            gameUIData.popularityByAgeBracket[SimulationManager.AgeBracket.Senior]);
+        SetTextField(lobbying, lobbyingDiff,
+            prevUIData.lobbying, gameUIData.lobbying, showUpdate);
 
-        // Todo: show list of ad campaigns?
-        adCampaigns.text = $"{gameUIData.adCampaigns.Count} running";
+        SetTextField(adCampaigns, adCampaignsDiff,
+            prevUIData.adCampaigns, gameUIData.adCampaigns, showUpdate);
+
+        cigaretteToxicityLevel.text = gameUIData.cigarettePackProduced.GetToxicityDescription();
+        cigaretteAddictionLevel.text = gameUIData.cigarettePackProduced.GetAddictionDescription();
 
         prevUIData = gameUIData;
     }
-        
-    private void SetTextField(TextMeshProUGUI textField, TextMeshProUGUI diffField,
-        string unit, float prevData, float currentData, bool showUpdate)
+
+    private void SetPopularityField(PopularityLevel prevData, PopularityLevel currentData, bool showUpdate)
     {
-        textField.text = $"{GetDisplayableNum(currentData)} {unit}";
+        popularity.text =
+            SimulationManager.GetPopularityDescription(currentData);
+
+        if (showUpdate)
+        {
+            int diff = (int)currentData - (int)prevData;
+
+            if (diff == 0)
+            {
+                popularityDiff.text = "";
+                popularityDiff.color = Env.UI_NormalColor;
+                return;
+            }
+
+            if (diff > 0)
+                popularityDiff.text = $" +{diff} {Env.MillionUnit}";
+            if (diff < 0)
+                popularityDiff.text = $" {diff} {Env.MillionUnit}"; // minus sign already present in diff
+
+            popularityDiff.color = Env.GetTextUIColorFromDiff(diff);
+        }
+    }
+
+    private void SetTextField(TextMeshProUGUI textField, TextMeshProUGUI diffField,
+        float prevData, float currentData, bool showUpdate)
+    {
+        textField.text = $"{GetDisplayableNum(currentData)} {Env.MillionUnit}";
 
         if (showUpdate)
         {
             float diff = currentData - prevData;
 
-            // Changes text field only if difference is notable
             if (math.abs(diff) < 0.01)
             {
                 diffField.text = "";
@@ -132,9 +125,9 @@ public class GameUI : MonoBehaviour
             }
 
             if (diff > 0)
-                diffField.text = $" +{GetDisplayableNum(diff)} {unit}";
+                diffField.text = $" +{GetDisplayableNum(diff)} {Env.MillionUnit}";
             if (diff < 0)
-                diffField.text = $" {GetDisplayableNum(diff)} {unit}"; // minus sign already present in diff
+                diffField.text = $" {GetDisplayableNum(diff)} {Env.MillionUnit}"; // minus sign already present in diff
 
             diffField.color = Env.GetTextUIColorFromDiff(diff);
         }
@@ -144,7 +137,7 @@ public class GameUI : MonoBehaviour
     {
         string numDisplay = "";
 
-        if (num >  100000 ||
+        if (num > 100000 ||
             num < -100000 ||
             IsNumDisplayedInteger(num))
         {

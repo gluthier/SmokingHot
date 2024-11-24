@@ -3,15 +3,6 @@ using UnityEngine;
 
 public class SimulationManager : MonoBehaviour
 {
-    public enum AgeBracket
-    {
-        Kid,
-        Teenager,
-        YoungAdult,
-        Adult,
-        Senior
-    }
-
     public enum PopularityLevel
     {
         Hated = -2,
@@ -22,19 +13,20 @@ public class SimulationManager : MonoBehaviour
     }
 
     private bool isSimulationOn;
-    private bool isAdvertismentAllowed;
     private int yearPassed;
     private float timePassed;
 
     private float totalYearSimulated;
     public float gameMinutesLength;
-    private List<ConglomerateEntity> conglomerates;
-    private string playerConglomerateName = "";
+
+    private CompanyEntity playerCompany;
+    private CompanyEntity iaCompany;
+    private string playerCompanyName = "";
 
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
-    public void Init(GameManager gameManager, string conglomerateName)
+    public void Init(GameManager gameManager, string companyName)
     {
         this.gameManager = gameManager;
         yearPassed = 0;
@@ -44,39 +36,39 @@ public class SimulationManager : MonoBehaviour
         LoadData(
             GameDataLoader.Load());
 
-        SetPlayerConglomerateName(conglomerateName);
+        SetPlayerCompanyName(companyName);
 
         gameManager.PopulateMainUI(
             RetrieveUIValues(), false);
     }
 
-    public List<ConglomerateEntity> getConglomerates()
+    public CompanyEntity GetPlayerCompany()
     {
-        return conglomerates;
+        return playerCompany;
+    }
+
+    public CompanyEntity GetIACompany()
+    {
+        return iaCompany;
     }
 
     public void StartSimulation()
     {
         isSimulationOn = true;
-        isAdvertismentAllowed = true;
 
         ResetSimulation();
     }
 
-    public void SpendMoney(float amount)
+    public void SpendMoney(int amount)
     {
-        conglomerates[Env.PlayerConglomerateID].SpendMoney(amount);
+        playerCompany.SpendMoney(amount);
     }
 
-    public void ImpactReputation(AgeBracket ageBracket, int amount)
+    public void ImpactReputation(int amount)
     {
-        conglomerates[Env.PlayerConglomerateID].ImpactReputation(ageBracket, amount);
+        playerCompany.ImpactReputation(amount);
     }
 
-    public void BlockAdvertisment()
-    {
-        isAdvertismentAllowed = false;
-    }
 
     public void ContinueSimulation()
     {
@@ -118,10 +110,10 @@ public class SimulationManager : MonoBehaviour
         worldEventManager.Init(gameManager);
     }
 
-    private void SetPlayerConglomerateName(string conglomerateName)
+    private void SetPlayerCompanyName(string companyName)
     {
-        playerConglomerateName = conglomerateName;
-        conglomerates[Env.PlayerConglomerateID].SetConglomerateName(playerConglomerateName);
+        playerCompanyName = companyName;
+        playerCompany.SetCompanyName(playerCompanyName);
     }
 
     private void LoadData(GameData gameData)
@@ -129,32 +121,23 @@ public class SimulationManager : MonoBehaviour
         totalYearSimulated = gameData.totalYearSimulated;
         gameMinutesLength = gameData.gameMinutesLength;
 
-        conglomerates = new List<ConglomerateEntity>();
-
-        foreach (ConglomerateData conglomerateData in gameData.conglomerates)
-        {
-            conglomerates.Add(new ConglomerateEntity(conglomerateData));
-        }
+        playerCompany = new CompanyEntity(gameData.companyTemplate, true);
+        iaCompany = new CompanyEntity(gameData.companyTemplate, false);
     }
 
     private GameManager.GameUIData RetrieveUIValues()
     {
-        ConglomerateEntity playerConglomerate = conglomerates[Env.PlayerConglomerateID];
-
         return new GameManager.GameUIData
         {
-            conglomerateName = playerConglomerate.conglomerateName,
             year = yearPassed,
-            continent = playerConglomerate.continentName,
-            money = playerConglomerate.totalMoney,
-            population = playerConglomerate.population,
-            smokerPercentage = playerConglomerate.smokerPercentage,
-            newSmokerAcquisition = playerConglomerate.newSmokerAcquisition,
-            smokerRetention = playerConglomerate.smokerRetention,
-            deathSmokerPercentage = playerConglomerate.deathSmokerPercentage,
-            cigarettePackProduced = playerConglomerate.cigarettePackProduced,
-            popularityByAgeBracket = playerConglomerate.popularityByAgeBracket,
-            adCampaigns = playerConglomerate.adCampaigns
+            companyName = playerCompany.companyName,
+            money = playerCompany.money,
+            popularity = playerCompany.popularity,
+            consumers = playerCompany.consumers,
+            manufacturing = playerCompany.manufacturing,
+            lobbying = playerCompany.lobbying,
+            adCampaigns = playerCompany.adCampaigns,
+            cigarettePackProduced = playerCompany.cigarettePackProduced,
         };
     }
 
@@ -175,12 +158,13 @@ public class SimulationManager : MonoBehaviour
 
             if (yearPassed < totalYearSimulated)
             {
-                HandleEndOfSimulatedYear();
+                
+                float playerMoneyGained = HandleEndOfSimulatedYear();
 
                 gameManager.PopulateMainUI(
                     RetrieveUIValues(), true);
 
-                gameManager.coinSpawner.spawnCoins(conglomerates[Env.PlayerConglomerateID].moneyGained);
+                gameManager.coinSpawner.spawnCoins(playerMoneyGained);
                 HandleWorldEvent();
             }
             else
@@ -193,12 +177,12 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
-    private void HandleEndOfSimulatedYear()
+    private float HandleEndOfSimulatedYear()
     {
-        foreach (ConglomerateEntity conglomerate in conglomerates)
-        {
-            conglomerate.EndFiscalYear(isAdvertismentAllowed);
-        }
+        float playerMoneyGained = playerCompany.EndFiscalYear();
+        iaCompany.EndFiscalYear();
+
+        return playerMoneyGained;
     }
 
     private void HandleWorldEvent()
@@ -223,6 +207,6 @@ public class SimulationManager : MonoBehaviour
         LoadData(
             GameDataLoader.Load());
 
-        SetPlayerConglomerateName(playerConglomerateName);
+        SetPlayerCompanyName(playerCompanyName);
     }
 }
