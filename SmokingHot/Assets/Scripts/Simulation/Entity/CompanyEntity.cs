@@ -53,6 +53,12 @@ public class CompanyEntity
         popularity = (PopularityLevel)newPopularityLevel;
     }
 
+    public void AbolishAds()
+    {
+        adCampaignsCosts = 0;
+        ImpactReputation(-1);
+    }
+
     public float EndFiscalYear()
     {
         float moneyGained = EndConglomerateFiscalYear();

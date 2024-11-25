@@ -12,13 +12,12 @@ public class GameManager : MonoBehaviour
     public WorldEventUI worldEventUI;
 
     private SimulationManager simulationManager;
-    private WorldEventManager worldEventManager;
 
     public CoinSpawner coinSpawner;
 
     #region DEBUG ATTRIBUTES
     private bool DEBUG_isHeadlessModeOn;
-    private List<GameManager.GameUIData> gameDataReport;
+    private List<GameUIData> gameDataReport;
     #endregion
 
     public struct GameUIData
@@ -34,36 +33,31 @@ public class GameManager : MonoBehaviour
         public CigarettePackEntity cigarettePackProduced;
     }
 
-    public void enterGame(string conglomerateName)
+    public void enterGame(string companyName)
     {
-        SetupWorldEventUI();
-        SetupWorldEventManager();
-
+        // Carefull: the order of execution is important to avoid null references
         displayMainUI();
         cameraManager.SwitchPlayingCamera();
 
-        SetupSimulationManager(conglomerateName);
+        SetupSimulationManager(companyName);
         simulationManager.StartSimulation();
+
+        SetupWorldEventUI();
     }
 
     private void SetupWorldEventUI()
     {
-        worldEventUI.Init(this);
+        worldEventUI.Init(simulationManager.GetPlayerCompany());
         HideWorldEventUI();
     }
 
-    private void SetupWorldEventManager()
-    {
-        worldEventManager = gameObject.AddComponent<WorldEventManager>();
-        worldEventManager.Init(this);
-    }
 
     private void displayMainUI()
     {
         gameUI.gameObject.SetActive(true);
     }
 
-    private void SetupSimulationManager(string conglomerateName)
+    private void SetupSimulationManager(string companyName)
     {
         simulationManager = gameObject.GetComponent<SimulationManager>();
 
@@ -72,7 +66,7 @@ public class GameManager : MonoBehaviour
             simulationManager = gameObject.AddComponent<SimulationManager>();
         }
 
-        simulationManager.Init(this, conglomerateName);
+        simulationManager.Init(this, companyName);
     }
 
     public void PopulateMainUI(GameUIData gameUIData, bool showUpdate)
@@ -86,11 +80,11 @@ public class GameManager : MonoBehaviour
         gameUI.PopulateMainUI(gameUIData, showUpdate);
     }
 
-    public void PopulateWorldEventUI(WorldEventSO worldEvent)
+    public void PopulateWorldEventUI(WorldEvent worldEvent)
     {
         if (DEBUG_isHeadlessModeOn)
         {
-            worldEvent.AcceptEvent(this);
+            worldEvent.AcceptEvent(simulationManager.GetPlayerCompany());
             HandleEndEvent();
             return;
         }
@@ -104,20 +98,9 @@ public class GameManager : MonoBehaviour
         simulationManager.ContinueSimulation();
     }
 
-    public void SpendMoney(int amount)
-    {
-        simulationManager.SpendMoney(amount);
-    }
-
-    public void ImpactReputation(int amount)
-    {
-        simulationManager.ImpactReputation(amount);
-    }
-
-    public void CreateWorldEvent()
+    public void ShowWorldEvent()
     {
         worldEventUI.gameObject.SetActive(true);
-        worldEventManager.CreateWorldEvent();
     }
 
     public void HideWorldEventUI()

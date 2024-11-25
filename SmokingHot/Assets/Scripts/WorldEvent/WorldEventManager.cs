@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class WorldEventManager : MonoBehaviour
 {
-    public List<WorldEventSO> worldEvents;
-
     private GameManager gameManager;
 
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
-        LoadAllWorldEventSO();
     }
 
-    public void CreateWorldEvent()
+    public WorldEvent CreateWorldEvent(int yearPassed)
     {
-        int randIdx = Random.Range(0, worldEvents.Count);
-        gameManager.PopulateWorldEventUI(worldEvents[randIdx]);
-    }
+        WorldEvent worldEvent = new AbolishAds();
 
-    private void LoadAllWorldEventSO()
-    {
-        WorldEventSO[] worldEventsSO = Resources.LoadAll<WorldEventSO>(Env.WorldEventSOFolder);
-        worldEvents = worldEventsSO.ToList();
+        switch (yearPassed)
+        {
+            case 5:
+                worldEvent = new AbolishAds();
+                break;
+            case 10:
+                break;
+            case 15:
+                break;
+            case 20:
+                break;
+            case 25:
+                break;
+            case 30:
+                break;
+            case 35:
+                break;
+            case 40:
+                break;
+            case 45:
+                break;
+            default:
+                break;
+        }
+
+        return worldEvent;
     }
 }

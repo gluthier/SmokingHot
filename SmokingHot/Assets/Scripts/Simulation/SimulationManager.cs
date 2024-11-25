@@ -59,17 +59,6 @@ public class SimulationManager : MonoBehaviour
         ResetSimulation();
     }
 
-    public void SpendMoney(int amount)
-    {
-        playerCompany.SpendMoney(amount);
-    }
-
-    public void ImpactReputation(int amount)
-    {
-        playerCompany.ImpactReputation(amount);
-    }
-
-
     public void ContinueSimulation()
     {
         isSimulationOn = true;
@@ -158,14 +147,13 @@ public class SimulationManager : MonoBehaviour
 
             if (yearPassed < totalYearSimulated)
             {
-                
                 float playerMoneyGained = HandleEndOfSimulatedYear();
+                gameManager.coinSpawner.spawnCoins(playerMoneyGained);
+
+                HandleWorldEvent();
 
                 gameManager.PopulateMainUI(
                     RetrieveUIValues(), true);
-
-                gameManager.coinSpawner.spawnCoins(playerMoneyGained);
-                HandleWorldEvent();
             }
             else
             {
@@ -191,7 +179,12 @@ public class SimulationManager : MonoBehaviour
             return;
 
         isSimulationOn = false;
-        gameManager.CreateWorldEvent();
+
+        WorldEvent worldEvent =
+            worldEventManager.CreateWorldEvent(yearPassed);
+
+        gameManager.PopulateWorldEventUI(worldEvent);
+        gameManager.ShowWorldEvent();
     }
 
     private void HandleEndOfGame()
