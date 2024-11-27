@@ -11,14 +11,14 @@ public class MarketInvestment : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, -100);
-        company.ModifyParam(CompanyEntity.Param.Consumers, 1.2f);
-        company.ModifyParam(CompanyEntity.Param.NewConsumers, 1);
+        company.DecreaseParam(CompanyEntity.Param.Money, 100);
+        company.MultiplyParam(CompanyEntity.Param.Consumers, 1.2f);
+        company.IncreaseParam(CompanyEntity.Param.NewConsumers, 1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Consumers, 0.95f);
-        company.ModifyParam(CompanyEntity.Param.NewConsumers, -2);
+        company.MultiplyParam(CompanyEntity.Param.Consumers, 0.95f);
+        company.DecreaseParam(CompanyEntity.Param.NewConsumers, 2);
     }
 }

@@ -11,17 +11,11 @@ public class UnethicalBonus : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, 2);
+        company.IncreaseParam(CompanyEntity.Param.Money, 2);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 50)
-        {
-            company.ImpactReputation(1);
-        }
+        DoActionIfPercent(50, company.ImpactReputation, 1);
     }
 }

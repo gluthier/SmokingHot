@@ -1,3 +1,4 @@
+using System;
 
 public abstract class WorldEvent
 {
@@ -7,4 +8,92 @@ public abstract class WorldEvent
     public abstract void AcceptEvent(CompanyEntity company);
 
     public abstract void RefuseEvent(CompanyEntity company);
+
+
+    public delegate void ConsequenceAction();
+    public static void DoActionIfPercent(int percentage, ConsequenceAction action)
+    {
+        System.Random random = new System.Random();
+        int chance = random.Next(100);
+
+        if (chance < percentage)
+        {
+            action();
+        }
+    }
+
+    public static void DoActionIfPercentElse(int percentageFirst, ConsequenceAction actionFirst,
+        int percentageSecond, ConsequenceAction actionSecond)
+    {
+        System.Random random = new System.Random();
+        int chanceFirst = random.Next(100);
+        int chanceSecond = random.Next(100);
+
+        if (chanceFirst < percentageFirst)
+        {
+            actionFirst();
+        }
+        else if (chanceSecond < percentageSecond)
+        {
+            actionSecond();
+        }
+    }
+
+    public delegate void ConsequenceActionWithParams(CompanyEntity.Param param, float amount);
+    public static void DoActionIfPercent(int percentage, ConsequenceActionWithParams action, CompanyEntity.Param param, float amount)
+    {
+        System.Random random = new System.Random();
+        int chance = random.Next(100);
+
+        if (chance < percentage)
+        {
+            action(param, amount);
+        }
+    }
+
+    public static void DoActionIfPercentElse(int percentageFirst, ConsequenceActionWithParams actionFirst, CompanyEntity.Param paramFirst, float amountFirst,
+        int percentageSecond, ConsequenceActionWithParams actionSecond, CompanyEntity.Param paramSecond, float amountSecond)
+    {
+        System.Random random = new System.Random();
+        int chanceFirst = random.Next(100);
+        int chanceSecond = random.Next(100);
+
+        if (chanceFirst < percentageFirst)
+        {
+            actionFirst(paramFirst, amountFirst);
+        }
+        else if (chanceSecond < percentageSecond)
+        {
+            actionSecond(paramSecond, amountSecond);
+        }
+    }
+
+    public delegate void ConsequenceActionWithParam(int amount);
+    public static void DoActionIfPercent(int percentage, ConsequenceActionWithParam action, int amount)
+    {
+        System.Random random = new System.Random();
+        int chance = random.Next(100);
+
+        if (chance < percentage)
+        {
+            action(amount);
+        }
+    }
+
+    public static void DoActionIfPercentElse(int percentageFirst, ConsequenceActionWithParam actionFirst, int amountFirst,
+        int percentageSecond, ConsequenceActionWithParam actionSecond, int amountSecond)
+    {
+        System.Random random = new System.Random();
+        int chanceFirst = random.Next(100);
+        int chanceSecond = random.Next(100);
+
+        if (chanceFirst < percentageFirst)
+        {
+            actionFirst(amountFirst);
+        }
+        else if (chanceSecond < percentageSecond)
+        {
+            actionSecond(amountSecond);
+        }
+    }
 }

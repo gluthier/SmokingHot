@@ -11,18 +11,12 @@ public class SocialInvestment : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, -10);
+        company.DecreaseParam(CompanyEntity.Param.Money, 10);
         company.ImpactReputation(1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 33)
-        {
-            company.ImpactReputation(-1);
-        }
+        DoActionIfPercent(33, company.ImpactReputation, -1);
     }
 }

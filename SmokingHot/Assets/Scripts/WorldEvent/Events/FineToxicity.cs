@@ -11,31 +11,16 @@ public class FineToxicity : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, -25);
+        company.DecreaseParam(CompanyEntity.Param.Money, 25);
 
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 90)
-        {
-            company.ImpactReputation(-1);
-        }
+        DoActionIfPercent(90, company.ImpactReputation, -1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, -15);
+        company.DecreaseParam(CompanyEntity.Param.Money, 15);
 
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 33)
-        {
-            company.ImpactReputation(-1);
-        }
-        else if (chance >= 67)
-        {
-            company.ImpactReputation(-2);
-        }
+        DoActionIfPercentElse(33, company.ImpactReputation, -1,
+            33, company.ImpactReputation, -2);
     }
 }

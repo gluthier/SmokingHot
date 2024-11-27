@@ -11,29 +11,14 @@ public class PopStarDied : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, -40);
+        company.DecreaseParam(CompanyEntity.Param.Money, 40);
 
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 5)
-        {
-            company.ImpactReputation(1);
-        }
-        else if (chance >= 65)
-        {
-            company.ImpactReputation(-1);
-        }
+        DoActionIfPercentElse(5, company.ImpactReputation, 1,
+            60, company.ImpactReputation, -1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 95)
-        {
-            company.ImpactReputation(-1);
-        }
+        DoActionIfPercent(95, company.ImpactReputation, -1);
     }
 }

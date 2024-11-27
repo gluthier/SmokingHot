@@ -11,25 +11,15 @@ public class VotationIncreasePrice : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.ModifyParam(CompanyEntity.Param.Money, -30);
+        company.DecreaseParam(CompanyEntity.Param.Money, 30);
 
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 25)
-        {
-            company.ModifyParam(CompanyEntity.Param.cigarettePackPrice, 1.2f);
-        }
+        DoActionIfPercent(25, company.MultiplyParam,
+            CompanyEntity.Param.cigarettePackPrice, 1.2f);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        System.Random random = new System.Random();
-        int chance = random.Next(100);
-
-        if (chance < 95)
-        {
-            company.ModifyParam(CompanyEntity.Param.cigarettePackPrice, 1.2f);
-        }
+        DoActionIfPercent(95, company.MultiplyParam,
+            CompanyEntity.Param.cigarettePackPrice, 1.2f);
     }
 }
