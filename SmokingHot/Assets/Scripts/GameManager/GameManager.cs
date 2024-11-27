@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
 
     #region DEBUG ATTRIBUTES
     private bool DEBUG_isHeadlessModeOn;
-    private List<GameUIData> gameDataReport;
+    private List<GameState> gameStateReports;
     #endregion
 
-    public struct GameUIData
+    public struct GameState
     {
         public int year;
         public string companyName;
@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
         public float lobbyingCosts;
         public float adCampaignsCosts;
         public CigarettePackEntity cigarettePackProduced;
+        public float cigarettePackPrice;
+        public float deathSmokerPercentage;
+        public float newSmokerAcquisition;
+        public float smokerRetention;
+        public float returnOnInvestment;
     }
 
     public void enterGame(string companyName)
@@ -69,15 +74,15 @@ public class GameManager : MonoBehaviour
         simulationManager.Init(this, companyName);
     }
 
-    public void PopulateMainUI(GameUIData gameUIData, bool showUpdate)
+    public void PopulateMainUI(GameState gameState, bool showUpdate)
     {
         if (DEBUG_isHeadlessModeOn)
         {
-            gameDataReport.Add(gameUIData);
+            gameStateReports.Add(gameState);
             return;
         }
 
-        gameUI.PopulateMainUI(gameUIData, showUpdate);
+        gameUI.PopulateMainUI(gameState, showUpdate);
     }
 
     public void PopulateWorldEventUI(WorldEvent worldEvent)
@@ -120,7 +125,7 @@ public class GameManager : MonoBehaviour
         {
             enterGame("Big Tobacco");
 
-            gameDataReport = new List<GameUIData>(50);
+            gameStateReports = new List<GameState>(50);
             simulationManager.gameMinutesLength = 1/200f;
             DEBUG_isHeadlessModeOn = true;
 
@@ -160,11 +165,11 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Simulated simulation done!");
 
-        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction";
+        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction,cigarettePackPrice,deathSmokerPercentage,newSmokerAcquisition,smokerRetention,returnOnInvestment";
 
-        foreach (GameUIData d in gameDataReport)
+        foreach (GameState d in gameStateReports)
         {
-            csv += $"\n{d.year},{d.money},{d.popularity},{d.numConsumers},{d.manufacturingCosts},{d.lobbyingCosts},{d.adCampaignsCosts},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()}";
+            csv += $"\n{d.year},{d.money},{d.popularity},{d.numConsumers},{d.manufacturingCosts},{d.lobbyingCosts},{d.adCampaignsCosts},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()},{d.cigarettePackPrice},{d.deathSmokerPercentage},{d.newSmokerAcquisition},{d.smokerRetention},{d.returnOnInvestment}";
         }
 
         string folder = Application.persistentDataPath;

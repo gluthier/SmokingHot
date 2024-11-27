@@ -18,11 +18,11 @@ public class CompanyEntity
     public CigarettePackEntity cigarettePackProduced;
 
     // Hidden simulation data
-    private float cigarettePackPrice;
-    private float deathSmokerPercentage;
-    private float newSmokerAcquisition;
-    private float smokerRetention;
-    private float returnOnInvestment;
+    public float cigarettePackPrice;
+    public float deathSmokerPercentage;
+    public float newSmokerAcquisition;
+    public float smokerRetention;
+    public float returnOnInvestment;
 
     public CompanyEntity(CompanyData conglomerateData, bool isPlayer)
     {
@@ -100,15 +100,20 @@ public class CompanyEntity
 
     private void UpdateConsumersStats()
     {
-        float toxicityPercentage = (int)cigarettePackProduced.toxicity / (float)ToxicityLevel.Average;
+        float toxicityRatio =
+            cigarettePackProduced.GetToxicityRatio();
 
-        float consumersDeadFromSmoking = deathSmokerPercentage/100f * numConsumers * toxicityPercentage;
+        float addictionRatio =
+            cigarettePackProduced.GetAddictionRatio();
+
+        float consumersDeadFromSmoking = deathSmokerPercentage/100f * numConsumers * toxicityRatio;
         numConsumers -= consumersDeadFromSmoking;
 
         if (numConsumers < 0) {
             numConsumers = 0;
         }
 
+        newSmokerAcquisition *= addictionRatio;
         float newConsumers = numConsumers * newSmokerAcquisition;
         float lostConsumers = numConsumers * (1 - smokerRetention);
 

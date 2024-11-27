@@ -3,16 +3,16 @@ public class CigarettePackEntity
 {
     public enum ToxicityLevel
     {
-        Average = 100,
-        Bad = 105,
-        VeryBad = 110
+        Average,
+        Bad,
+        VeryBad
     }
 
     public enum AddictionLevel
     {
-        Average = 100,
-        Addictive = 105,
-        VeryAddictive = 110
+        Average,
+        Addictive,
+        VeryAddictive
     }
 
     public ToxicityLevel toxicity;
@@ -76,5 +76,43 @@ public class CigarettePackEntity
             default:
                 return "";
         }
+    }
+
+    public float GetToxicityRatio()
+    {
+        float toxicityRatio;
+        switch (toxicity)
+        {
+            case ToxicityLevel.Bad:
+                toxicityRatio = 1.05f;
+                break;
+            case ToxicityLevel.VeryBad:
+                toxicityRatio = 1.1f;
+                break;
+            case ToxicityLevel.Average:
+            default:
+                toxicityRatio = 1f;
+                break;
+        }
+        return toxicityRatio;
+    }
+
+    public float GetAddictionRatio()
+    {
+        float addictionRatio;
+        switch (addiction)
+        {
+            case AddictionLevel.Addictive:
+                addictionRatio = 1.05f;
+                break;
+            case AddictionLevel.VeryAddictive:
+                addictionRatio = 1.1f;
+                break;
+            case AddictionLevel.Average:
+            default:
+                addictionRatio = 1f;
+                break;
+        }
+        return addictionRatio;
     }
 }

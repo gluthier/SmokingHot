@@ -6,7 +6,7 @@ using static SimulationManager;
 
 public class GameUI : MonoBehaviour
 {
-    private GameManager.GameUIData prevUIData;
+    private GameManager.GameState prevUIData;
 
     private TextMeshProUGUI companyName;
     private TextMeshProUGUI year;
@@ -55,7 +55,7 @@ public class GameUI : MonoBehaviour
         cigaretteAddictionLevelDiff = FindTextField(Env.UI_cigaretteAddictionLevelDiffGO);
     }
 
-    public void PopulateMainUI(GameManager.GameUIData gameUIData, bool showUpdate)
+    public void PopulateMainUI(GameManager.GameState gameUIData, bool showUpdate)
     {
         year.text = $"{gameUIData.year + 1}";
         companyName.text = gameUIData.companyName;

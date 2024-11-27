@@ -114,9 +114,9 @@ public class SimulationManager : MonoBehaviour
         iaCompany = new CompanyEntity(gameData.companyTemplate, false);
     }
 
-    private GameManager.GameUIData RetrieveUIValues()
+    private GameManager.GameState RetrieveUIValues()
     {
-        return new GameManager.GameUIData
+        return new GameManager.GameState
         {
             year = yearPassed,
             companyName = playerCompany.companyName,
@@ -127,6 +127,11 @@ public class SimulationManager : MonoBehaviour
             lobbyingCosts = playerCompany.lobbyingCosts,
             adCampaignsCosts = playerCompany.adCampaignsCosts,
             cigarettePackProduced = playerCompany.cigarettePackProduced,
+            cigarettePackPrice = playerCompany.cigarettePackPrice,
+            deathSmokerPercentage = playerCompany.deathSmokerPercentage,
+            newSmokerAcquisition = playerCompany.newSmokerAcquisition,
+            smokerRetention = playerCompany.smokerRetention,
+            returnOnInvestment = playerCompany.returnOnInvestment,
         };
     }
 

@@ -13,7 +13,7 @@ public class WorldEventManager : MonoBehaviour
 
     public WorldEvent CreateWorldEvent(int yearPassed)
     {
-        WorldEvent worldEvent = new AbolishAds();
+        WorldEvent worldEvent = new DebugEmptyEvent();
 
         switch (yearPassed)
         {
@@ -37,6 +37,7 @@ public class WorldEventManager : MonoBehaviour
             case 45:
                 break;
             default:
+                worldEvent = new DebugEmptyEvent();
                 break;
         }
 
