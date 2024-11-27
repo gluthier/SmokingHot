@@ -29,8 +29,8 @@ public class CompanyData
     public float startingLobbyingMillion;
     public float startingAdCampaignsMillion;
     public float cigarettePackPrice;
-    public float deathSmokerPercentage;
-    public float newSmokerAcquisition;
-    public float smokerRetention;
-    public float returnOnInvestment;
+    public float newConsumers;
+    public float lostConsumers;
+    public float deadConsumers;
+    public float bonusMoney;
 }

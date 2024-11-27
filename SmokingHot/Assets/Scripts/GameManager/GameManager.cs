@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour
         public float adCampaignsCosts;
         public CigarettePackEntity cigarettePackProduced;
         public float cigarettePackPrice;
-        public float deathSmokerPercentage;
-        public float newSmokerAcquisition;
-        public float smokerRetention;
-        public float returnOnInvestment;
+        public float deadConsumers;
+        public float newConsumers;
+        public float lostConsumers;
+        public float yearlyMoneyBonus;
     }
 
     public void enterGame(string companyName)
@@ -165,11 +165,11 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Simulated simulation done!");
 
-        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction,cigarettePackPrice,deathSmokerPercentage,newSmokerAcquisition,smokerRetention,returnOnInvestment";
+        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction,cigarettePackPrice,deathSmokerPercentage,newSmokerAcquisition,smokerRetention,yearlyMoneyBonus";
 
         foreach (GameState d in gameStateReports)
         {
-            csv += $"\n{d.year},{d.money},{d.popularity},{d.numConsumers},{d.manufacturingCosts},{d.lobbyingCosts},{d.adCampaignsCosts},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()},{d.cigarettePackPrice},{d.deathSmokerPercentage},{d.newSmokerAcquisition},{d.smokerRetention},{d.returnOnInvestment}";
+            csv += $"\n{d.year},{d.money},{d.popularity},{d.numConsumers},{d.manufacturingCosts},{d.lobbyingCosts},{d.adCampaignsCosts},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()},{d.cigarettePackPrice},{d.deadConsumers},{d.newConsumers},{d.lostConsumers},{d.yearlyMoneyBonus}";
         }
 
         string folder = Application.persistentDataPath;

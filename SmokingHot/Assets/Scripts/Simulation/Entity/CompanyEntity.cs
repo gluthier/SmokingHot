@@ -19,10 +19,21 @@ public class CompanyEntity
 
     // Hidden simulation data
     public float cigarettePackPrice;
-    public float deathSmokerPercentage;
-    public float newSmokerAcquisition;
-    public float smokerRetention;
-    public float returnOnInvestment;
+    public float newConsumers;
+    public float lostConsumers;
+    public float deadConsumers;
+    public float bonusMoney;
+
+    public enum Param
+    {
+        Money,
+        BonusMoney,
+        cigarettePackPrice,
+        NewConsumers,
+        LostConsumers,
+        DeadConsumers,
+        Consumers
+    }
 
     public CompanyEntity(CompanyData conglomerateData, bool isPlayer)
     {
@@ -39,9 +50,34 @@ public class CompanyEntity
         this.companyName = companyName;
     }
 
-    public void SpendMoney(float amount)
+    public void ModifyParam(Param param, float amount)
     {
-        money -= amount;
+        switch (param)
+        {
+            case Param.Money:
+                money += amount;
+                break;
+            case Param.BonusMoney:
+                bonusMoney += amount;
+                break;
+            case Param.cigarettePackPrice:
+                cigarettePackPrice *= amount; // amount is percentage here
+                break;
+            case Param.NewConsumers:
+                newConsumers += amount;
+                break;
+            case Param.LostConsumers:
+                lostConsumers += amount;
+                break;
+            case Param.DeadConsumers:
+                deadConsumers += amount;
+                break;
+            case Param.Consumers:
+                numConsumers *= amount; // amount is percentage here
+                break;
+            default:
+                break;
+        }
     }
 
     public void ImpactReputation(int level)
@@ -77,10 +113,10 @@ public class CompanyEntity
         adCampaignsCosts = companyData.startingAdCampaignsMillion;
 
         cigarettePackPrice = companyData.cigarettePackPrice;
-        deathSmokerPercentage = companyData.deathSmokerPercentage;
-        newSmokerAcquisition = companyData.newSmokerAcquisition;
-        smokerRetention = companyData.smokerRetention;
-        returnOnInvestment = companyData.returnOnInvestment;
+        newConsumers = companyData.newConsumers;
+        lostConsumers = companyData.lostConsumers;
+        deadConsumers = companyData.deadConsumers;
+        bonusMoney = companyData.bonusMoney;
     }
 
     private float EndConglomerateFiscalYear()
@@ -89,34 +125,27 @@ public class CompanyEntity
         float cigarettePackPriceMillion = cigarettePackPrice / 1000000f;
         float totalCigarettePackMoneyMillion = numConsumers * cigarettePackSoldPerSmoker * cigarettePackPriceMillion;
 
-        float returnOnInvestmentsMillion = money * returnOnInvestment;
-
-        float moneyGained = totalCigarettePackMoneyMillion + returnOnInvestmentsMillion -
-            manufacturingCosts - lobbyingCosts - adCampaignsCosts;
+        float moneyGained = 
+            totalCigarettePackMoneyMillion + bonusMoney - manufacturingCosts - lobbyingCosts - adCampaignsCosts;
 
         money += moneyGained;
+
         return moneyGained;
     }
 
     private void UpdateConsumersStats()
     {
-        float toxicityRatio =
-            cigarettePackProduced.GetToxicityRatio();
+        float deadConsumersTotal =
+            deadConsumers * cigarettePackProduced.GetToxicityRatio();
 
-        float addictionRatio =
-            cigarettePackProduced.GetAddictionRatio();
+        float lostConsumersTotal =
+            lostConsumers / cigarettePackProduced.GetAddictionRatio();
 
-        float consumersDeadFromSmoking = deathSmokerPercentage/100f * numConsumers * toxicityRatio;
-        numConsumers -= consumersDeadFromSmoking;
+        numConsumers += newConsumers - lostConsumersTotal - deadConsumersTotal;
 
-        if (numConsumers < 0) {
+        if (numConsumers < 0)
+        {
             numConsumers = 0;
         }
-
-        newSmokerAcquisition *= addictionRatio;
-        float newConsumers = numConsumers * newSmokerAcquisition;
-        float lostConsumers = numConsumers * (1 - smokerRetention);
-
-        numConsumers += newConsumers - lostConsumers;
     }
 }

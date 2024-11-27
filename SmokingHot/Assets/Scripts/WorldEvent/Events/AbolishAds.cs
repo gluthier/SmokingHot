@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ public class AbolishAds : WorldEvent
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.SpendMoney(50);
+        company.ModifyParam(CompanyEntity.Param.Money, -50);
 
         System.Random random = new System.Random();
         int chance = random.Next(100);

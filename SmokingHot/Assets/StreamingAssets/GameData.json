@@ -9,9 +9,9 @@
         "startingLobbyingMillion": 0.5,
         "startingAdCampaignsMillion": 1,
         "cigarettePackPrice": 9.6,
-        "deathSmokerPercentage": 2.4,
-        "newSmokerAcquisition": 0.055,
-        "smokerRetention": 0.97,
-        "returnOnInvestment": 0.17
+        "newConsumers": 5,
+        "lostConsumers": 5,
+        "deadConsumers": 0.3,
+        "bonusMoney": 5
     }
 }

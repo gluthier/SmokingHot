@@ -39,7 +39,7 @@ public class SimulationManager : MonoBehaviour
         SetPlayerCompanyName(companyName);
 
         gameManager.PopulateMainUI(
-            RetrieveUIValues(), false);
+            RetrieveGameState(), false);
     }
 
     public CompanyEntity GetPlayerCompany()
@@ -114,7 +114,7 @@ public class SimulationManager : MonoBehaviour
         iaCompany = new CompanyEntity(gameData.companyTemplate, false);
     }
 
-    private GameManager.GameState RetrieveUIValues()
+    private GameManager.GameState RetrieveGameState()
     {
         return new GameManager.GameState
         {
@@ -128,10 +128,10 @@ public class SimulationManager : MonoBehaviour
             adCampaignsCosts = playerCompany.adCampaignsCosts,
             cigarettePackProduced = playerCompany.cigarettePackProduced,
             cigarettePackPrice = playerCompany.cigarettePackPrice,
-            deathSmokerPercentage = playerCompany.deathSmokerPercentage,
-            newSmokerAcquisition = playerCompany.newSmokerAcquisition,
-            smokerRetention = playerCompany.smokerRetention,
-            returnOnInvestment = playerCompany.returnOnInvestment,
+            newConsumers = playerCompany.newConsumers,
+            lostConsumers = playerCompany.lostConsumers,
+            deadConsumers = playerCompany.deadConsumers,
+            yearlyMoneyBonus = playerCompany.bonusMoney,
         };
     }
 
@@ -158,14 +158,14 @@ public class SimulationManager : MonoBehaviour
                 HandleWorldEvent();
 
                 gameManager.PopulateMainUI(
-                    RetrieveUIValues(), true);
+                    RetrieveGameState(), true);
             }
             else
             {
                 HandleEndOfGame();
 
                 gameManager.PopulateMainUI(
-                    RetrieveUIValues(), false);
+                    RetrieveGameState(), false);
             }
         }
     }
@@ -186,7 +186,7 @@ public class SimulationManager : MonoBehaviour
         isSimulationOn = false;
 
         WorldEvent worldEvent =
-            worldEventManager.CreateWorldEvent(yearPassed);
+            worldEventManager.CreateWorldEvent(RetrieveGameState());
 
         gameManager.PopulateWorldEventUI(worldEvent);
         gameManager.ShowWorldEvent();
