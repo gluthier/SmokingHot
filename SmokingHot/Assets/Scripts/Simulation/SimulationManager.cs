@@ -114,7 +114,7 @@ public class SimulationManager : MonoBehaviour
         iaCompany = new CompanyEntity(gameData.companyTemplate, false);
     }
 
-    private GameManager.GameState RetrieveGameState()
+    public GameManager.GameState RetrieveGameState()
     {
         return new GameManager.GameState
         {

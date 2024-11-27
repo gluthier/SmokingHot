@@ -101,6 +101,9 @@ public class GameManager : MonoBehaviour
     {
         HideWorldEventUI();
         simulationManager.ContinueSimulation();
+
+        PopulateMainUI(
+            simulationManager.RetrieveGameState(), true);
     }
 
     public void ShowWorldEvent()
@@ -165,7 +168,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Simulated simulation done!");
 
-        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction,cigarettePackPrice,deathSmokerPercentage,newSmokerAcquisition,smokerRetention,yearlyMoneyBonus";
+        string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction,cigarettePackPrice,deadConsumers,newConsumers,lostConsumers,yearlyMoneyBonus";
 
         foreach (GameState d in gameStateReports)
         {
