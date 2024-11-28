@@ -3,22 +3,30 @@ using UnityEngine;
 
 public class MarketInvestment : WorldEvent
 {
+    private int acceptMoney = 80;
+    private float acceptConsumersIncrease = 1.2f;
+    private int acceptNewConsumers = 10;
+    private int refuseBonusMoney = 30;
+    private int refuseNewConsumers = 5;
+
     public MarketInvestment()
     {
-        title = "MarketInvestment";
-        description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour chercher de nouveaux consommateurs (ok: -100M et +20% de consommateurs et +1M acquisition nouveaux consommateurs, refus:-5% nouveaux consommateurs et -2M acquisition niveau consommateurs)";
+        title = "Investissement dans de nouveaux marchés";
+        description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.\n\n" +
+            $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {100* acceptConsumersIncrease}% le nombre de consomateurs actuels, augment de {acceptNewConsumers} M les nouveaux consommateurs\n" +
+            $"<b>Refuser</b>: réduit de {refuseBonusMoney} M les gains bonus annuels, réduit de {refuseNewConsumers} M les nouveaux cconsommateurs";
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.DecreaseParam(CompanyEntity.Param.Money, 100);
-        company.MultiplyParam(CompanyEntity.Param.Consumers, 1.2f);
-        company.IncreaseParam(CompanyEntity.Param.NewConsumers, 1);
+        company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
+        company.MultiplyParam(CompanyEntity.Param.Consumers, acceptConsumersIncrease);
+        company.IncreaseParam(CompanyEntity.Param.NewConsumers, acceptNewConsumers);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        company.MultiplyParam(CompanyEntity.Param.Consumers, 0.95f);
-        company.DecreaseParam(CompanyEntity.Param.NewConsumers, 2);
+        company.DecreaseParam(CompanyEntity.Param.BonusMoney, refuseBonusMoney);
+        company.DecreaseParam(CompanyEntity.Param.NewConsumers, refuseNewConsumers);
     }
 }

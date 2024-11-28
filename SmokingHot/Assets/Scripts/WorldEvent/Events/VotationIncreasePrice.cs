@@ -3,23 +3,30 @@ using UnityEngine;
 
 public class VotationIncreasePrice : WorldEvent
 {
+    private int acceptMoney = 30;
+    private int acceptChance = 75;
+    private int refuseChance = 90;
+    private float cigarettePackPriceIncrease = 1.2f;
+
     public VotationIncreasePrice()
     {
-        title = "VotationIncreasePrice";
-        description = "Votation pour faire augmenter le prix du packet de cigarette de 20% par volonté de prévention, il faut lutter avec du lobbying (ok: -30M et 75% de chance de garder le même prix du packet, refus: 95% de chance d'augmentation du prix)";
+        title = "Augmentation des prix des cigarettes";
+        description = "Des votations sont en cours pour augmenter le prix des packs de cigarette. Nos analystes proposent du lutter en faisant des campagnes publicitaires ciblées et du lobbying politique.\n\n" +
+            $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChance}% de réussite de s'opposer au changement\n" +
+            $"<b>Refuser</b>: {refuseChance}% que le prix des packs de cigarettes soit augmenté de {100*cigarettePackPriceIncrease}%";
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.DecreaseParam(CompanyEntity.Param.Money, 30);
+        company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
 
-        DoActionIfPercent(25, company.MultiplyParam,
-            CompanyEntity.Param.cigarettePackPrice, 1.2f);
+        DoActionIfPercent(100 - acceptChance, company.MultiplyParam,
+            CompanyEntity.Param.cigarettePackPrice, cigarettePackPriceIncrease);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        DoActionIfPercent(95, company.MultiplyParam,
-            CompanyEntity.Param.cigarettePackPrice, 1.2f);
+        DoActionIfPercent(refuseChance, company.MultiplyParam,
+            CompanyEntity.Param.cigarettePackPrice, cigarettePackPriceIncrease);
     }
 }

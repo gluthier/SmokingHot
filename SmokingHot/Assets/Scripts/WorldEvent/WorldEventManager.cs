@@ -18,7 +18,7 @@ public class WorldEventManager : MonoBehaviour
         switch (gameState.year)
         {
             case 5:
-                worldEvent = new AbolishAds();
+                worldEvent = new VotationAbolishAds();
                 break;
             case 10:
                 worldEvent = new InvestSnacks();

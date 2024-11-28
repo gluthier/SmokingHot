@@ -15,8 +15,8 @@ public static class GameDataLoader
 
 public class GameData
 {
-    public int totalYearSimulated;
-    public int gameMinutesLength;
+    public float totalYearSimulated;
+    public float gameMinutesLength;
     public CompanyData companyTemplate;
 }
 

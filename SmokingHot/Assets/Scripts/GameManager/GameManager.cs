@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public CoinSpawner coinSpawner;
 
     #region DEBUG ATTRIBUTES
-    private bool DEBUG_isHeadlessModeOn;
+    private bool DEBUG_isHeadlessModeOnAcceptEvents;
+    private bool DEBUG_isHeadlessModeOnRefuseEvents;
     private List<GameState> gameStateReports;
     #endregion
 
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void PopulateMainUI(GameState gameState, bool showUpdate)
     {
-        if (DEBUG_isHeadlessModeOn)
+        if (DEBUG_isHeadlessModeOnAcceptEvents || DEBUG_isHeadlessModeOnRefuseEvents)
         {
             gameStateReports.Add(gameState);
             return;
@@ -87,9 +88,15 @@ public class GameManager : MonoBehaviour
 
     public void PopulateWorldEventUI(WorldEvent worldEvent)
     {
-        if (DEBUG_isHeadlessModeOn)
+        if (DEBUG_isHeadlessModeOnAcceptEvents)
         {
             worldEvent.AcceptEvent(simulationManager.GetPlayerCompany());
+            HandleEndEvent();
+            return;
+        }
+        else if (DEBUG_isHeadlessModeOnRefuseEvents)
+        {
+            worldEvent.RefuseEvent(simulationManager.GetPlayerCompany());
             HandleEndEvent();
             return;
         }
@@ -124,13 +131,24 @@ public class GameManager : MonoBehaviour
             FindFirstObjectByType<StartButtonClick>().gameObject.SetActive(false);
             enterGame("Big Tobacco");
         }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            enterGame("Big Tobacco");
+
+            gameStateReports = new List<GameState>(50);
+            simulationManager.gameMinutesLength = 1 / 200f;
+            DEBUG_isHeadlessModeOnAcceptEvents = true;
+
+            StartCoroutine(
+                DEBUG_simulateGameGetReport());
+        }
         else if (Input.GetKeyDown(KeyCode.R))
         {
             enterGame("Big Tobacco");
 
             gameStateReports = new List<GameState>(50);
-            simulationManager.gameMinutesLength = 1/200f;
-            DEBUG_isHeadlessModeOn = true;
+            simulationManager.gameMinutesLength = 1 / 200f;
+            DEBUG_isHeadlessModeOnRefuseEvents = true;
 
             StartCoroutine(
                 DEBUG_simulateGameGetReport());
@@ -166,8 +184,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        Debug.Log("Simulated simulation done!");
-
         string csv = "Year,Money,Popularity,Consumers,Manufacturing,Lobbying,Ad campaings,Toxicity,Addiction,cigarettePackPrice,deadConsumers,newConsumers,lostConsumers,yearlyMoneyBonus";
 
         foreach (GameState d in gameStateReports)
@@ -175,16 +191,19 @@ public class GameManager : MonoBehaviour
             csv += $"\n{d.year},{d.money},{d.popularity},{d.numConsumers},{d.manufacturingCosts},{d.lobbyingCosts},{d.adCampaignsCosts},{d.cigarettePackProduced.GetToxicityDescription()},{d.cigarettePackProduced.GetAddictionDescription()},{d.cigarettePackPrice},{d.deadConsumers},{d.newConsumers},{d.lostConsumers},{d.yearlyMoneyBonus}";
         }
 
+        string eventMode = DEBUG_isHeadlessModeOnAcceptEvents ? "accept" : "refuse";
+
         string folder = Application.persistentDataPath;
         string timestamp = System.DateTime.Now.ToString("yyyyMMdd_hhmmss");
-        string filePath = Path.Combine(folder, $"{timestamp}_report.csv");
+        string filePath = Path.Combine(folder, $"{timestamp}_{eventMode}_report.csv");
 
         using (var writer = new StreamWriter(filePath, false))
         {
             writer.Write(csv);
         }
 
-        Debug.Log($"CSV file report written to \"{filePath}\"");
+
+        Debug.Log($"Event mode: {eventMode} -- CSV file report written to \"{filePath}\"");
     }
     #endregion
 }

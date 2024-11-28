@@ -3,20 +3,25 @@ using UnityEngine;
 
 public class SocialInvestment : WorldEvent
 {
+    private int acceptMoney = 10;
+    private int refuseChance = 33;
+
     public SocialInvestment()
     {
-        title = "SocialInvestment";
-        description = "Nos analystes ont décidé qu'il faisait investir dans des activités socialement responsable comme si parrainage d'événements caritatifs pour améliorer l'image publique (ok: -10M et amélioration de l'image publique, refus: 33% diminution de l'image publique)";
+        title = "Investissement dans le social";
+        description = "Nos analystes ont décidé qu'il faisait investir dans un événements caritatifs pour améliorer l'image publique en promouvant une image d'entreprise socialement responsable.\n\n" +
+            $"<b>Accepter</b>: Coûte {acceptMoney} M, augmenter l'image publique\n" +
+            $"<b>Refuser</b>: {refuseChance}% de réduire l'image publique";
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.DecreaseParam(CompanyEntity.Param.Money, 10);
+        company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
         company.ImpactReputation(1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        DoActionIfPercent(33, company.ImpactReputation, -1);
+        DoActionIfPercent(refuseChance, company.ImpactReputation, -1);
     }
 }

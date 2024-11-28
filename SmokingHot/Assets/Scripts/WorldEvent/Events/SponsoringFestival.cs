@@ -3,20 +3,26 @@ using UnityEngine;
 
 public class SponsoringFestival : WorldEvent
 {
+    private int acceptMoney = 20;
+    private int acceptNewConsumers = 4;
+    private int refuseNewConsumers = 1;
+
     public SponsoringFestival()
     {
-        title = "SponsoringFestival";
-        description = "Parrainage de soirées de concerts de musique vendant de l'alcool pas cher, avec la volonté de faire plus fumer les personnes une fois quelques verres consommés (ok: -20M et +4M nouveaux consommateurs par an, refus: -3M nouveaux consommateurs par an)";
+        title = "Parrainage d'un festival";
+        description = "Nos analystes proposent de parrainer un festival de concerts de musique pour permettre de vendre nos cigarettes aux festivaliers.\n\n" +
+            $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {acceptNewConsumers} M les nouveaux consommateurs\n" +
+            $"<b>Refuser</b>: réduit de {refuseNewConsumers} M les nouveaux consommateurs";
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.DecreaseParam(CompanyEntity.Param.Money, 20);
-        company.IncreaseParam(CompanyEntity.Param.NewConsumers, 4);
+        company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
+        company.IncreaseParam(CompanyEntity.Param.NewConsumers, acceptNewConsumers);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        company.DecreaseParam(CompanyEntity.Param.NewConsumers, 3);
+        company.DecreaseParam(CompanyEntity.Param.NewConsumers, refuseNewConsumers);
     }
 }

@@ -3,20 +3,26 @@ using UnityEngine;
 
 public class InvestSnacks : WorldEvent
 {
+    private int acceptMoney = 60;
+    private int acceptNewConsumers = 4;
+    private int refuseBonusMoney = 3;
+
     public InvestSnacks()
     {
-        title = "InvestSnacks";
-        description = "Proposition de rachat d'une entreprise vendant des snacks (ok: -60M et +4M par an, refus: réputation -1 car investisseurs fâchés)";
+        title = "Rachat d'entreprise agroalimentaire";
+        description = "Une proposition de rachat d'entreprise agroalimentaire spécialisée dans les snacks addictifs. Nos analystes pensent que cela pourrait nous apporter de nouveaux clients sur le long terme. Refuser rendrait fâchés quelques actionnaires.\n\n" +
+            $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {acceptNewConsumers} M les nouveaux consommateurs\n" +
+            $"<b>Refuser</b>: réduit de {refuseBonusMoney} M les gains bonus annuels";
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
-        company.DecreaseParam(CompanyEntity.Param.Money, 60);
-        company.IncreaseParam(CompanyEntity.Param.BonusMoney, 4);
+        company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
+        company.IncreaseParam(CompanyEntity.Param.NewConsumers, acceptNewConsumers);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        company.ImpactReputation(-1);
+        company.DecreaseParam(CompanyEntity.Param.BonusMoney, refuseBonusMoney);
     }
 }
