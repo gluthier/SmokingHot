@@ -123,36 +123,6 @@ public class CompanyEntity
         MultiplyParam(param, 1f / amount);
     }
 
-    public void ModifyParam(Param param, float amount)
-    {
-        switch (param)
-        {
-            case Param.Money:
-                money += amount;
-                break;
-            case Param.BonusMoney:
-                bonusMoney += amount;
-                break;
-            case Param.cigarettePackPrice:
-                cigarettePackPrice *= amount; // amount is percentage here
-                break;
-            case Param.NewConsumers:
-                newConsumers += amount;
-                break;
-            case Param.LostConsumers:
-                lostConsumers += amount;
-                break;
-            case Param.DeadConsumers:
-                deadConsumers += amount;
-                break;
-            case Param.Consumers:
-                numConsumers *= amount; // amount is percentage here
-                break;
-            default:
-                break;
-        }
-    }
-
     public void ImpactReputation(int level)
     {
         int newPopularityLevel = (int)popularity + level;
