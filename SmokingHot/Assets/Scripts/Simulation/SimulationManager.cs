@@ -12,7 +12,7 @@ public class SimulationManager : MonoBehaviour
         Loved = 2
     }
 
-    private bool isSimulationOn;
+    public bool isSimulationOn;
     private int yearPassed;
     private float timePassed;
 
@@ -69,15 +69,15 @@ public class SimulationManager : MonoBehaviour
         switch (popularity)
         {
             case PopularityLevel.Hated:
-                return "Hated";
+                return "Détesté";
             case PopularityLevel.Disliked:
-                return "Disliked";
+                return "Pas apprécié";
             case PopularityLevel.Neutral:
-                return "Neutral";
+                return "Neutre";
             case PopularityLevel.Appreciated:
-                return "Appreciated";
+                return "Apprécié";
             case PopularityLevel.Loved:
-                return "Loved";
+                return "Aimé";
             default:
                 return "";
         }

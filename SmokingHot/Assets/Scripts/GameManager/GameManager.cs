@@ -133,6 +133,9 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
+            if (simulationManager == null || !simulationManager.isSimulationOn)
+                return;
+
             enterGame("Big Tobacco");
 
             gameStateReports = new List<GameState>(50);
@@ -144,6 +147,9 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
+            if (simulationManager == null || !simulationManager.isSimulationOn)
+                return;
+
             enterGame("Big Tobacco");
 
             gameStateReports = new List<GameState>(50);

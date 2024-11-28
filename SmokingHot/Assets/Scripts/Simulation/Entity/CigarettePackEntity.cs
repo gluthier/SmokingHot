@@ -53,11 +53,11 @@ public class CigarettePackEntity
         switch (toxicity)
         {
             case ToxicityLevel.Average:
-                return "Average";
+                return "Normal";
             case ToxicityLevel.Bad:
-                return "Bad";
+                return "Mauvais";
             case ToxicityLevel.VeryBad:
-                return "Very bad";
+                return "Très mauvais";
             default:
                 return "";
         }
@@ -68,11 +68,11 @@ public class CigarettePackEntity
         switch (addiction)
         {
             case AddictionLevel.Average:
-                return "Average";
+                return "Normal";
             case AddictionLevel.Addictive:
-                return "Addictive";
+                return "Mauvais";
             case AddictionLevel.VeryAddictive:
-                return "Very addictive";
+                return "Très mauvais";
             default:
                 return "";
         }
