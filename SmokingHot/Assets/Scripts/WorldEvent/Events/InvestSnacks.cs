@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InvestSnacks : WorldEvent
@@ -13,6 +14,18 @@ public class InvestSnacks : WorldEvent
         description = "Une proposition de rachat d'entreprise agroalimentaire spécialisée dans les snacks addictifs. Nos analystes pensent que cela pourrait nous apporter de nouveaux clients sur le long terme. Refuser rendrait fâchés quelques actionnaires.\n\n" +
             $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {acceptNewConsumers} M les nouveaux consommateurs\n" +
             $"<b>Refuser</b>: réduit de {refuseBonusMoney} M les gains bonus annuels";
+
+        acceptPositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.NewConsumers
+        };
+        acceptNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money
+        };
+
+        refusePositiveImpacts = new List<WorldEventImpact> { };
+        refuseNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.BonusMoney
+        };
     }
 
     public override void AcceptEvent(CompanyEntity company)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PopStarDied : WorldEvent
@@ -14,18 +15,31 @@ public class PopStarDied : WorldEvent
         description = "La plus grande pop-star internationale est décédée suite à des problèmes de santé lié à la consommation de cigarettes. La réaction du publique est devastatrice. Nos analystes proposent de faire une campagnes publicitaires montrant nos efforts pour réduire les dégâts du tabac sur la santé.\n\n" +
             $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChanceGood}% de réussite d'augmenter l'image publique, mais {acceptChanceBad}% de la réduire\n" +
             $"<b>Refuser</b>: {refuseChance}% de réduire l'image publique";
+
+        acceptPositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Popularity
+        };
+        acceptNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money,
+            WorldEventImpact.Popularity
+        };
+
+        refusePositiveImpacts = new List<WorldEventImpact> { };
+        refuseNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Popularity
+        };
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
         company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
 
-        DoActionIfPercentElse(acceptChanceGood, company.ImpactReputation, 1,
-            acceptChanceBad, company.ImpactReputation, -1);
+        DoActionIfPercentElse(acceptChanceGood, company.ImpactPopularity, 1,
+            acceptChanceBad, company.ImpactPopularity, -1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        DoActionIfPercent(refuseChance, company.ImpactReputation, -1);
+        DoActionIfPercent(refuseChance, company.ImpactPopularity, -1);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MarketInvestment : WorldEvent
@@ -15,6 +16,20 @@ public class MarketInvestment : WorldEvent
         description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.\n\n" +
             $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {100* acceptConsumersIncrease}% le nombre de consomateurs actuels, augment de {acceptNewConsumers} M les nouveaux consommateurs\n" +
             $"<b>Refuser</b>: réduit de {refuseBonusMoney} M les gains bonus annuels, réduit de {refuseNewConsumers} M les nouveaux cconsommateurs";
+
+        acceptPositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Consumers,
+            WorldEventImpact.NewConsumers
+        };
+        acceptNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money
+        };
+
+        refusePositiveImpacts = new List<WorldEventImpact> { };
+        refuseNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.BonusMoney,
+            WorldEventImpact.NewConsumers
+        };
     }
 
     public override void AcceptEvent(CompanyEntity company)

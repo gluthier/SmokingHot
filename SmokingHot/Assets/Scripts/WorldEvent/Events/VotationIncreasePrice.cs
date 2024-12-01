@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class VotationIncreasePrice : WorldEvent
@@ -14,6 +15,18 @@ public class VotationIncreasePrice : WorldEvent
         description = "Des votations sont en cours pour augmenter le prix des packs de cigarette. Nos analystes proposent du lutter en faisant des campagnes publicitaires ciblées et du lobbying politique.\n\n" +
             $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChance}% de réussite de s'opposer au changement\n" +
             $"<b>Refuser</b>: {refuseChance}% que le prix des packs de cigarettes soit augmenté de {100*cigarettePackPriceIncrease}%";
+
+        acceptPositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.CigarettePackPrice
+        };
+        acceptNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money
+        };
+
+        refusePositiveImpacts = new List<WorldEventImpact> { };
+        refuseNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.CigarettePackPrice
+        };
     }
 
     public override void AcceptEvent(CompanyEntity company)

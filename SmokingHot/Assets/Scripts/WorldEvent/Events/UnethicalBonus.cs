@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UnethicalBonus : WorldEvent
@@ -14,6 +15,16 @@ public class UnethicalBonus : WorldEvent
             $"<b>Refuser</b>: {refuseChance}% d'augmenter l'image publique";
 
         description = "Une fondation pro-tabac nous offre un prix pour nos cigarettes responsables (ok: +2M, refus: 50% de monter l'image publique)";
+
+        acceptPositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money
+        };
+        acceptNegativeImpacts = new List<WorldEventImpact> { };
+
+        refusePositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Popularity
+        };
+        refuseNegativeImpacts = new List<WorldEventImpact> { };
     }
 
     public override void AcceptEvent(CompanyEntity company)
@@ -23,6 +34,6 @@ public class UnethicalBonus : WorldEvent
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        DoActionIfPercent(refuseChance, company.ImpactReputation, 1);
+        DoActionIfPercent(refuseChance, company.ImpactPopularity, 1);
     }
 }

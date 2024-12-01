@@ -123,7 +123,7 @@ public class CompanyEntity
         MultiplyParam(param, 1f / amount);
     }
 
-    public void ImpactReputation(int level)
+    public void ImpactPopularity(int level)
     {
         int newPopularityLevel = (int)popularity + level;
         newPopularityLevel = 
@@ -135,12 +135,12 @@ public class CompanyEntity
     public void AbolishAds()
     {
         adCampaignsCosts = 0;
-        ImpactReputation(-1);
+        ImpactPopularity(-1);
     }
 
     public float EndFiscalYear()
     {
-        float moneyGained = EndConglomerateFiscalYear();
+        float moneyGained = EndCompanyFiscalYear();
         UpdateConsumersStats();
 
         return moneyGained;
@@ -162,7 +162,7 @@ public class CompanyEntity
         bonusMoney = companyData.bonusMoney;
     }
 
-    private float EndConglomerateFiscalYear()
+    private float EndCompanyFiscalYear()
     {
         int cigarettePackSoldPerSmoker = 180; // ~= 10 cigarettes per day
         float cigarettePackPriceMillion = cigarettePackPrice / 1000000f;

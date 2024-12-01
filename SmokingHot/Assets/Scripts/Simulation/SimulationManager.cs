@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SimulationManager : MonoBehaviour
@@ -20,8 +21,10 @@ public class SimulationManager : MonoBehaviour
     public float gameMinutesLength;
 
     private CompanyEntity playerCompany;
-    private CompanyEntity iaCompany;
     private string playerCompanyName = "";
+
+    private CompanyEntity iaCompany;
+    private IA_Manager iaManager;
 
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
@@ -31,12 +34,13 @@ public class SimulationManager : MonoBehaviour
         this.gameManager = gameManager;
         yearPassed = 0;
 
-        SetupWorldEventManager(gameManager);
-
         LoadData(
             GameDataLoader.Load());
 
         SetPlayerCompanyName(companyName);
+
+        SetupWorldEventManager();
+        SetupIAManager();
 
         gameManager.PopulateMainUI(
             RetrieveGameState(), false);
@@ -96,10 +100,16 @@ public class SimulationManager : MonoBehaviour
         HandleSimulatedTime();
     }
 
-    private void SetupWorldEventManager(GameManager gameManager)
+    private void SetupWorldEventManager()
     {
         worldEventManager = gameObject.AddComponent<WorldEventManager>();
         worldEventManager.Init(gameManager);
+    }
+
+    private void SetupIAManager()
+    {
+        iaManager = gameManager.AddComponent<IA_Manager>();
+        iaManager.Init(iaCompany, playerCompany, gameManager);
     }
 
     private void SetPlayerCompanyName(string companyName)
@@ -152,6 +162,8 @@ public class SimulationManager : MonoBehaviour
         {
             yearPassed += 1;
             timePassed = 0;
+
+            iaManager.ProcessEndOfYear();
 
             if (yearPassed < totalYearSimulated)
             {

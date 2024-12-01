@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FineAddiction : WorldEvent
@@ -15,20 +16,34 @@ public class FineAddiction : WorldEvent
         description = "Nous avons été amendé à cause du niveau d'addiciton trop élevé de nos cigarettes. Nos analystes proposent de refuser en luttant juridiquement contre, risquant le quitte ou double.\n\n" +
             $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChance}% de réduire l'image publique\n" +
             $"<b>Refuser</b>: Coûte {refuseMoney} M, {refuseChanceGood}% d'augmenter l'image publique, mais {refuseChanceBad}% de réduire fortement l'image publique";
+
+        acceptPositiveImpacts = new List<WorldEventImpact> { };
+        acceptNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money,
+            WorldEventImpact.Popularity
+        };
+
+        refusePositiveImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Popularity
+        };
+        refuseNegativeImpacts = new List<WorldEventImpact> {
+            WorldEventImpact.Money,
+            WorldEventImpact.Popularity
+        };
     }
 
     public override void AcceptEvent(CompanyEntity company)
     {
         company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
 
-        DoActionIfPercent(acceptChance, company.ImpactReputation, -1);
+        DoActionIfPercent(acceptChance, company.ImpactPopularity, -1);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
         company.DecreaseParam(CompanyEntity.Param.Money, refuseMoney);
 
-        DoActionIfPercentElse(refuseChanceGood, company.ImpactReputation, 1,
-            refuseChanceBad, company.ImpactReputation, -2);
+        DoActionIfPercentElse(refuseChanceGood, company.ImpactPopularity, 1,
+            refuseChanceBad, company.ImpactPopularity, -2);
     }
 }

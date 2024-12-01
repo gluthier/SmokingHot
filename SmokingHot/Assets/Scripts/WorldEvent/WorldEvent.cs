@@ -1,7 +1,31 @@
 using System;
+using System.Collections.Generic;
 
 public abstract class WorldEvent
 {
+    public enum WorldEventImpact
+    {
+        Money,
+        Popularity,
+        Consumers,
+        ManufacturingCosts,
+        LobbyingCosts,
+        AdCampaignExistence,
+        AdCampaignsCosts,
+        CigarettePackProducedToxicity,
+        CigarettePackProducedAddiction,
+        CigarettePackPrice,
+        NewConsumers,
+        LostConsumers,
+        DeadConsumers,
+        BonusMoney
+    }
+
+    public List<WorldEventImpact> acceptPositiveImpacts = new();
+    public List<WorldEventImpact> acceptNegativeImpacts = new();
+    public List<WorldEventImpact> refusePositiveImpacts = new();
+    public List<WorldEventImpact> refuseNegativeImpacts = new();
+
     public string title;
     public string description;
 
