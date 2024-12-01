@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
-using static CigarettePackEntity;
 using static SimulationManager;
 
 public class CompanyEntity

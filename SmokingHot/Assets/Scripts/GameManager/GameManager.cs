@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         HideWorldEventUI();
     }
 
-
     private void displayMainUI()
     {
         gameUI.gameObject.SetActive(true);

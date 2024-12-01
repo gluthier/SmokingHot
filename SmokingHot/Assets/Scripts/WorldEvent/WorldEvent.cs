@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public abstract class WorldEvent
 {
@@ -33,6 +34,50 @@ public abstract class WorldEvent
 
     public abstract void RefuseEvent(CompanyEntity company);
 
+    public void HandleEventBasedOnInterests(CompanyEntity iaCompany, params WorldEventImpact[] interestedInEvents)
+    {
+        if (IsAcceptPositiveImpactedBy(interestedInEvents))
+        {
+            AcceptEvent(iaCompany);
+        }
+        else if (IsRefusePositiveImpactedBy(interestedInEvents))
+        {
+            RefuseEvent(iaCompany);
+        }
+        else if (IsAcceptNegativeImpactedBy(interestedInEvents))
+        {
+            RefuseEvent(iaCompany);
+        }
+        else if (IsRefuseNegativeImpactedBy(interestedInEvents))
+        {
+            AcceptEvent(iaCompany);
+        }
+        else
+        {
+            // Refuse by default
+            RefuseEvent(iaCompany);
+        }
+    }
+
+    private bool IsAcceptPositiveImpactedBy(params WorldEventImpact[] worldEvents)
+    {
+        return acceptPositiveImpacts.Any(x => worldEvents.Contains(x));
+    }
+
+    private bool IsAcceptNegativeImpactedBy(params WorldEventImpact[] worldEvents)
+    {
+        return acceptNegativeImpacts.Any(x => worldEvents.Contains(x));
+    }
+
+    private bool IsRefusePositiveImpactedBy(params WorldEventImpact[] worldEvents)
+    {
+        return refusePositiveImpacts.Any(x => worldEvents.Contains(x));
+    }
+
+    private bool IsRefuseNegativeImpactedBy(params WorldEventImpact[] worldEvents)
+    {
+        return refuseNegativeImpacts.Any(x => worldEvents.Contains(x));
+    }
 
     public delegate void ConsequenceAction();
     public static void DoActionIfPercent(int percentage, ConsequenceAction action)

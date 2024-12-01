@@ -76,15 +76,15 @@ public class SimulationManager : MonoBehaviour
         switch (popularity)
         {
             case PopularityLevel.Hated:
-                return "D�test�";
+                return "Détesté";
             case PopularityLevel.Disliked:
-                return "Pas appr�ci�";
+                return "Pas apprécié";
             case PopularityLevel.Neutral:
                 return "Neutre";
             case PopularityLevel.Appreciated:
-                return "Appr�ci�";
+                return "Apprécié";
             case PopularityLevel.Loved:
-                return "Aim�";
+                return "Aimé";
             default:
                 return "";
         }
@@ -163,15 +163,14 @@ public class SimulationManager : MonoBehaviour
             yearPassed += 1;
             timePassed = 0;
 
-            iaManager.ProcessEndOfYear();
-
+            WorldEvent worldEvent = new NoEvent();
             if (yearPassed < totalYearSimulated)
             {
                 float moneyGained = HandleEndOfSimulatedYear();
                 gameManager.coinSpawner.spawnCoins(moneyGained);
                 gameManager.customerManager.HandleColors(playerMarketShare());
 
-                HandleWorldEvent();
+                worldEvent = HandleWorldEvent();
 
                 gameManager.PopulateMainUI(
                     RetrieveGameState(), true);
@@ -183,12 +182,36 @@ public class SimulationManager : MonoBehaviour
                 gameManager.PopulateMainUI(
                     RetrieveGameState(), false);
             }
+
+            iaManager.ProcessEndOfYear(
+                GetIAGameState(), iaCompany, worldEvent);
         }
     }
 
     private float playerMarketShare()
     {
         return playerCompany.numConsumers / (playerCompany.numConsumers + iaCompany.numConsumers);
+    }
+
+    private GameManager.GameState GetIAGameState()
+    {
+        return new GameManager.GameState
+        {
+            year = yearPassed,
+            companyName = iaCompany.companyName,
+            money = iaCompany.money,
+            popularity = iaCompany.popularity,
+            numConsumers = iaCompany.numConsumers,
+            manufacturingCosts = iaCompany.manufacturingCosts,
+            lobbyingCosts = iaCompany.lobbyingCosts,
+            adCampaignsCosts = iaCompany.adCampaignsCosts,
+            cigarettePackProduced = iaCompany.cigarettePackProduced,
+            cigarettePackPrice = iaCompany.cigarettePackPrice,
+            deadConsumers = iaCompany.deadConsumers,
+            newConsumers = iaCompany.newConsumers,
+            lostConsumers = iaCompany.lostConsumers,
+            yearlyMoneyBonus = iaCompany.bonusMoney
+        };
     }
 
     private float HandleEndOfSimulatedYear()
@@ -199,10 +222,10 @@ public class SimulationManager : MonoBehaviour
         return moneyGained;
     }
 
-    private void HandleWorldEvent()
+    private WorldEvent HandleWorldEvent()
     {
         if (yearPassed % Env.WorldEventFrequencyYear != 0)
-            return;
+            return new NoEvent();
 
         isSimulationOn = false;
 
@@ -211,6 +234,8 @@ public class SimulationManager : MonoBehaviour
 
         gameManager.PopulateWorldEventUI(worldEvent);
         gameManager.ShowWorldEvent();
+
+        return worldEvent;
     }
 
     private void HandleEndOfGame()

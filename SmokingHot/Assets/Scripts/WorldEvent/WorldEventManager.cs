@@ -13,7 +13,7 @@ public class WorldEventManager : MonoBehaviour
 
     public WorldEvent CreateWorldEvent(GameManager.GameState gameState)
     {
-        WorldEvent worldEvent = new DebugEmptyEvent();
+        WorldEvent worldEvent = new NoEvent();
 
         switch (gameState.year)
         {
@@ -56,7 +56,7 @@ public class WorldEventManager : MonoBehaviour
                 worldEvent = new MarketInvestment();
                 break;
             default:
-                worldEvent = new DebugEmptyEvent();
+                worldEvent = new NoEvent();
                 break;
         }
 
