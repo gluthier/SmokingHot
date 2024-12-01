@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
 
@@ -14,9 +13,10 @@ public class StartButtonClick : MonoBehaviour
     void Start()
     {
 		startButton.onClick.AddListener(TaskOnClick);
+		gameManager = FindFirstObjectByType<GameManager>();
     }
 
-	void TaskOnClick()
+    void TaskOnClick()
 	{
 		if (companyNameInput.text.Trim().Length > 0)
 		{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 using static SimulationManager;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,16 +41,45 @@ public class GameManager : MonoBehaviour
         public float yearlyMoneyBonus;
     }
 
+    private void Awake()
+    {
+        ResetGameTitleMaterial();
+    }
+
     public void enterGame(string companyName)
     {
         // Carefull: the order of execution is important to avoid null references
         displayMainUI();
+        StartCoroutine(FadeOutTitle());
         cameraManager.SwitchPlayingCamera();
 
         SetupSimulationManager(companyName);
         simulationManager.StartSimulation();
 
         SetupWorldEventUI();
+    }
+
+    private IEnumerator FadeOutTitle()
+    {
+        TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        float dilate = 0.15f;
+
+        while (true)
+        {
+            dilate -= 1.0f * Time.deltaTime;
+
+            if (dilate <= -0.6f)
+            {
+                gameTitle.gameObject.SetActive(false);
+                yield break;
+            }
+
+            gameTitle.materialForRendering.SetFloat("_FaceDilate", dilate);
+            gameTitle.SetMaterialDirty();
+            gameTitle.ForceMeshUpdate(true);
+
+            yield return null;
+        }
     }
 
     private void SetupWorldEventUI()
@@ -214,4 +244,18 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Event mode: {eventMode} -- CSV file report written to \"{filePath}\"");
     }
     #endregion
+
+
+    private void OnApplicationQuit()
+    {
+        ResetGameTitleMaterial();
+    }
+
+    private void ResetGameTitleMaterial()
+    {
+        TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        gameTitle.materialForRendering.SetFloat("_FaceDilate", 0.15f);
+        gameTitle.SetMaterialDirty();
+        gameTitle.ForceMeshUpdate(true);
+    }
 }
