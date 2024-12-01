@@ -42,11 +42,10 @@ public class SimulationManager : MonoBehaviour
         SetupWorldEventManager();
         SetupIAManager();
 
-        gameManager.PopulateMainUI(
-            RetrieveGameState(), false);
-
         float initialMarketShare = playerMarketShare();
         gameManager.customerManager.InitialColors(initialMarketShare);
+
+        gameManager.PopulateMainUI(false);
     }
 
     public CompanyEntity GetPlayerCompany()
@@ -127,24 +126,34 @@ public class SimulationManager : MonoBehaviour
         iaCompany = new CompanyEntity(gameData.companyTemplate, false);
     }
 
-    public GameManager.GameState RetrieveGameState()
+    public GameManager.GameState RetrievePlayerGameState()
+    {
+        return RetrieveGameStateFromCompany(playerCompany);
+    }
+
+    public GameManager.GameState RetrieveIAGameState()
+    {
+        return RetrieveGameStateFromCompany(iaCompany);
+    }
+
+    private GameManager.GameState RetrieveGameStateFromCompany(CompanyEntity company)
     {
         return new GameManager.GameState
         {
             year = yearPassed,
-            companyName = playerCompany.companyName,
-            money = playerCompany.money,
-            popularity = playerCompany.popularity,
-            numConsumers = playerCompany.numConsumers,
-            manufacturingCosts = playerCompany.manufacturingCosts,
-            lobbyingCosts = playerCompany.lobbyingCosts,
-            adCampaignsCosts = playerCompany.adCampaignsCosts,
-            cigarettePackProduced = playerCompany.cigarettePackProduced,
-            cigarettePackPrice = playerCompany.cigarettePackPrice,
-            newConsumers = playerCompany.newConsumers,
-            lostConsumers = playerCompany.lostConsumers,
-            deadConsumers = playerCompany.deadConsumers,
-            yearlyMoneyBonus = playerCompany.bonusMoney,
+            companyName = company.companyName,
+            money = company.money,
+            popularity = company.popularity,
+            numConsumers = company.numConsumers,
+            manufacturingCosts = company.manufacturingCosts,
+            lobbyingCosts = company.lobbyingCosts,
+            adCampaignsCosts = company.adCampaignsCosts,
+            cigarettePackProduced = company.cigarettePackProduced,
+            cigarettePackPrice = company.cigarettePackPrice,
+            deadConsumers = company.deadConsumers,
+            newConsumers = company.newConsumers,
+            lostConsumers = company.lostConsumers,
+            yearlyMoneyBonus = company.bonusMoney
         };
     }
 
@@ -172,46 +181,23 @@ public class SimulationManager : MonoBehaviour
 
                 worldEvent = HandleWorldEvent();
 
-                gameManager.PopulateMainUI(
-                    RetrieveGameState(), true);
+                gameManager.PopulateMainUI(true);
             }
             else
             {
                 HandleEndOfGame();
 
-                gameManager.PopulateMainUI(
-                    RetrieveGameState(), false);
+                gameManager.PopulateMainUI(false);
             }
 
             iaManager.ProcessEndOfYear(
-                GetIAGameState(), iaCompany, worldEvent);
+                RetrieveIAGameState(), iaCompany, worldEvent);
         }
     }
 
     private float playerMarketShare()
     {
         return playerCompany.numConsumers / (playerCompany.numConsumers + iaCompany.numConsumers);
-    }
-
-    private GameManager.GameState GetIAGameState()
-    {
-        return new GameManager.GameState
-        {
-            year = yearPassed,
-            companyName = iaCompany.companyName,
-            money = iaCompany.money,
-            popularity = iaCompany.popularity,
-            numConsumers = iaCompany.numConsumers,
-            manufacturingCosts = iaCompany.manufacturingCosts,
-            lobbyingCosts = iaCompany.lobbyingCosts,
-            adCampaignsCosts = iaCompany.adCampaignsCosts,
-            cigarettePackProduced = iaCompany.cigarettePackProduced,
-            cigarettePackPrice = iaCompany.cigarettePackPrice,
-            deadConsumers = iaCompany.deadConsumers,
-            newConsumers = iaCompany.newConsumers,
-            lostConsumers = iaCompany.lostConsumers,
-            yearlyMoneyBonus = iaCompany.bonusMoney
-        };
     }
 
     private float HandleEndOfSimulatedYear()
@@ -230,7 +216,7 @@ public class SimulationManager : MonoBehaviour
         isSimulationOn = false;
 
         WorldEvent worldEvent =
-            worldEventManager.CreateWorldEvent(RetrieveGameState());
+            worldEventManager.CreateWorldEvent(RetrievePlayerGameState());
 
         gameManager.PopulateWorldEventUI(worldEvent);
         gameManager.ShowWorldEvent();

@@ -2,7 +2,7 @@
     "totalYearSimulated": 50,
     "gameMinutesLength": 10,
     "companyTemplate" : {
-        "companyName": "Big Tobacco",
+        "companyName": "Ignite Co.",
         "startingMoneyMillion": 100,
         "startingConsumersMillion": 437,
         "startingManufacturingMillion": 11.5,

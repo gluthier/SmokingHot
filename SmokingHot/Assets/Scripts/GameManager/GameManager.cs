@@ -75,15 +75,18 @@ public class GameManager : MonoBehaviour
         simulationManager.Init(this, companyName);
     }
 
-    public void PopulateMainUI(GameState gameState, bool showUpdate)
+    public void PopulateMainUI(bool showUpdate)
     {
+        GameState playerGameState = simulationManager.RetrievePlayerGameState();
+        GameState iaGameState = simulationManager.RetrieveIAGameState();
+
         if (DEBUG_isHeadlessModeOnAcceptEvents || DEBUG_isHeadlessModeOnRefuseEvents)
         {
-            gameStateReports.Add(gameState);
+            gameStateReports.Add(playerGameState);
             return;
         }
 
-        gameUI.PopulateMainUI(gameState, showUpdate);
+        gameUI.PopulateMainUI(playerGameState, iaGameState, showUpdate);
     }
 
     public void PopulateWorldEventUI(WorldEvent worldEvent)
@@ -109,8 +112,7 @@ public class GameManager : MonoBehaviour
         HideWorldEventUI();
         simulationManager.ContinueSimulation();
 
-        PopulateMainUI(
-            simulationManager.RetrieveGameState(), true);
+        PopulateMainUI(true);
     }
 
     public void ShowWorldEvent()

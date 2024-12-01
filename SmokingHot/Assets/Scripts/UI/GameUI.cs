@@ -1,12 +1,26 @@
 using UnityEngine;
 using TMPro;
 using Unity.Mathematics;
-using static GameManager;
+using UnityEngine.UI;
 using static SimulationManager;
 
 public class GameUI : MonoBehaviour
 {
     private GameManager.GameState prevUIData;
+
+    public Image background;
+    public Image switchViewButtonBackground;
+    public TextMeshProUGUI switchViewButtonText;
+
+    private Color playerBackgroundColor = new Color32(3, 0, 36, 255);
+    private Color playerSwitchViewButtonBackgroundColor = new Color32(219, 216, 242, 255);
+    private Color playerSwitchViewButtonTextColor = new Color32(4, 1, 21, 255);
+
+    private Color iaBackgroundColor = new Color32(26, 10, 0, 255);
+    private Color iaSwitchViewButtonBackgroundColor = new Color32(234, 223, 195, 255);
+    private Color iaSwitchViewButtonTextColor = new Color32(46, 17, 0, 255);
+
+    private bool isPlayerCompanyShown;
 
     private TextMeshProUGUI companyName;
     private TextMeshProUGUI year;
@@ -29,6 +43,9 @@ public class GameUI : MonoBehaviour
     private TextMeshProUGUI cigaretteToxicityLevelDiff;
     private TextMeshProUGUI cigaretteAddictionLevel;
     private TextMeshProUGUI cigaretteAddictionLevelDiff;
+
+    private GameManager.GameState playerGameState;
+    private GameManager.GameState iaGameState;
 
     void Awake()
     {
@@ -53,34 +70,71 @@ public class GameUI : MonoBehaviour
         cigaretteToxicityLevelDiff = FindTextField(Env.UI_cigaretteToxicityLevelDiffGO);
         cigaretteAddictionLevel = FindTextField(Env.UI_cigaretteAddictionLevelGO);
         cigaretteAddictionLevelDiff = FindTextField(Env.UI_cigaretteAddictionLevelDiffGO);
+
+        isPlayerCompanyShown = true;
+        SetBackgroundColors();
     }
 
-    public void PopulateMainUI(GameManager.GameState gameUIData, bool showUpdate)
+    public void PopulateMainUI(GameManager.GameState playerGameState, GameManager.GameState iaGameState,
+        bool showUpdate)
     {
-        year.text = $"{gameUIData.year + 1}";
-        companyName.text = gameUIData.companyName;
+        this.playerGameState = playerGameState;
+        this.iaGameState = iaGameState;
+
+        SetValuesFromGameState(GetGameStateToShow(), showUpdate);
+
+        prevUIData = playerGameState;
+    }
+
+    public void SwitchView()
+    {
+        isPlayerCompanyShown = !isPlayerCompanyShown;
+
+        SetValuesFromGameState(GetGameStateToShow(), true);
+        SetBackgroundColors();
+    }
+
+    private GameManager.GameState GetGameStateToShow()
+    {
+        return isPlayerCompanyShown ? playerGameState : iaGameState;
+    }
+
+    private void SetBackgroundColors()
+    {
+        background.color =
+            isPlayerCompanyShown ? playerBackgroundColor : iaBackgroundColor;
+
+        switchViewButtonBackground.color =
+            isPlayerCompanyShown ? playerSwitchViewButtonBackgroundColor : iaSwitchViewButtonBackgroundColor;
+
+        switchViewButtonText.color =
+            isPlayerCompanyShown ? playerSwitchViewButtonTextColor : iaSwitchViewButtonTextColor;
+    }
+
+    private void SetValuesFromGameState(GameManager.GameState showGameState, bool showUpdate)
+    {
+        year.text = $"{showGameState.year + 1}";
+        companyName.text = showGameState.companyName;
 
         SetTextField(money, moneyDiff,
-            prevUIData.money, gameUIData.money, showUpdate);
+            prevUIData.money, showGameState.money, showUpdate);
 
-        SetPopularityField(prevUIData.popularity, gameUIData.popularity, showUpdate);
+        SetPopularityField(prevUIData.popularity, showGameState.popularity, showUpdate);
 
         SetTextField(consumers, consumersDiff,
-            prevUIData.numConsumers, gameUIData.numConsumers, showUpdate);
+            prevUIData.numConsumers, showGameState.numConsumers, showUpdate);
 
         SetTextField(manufacturing, manufacturingDiff,
-            prevUIData.manufacturingCosts, gameUIData.manufacturingCosts, showUpdate);
+            prevUIData.manufacturingCosts, showGameState.manufacturingCosts, showUpdate);
 
         SetTextField(lobbying, lobbyingDiff,
-            prevUIData.lobbyingCosts, gameUIData.lobbyingCosts, showUpdate);
+            prevUIData.lobbyingCosts, showGameState.lobbyingCosts, showUpdate);
 
         SetTextField(adCampaigns, adCampaignsDiff,
-            prevUIData.adCampaignsCosts, gameUIData.adCampaignsCosts, showUpdate);
+            prevUIData.adCampaignsCosts, showGameState.adCampaignsCosts, showUpdate);
 
-        cigaretteToxicityLevel.text = gameUIData.cigarettePackProduced.GetToxicityDescription();
-        cigaretteAddictionLevel.text = gameUIData.cigarettePackProduced.GetAddictionDescription();
-
-        prevUIData = gameUIData;
+        cigaretteToxicityLevel.text = showGameState.cigarettePackProduced.GetToxicityDescription();
+        cigaretteAddictionLevel.text = showGameState.cigarettePackProduced.GetAddictionDescription();
     }
 
     private void SetPopularityField(PopularityLevel prevData, PopularityLevel currentData, bool showUpdate)
