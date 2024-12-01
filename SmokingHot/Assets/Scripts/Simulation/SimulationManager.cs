@@ -40,6 +40,9 @@ public class SimulationManager : MonoBehaviour
 
         gameManager.PopulateMainUI(
             RetrieveGameState(), false);
+
+        float initialMarketShare = playerMarketShare();
+        gameManager.customerManager.InitialColors(initialMarketShare);
     }
 
     public CompanyEntity GetPlayerCompany()
@@ -69,15 +72,15 @@ public class SimulationManager : MonoBehaviour
         switch (popularity)
         {
             case PopularityLevel.Hated:
-                return "Détesté";
+                return "Dï¿½testï¿½";
             case PopularityLevel.Disliked:
-                return "Pas apprécié";
+                return "Pas apprï¿½ciï¿½";
             case PopularityLevel.Neutral:
                 return "Neutre";
             case PopularityLevel.Appreciated:
-                return "Apprécié";
+                return "Apprï¿½ciï¿½";
             case PopularityLevel.Loved:
-                return "Aimé";
+                return "Aimï¿½";
             default:
                 return "";
         }
@@ -152,8 +155,9 @@ public class SimulationManager : MonoBehaviour
 
             if (yearPassed < totalYearSimulated)
             {
-                float playerMoneyGained = HandleEndOfSimulatedYear();
-                gameManager.coinSpawner.spawnCoins(playerMoneyGained);
+                float moneyGained = HandleEndOfSimulatedYear();
+                gameManager.coinSpawner.spawnCoins(moneyGained);
+                gameManager.customerManager.HandleColors(playerMarketShare());
 
                 HandleWorldEvent();
 
@@ -170,12 +174,17 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
+    private float playerMarketShare()
+    {
+        return playerCompany.numConsumers / (playerCompany.numConsumers + iaCompany.numConsumers);
+    }
+
     private float HandleEndOfSimulatedYear()
     {
-        float playerMoneyGained = playerCompany.EndFiscalYear();
+        float moneyGained = playerCompany.EndFiscalYear();
         iaCompany.EndFiscalYear();
-
-        return playerMoneyGained;
+        
+        return moneyGained;
     }
 
     private void HandleWorldEvent()

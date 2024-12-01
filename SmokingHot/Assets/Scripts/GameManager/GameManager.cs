@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private SimulationManager simulationManager;
 
     public CoinSpawner coinSpawner;
+    public CustomerManager customerManager;
 
     #region DEBUG ATTRIBUTES
     private bool DEBUG_isHeadlessModeOnAcceptEvents;
