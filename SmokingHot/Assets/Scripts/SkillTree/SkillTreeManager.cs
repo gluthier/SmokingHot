@@ -6,20 +6,23 @@ public class SkillTreeManager : MonoBehaviour
 {
     public List<SkillTreeUI> skillTreePanel;
     private GameObject lastActive;
+    public GameManager gameManager;
 
     public TextMeshProUGUI cigSkillName;
     public TextMeshProUGUI cigSkillDesc;
+    public TextMeshProUGUI cigSkillCost;
     
     public TextMeshProUGUI pubSkillName;
     public TextMeshProUGUI pubSkillDesc;
+    public TextMeshProUGUI pubSkillCost;
     
     public TextMeshProUGUI popSkillName;
     public TextMeshProUGUI popSkillDesc;
+    public TextMeshProUGUI popSkillCost;
     
     public TextMeshProUGUI lobSkillName;
     public TextMeshProUGUI lobSkillDesc;
-
-    public bool potDeVin = false; //TODO more
+    public TextMeshProUGUI lobSkillCost;
 
     public int[] tiers = {1,1,1,1};
 
@@ -48,10 +51,11 @@ public class SkillTreeManager : MonoBehaviour
     {
         node.transform.GetChild(0).gameObject.SetActive(true);
 
-        if (lastActive != null && lastActive != node) {
-            lastActive.transform.GetChild(0).gameObject.SetActive(false);
-            lastActive = node;            
+        if (lastActive != null && lastActive != node && !lastActive.GetComponent<Skill>().isUnlocked) {
+            lastActive.transform.GetChild(0).gameObject.SetActive(false);                     
         }
+
+        lastActive = node;
 
         Skill skill = node.GetComponent<Skill>();
         int index = GetCurrentActivePanel();
@@ -101,7 +105,6 @@ public class SkillTreeManager : MonoBehaviour
         switch (skillParts[0])
         {
             case "Unlock":
-                potDeVin = true;
                 break;
             case "Upgrade":
                 // stat += skillParts[1]
