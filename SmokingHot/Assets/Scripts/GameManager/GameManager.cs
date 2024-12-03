@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         ResetGameTitleMaterial();
     }
 
+    public SimulationManager GetSimulationManager() { return simulationManager; }
     public void enterGame(string companyName)
     {
         // Carefull: the order of execution is important to avoid null references

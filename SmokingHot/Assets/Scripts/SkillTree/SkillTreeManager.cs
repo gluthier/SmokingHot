@@ -7,6 +7,7 @@ public class SkillTreeManager : MonoBehaviour
     public List<SkillTreeUI> skillTreePanel;
     private GameObject lastActive;
     public GameManager gameManager;
+    private SimulationManager simulationManager;
 
     public TextMeshProUGUI cigSkillName;
     public TextMeshProUGUI cigSkillDesc;
@@ -28,7 +29,7 @@ public class SkillTreeManager : MonoBehaviour
 
     void Start()
     {
-
+        simulationManager = gameManager.GetSimulationManager();
     }
     
     public void UnlockSkill()
