@@ -2267,8 +2267,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 6443502051094851828}
     m_Modifications:
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: tierUp
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: Refontes du design
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: Vous refaites le design de votre paquet de cigarette, cela fait fureur
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Up nbConsumers 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[1]'
+      value: Up popularity 1
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
@@ -2283,8 +2307,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 739718302}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: tierUp
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: "Nouveaux b\xE2timents"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: "Gr\xE2ce aux nouveaux b\xE2timents, vos employ\xE9s produisent des
+        pubs plus efficace et moins cher"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Down adCost 10
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
@@ -2307,6 +2352,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6652428780844676772}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: Nouveau slogan
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: "Votre nouveau slogan cartonne, la popularit\xE9 de votre cigarette
+        est au plus haut"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Up popularity 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2327,6 +2393,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6652428780844676772}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: Campagne publicitaire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: Vous faites une nouvelle campagne dans les villes et villages, augmentant
+        moyennement le nombre de consommateurs
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Up nbConsumers 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2346,6 +2433,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: "Premi\xE8re pub"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: "Vous lancez enfin une publicit\xE9 pour votre marque de cigarettes,
+        cela vous rapporte des consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Up nbConsumers 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: prerequisites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6829201340997150255, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2427,6 +2539,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: "Publicit\xE9s cibl\xE9es"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: "Vous cr\xE9ez une nouvelle pub ciblant toutes les personnes dans l'adolescence,
+        vous rapportant beaucoup de consommateurs, mais baissant votre popularit\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Down popularity 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[1]'
+      value: Up nbConsumers 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2438,6 +2575,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 8400366138748891919, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d104974012d86a48bac5243b7004b6d, type: 3}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillName
+      value: "R\xE9seaux sociaux"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: skillDescription
+      value: Vous lancez une nouvelle pub sur votre insta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[0]'
+      value: Up nbConsumers 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
       value: 1
