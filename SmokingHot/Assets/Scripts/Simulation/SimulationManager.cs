@@ -272,6 +272,9 @@ public class SimulationManager : MonoBehaviour
                         case "nbConsumers":
                             company.numConsumers += amount;
                             break;
+                        case "deadConsumers":
+                            company.deadConsumers += amount;
+                            break;
                         default:
                             Debug.Log(effect);
                             break;
@@ -283,6 +286,9 @@ public class SimulationManager : MonoBehaviour
                     {
                         case "packetPrice":
                             company.cigarettePackPrice -= amount;
+                            break;
+                        case "nbConsumers":
+                            company.numConsumers -= amount;
                             break;
                         case "popularity":
                             company.popularity -= amount;

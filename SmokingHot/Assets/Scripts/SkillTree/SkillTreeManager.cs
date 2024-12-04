@@ -43,10 +43,8 @@ public class SkillTreeManager : MonoBehaviour
     public void UnlockSkill()
     {
         Skill skill = lastActive.GetComponent<Skill>();
-        Debug.Log("a");
         if(CanUnlockSkill(skill))
         {
-            Debug.Log("b");
             skill.isUnlocked = true;
             lastActive.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.green;
             int index = GetCurrentActivePanel();
@@ -169,7 +167,10 @@ public class SkillTreeManager : MonoBehaviour
 
     private void ApplySkillEffect(Skill skill)
     {
-        simulationManager.ApplyEffect(skill.effects, GetCurrentActivePanel());
+        if(simulationManager == null) { simulationManager = gameManager.GetSimulationManager(); }
+        List<String> effect = skill.effects;
+        effect.Add("Down money " + skill.cost);
+        simulationManager.ApplyEffect(effect, GetCurrentActivePanel());
     }
 
     private int GetCurrentActivePanel()
