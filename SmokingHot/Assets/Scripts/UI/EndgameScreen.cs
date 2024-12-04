@@ -28,9 +28,9 @@ public class EndgameScreen : MonoBehaviour
             simulationManager.GetIACompany()
         };
 
-        sortedCompanies.Sort((a, b) => a.money.CompareTo(b.money));
+        sortedCompanies.Sort((a, b) => a.GetMoney().CompareTo(b.GetMoney()));
 
-        if (sortedCompanies[0].isPlayer)
+        if (sortedCompanies[0].IsPlayer())
         {
             title.text = "You won!";
         }
@@ -40,7 +40,7 @@ public class EndgameScreen : MonoBehaviour
         }
 
         for (int i = 0; i < rankedConglomerates.Count; ++i) {
-            rankedConglomerates[i].text = $"{sortedCompanies[i].companyName}";
+            rankedConglomerates[i].text = $"{sortedCompanies[i].GetCompanyName()}";
         }
     }
 

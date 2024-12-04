@@ -4,24 +4,24 @@ using static SimulationManager;
 
 public class CompanyEntity
 {
-    public bool isPlayer;
+    private bool isPlayer;
 
     // Shown simulation data
-    public string companyName;
-    public float money;
-    public PopularityLevel popularity;
-    public float numConsumers;
-    public float manufacturingCosts;
-    public float lobbyingCosts;
-    public float adCampaignsCosts;
-    public CigarettePackEntity cigarettePackProduced;
+    private string companyName;
+    private float money;
+    private PopularityLevel popularity;
+    private float numConsumers;
+    private float manufacturingCosts;
+    private float lobbyingCosts;
+    private float adCampaignsCosts;
+    private CigarettePackEntity cigarettePackProduced;
 
     // Hidden simulation data
-    public float cigarettePackPrice;
-    public float newConsumers;
-    public float lostConsumers;
-    public float deadConsumers;
-    public float bonusMoney;
+    private float cigarettePackPrice;
+    private float newConsumers;
+    private float lostConsumers;
+    private float deadConsumers;
+    private float bonusMoney;
 
     public enum Param
     {
@@ -31,7 +31,10 @@ public class CompanyEntity
         NewConsumers,
         LostConsumers,
         DeadConsumers,
-        Consumers
+        Consumers,
+        AdCampaignsCosts,
+        ManufacturingCosts,
+        LobbyingCosts
     }
 
     public CompanyEntity(CompanyData conglomerateData, bool isPlayer)
@@ -47,6 +50,47 @@ public class CompanyEntity
     public void SetCompanyName(string companyName)
     {
         this.companyName = companyName;
+    }
+
+    public string GetCompanyName()
+    {
+        return this.companyName;
+    }
+
+    public float GetMoney()
+    {
+        return this.money;
+    }
+
+    public float GetConsumers()
+    {
+        return numConsumers;
+    }
+
+    public bool IsPlayer()
+    {
+        return this.isPlayer;
+    }
+
+    public GameManager.GameState RetrieveCompanyGameState(int yearPassed)
+    {
+        return new GameManager.GameState
+        {
+            year = yearPassed,
+            companyName = companyName,
+            money = money,
+            popularity = popularity,
+            numConsumers = numConsumers,
+            manufacturingCosts = manufacturingCosts,
+            lobbyingCosts = lobbyingCosts,
+            adCampaignsCosts = adCampaignsCosts,
+            cigarettePackProduced = cigarettePackProduced,
+            cigarettePackPrice = cigarettePackPrice,
+            deadConsumers = deadConsumers,
+            newConsumers = newConsumers,
+            lostConsumers = lostConsumers,
+            yearlyMoneyBonus = bonusMoney
+        };
     }
 
     public void IncreaseParam(Param param, float amount)
@@ -73,6 +117,15 @@ public class CompanyEntity
                 break;
             case Param.Consumers:
                 numConsumers += amount;
+                break;
+            case Param.AdCampaignsCosts:
+                adCampaignsCosts += amount;
+                break;
+            case Param.ManufacturingCosts:
+                manufacturingCosts += amount;
+                break;
+            case Param.LobbyingCosts:
+                lobbyingCosts += amount;
                 break;
             default:
                 break;
@@ -108,6 +161,15 @@ public class CompanyEntity
                 break;
             case Param.Consumers:
                 numConsumers *= amount;
+                break;
+            case Param.AdCampaignsCosts:
+                adCampaignsCosts *= amount;
+                break;
+            case Param.ManufacturingCosts:
+                manufacturingCosts *= amount;
+                break;
+            case Param.LobbyingCosts:
+                lobbyingCosts *= amount;
                 break;
             default:
                 break;

@@ -141,23 +141,7 @@ public class SimulationManager : MonoBehaviour
 
     private GameManager.GameState RetrieveGameStateFromCompany(CompanyEntity company)
     {
-        return new GameManager.GameState
-        {
-            year = yearPassed,
-            companyName = company.companyName,
-            money = company.money,
-            popularity = company.popularity,
-            numConsumers = company.numConsumers,
-            manufacturingCosts = company.manufacturingCosts,
-            lobbyingCosts = company.lobbyingCosts,
-            adCampaignsCosts = company.adCampaignsCosts,
-            cigarettePackProduced = company.cigarettePackProduced,
-            cigarettePackPrice = company.cigarettePackPrice,
-            deadConsumers = company.deadConsumers,
-            newConsumers = company.newConsumers,
-            lostConsumers = company.lostConsumers,
-            yearlyMoneyBonus = company.bonusMoney
-        };
+        return company.RetrieveCompanyGameState(yearPassed);
     }
 
     private void HandleSimulatedTime()
@@ -200,7 +184,7 @@ public class SimulationManager : MonoBehaviour
 
     private float playerMarketShare()
     {
-        return playerCompany.numConsumers / (playerCompany.numConsumers + iaCompany.numConsumers);
+        return playerCompany.GetConsumers() / (playerCompany.GetConsumers() + iaCompany.GetConsumers());
     }
 
     private float HandleEndOfSimulatedYear()
@@ -258,22 +242,22 @@ public class SimulationManager : MonoBehaviour
                     switch (skillParts[1])
                     {
                         case "money":
-                            company.money += amount;
+                            company.IncreaseParam(CompanyEntity.Param.Money, amount);
                             break;
                         case "popularity":
-                            company.popularity += amount;
+                            company.ImpactPopularity(amount);
                             break;
                         case "packetPrice":
-                            company.cigarettePackPrice += amount;
+                            company.IncreaseParam(CompanyEntity.Param.cigarettePackPrice, amount);
                             break;
                         case "yearlyBonus":
-                            company.bonusMoney += amount;
+                            company.IncreaseParam(CompanyEntity.Param.BonusMoney, amount);
                             break;
                         case "nbConsumers":
-                            company.numConsumers += amount;
+                            company.IncreaseParam(CompanyEntity.Param.Consumers, amount);
                             break;
                         case "deadConsumers":
-                            company.deadConsumers += amount;
+                            company.IncreaseParam(CompanyEntity.Param.DeadConsumers, amount);
                             break;
                         default:
                             Debug.Log(effect);
@@ -285,28 +269,28 @@ public class SimulationManager : MonoBehaviour
                     switch (skillParts[1])
                     {
                         case "packetPrice":
-                            company.cigarettePackPrice -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.cigarettePackPrice, amount);
                             break;
                         case "nbConsumers":
-                            company.numConsumers -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.Consumers, amount);
                             break;
                         case "popularity":
-                            company.popularity -= amount;
+                            company.ImpactPopularity(-amount);
                             break;
                         case "adCost":
-                            company.adCampaignsCosts -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.AdCampaignsCosts, amount);
                             break;
                         case "manuCost":
-                            company.manufacturingCosts -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.ManufacturingCosts, amount);
                             break;
                         case "lobbyCost":
-                            company.lobbyingCosts -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.LobbyingCosts, amount);
                             break;
                         case "deadConsumers":
-                            company.deadConsumers -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.DeadConsumers, amount);
                             break;
                         case "lostConsumers":
-                            company.lostConsumers -= amount;
+                            company.DecreaseParam(CompanyEntity.Param.LostConsumers, amount);
                             break;
                     }
                     break;
