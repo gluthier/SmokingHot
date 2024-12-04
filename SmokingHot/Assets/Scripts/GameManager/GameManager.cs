@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FadeOutTitle()
     {
-        /*TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
         float dilate = 0.15f;
 
         while (true)
@@ -80,8 +80,7 @@ public class GameManager : MonoBehaviour
             gameTitle.ForceMeshUpdate(true);
 
             yield return null;
-        }*/
-        yield return null;
+        }
     }
 
     private void SetupWorldEventUI()
@@ -166,6 +165,9 @@ public class GameManager : MonoBehaviour
         #region DEBUG
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            if (simulationManager != null && simulationManager.isSimulationOn)
+                return;
+
             FindFirstObjectByType<StartButtonClick>().gameObject.SetActive(false);
             enterGame("Big Tobacco");
         }
@@ -259,9 +261,9 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameTitleMaterial()
     {
-        /*TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
         gameTitle.materialForRendering.SetFloat("_FaceDilate", 0.15f);
         gameTitle.SetMaterialDirty();
-        gameTitle.ForceMeshUpdate(true);*/
+        gameTitle.ForceMeshUpdate(true);
     }
 }

@@ -37,6 +37,11 @@ public class SkillTreeManager : MonoBehaviour
 
     void Start()
     {
+        if (gameManager == null)
+        {
+            gameManager = FindFirstObjectByType<GameManager>();
+        }
+
         simulationManager = gameManager.GetSimulationManager();
     }
     
