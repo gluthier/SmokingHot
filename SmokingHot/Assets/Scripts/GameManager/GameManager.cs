@@ -30,15 +30,15 @@ public class GameManager : MonoBehaviour
         public float money;
         public PopularityLevel popularity;
         public float numConsumers;
-        public float manufacturingCosts;
-        public float lobbyingCosts;
-        public float adCampaignsCosts;
+        public float manufacturingCosts; // cout prod cigarette
+        public float lobbyingCosts; // dépense en lobbying
+        public float adCampaignsCosts;  // dépense en campagne
         public CigarettePackEntity cigarettePackProduced;
-        public float cigarettePackPrice;
-        public float deadConsumers;
-        public float newConsumers;
-        public float lostConsumers;
-        public float yearlyMoneyBonus;
+        public float cigarettePackPrice; // +
+        public float deadConsumers; // -
+        public float newConsumers; // +
+        public float lostConsumers; // -
+        public float yearlyMoneyBonus; // +
     }
 
     private void Awake()
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FadeOutTitle()
     {
-        TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        /*TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
         float dilate = 0.15f;
 
         while (true)
@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
             gameTitle.ForceMeshUpdate(true);
 
             yield return null;
-        }
+        }*/
+        yield return null;
     }
 
     private void SetupWorldEventUI()
@@ -120,6 +121,10 @@ public class GameManager : MonoBehaviour
         gameUI.PopulateMainUI(playerGameState, iaGameState, showUpdate);
     }
 
+    public float GetPlayerMoney()
+    {
+        return simulationManager.RetrievePlayerGameState().money;
+    }
     public void PopulateWorldEventUI(WorldEvent worldEvent)
     {
         if (DEBUG_isHeadlessModeOnAcceptEvents)
@@ -254,9 +259,9 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameTitleMaterial()
     {
-        TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        /*TextMeshProUGUI gameTitle = transform.Find("GameTitle").GetComponent<TextMeshProUGUI>();
         gameTitle.materialForRendering.SetFloat("_FaceDilate", 0.15f);
         gameTitle.SetMaterialDirty();
-        gameTitle.ForceMeshUpdate(true);
+        gameTitle.ForceMeshUpdate(true);*/
     }
 }

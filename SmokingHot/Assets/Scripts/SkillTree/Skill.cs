@@ -10,6 +10,6 @@ public class Skill : MonoBehaviour
     public int cost;
     public List<Skill> prerequisites;
     public bool isUnlocked;
-    public string effect;
+    public List<string> effects;
     public bool tierUp;
 }

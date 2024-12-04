@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEditor.Experimental.GraphView;
+using System;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -12,18 +16,22 @@ public class SkillTreeManager : MonoBehaviour
     public TextMeshProUGUI cigSkillName;
     public TextMeshProUGUI cigSkillDesc;
     public TextMeshProUGUI cigSkillCost;
+    public List<LineRenderer> cigLinks;
     
     public TextMeshProUGUI pubSkillName;
     public TextMeshProUGUI pubSkillDesc;
     public TextMeshProUGUI pubSkillCost;
-    
+    public List<LineRenderer> pubLinks;
+
     public TextMeshProUGUI popSkillName;
     public TextMeshProUGUI popSkillDesc;
     public TextMeshProUGUI popSkillCost;
-    
+    public List<LineRenderer> popLinks;
+
     public TextMeshProUGUI lobSkillName;
     public TextMeshProUGUI lobSkillDesc;
     public TextMeshProUGUI lobSkillCost;
+    public List<LineRenderer> lobLinks;
 
     public int[] tiers = {1,1,1,1};
 
@@ -35,9 +43,30 @@ public class SkillTreeManager : MonoBehaviour
     public void UnlockSkill()
     {
         Skill skill = lastActive.GetComponent<Skill>();
+        Debug.Log("a");
         if(CanUnlockSkill(skill))
         {
+            Debug.Log("b");
             skill.isUnlocked = true;
+            lastActive.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+            int index = GetCurrentActivePanel();
+
+            Link link = null;
+
+            /*if(index == 0) { link = getTheLink(lastActive, getLinks(cigLinks)); }
+            else if(index == 1) { link = getTheLink(lastActive, getLinks(pubLinks)); }
+            else if(index == 2) { link = getTheLink(lastActive, getLinks(lobLinks)); }
+            else if(index == 3) { link = getTheLink(lastActive, getLinks(popLinks)); }
+
+            Color newColor = Color.green;
+
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] { new GradientColorKey(newColor, 0.0f), new GradientColorKey(newColor, 1.0f) },
+                new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) }
+            );
+
+            link.GetComponent<LineRenderer>().colorGradient = gradient;*/
 
             if (skill.tierUp)
             {
@@ -48,6 +77,16 @@ public class SkillTreeManager : MonoBehaviour
         }
     }
 
+    private List<Link> getLinks(List<LineRenderer> lines)
+    {
+        List<Link> links = new List<Link>();
+        foreach(LineRenderer l in lines)
+        {
+            links.Add(l.GetComponent<Link>());
+        }
+
+        return links;
+    }
     public void SetSkillActive(GameObject node)
     {
         node.transform.GetChild(0).gameObject.SetActive(true);
@@ -64,6 +103,19 @@ public class SkillTreeManager : MonoBehaviour
 
     }
 
+    private Link getTheLink(GameObject node, List<Link> links)
+    {
+        Link toReturn = null;
+        foreach(Link l in links)
+        {
+            if(l.end == node.GetComponent<Skill>() && l.start.isUnlocked && !l.getActivated())
+            {
+                toReturn = l;
+            }
+        }
+        return toReturn;
+    }
+
     private void SetSkillDesc(Skill skill, int index)
     {
         switch (index)
@@ -71,18 +123,22 @@ public class SkillTreeManager : MonoBehaviour
             case 0: // cig
                 cigSkillDesc.text = skill.skillDescription;
                 cigSkillName.text = skill.skillName;
+                cigSkillCost.text = "Prix: " + skill.cost;
                 break;
             case 1: // pub
                 pubSkillDesc.text = skill.skillDescription;
                 pubSkillName.text = skill.skillName;
+                pubSkillCost.text = "Prix: " + skill.cost;
                 break;
             case 2: // lobby
                 lobSkillDesc.text = skill.skillDescription;
                 lobSkillName.text = skill.skillName;
+                lobSkillCost.text = "Prix: " + skill.cost;
                 break;
             case 4: // rep
                 popSkillDesc.text = skill.skillDescription;
                 popSkillName.text = skill.skillName;
+                popSkillCost.text = "Prix: " + skill.cost;
                 break;
             default:
                 break;
@@ -90,30 +146,30 @@ public class SkillTreeManager : MonoBehaviour
     }
     private bool CanUnlockSkill(Skill skill)
     {
+        bool isPrerequisiteUnlocked = false;
+        bool hasMoney = false;
+
         if (skill.isUnlocked) return false;
+        if (skill.prerequisites.Count == 0) isPrerequisiteUnlocked = true;
         foreach (Skill prerequisite in skill.prerequisites)
         {
-            if (!prerequisite.isUnlocked) return false;
+            if(prerequisite.isUnlocked)
+            {
+                isPrerequisiteUnlocked = true;
+                break;
+            }
         }
-        //TODO check money
-        return true;
+
+        hasMoney = gameManager.GetPlayerMoney() >= skill.cost;
+
+        Debug.Log(isPrerequisiteUnlocked);
+        Debug.Log(hasMoney);
+        return isPrerequisiteUnlocked && hasMoney;
     }
 
     private void ApplySkillEffect(Skill skill)
     {
-        string[] skillParts = skill.effect.Split(" ");
-
-        switch (skillParts[0])
-        {
-            case "Unlock":
-                break;
-            case "Upgrade":
-                // stat += skillParts[1]
-            // Add other cases for different effects as needed
-            default:
-                Debug.Log($"{skill.skillName} effect applied.");
-                break;
-        }
+        simulationManager.ApplyEffect(skill.effects, GetCurrentActivePanel());
     }
 
     private int GetCurrentActivePanel()

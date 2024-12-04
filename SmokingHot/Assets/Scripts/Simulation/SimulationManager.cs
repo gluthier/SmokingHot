@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SimulationManager : MonoBehaviour
@@ -238,5 +241,72 @@ public class SimulationManager : MonoBehaviour
             GameDataLoader.Load());
 
         SetPlayerCompanyName(playerCompanyName);
+    }
+
+    public void ApplyEffect(List<string> effects, int index)
+    {
+        CompanyEntity company = GetPlayerCompany();
+
+        foreach (string effect in effects)
+        {
+            string[] skillParts = effect.Split(" ");
+            int amount = Int32.Parse(skillParts[2]);
+
+            switch (skillParts[0])
+            {
+                case "Up":
+                    switch (skillParts[1])
+                    {
+                        case "money":
+                            company.money += amount;
+                            break;
+                        case "popularity":
+                            company.popularity += amount;
+                            break;
+                        case "packetPrice":
+                            company.cigarettePackPrice += amount;
+                            break;
+                        case "yearlyBonus":
+                            company.bonusMoney += amount;
+                            break;
+                        case "nbConsumers":
+                            company.numConsumers += amount;
+                            break;
+                        default:
+                            Debug.Log(effect);
+                            break;
+
+                    }
+                    break;
+                case "Down":
+                    switch (skillParts[1])
+                    {
+                        case "packetPrice":
+                            company.cigarettePackPrice -= amount;
+                            break;
+                        case "popularity":
+                            company.popularity -= amount;
+                            break;
+                        case "adCost":
+                            company.adCampaignsCosts -= amount;
+                            break;
+                        case "manuCost":
+                            company.manufacturingCosts -= amount;
+                            break;
+                        case "lobbyCost":
+                            company.lobbyingCosts -= amount;
+                            break;
+                        case "deadConsumers":
+                            company.deadConsumers -= amount;
+                            break;
+                        case "lostConsumers":
+                            company.lostConsumers -= amount;
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
