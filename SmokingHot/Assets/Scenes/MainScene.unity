@@ -2280,7 +2280,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: Vous refaites le design de votre paquet de cigarette, cela fait fureur
+      value: "Vous refaites le design de votre paquet de cigarette, cela fait fureur,
+        r\xE9duisant le co\xFBt des futures pubs"
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2292,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: 'effects.Array.data[1]'
-      value: Up popularity 1
+      value: Down adCost 10
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
@@ -2402,16 +2403,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: Vous faites une nouvelle campagne dans les villes et villages, augmentant
-        moyennement le nombre de consommateurs
+      value: "Vous faites une nouvelle campagne annon\xE7ant une baisse du co\xFBt
+        du paquet dans les villes et villages, augmentant moyennement le nombre de
+        consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: 'effects.Array.data[0]'
       value: Up nbConsumers 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: 'effects.Array.data[1]'
+      value: Down packetPrice 10
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: prerequisites.Array.size
