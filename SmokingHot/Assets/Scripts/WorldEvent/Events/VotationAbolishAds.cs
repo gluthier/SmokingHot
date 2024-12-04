@@ -11,10 +11,16 @@ public class VotationAbolishAds : WorldEvent
     public VotationAbolishAds()
     {
         title = "Interdiction des publicités";
-        description = "Des votations sont en cours pour interdire les publicités sur le tabac. Nos analystes proposent du lutter en faisant du lobbying politique.\n\n" +
-            $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChance}% de réussite de s'opposer au changement\n" +
-            $"<b>Refuser</b>: {refuseChance}% de chance que les publicités soient interdites";
-        
+
+        description = "Des votations sont en cours pour interdire les publicités sur le tabac. Nos analystes proposent du lutter en faisant du lobbying politique.";
+
+        acceptPriceDescription =
+            $"Coûte {acceptMoney} M\n" +
+            $"{acceptChance}% de réussite de s'opposer au changement";
+
+        refusePriceDescription =
+            $"{refuseChance}% de chance que les publicités soient interdites";
+
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.AdCampaignExistence
         };

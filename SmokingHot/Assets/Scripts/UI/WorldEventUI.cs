@@ -7,6 +7,8 @@ public class WorldEventUI : MonoBehaviour
 
     private TextMeshProUGUI eventTitle;
     private TextMeshProUGUI eventDescription;
+    private TextMeshProUGUI acceptPriceDescription;
+    private TextMeshProUGUI refusePriceDescription;
 
     private WorldEvent worldEvent;
 
@@ -22,6 +24,12 @@ public class WorldEventUI : MonoBehaviour
 
         eventDescription = transform.Find(Env.UI_EventDescription)
             .GetComponent<TextMeshProUGUI>();
+
+        acceptPriceDescription = transform.Find(Env.UI_AcceptPriceDescription)
+            .GetComponent<TextMeshProUGUI>();
+
+        refusePriceDescription = transform.Find(Env.UI_RefusePriceDescription)
+            .GetComponent<TextMeshProUGUI>();
     }
 
     public void DisplayEvent(WorldEvent worldEvent, FinishWorldEvent finishWorldEvent)
@@ -30,6 +38,8 @@ public class WorldEventUI : MonoBehaviour
 
         eventTitle.text = worldEvent.title;
         eventDescription.text = worldEvent.description;
+        acceptPriceDescription.text = worldEvent.acceptPriceDescription;
+        refusePriceDescription.text = worldEvent.refusePriceDescription;
 
         this.finishWorldEvent = finishWorldEvent;
     }

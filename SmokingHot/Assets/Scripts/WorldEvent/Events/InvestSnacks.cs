@@ -11,9 +11,15 @@ public class InvestSnacks : WorldEvent
     public InvestSnacks()
     {
         title = "Rachat d'entreprise agroalimentaire";
-        description = "Une proposition de rachat d'entreprise agroalimentaire spécialisée dans les snacks addictifs. Nos analystes pensent que cela pourrait nous apporter de nouveaux clients sur le long terme. Refuser rendrait fâchés quelques actionnaires.\n\n" +
-            $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {acceptNewConsumers} M les nouveaux consommateurs\n" +
-            $"<b>Refuser</b>: réduit de {refuseBonusMoney} M les gains bonus annuels";
+
+        description = "Une proposition de rachat d'entreprise agroalimentaire spécialisée dans les snacks addictifs. Nos analystes pensent que cela pourrait nous apporter de nouveaux clients sur le long terme. Refuser rendrait fâchés quelques actionnaires.";
+
+        acceptPriceDescription =
+            $"Coûte {acceptMoney} M\n" +
+            $"Augmente de {acceptNewConsumers} M les nouveaux consommateurs";
+
+        refusePriceDescription =
+            $"Réduit de {refuseBonusMoney} M les gains bonus annuels";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.NewConsumers

@@ -70,6 +70,8 @@ public static class Env
 
     public static string UI_EventTitle = "Background/Title";
     public static string UI_EventDescription = "Background/Description";
+    public static string UI_AcceptPriceDescription = "Background/AcceptPrice";
+    public static string UI_RefusePriceDescription = "Background/RefusePrice";
 
     public static string UI_EndgameScreenTitle = "Endgame/Title";
     public static List<string> UI_EndgameRankedConglomerates = new List<string>{

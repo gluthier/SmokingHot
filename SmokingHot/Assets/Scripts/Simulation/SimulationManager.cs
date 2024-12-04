@@ -292,6 +292,9 @@ public class SimulationManager : MonoBehaviour
                         case "lostConsumers":
                             company.DecreaseParam(CompanyEntity.Param.LostConsumers, amount);
                             break;
+                        default:
+                            Debug.Log(effect);
+                            break;
                     }
                     break;
                 default:

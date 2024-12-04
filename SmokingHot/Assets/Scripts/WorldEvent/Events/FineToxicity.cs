@@ -13,9 +13,17 @@ public class FineToxicity : WorldEvent
     public FineToxicity()
     {
         title = "Amende";
-        description = "Nous avons été amendé à cause du niveau de toxicité trop élevé de nos cigarettes. Nos analystes proposent de refuser en luttant juridiquement contre, risquant le quitte ou double.\n\n" +
-            $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChance}% de réduire l'image publique\n" +
-            $"<b>Refuser</b>: Coûte {refuseMoney} M, {refuseChanceGood}% d'augmenter l'image publique, mais {refuseChanceBad}% de réduire fortement l'image publique";
+
+        description = "Nous avons été amendé à cause du niveau de toxicité trop élevé de nos cigarettes. Nos analystes proposent de refuser en luttant juridiquement contre, risquant le quitte ou double.";
+
+        acceptPriceDescription =
+            $"Coûte {acceptMoney} M\n" +
+            $"{acceptChance}% de réduire l'image publique";
+
+        refusePriceDescription =
+            $"Coûte {refuseMoney} M\n" +
+            $"{refuseChanceGood}% d'augmenter l'image publique\n" +
+            $"{refuseChanceBad}% de réduire fortement l'image publique";
 
         acceptPositiveImpacts = new List<WorldEventImpact> { };
         acceptNegativeImpacts = new List<WorldEventImpact> {

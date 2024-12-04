@@ -29,6 +29,8 @@ public abstract class WorldEvent
 
     public string title;
     public string description;
+    public string acceptPriceDescription;
+    public string refusePriceDescription;
 
     public abstract void AcceptEvent(CompanyEntity company);
 

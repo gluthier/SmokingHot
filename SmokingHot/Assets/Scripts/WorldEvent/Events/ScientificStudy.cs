@@ -11,9 +11,16 @@ public class ScientificStudy : WorldEvent
     public ScientificStudy()
     {
         title = "Rapport scientifique";
-        description = "Une nouvelle étude scientifique démontre les dégâts nocifs de la cigarette sur la santé. Nos analystes proposent de discrétiser l'étude et l'équipe de scientifiques derrière.\n\n" +
-            $"<b>Accepter</b>: Coûte {acceptMoney} M, {acceptChanceGood}% d'augmenter l'image publique, mais {acceptChanceBad}% de réduire fortement l'image publique\n" +
-            $"<b>Refuser</b>: Réduit l'image publique";
+
+        description = "Une nouvelle étude scientifique démontre les dégâts nocifs de la cigarette sur la santé. Nos analystes proposent de discrétiser l'étude et l'équipe de scientifiques derrière.";
+
+        acceptPriceDescription =
+            $"Coûte {acceptMoney} M\n" +
+            $"{acceptChanceGood}% d'augmenter l'image publique\n" +
+            $"{acceptChanceBad}% de réduire fortement l'image publique";
+
+        refusePriceDescription =
+            $"Réduit l'image publique";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

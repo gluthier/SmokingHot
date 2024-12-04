@@ -6,8 +6,8 @@ public class NoEvent : WorldEvent
 {
     public NoEvent()
     {
-        title = "Empty Event";
-        description = "...";
+        title = "Rien de spécial";
+        description = "Il ne se passe rien.";
     }
 
     public override void AcceptEvent(CompanyEntity company)

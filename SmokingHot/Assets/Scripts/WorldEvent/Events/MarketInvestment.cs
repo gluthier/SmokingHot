@@ -13,9 +13,17 @@ public class MarketInvestment : WorldEvent
     public MarketInvestment()
     {
         title = "Investissement dans de nouveaux marchés";
-        description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.\n\n" +
-            $"<b>Accepter</b>: Coûte {acceptMoney} M, augmente de {100* acceptConsumersIncrease}% le nombre de consomateurs actuels, augment de {acceptNewConsumers} M les nouveaux consommateurs\n" +
-            $"<b>Refuser</b>: réduit de {refuseBonusMoney} M les gains bonus annuels, réduit de {refuseNewConsumers} M les nouveaux cconsommateurs";
+
+        description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.";
+
+        acceptPriceDescription =
+            $"Coûte {acceptMoney} M\n" +
+            $"Augmente de {100 * acceptConsumersIncrease}% le nombre de consomateurs actuels\n" +
+            $"Augmente de {acceptNewConsumers} M les nouveaux consommateurs";
+
+        refusePriceDescription =
+            $"Réduit de {refuseBonusMoney} M les gains bonus annuels\n" +
+            $"Réduit de {refuseNewConsumers} M les nouveaux consommateurs";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Consumers,
