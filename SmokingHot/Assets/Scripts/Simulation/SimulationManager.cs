@@ -268,6 +268,9 @@ public class SimulationManager : MonoBehaviour
                 case "Down":
                     switch (skillParts[1])
                     {
+                        case "money":
+                            company.DecreaseParam(CompanyEntity.Param.Money, amount);
+                            break;
                         case "packetPrice":
                             company.DecreaseParam(CompanyEntity.Param.cigarettePackPrice, amount);
                             break;
@@ -301,5 +304,7 @@ public class SimulationManager : MonoBehaviour
                     break;
             }
         }
+
+        gameManager.PopulateMainUI(true);
     }
 }
