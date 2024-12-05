@@ -2356,8 +2356,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 739718304}
     - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_margin.z
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515436731206870111, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2723757909452078996, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2438,6 +2446,14 @@ PrefabInstance:
       propertyPath: 'prerequisites.Array.data[0]'
       value: 
       objectReference: {fileID: 739718303}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 340
+      objectReference: {fileID: 0}
     - target: {fileID: 5290765892676734361, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Name
       value: PubSkillTree
@@ -2620,6 +2636,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 7667559506848262448, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8400366138748891919, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2980,8 +3000,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 887775818}
     - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_margin.z
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515436731206870111, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2723757909452078996, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3019,6 +3047,14 @@ PrefabInstance:
       propertyPath: 'prerequisites.Array.data[0]'
       value: 
       objectReference: {fileID: 887775817}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 340
+      objectReference: {fileID: 0}
     - target: {fileID: 5290765892676734361, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Name
       value: LobSkillTree
@@ -3155,6 +3191,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 7667559506848262448, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7909899626166211768, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5048,8 +5088,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1331166763}
     - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_margin.z
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515436731206870111, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2723757909452078996, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5137,6 +5185,14 @@ PrefabInstance:
       propertyPath: 'prerequisites.Array.data[0]'
       value: 
       objectReference: {fileID: 1331166762}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 340
+      objectReference: {fileID: 0}
     - target: {fileID: 5290765892676734361, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Name
       value: PopSkillTree
@@ -5323,6 +5379,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 7667559506848262448, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7909899626166211768, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -9902,8 +9962,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1078139432}
     - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390726805658497783, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_margin.z
       value: -219.95972
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515436731206870111, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2723757909452078996, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9990,6 +10058,14 @@ PrefabInstance:
       propertyPath: 'prerequisites.Array.data[0]'
       value: 
       objectReference: {fileID: 1210937877}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167637727045216836, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 340
+      objectReference: {fileID: 0}
     - target: {fileID: 5290765892676734361, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Name
       value: CigaretteSkillTree
@@ -10176,6 +10252,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 7667559506848262448, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8188924474225926213, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_Sprite
       value: 

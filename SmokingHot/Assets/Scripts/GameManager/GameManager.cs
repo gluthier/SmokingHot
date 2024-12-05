@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
 
     public void CurrentClickedGameObject(GameObject gameObject)
     {
-        if (gameObject.tag == "Building")
+        if (gameObject.tag == "Building" && skillTreeManager.GetCurrentActivePanel() == -1)
         {
            skillTreeManager.ShowPanel(gameObject);            
         }

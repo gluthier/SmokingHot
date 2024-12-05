@@ -178,7 +178,7 @@ public class SkillTreeManager : MonoBehaviour
         simulationManager.ApplyEffect(effect, GetCurrentActivePanel());
     }
 
-    private int GetCurrentActivePanel()
+    public int GetCurrentActivePanel()
     {
         for (int i = 0; i < skillTreePanel.Count; i++)
         {
