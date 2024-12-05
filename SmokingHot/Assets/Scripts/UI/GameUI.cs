@@ -6,11 +6,11 @@ using static SimulationManager;
 
 public class GameUI : MonoBehaviour
 {
+    private bool isPlayerCompanyShown;
+
     public Image background;
     public Image switchViewButtonBackground;
     public TextMeshProUGUI switchViewButtonText;
-
-    private bool isPlayerCompanyShown;
 
     private TextMeshProUGUI companyName;
     private TextMeshProUGUI year;
@@ -33,6 +33,9 @@ public class GameUI : MonoBehaviour
     private TextMeshProUGUI cigaretteToxicityLevelDiff;
     private TextMeshProUGUI cigaretteAddictionLevel;
     private TextMeshProUGUI cigaretteAddictionLevelDiff;
+
+    private GameObject iaStrategyGO;
+    private TextMeshProUGUI iaStrategyText;
 
     private GameManager.GameState playerGameState;
     private GameManager.GameState prevPlayerGameState;
@@ -64,6 +67,10 @@ public class GameUI : MonoBehaviour
         cigaretteAddictionLevel = FindTextField(Env.UI_cigaretteAddictionLevelGO);
         cigaretteAddictionLevelDiff = FindTextField(Env.UI_cigaretteAddictionLevelDiffGO);
 
+        iaStrategyGO = transform.Find(Env.UI_iaStrategyGO).gameObject;
+        iaStrategyText = FindTextField(Env.UI_iaStrategyText);
+        iaStrategyGO.SetActive(false);
+
         isPlayerCompanyShown = true;
         SetBackgroundColors();
     }
@@ -86,6 +93,7 @@ public class GameUI : MonoBehaviour
 
         SetValuesFromGameState(GetGameStateToShow(), GetPrevGameStateToShow(), true);
         SetBackgroundColors();
+        ShowIAStrategy();
         SetButtonText();
     }
 
@@ -109,6 +117,11 @@ public class GameUI : MonoBehaviour
 
         switchViewButtonText.color =
             isPlayerCompanyShown ? Env.iaSwitchViewButtonTextColor : Env.playerSwitchViewButtonTextColor;
+    }
+
+    private void ShowIAStrategy()
+    {
+        iaStrategyGO.SetActive(!isPlayerCompanyShown);
     }
 
     private void SetButtonText()
@@ -141,6 +154,8 @@ public class GameUI : MonoBehaviour
 
         cigaretteToxicityLevel.text = showGameState.cigarettePackProduced.GetToxicityDescription();
         cigaretteAddictionLevel.text = showGameState.cigarettePackProduced.GetAddictionDescription();
+
+        iaStrategyText.text = showGameState.iaStrategy;
     }
 
     private void SetPopularityField(PopularityLevel prevData, PopularityLevel currentData, bool showUpdate)

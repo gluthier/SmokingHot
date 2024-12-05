@@ -68,6 +68,9 @@ public static class Env
     public static string UI_cigaretteAddictionLevelGO = "GameData/cigaretteAddictionLevel/Value";
     public static string UI_cigaretteAddictionLevelDiffGO = "GameData/cigaretteAddictionLevel/Diff";
 
+    public static string UI_iaStrategyGO = "GameData/IA_Strategy";
+    public static string UI_iaStrategyText = "GameData/IA_Strategy/Strat";
+
     public static string UI_EventTitle = "Background/Title";
     public static string UI_EventDescription = "Background/Description";
     public static string UI_AcceptPriceDescription = "Background/AcceptPrice";
@@ -80,4 +83,8 @@ public static class Env
         "Endgame/Rank3",
         "Endgame/Rank4",
     };
+
+    public static string IA_Strategy_MaxMoney = "Le concurrent est entrain de maximiser son capital.";
+    public static string IA_Strategy_MaxCustommer = "Le concurrent est entrain de maximiser le nombre de ses consommateurs.";
+    public static string IA_Strategy_MinCosts = "Le concurrent est entrain de minimiser ses coûts.";
 }

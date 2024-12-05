@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         public float newConsumers; // +
         public float lostConsumers; // -
         public float yearlyMoneyBonus; // +
+        public string iaStrategy;
     }
 
     private void Awake()

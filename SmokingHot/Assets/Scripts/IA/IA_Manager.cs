@@ -105,6 +105,26 @@ public class IA_Manager : MonoBehaviour
         HandleWorldEvent(iaCompany, worldEvent);
     }
 
+    public string GetIAStrategy()
+    {
+        string strat = "";
+
+        switch (stateMachine.CurrentState)
+        {
+            case ProcessState.MaxConsumers:
+                strat = Env.IA_Strategy_MaxCustommer;
+                break;
+            case ProcessState.MinCosts:
+                strat = Env.IA_Strategy_MinCosts;
+                break;
+            case ProcessState.MaxMoney:
+            default:
+                strat = Env.IA_Strategy_MaxMoney;
+                break;
+        }
+        return strat;
+    }
+
     private void HandleChangeOfState(WorldEvent worldEvent)
     {
         switch (stateMachine.CurrentState)

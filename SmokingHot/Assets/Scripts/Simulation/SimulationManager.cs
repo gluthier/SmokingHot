@@ -141,7 +141,7 @@ public class SimulationManager : MonoBehaviour
 
     private GameManager.GameState RetrieveGameStateFromCompany(CompanyEntity company)
     {
-        return company.RetrieveCompanyGameState(yearPassed);
+        return company.RetrieveCompanyGameState(yearPassed, iaManager.GetIAStrategy());
     }
 
     private void HandleSimulatedTime()

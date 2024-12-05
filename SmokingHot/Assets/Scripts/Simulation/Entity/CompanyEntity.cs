@@ -72,7 +72,7 @@ public class CompanyEntity
         return this.isPlayer;
     }
 
-    public GameManager.GameState RetrieveCompanyGameState(int yearPassed)
+    public GameManager.GameState RetrieveCompanyGameState(int yearPassed, string iaStrategy)
     {
         return new GameManager.GameState
         {
@@ -89,7 +89,8 @@ public class CompanyEntity
             deadConsumers = deadConsumers,
             newConsumers = newConsumers,
             lostConsumers = lostConsumers,
-            yearlyMoneyBonus = bonusMoney
+            yearlyMoneyBonus = bonusMoney,
+            iaStrategy = iaStrategy
         };
     }
 
