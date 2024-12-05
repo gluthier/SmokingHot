@@ -103,7 +103,6 @@ public class SkillTreeManager : MonoBehaviour
         Skill skill = node.GetComponent<Skill>();
         int index = GetCurrentActivePanel();
         SetSkillDesc(skill, index);
-
     }
 
     private Link getTheLink(GameObject node, List<Link> links)
@@ -212,5 +211,45 @@ public class SkillTreeManager : MonoBehaviour
         }
         
         skillTreePanel[index].gameObject.SetActive(true);
+    }
+
+    public void ClosePanel()
+    {
+        int index = GetCurrentActivePanel();
+        if (!lastActive.GetComponent<Skill>().isUnlocked)
+        {
+            lastActive.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        ResetSkillDesc(index);
+        lastActive = null;
+    }
+
+    private void ResetSkillDesc(int index)
+    {
+        switch (index)
+        {
+            case 0: // cig
+                cigSkillDesc.text = "";
+                cigSkillName.text = "";
+                cigSkillCost.text = "";
+                break;
+            case 1: // pub
+                pubSkillDesc.text = "";
+                pubSkillName.text = "";
+                pubSkillCost.text = "";
+                break;
+            case 2: // lobby
+                lobSkillDesc.text = "";
+                lobSkillName.text = "";
+                lobSkillCost.text = "";
+                break;
+            case 4: // rep
+                popSkillDesc.text = "";
+                popSkillName.text = "";
+                popSkillCost.text = "";
+                break;
+            default:
+                break;
+        }
     }
 }

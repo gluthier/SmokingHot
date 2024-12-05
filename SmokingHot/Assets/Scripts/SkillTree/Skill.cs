@@ -12,4 +12,11 @@ public class Skill : MonoBehaviour
     public bool isUnlocked;
     public List<string> effects;
     public bool tierUp;
+
+    public Skill(string skillName, string skillDesc, int skillCost)
+    {
+        this.skillName = skillName;
+        this.skillDescription = skillDesc;
+        this.cost = skillCost;
+    }
 }
