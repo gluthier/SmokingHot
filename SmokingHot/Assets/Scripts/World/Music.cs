@@ -45,6 +45,6 @@ public class Music : MonoBehaviour
         lastPlayedIndex = newIndex;
 
         audioSource.clip = audioClips[newIndex];
-        //audioSource.Play();
+        audioSource.Play();
     }
 }
