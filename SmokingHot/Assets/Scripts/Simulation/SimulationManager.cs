@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using Unity.VisualScripting;
@@ -164,7 +165,7 @@ public class SimulationManager : MonoBehaviour
             {
                 float moneyGained = HandleEndOfSimulatedYear();
                 gameManager.coinSpawner.spawnCoins(moneyGained);
-                gameManager.customerManager.HandleColors(playerMarketShare());
+                StartCoroutine(HandleMarketShareWithDelay(2.0f));
 
                 worldEvent = HandleWorldEvent();
 
@@ -180,6 +181,12 @@ public class SimulationManager : MonoBehaviour
             iaManager.ProcessEndOfYear(
                 RetrieveIAGameState(), iaCompany, worldEvent);
         }
+    }
+
+    private IEnumerator HandleMarketShareWithDelay(float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        gameManager.customerManager.HandleMarketShare(playerMarketShare());
     }
 
     private float playerMarketShare()

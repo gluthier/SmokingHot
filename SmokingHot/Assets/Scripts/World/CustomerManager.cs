@@ -6,17 +6,26 @@ public class CustomerManager : MonoBehaviour
     public List<Customer> customers;
     public Color playerColor;
     public Color concurrentColor;
+    public AudioClip winCustomerSound;
+    public AudioClip looseCustomerSound;
+    private AudioSource audioSource;
 
     private int previousMarketShare;
 
     void Start()
     {
+        // Ensure there is an AudioSource component attached
+        audioSource = GetComponent<AudioSource>();
 
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void InitialColors(float marketShare)
     {
-        int roundedMarketShare = Mathf.RoundToInt(marketShare * 10);
+        int roundedMarketShare = Mathf.RoundToInt(marketShare * 100);
 
         Debug.Log($"Initial market share: {roundedMarketShare}");
 
@@ -35,9 +44,9 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    public void HandleColors(float marketShare)
+    public void HandleMarketShare(float marketShare)
     {
-        int roundedMarketShare = Mathf.RoundToInt(marketShare * 10);
+        int roundedMarketShare = Mathf.RoundToInt(marketShare * 100);
         int marketShareDelta = roundedMarketShare - previousMarketShare;
 
         Debug.Log($"Market share: {marketShare}");
@@ -46,20 +55,36 @@ public class CustomerManager : MonoBehaviour
 
         if (marketShareDelta > 0)
         {
-            for (int i = previousMarketShare; i < roundedMarketShare && i < customers.Count; ++i)
-            {
-                customers[i].StartColorTransition(playerColor);
-            }
+            HandleCustomerWin(previousMarketShare, roundedMarketShare, marketShareDelta);
         }
         else if (marketShareDelta < 0)
         {
-            for (int i = previousMarketShare - 1; i >= roundedMarketShare && i >= 0; --i)
-            {
-                Debug.Log($"previousMarketShare: {previousMarketShare}");
-                customers[i].StartColorTransition(concurrentColor);
-            }
+            HandleCustomerLoss(previousMarketShare, roundedMarketShare, marketShareDelta);
         }
 
         previousMarketShare = roundedMarketShare;
+    }
+
+    private void HandleCustomerLoss(int previousMarketShare, int roundedMarketShare, int marketShareDelta)
+    {
+        audioSource.PlayOneShot(looseCustomerSound);
+
+        for (int i = previousMarketShare - 1; i >= roundedMarketShare && i >= 0; --i)
+        {
+            Debug.Log($"previousMarketShare: {previousMarketShare}");
+            customers[i].Jump();
+            customers[i].StartColorTransition(concurrentColor);
+        }
+    }
+
+    private void HandleCustomerWin(int previousMarketShare, int roundedMarketShare, int marketShareDelta)
+    {
+        audioSource.PlayOneShot(winCustomerSound);
+
+        for (int i = previousMarketShare; i < roundedMarketShare && i < customers.Count; ++i)
+        {
+            customers[i].Jump();
+            customers[i].StartColorTransition(playerColor);
+        }        
     }
 }

@@ -6,6 +6,8 @@ public class Customer : MonoBehaviour
     private Color targetColor;
     public GameObject headPart;
     public GameObject basePart;
+    public float jumpForce;
+    Rigidbody rb;
 
     private Renderer headRenderer;
     private Renderer baseRenderer;
@@ -13,6 +15,11 @@ public class Customer : MonoBehaviour
     private float transitionDuration = 2f;
     private float transitionProgress = 0f;
     private bool isTransitioning = false;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
@@ -50,5 +57,10 @@ public class Customer : MonoBehaviour
             transitionProgress = 0f;
             isTransitioning = true;
         }
+    }
+
+    public void Jump()
+    {
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 }

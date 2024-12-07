@@ -12,6 +12,6 @@
         "newConsumers": 5,
         "lostConsumers": 5,
         "deadConsumers": 0.3,
-        "bonusMoney": 5
+        "bonusMoney": 25
     }
 }

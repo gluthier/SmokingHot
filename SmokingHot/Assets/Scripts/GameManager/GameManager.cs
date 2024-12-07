@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public CameraManager cameraManager;
     public SkillTreeManager skillTreeManager;
     public WorldEventUI worldEventUI;
+    public AudioSource audioSource;
+    public AudioClip newEventSound;
 
     private SimulationManager simulationManager;
 
@@ -31,8 +33,8 @@ public class GameManager : MonoBehaviour
         public PopularityLevel popularity;
         public float numConsumers;
         public float manufacturingCosts; // cout prod cigarette
-        public float lobbyingCosts; // dépense en lobbying
-        public float adCampaignsCosts;  // dépense en campagne
+        public float lobbyingCosts; // dï¿½pense en lobbying
+        public float adCampaignsCosts;  // dï¿½pense en campagne
         public CigarettePackEntity cigarettePackProduced;
         public float cigarettePackPrice; // +
         public float deadConsumers; // -
@@ -45,6 +47,17 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ResetGameTitleMaterial();
+    }
+
+    private void Start()
+    {
+        // Ensure there is an AudioSource component attached
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public SimulationManager GetSimulationManager() { return simulationManager; }
@@ -125,6 +138,7 @@ public class GameManager : MonoBehaviour
     {
         return simulationManager.RetrievePlayerGameState().money;
     }
+
     public void PopulateWorldEventUI(WorldEvent worldEvent)
     {
         if (DEBUG_isHeadlessModeOnAcceptEvents)
@@ -153,6 +167,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowWorldEvent()
     {
+        audioSource.PlayOneShot(newEventSound);
         worldEventUI.gameObject.SetActive(true);
     }
 
