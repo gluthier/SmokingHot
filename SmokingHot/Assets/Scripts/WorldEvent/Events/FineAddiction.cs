@@ -14,16 +14,16 @@ public class FineAddiction : WorldEvent
     {
         title = "Amende";
 
-        description = "Nous avons été amendé à cause du niveau d'addiciton trop élevé de nos cigarettes. Nos analystes proposent de refuser en luttant juridiquement contre, risquant le quitte ou double.";
+        description = "Nous avons été amendé à cause du niveau d'addiciton trop élevé de nos cigarettes. Nos analystes proposent de se battre juridiquement, risquant le quitte ou double.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"{acceptChance}% de réduire l'image publique";
+            $"-{acceptMoney} argent\n" +
+            $"{acceptChance}% -1 popularité";
 
         refusePriceDescription =
-            $"Coûte {refuseMoney} M\n" +
-            $"{refuseChanceGood}% d'augmenter l'image publique\n" +
-            $"{refuseChanceBad}% de réduire fortement l'image publique";
+            $"-{refuseMoney} argent\n" +
+            $"{refuseChanceGood}% +1 popularité\n" +
+            $"{refuseChanceBad}% -2 popularité";
 
         acceptPositiveImpacts = new List<WorldEventImpact> { };
         acceptNegativeImpacts = new List<WorldEventImpact> {

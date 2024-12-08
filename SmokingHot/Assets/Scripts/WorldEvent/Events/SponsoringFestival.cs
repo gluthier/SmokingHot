@@ -15,11 +15,11 @@ public class SponsoringFestival : WorldEvent
         description = "Nos analystes proposent de parrainer un festival de concerts de musique pour permettre de vendre nos cigarettes aux festivaliers.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"Augmente de {acceptNewConsumers} M les nouveaux consommateurs";
+            $"-{acceptMoney} argent\n" +
+            $"+{acceptNewConsumers} nouveaux consommateurs";
 
         refusePriceDescription =
-            $"Réduit de {refuseNewConsumers} M les nouveaux consommateurs";
+            $"-{refuseNewConsumers} nouveaux consommateurs";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.NewConsumers

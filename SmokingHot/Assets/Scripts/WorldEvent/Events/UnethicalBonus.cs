@@ -10,15 +10,14 @@ public class UnethicalBonus : WorldEvent
     public UnethicalBonus()
     {
         title = "Soutien inattendu";
+
         description = "Une fondation pro-tabac nous offre un prix pour nos cigarettes responsables.";
 
-        description = "Une fondation pro-tabac nous offre un prix pour nos cigarettes responsables (ok: +2M, refus: 50% de monter l'image publique)";
-
         acceptPriceDescription =
-            $"Donation de {acceptMoney} M";
+            $"+{acceptMoney} argent";
 
         refusePriceDescription =
-            $"{refuseChance}% d'augmenter l'image publique";
+            $"{refuseChance}% +1 popularité";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Money

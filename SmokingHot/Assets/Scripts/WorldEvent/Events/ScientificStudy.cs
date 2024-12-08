@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScientificStudy : WorldEvent
 {
     private int acceptMoney = 10;
-    private int acceptChanceGood = 75;
-    private int acceptChanceBad = 75;
+    private int acceptChanceGood = 33;
+    private int acceptChanceBad = 33;
 
     public ScientificStudy()
     {
@@ -15,12 +15,12 @@ public class ScientificStudy : WorldEvent
         description = "Une nouvelle étude scientifique démontre les dégâts nocifs de la cigarette sur la santé. Nos analystes proposent de discrétiser l'étude et l'équipe de scientifiques derrière.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"{acceptChanceGood}% d'augmenter l'image publique\n" +
-            $"{acceptChanceBad}% de réduire fortement l'image publique";
+            $"-{acceptMoney} argent\n" +
+            $"{acceptChanceGood}% +1 popularité\n" +
+            $"{acceptChanceBad}% -2 popularité";
 
         refusePriceDescription =
-            $"Réduit l'image publique";
+            $"-1 popularité";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

@@ -16,7 +16,7 @@ public static class Env
     public static string IAButton = "Concurrent";
 
     public static int StartingYear = 2024;
-    public static float YearLoadingMaxWidth = 70;
+    public static float YearLoadingMaxWidth = 72;
 
     public static Color UI_IncreaseColor = new Color(29 / 255f, 163 / 255f, 56 / 255f);
     public static Color UI_DecreaseColor = new Color(224 / 255f, 47 / 255f, 47 / 255f);
@@ -88,7 +88,7 @@ public static class Env
         "Endgame/Rank4",
     };
 
-    public static string IA_Strategy_MaxMoney = "Le concurrent est entrain de maximiser son capital.";
+    public static string IA_Strategy_MaxMoney = "Le concurrent est entrain de maximiser ses gains directs.";
     public static string IA_Strategy_MaxCustommer = "Le concurrent est entrain de maximiser le nombre de ses consommateurs.";
     public static string IA_Strategy_MinCosts = "Le concurrent est entrain de minimiser ses coûts.";
 }

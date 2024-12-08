@@ -16,12 +16,12 @@ public class PopStarDied : WorldEvent
         description = "La plus grande pop-star internationale est décédée suite à des problèmes de santé lié à la consommation de cigarettes. La réaction du publique est devastatrice. Nos analystes proposent de faire une campagnes publicitaires montrant nos efforts pour réduire les dégâts du tabac sur la santé.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"{acceptChanceGood}% de réussite d'augmenter l'image publique\n" +
-            $"{acceptChanceBad}% de la réduire";
+            $"-{acceptMoney} argent\n" +
+            $"{acceptChanceGood}% +1 popularité\n" +
+            $"{acceptChanceBad}% -1 popularité";
 
         refusePriceDescription =
-            $"{refuseChance}% de réduire l'image publique";
+            $"{refuseChance}% -1 popularité";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

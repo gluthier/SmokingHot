@@ -14,11 +14,11 @@ public class SocialInvestment : WorldEvent
         description = "Nos analystes ont décidé qu'il faisait investir dans un événements caritatifs pour améliorer l'image publique en promouvant une image d'entreprise socialement responsable.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"Augmente l'image publique";
+            $"-{acceptMoney} argent\n" +
+            $"+1 popularité";
 
         refusePriceDescription =
-            $"{refuseChance}% de réduire l'image publique";
+            $"{refuseChance}% -1 popularité";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

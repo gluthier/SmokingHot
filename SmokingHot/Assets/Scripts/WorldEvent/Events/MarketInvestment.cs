@@ -17,13 +17,13 @@ public class MarketInvestment : WorldEvent
         description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"Augmente de {100 * acceptConsumersIncrease}% le nombre de consomateurs actuels\n" +
-            $"Augmente de {acceptNewConsumers} M les nouveaux consommateurs";
+            $"-{acceptMoney} argent\n" +
+            $"+{(100 * acceptConsumersIncrease) - 100}% consommateurs\n" +
+            $"+{acceptNewConsumers} nouveaux consommateurs";
 
         refusePriceDescription =
-            $"Réduit de {refuseBonusMoney} M les gains bonus annuels\n" +
-            $"Réduit de {refuseNewConsumers} M les nouveaux consommateurs";
+            $"-{refuseBonusMoney} gains annuels\n" +
+            $"-{refuseNewConsumers} nouveaux consommateurs";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Consumers,

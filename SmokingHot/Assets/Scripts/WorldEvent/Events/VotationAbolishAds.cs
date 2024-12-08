@@ -15,11 +15,11 @@ public class VotationAbolishAds : WorldEvent
         description = "Des votations sont en cours pour interdire les publicités sur le tabac. Nos analystes proposent du lutter en faisant du lobbying politique.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"{acceptChance}% de réussite de s'opposer au changement";
+            $"-{acceptMoney} argent\n" +
+            $"{acceptChance}% publicités autorisées";
 
         refusePriceDescription =
-            $"{refuseChance}% de chance que les publicités soient interdites";
+            $"{refuseChance}% publicités interdites";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.AdCampaignExistence

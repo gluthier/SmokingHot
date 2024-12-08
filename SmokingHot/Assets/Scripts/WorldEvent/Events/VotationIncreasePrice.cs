@@ -16,11 +16,11 @@ public class VotationIncreasePrice : WorldEvent
         description = "Des votations sont en cours pour augmenter le prix des packs de cigarette. Nos analystes proposent du lutter en faisant des campagnes publicitaires ciblées et du lobbying politique.";
 
         acceptPriceDescription =
-            $"Coûte {acceptMoney} M\n" +
-            $"{acceptChance}% de réussite de s'opposer au changement";
+            $"-{acceptMoney} argent\n" +
+            $"{acceptChance}% prix cigarettes inchangé";
 
         refusePriceDescription =
-            $"{refuseChance}% que le prix des packs de cigarettes soit augmenté de {100 * cigarettePackPriceIncrease}%";
+            $"{refuseChance}% prix cigarettes +{(100 * cigarettePackPriceIncrease) - 100}%";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.CigarettePackPrice
