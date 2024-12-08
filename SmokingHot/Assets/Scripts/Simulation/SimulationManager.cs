@@ -69,7 +69,12 @@ public class SimulationManager : MonoBehaviour
         ResetSimulation();
     }
 
-    public void ContinueSimulation()
+    public void PauseSimulation()
+    {
+        isSimulationOn = false;
+    }
+
+    public void PlaySimulation()
     {
         isSimulationOn = true;
     }
@@ -95,7 +100,7 @@ public class SimulationManager : MonoBehaviour
 
     private void Awake()
     {
-        isSimulationOn = false;
+        PauseSimulation();
     }
 
     private void Update()
@@ -207,7 +212,7 @@ public class SimulationManager : MonoBehaviour
         if (yearPassed % Env.WorldEventFrequencyYear != 0)
             return new NoEvent();
 
-        isSimulationOn = false;
+        PauseSimulation();
 
         WorldEvent worldEvent =
             worldEventManager.CreateWorldEvent(RetrievePlayerGameState());
@@ -220,7 +225,7 @@ public class SimulationManager : MonoBehaviour
 
     private void HandleEndOfGame()
     {
-        isSimulationOn = false;
+        PauseSimulation();
     }
 
     private void ResetSimulation()

@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
     private void HandleEndEvent()
     {
         HideWorldEventUI();
-        simulationManager.ContinueSimulation();
+        simulationManager.PlaySimulation();
 
         PopulateMainUI(true);
     }
@@ -237,7 +237,8 @@ public class GameManager : MonoBehaviour
     {
         if (gameObject.tag == "Building" && skillTreeManager.GetCurrentActivePanel() == -1)
         {
-           skillTreeManager.ShowPanel(gameObject);            
+            skillTreeManager.ShowPanel(gameObject);
+            simulationManager.PauseSimulation();
         }
     }
 

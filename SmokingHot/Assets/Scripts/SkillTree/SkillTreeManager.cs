@@ -222,6 +222,7 @@ public class SkillTreeManager : MonoBehaviour
         }
         ResetSkillDesc(index);
         lastActive = null;
+        simulationManager.PlaySimulation();
     }
 
     private void ResetSkillDesc(int index)
