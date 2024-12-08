@@ -188,7 +188,14 @@ public class GameManager : MonoBehaviour
             FindFirstObjectByType<StartButtonClick>().gameObject.SetActive(false);
             enterGame("Big Tobacco");
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (simulationManager == null)
+                return;
+
+            RestartSimulation();
+        }
+        else if (Input.GetKeyDown(KeyCode.Y))
         {
             if (simulationManager == null || !simulationManager.isSimulationOn)
                 return;
@@ -202,7 +209,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(
                 DEBUG_simulateGameGetReport());
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.X))
         {
             if (simulationManager == null || !simulationManager.isSimulationOn)
                 return;
@@ -277,6 +284,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void RestartSimulation()
+    {
+        coinSpawner.ClearAllCoins();
+        simulationManager.StartSimulation();
+    }
 
     private void OnApplicationQuit()
     {

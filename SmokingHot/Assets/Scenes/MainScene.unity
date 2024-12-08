@@ -8990,6 +8990,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 144005979}
     - target: {fileID: 8180781726575673180, guid: 4087b1021e141844b88c95868b6bd43e, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1374547469}
+    - target: {fileID: 8180781726575673180, guid: 4087b1021e141844b88c95868b6bd43e, type: 3}
       propertyPath: coinSpawner
       value: 
       objectReference: {fileID: 855859109}
@@ -9001,6 +9005,10 @@ PrefabInstance:
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 1839733603}
+    - target: {fileID: 8180781726575673180, guid: 4087b1021e141844b88c95868b6bd43e, type: 3}
+      propertyPath: newEventSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 22b43ae06083649b8898bc61bdfa3bc6, type: 3}
     - target: {fileID: 8180781726575673180, guid: 4087b1021e141844b88c95868b6bd43e, type: 3}
       propertyPath: customerManager
       value: 
