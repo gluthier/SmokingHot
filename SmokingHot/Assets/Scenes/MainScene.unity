@@ -5522,6 +5522,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8d104974012d86a48bac5243b7004b6d, type: 3}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1941617255812405634, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6776,6 +6792,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e71f9bd3653f70c4298e32e52ed87eaf, type: 3}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1941617255812405634, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11010,6 +11042,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9f4b6a991c529a747841e5e21d047e55, type: 3}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1941617255812405634, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -17692,6 +17740,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 50be4121be83b7a458b732a0f23573b6, type: 3}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6652428780844676772}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731934244799036240, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1941617255812405634, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -212,13 +212,18 @@ public class SkillTreeManager : MonoBehaviour
     public void ClosePanel()
     {
         int index = GetCurrentActivePanel();
-        if (!lastActive.GetComponent<Skill>().isUnlocked)
-        {
-            lastActive.transform.GetChild(0).gameObject.SetActive(false);
-        }
         ResetSkillDesc(index);
+        CloseAllPanels();
         lastActive = null;
         gameManager.PlaySimulation();
+    }
+
+    private void CloseAllPanels()
+    {
+        foreach (Transform skillTree in transform)
+        {
+            skillTree.gameObject.SetActive(false);
+        }
     }
 
     private void ResetSkillDesc(int index)
