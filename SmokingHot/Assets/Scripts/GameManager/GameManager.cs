@@ -294,9 +294,9 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void HandleSkillEffect(List<string> effects, int index)
+    public void HandleSkillEffect(List<string> effects, int index, Building.TYPE buildingType)
     {
-        simulationManager.ApplyEffect(effects, index);
+        simulationManager.ApplyEffect(effects, index, buildingType);
     }
 
     public void PlaySimulation()

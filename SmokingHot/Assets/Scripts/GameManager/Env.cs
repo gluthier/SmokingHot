@@ -83,7 +83,11 @@ public static class Env
         "Endgame/Rank4",
     };
 
-    public static string IA_Strategy_MaxMoney = "Le concurrent est entrain de maximiser ses gains directs.";
-    public static string IA_Strategy_MaxCustommer = "Le concurrent est entrain de maximiser le nombre de ses consommateurs.";
-    public static string IA_Strategy_MinCosts = "Le concurrent est entrain de minimiser ses coûts.";
+    public static string IA_Strategy_MaxMoney = "maximiser ses gains directs";
+    public static string IA_Strategy_MaxCustommer = "maximiser le nombre de ses consommateurs";
+    public static string IA_Strategy_MinCosts = "minimiser ses coûts";
+
+    public static string IA_Strategy_InvestInManufacturing = " et d'investir dans la production";
+    public static string IA_Strategy_InvestInAds = " et d'investir dans les publicités";
+    public static string IA_Strategy_InvestInPopularity = " et d'investir dans la popularité";
 }

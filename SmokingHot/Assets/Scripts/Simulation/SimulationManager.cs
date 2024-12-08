@@ -34,6 +34,8 @@ public class SimulationManager : MonoBehaviour
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
+    private List<Building.TYPE> firstPlayerInvestment;
+
     public void Init(GameManager gameManager, string companyName)
     {
         this.gameManager = gameManager;
@@ -51,6 +53,8 @@ public class SimulationManager : MonoBehaviour
         gameManager.customerManager.InitialColors(initialMarketShare);
 
         gameManager.PopulateMainUI(false);
+
+        firstPlayerInvestment = new List<Building.TYPE>();
     }
 
     public CompanyEntity GetPlayerCompany()
@@ -118,7 +122,7 @@ public class SimulationManager : MonoBehaviour
     private void SetupIAManager()
     {
         iaManager = gameManager.AddComponent<IA_Manager>();
-        iaManager.Init(iaCompany, playerCompany, gameManager);
+        iaManager.Init();
     }
 
     private void SetPlayerCompanyName(string companyName)
@@ -187,7 +191,7 @@ public class SimulationManager : MonoBehaviour
             }
 
             iaManager.ProcessEndOfYear(
-                RetrieveIAGameState(), iaCompany, worldEvent);
+                RetrieveIAGameState(), iaCompany, worldEvent, firstPlayerInvestment);
         }
     }
 
@@ -240,10 +244,17 @@ public class SimulationManager : MonoBehaviour
             GameDataLoader.Load());
 
         SetPlayerCompanyName(playerCompanyName);
+
+        firstPlayerInvestment = new List<Building.TYPE>();
     }
 
-    public void ApplyEffect(List<string> effects, int index)
+    public void ApplyEffect(List<string> effects, int index, Building.TYPE buildingType)
     {
+        if (firstPlayerInvestment.Count == 0)
+        {
+            firstPlayerInvestment.Add(buildingType);
+        }
+
         CompanyEntity company = GetPlayerCompany();
 
         foreach (string effect in effects)

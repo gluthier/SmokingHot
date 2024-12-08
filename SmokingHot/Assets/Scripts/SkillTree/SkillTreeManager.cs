@@ -170,7 +170,8 @@ public class SkillTreeManager : MonoBehaviour
     {
         List<String> effect = skill.effects;
         effect.Add("Down money " + skill.cost);
-        gameManager.HandleSkillEffect(effect, GetCurrentActivePanel());
+        int buildingIndex = GetCurrentActivePanel();
+        gameManager.HandleSkillEffect(effect, buildingIndex, GetBuildingTypeFromIndex(buildingIndex));
     }
 
     public int GetCurrentActivePanel()
@@ -207,6 +208,40 @@ public class SkillTreeManager : MonoBehaviour
         }
         
         skillTreePanel[index].gameObject.SetActive(true);
+    }
+
+    public Building.TYPE GetBuildingTypeFromIndex(int index)
+    {
+        switch (index)
+        {
+            default:
+            case 0:
+                return Building.TYPE.CIGARETTE;
+            case 1:
+                return Building.TYPE.PUBLICITY;
+            case 3:
+                return Building.TYPE.LOBBYING;
+            case 4:
+                return Building.TYPE.REPUTATION;
+        }
+    }
+
+    public void HandleIASkillTree(Building.TYPE skillTreeToInvest)
+    {
+        // TODO: how to handle the IA's virtual skill tree?
+        switch (skillTreeToInvest)
+        {
+            case Building.TYPE.CIGARETTE:
+                break;
+            case Building.TYPE.PUBLICITY:
+                break;
+            case Building.TYPE.REPUTATION:
+                break;
+            case Building.TYPE.LOBBYING:
+            default:
+                break;
+
+        }
     }
 
     public void ClosePanel()

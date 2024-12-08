@@ -1,163 +1,183 @@
-
 using System.Collections.Generic;
 using System;
 using UnityEngine;
 using static GameManager;
-using System.Linq;
 using static WorldEvent;
+using System.Linq;
 
-// Source: https://stackoverflow.com/a/5924053
 public class IA_Manager : MonoBehaviour
 {
-    public enum ProcessState
-    {
-        MaxMoney,
-        MaxConsumers,
-        MinCosts
-    }
+    private EventStateMachine eventStateMachine;
+    private SkillStateMachine skillStateMachine;
 
-    public enum Command
-    {
-        GoMaxMoney,
-        GoMaxConsumers,
-        GoMinCosts
-    }
-
-    public class StateMachine
-    {
-        class StateTransition
-        {
-            readonly ProcessState CurrentState;
-            readonly Command Command;
-
-            public StateTransition(ProcessState currentState, Command command)
-            {
-                CurrentState = currentState;
-                Command = command;
-            }
-
-            public override int GetHashCode()
-            {
-                return 17 + 31 * CurrentState.GetHashCode() + 31 * Command.GetHashCode();
-            }
-
-            public override bool Equals(object obj)
-            {
-                StateTransition other = obj as StateTransition;
-                return other != null && this.CurrentState == other.CurrentState && this.Command == other.Command;
-            }
-        }
-
-        Dictionary<StateTransition, ProcessState> transitions;
-        public ProcessState CurrentState { get; private set; }
-
-        public StateMachine()
-        {
-            CurrentState = ProcessState.MaxMoney;
-            transitions = new Dictionary<StateTransition, ProcessState>
-            {
-                { new StateTransition(ProcessState.MaxMoney, Command.GoMaxConsumers), ProcessState.MaxConsumers },
-                { new StateTransition(ProcessState.MaxMoney, Command.GoMinCosts), ProcessState.MinCosts },
-                { new StateTransition(ProcessState.MaxConsumers, Command.GoMaxMoney), ProcessState.MaxMoney },
-                { new StateTransition(ProcessState.MaxConsumers, Command.GoMinCosts), ProcessState.MinCosts },
-                { new StateTransition(ProcessState.MinCosts, Command.GoMaxConsumers), ProcessState.MaxConsumers },
-                { new StateTransition(ProcessState.MinCosts, Command.GoMaxMoney), ProcessState.MaxMoney }
-            };
-        }
-
-        public ProcessState GetNext(Command command)
-        {
-            StateTransition transition = new StateTransition(CurrentState, command);
-            ProcessState nextState;
-            if (!transitions.TryGetValue(transition, out nextState))
-                throw new Exception("Invalid transition: " + CurrentState + " -> " + command);
-            return nextState;
-        }
-
-        public ProcessState MoveNext(Command command)
-        {
-            CurrentState = GetNext(command);
-            return CurrentState;
-        }
-    }
-
-    private StateMachine stateMachine;
     private List<GameState> iaStateReports;
-    private CompanyEntity iaCompany;
-    private CompanyEntity playerCompany;
-    private GameManager gameManager;
 
-
-    public void Init(CompanyEntity iaCompany, CompanyEntity playerCompany, GameManager gameManager)
+    public void Init()
     {
-        stateMachine = new StateMachine();
+        eventStateMachine = new EventStateMachine();
+        skillStateMachine = new SkillStateMachine();
+
         iaStateReports = new List<GameState>();
-        this.iaCompany = iaCompany;
-        this.playerCompany = playerCompany;
-        this.gameManager = gameManager;
     }
 
-    public void ProcessEndOfYear(GameState iaStatReport, CompanyEntity iaCompany, WorldEvent worldEvent)
+    public void ProcessEndOfYear(GameState iaStatReport, CompanyEntity iaCompany, WorldEvent worldEvent, List<Building.TYPE> firstPlayerInvestment)
     {
         iaStateReports.Add(iaStatReport);
-        HandleChangeOfState(worldEvent);
+
+        HandleChangeOfEventState();
+        HandleChangeOfSkillState(firstPlayerInvestment);
 
         HandleWorldEvent(iaCompany, worldEvent);
     }
 
     public string GetIAStrategy()
     {
-        string strat = "";
+        string eventStrat = "";
+        string skillStrat = "";
 
-        switch (stateMachine.CurrentState)
+        switch (eventStateMachine.CurrentState)
         {
-            case ProcessState.MaxConsumers:
-                strat = Env.IA_Strategy_MaxCustommer;
+            case EventProcessState.MaxMoney:
+                eventStrat = Env.IA_Strategy_MaxMoney;
                 break;
-            case ProcessState.MinCosts:
-                strat = Env.IA_Strategy_MinCosts;
+            case EventProcessState.MaxConsumers:
+                eventStrat = Env.IA_Strategy_MaxCustommer;
                 break;
-            case ProcessState.MaxMoney:
+            case EventProcessState.MinCosts:
             default:
-                strat = Env.IA_Strategy_MaxMoney;
+                eventStrat = Env.IA_Strategy_MinCosts;
                 break;
         }
-        return strat;
+
+        switch (skillStateMachine.CurrentState)
+        {
+            case SkillProcessState.InvestInManufacturing:
+                skillStrat = Env.IA_Strategy_InvestInManufacturing;
+                break;
+            case SkillProcessState.InvestInAds:
+                skillStrat = Env.IA_Strategy_InvestInAds;
+                break;
+            case SkillProcessState.InvestInPopularity:
+                skillStrat = Env.IA_Strategy_InvestInPopularity;
+                break;
+            case SkillProcessState.NoSpecialisation:
+            default:
+                break;
+        }
+
+        return $"Le concurrent est entrain de {eventStrat}{skillStrat}.";
     }
 
-    private void HandleChangeOfState(WorldEvent worldEvent)
+    private void HandleChangeOfEventState()
     {
-        switch (stateMachine.CurrentState)
+        switch (eventStateMachine.CurrentState)
         {
-            case ProcessState.MaxConsumers:
-                ProcessMaxConsumersState(worldEvent);
+            case EventProcessState.MaxMoney:
+                ProcessMaxMoneyState();
                 break;
-            case ProcessState.MinCosts:
-                ProcessMinCostsState(worldEvent);
+            case EventProcessState.MaxConsumers:
+                ProcessMaxConsumersState();
                 break;
-            case ProcessState.MaxMoney:
+            case EventProcessState.MinCosts:
             default:
-                ProcessMaxMoneyState(worldEvent);
+                ProcessMinCostsState();
                 break;
+        }
+    }
+
+    private void HandleChangeOfSkillState(List<Building.TYPE> firstPlayerInvestment)
+    {
+        if (firstPlayerInvestment.Count == 0)
+            return;
+
+        switch (skillStateMachine.CurrentState)
+        {
+            case SkillProcessState.NoSpecialisation:
+                ChooseSkillStrategy(firstPlayerInvestment.First());
+                HandleSkillTreeDeveloppment();
+                break;
+            // IA stays in investement strategy once it has specialised
+            case SkillProcessState.InvestInManufacturing:
+            case SkillProcessState.InvestInAds:
+            case SkillProcessState.InvestInPopularity:
+            default:
+                break;
+        }
+    }
+
+    private void ChooseSkillStrategy(Building.TYPE buildingTypeFirstInvestmentByPlayer)
+    {
+        // it will choose at random one stategy that is not the first one choosen by the player
+        switch (buildingTypeFirstInvestmentByPlayer)
+        {
+            case Building.TYPE.CIGARETTE:
+                ExecuteAtRandomSkillStrategyInvestment(
+                    SkillCommand.SpecialiseInAds, SkillCommand.SpecialiseInPopularity);
+                break;
+            case Building.TYPE.PUBLICITY:
+                ExecuteAtRandomSkillStrategyInvestment(
+                    SkillCommand.SpecialiseInManufacturing, SkillCommand.SpecialiseInPopularity);
+                break;
+            case Building.TYPE.REPUTATION:
+                ExecuteAtRandomSkillStrategyInvestment(
+                    SkillCommand.SpecialiseInAds, SkillCommand.SpecialiseInManufacturing);
+                break;
+            case Building.TYPE.LOBBYING:
+            default:
+                break;
+        }
+    }
+
+    private void ExecuteAtRandomSkillStrategyInvestment(SkillCommand optionOne, SkillCommand optionTwo)
+    {
+        System.Random random = new System.Random();
+
+        if (random.Next(2) < 1)
+        {
+            skillStateMachine.MoveNext(optionOne);
+        }
+        else
+        {
+            skillStateMachine.MoveNext(optionTwo);
         }
     }
 
     private void HandleWorldEvent(CompanyEntity iaCompany, WorldEvent worldEvent)
     {
-        switch (stateMachine.CurrentState)
+        switch (eventStateMachine.CurrentState)
         {
-            case ProcessState.MaxConsumers:
+            case EventProcessState.MaxConsumers:
                 MaximizeConsumersStrategy(iaCompany, worldEvent);
                 break;
-            case ProcessState.MinCosts:
-                MinimizeCostsStrategy(iaCompany, worldEvent);
-                break;
-            case ProcessState.MaxMoney:
-            default:
+            case EventProcessState.MaxMoney:
                 MaximizeMoneyStrategy(iaCompany, worldEvent);
                 break;
+            case EventProcessState.MinCosts:
+            default:
+                MinimizeCostsStrategy(iaCompany, worldEvent);
+                break;
         }
+    }
 
+    private void HandleSkillTreeDeveloppment()
+    {
+        SkillTreeManager skillTreeManager = FindFirstObjectByType<SkillTreeManager>();
+
+        switch (skillStateMachine.CurrentState)
+        {
+            case SkillProcessState.InvestInManufacturing:
+                skillTreeManager.HandleIASkillTree(Building.TYPE.CIGARETTE);
+                break;
+            case SkillProcessState.InvestInAds:
+                skillTreeManager.HandleIASkillTree(Building.TYPE.PUBLICITY);
+                break;
+            case SkillProcessState.InvestInPopularity:
+                skillTreeManager.HandleIASkillTree(Building.TYPE.REPUTATION);
+                break;
+            case SkillProcessState.NoSpecialisation:
+            default:
+                break;
+        }
     }
 
     private void MaximizeConsumersStrategy(CompanyEntity iaCompany, WorldEvent worldEvent)
@@ -192,7 +212,7 @@ public class IA_Manager : MonoBehaviour
         worldEvent.HandleEventBasedOnInterests(iaCompany, interestedEvents);
     }
 
-    private void ProcessMaxConsumersState(WorldEvent worldEvent)
+    private void ProcessMaxConsumersState()
     {
         float diffConsumers = GetDiffConsumers();
         float diffMoney = GetDiffMoney();
@@ -203,16 +223,16 @@ public class IA_Manager : MonoBehaviour
             // Maximizing consumers is working, we switch startegy
             if (diffMoney < 0)
             {
-                stateMachine.MoveNext(Command.GoMaxMoney);
+                eventStateMachine.MoveNext(EventCommand.GoMaxMoney);
             }
             else if (diffCosts < 0)
             {
-                stateMachine.MoveNext(Command.GoMinCosts);
+                eventStateMachine.MoveNext(EventCommand.GoMinCosts);
             }
         }
     }
 
-    private void ProcessMaxMoneyState(WorldEvent worldEvent)
+    private void ProcessMaxMoneyState()
     {
         float diffMoney = GetDiffMoney();
         float diffConsumers = GetDiffConsumers();
@@ -223,16 +243,16 @@ public class IA_Manager : MonoBehaviour
             // Maximizing money is working, we switch startegy
             if (diffConsumers < 0)
             {
-                stateMachine.MoveNext(Command.GoMaxConsumers);
+                eventStateMachine.MoveNext(EventCommand.GoMaxConsumers);
             }
             else if (diffCosts < 0)
             {
-                stateMachine.MoveNext(Command.GoMinCosts);
+                eventStateMachine.MoveNext(EventCommand.GoMinCosts);
             }
         }
     }
 
-    private void ProcessMinCostsState(WorldEvent worldEvent)
+    private void ProcessMinCostsState()
     {
         float diffCosts = GetDiffCosts();
         float diffMoney = GetDiffMoney();
@@ -243,11 +263,11 @@ public class IA_Manager : MonoBehaviour
             // Minimizing costs is working, we switch startegy
             if (diffMoney < 0)
             {
-                stateMachine.MoveNext(Command.GoMaxMoney);
+                eventStateMachine.MoveNext(EventCommand.GoMaxMoney);
             }
             else if (diffConsumers < 0)
             {
-                stateMachine.MoveNext(Command.GoMaxConsumers);
+                eventStateMachine.MoveNext(EventCommand.GoMaxConsumers);
             }
         }
     }
