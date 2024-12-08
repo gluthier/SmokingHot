@@ -30,8 +30,9 @@ public class GameManager : MonoBehaviour
         public int year;
         public string companyName;
         public float money;
-        public PopularityLevel popularity;
         public float numConsumers;
+        public float deads;
+        public PopularityLevel popularity;
         public float manufacturingCosts; // cout prod cigarette
         public float lobbyingCosts; // d�pense en lobbying
         public float adCampaignsCosts;  // d�pense en campagne
@@ -231,6 +232,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateYearLoadingUI(float percent)
+    {
+        percent = Mathf.Clamp01(percent);
+        gameUI.UpdateYearLoaderWidth(percent);
     }
 
     public void CurrentClickedGameObject(GameObject gameObject)

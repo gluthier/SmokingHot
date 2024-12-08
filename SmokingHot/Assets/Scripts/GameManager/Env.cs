@@ -15,8 +15,8 @@ public static class Env
     public static string PlayerButton = "Joueur";
     public static string IAButton = "Concurrent";
 
-    public static string MillionUnit = "M";
-    public static string PercentUnit = "%";
+    public static int StartingYear = 2024;
+    public static float YearLoadingMaxWidth = 70;
 
     public static Color UI_IncreaseColor = new Color(29 / 255f, 163 / 255f, 56 / 255f);
     public static Color UI_DecreaseColor = new Color(224 / 255f, 47 / 255f, 47 / 255f);
@@ -46,15 +46,19 @@ public static class Env
         }
     }
 
-    public static string UI_yearGO = "SimulationData/Year/Value";
     public static string UI_companyGO = "Background/CompanyName";
+
+    public static string UI_yearGO = "Background/Report/Year";
+    public static string UI_yearLoaderGO = "Background/Report/Year/Loader";
 
     public static string UI_moneyGO = "GameData/money/Value";
     public static string UI_moneyDiffGO = "GameData/money/Diff";
-    public static string UI_popularityGO = "GameData/popularity/Value";
-    public static string UI_popularityDiffGO = "GameData/popularity/Diff";
     public static string UI_consumersGO = "GameData/consumers/Value";
     public static string UI_consumersDiffGO = "GameData/consumers/Diff";
+    public static string UI_deadsGO = "GameData/deads/Value";
+    public static string UI_deadsDiffGO = "GameData/deads/Diff";
+    public static string UI_popularityGO = "GameData/popularity/Value";
+    public static string UI_popularityDiffGO = "GameData/popularity/Diff";
 
     public static string UI_manufacturingGO = "GameData/manufacturing/Value";
     public static string UI_manufacturingDiffGO = "GameData/manufacturing/Diff";

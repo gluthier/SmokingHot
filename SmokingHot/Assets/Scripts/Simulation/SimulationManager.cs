@@ -23,6 +23,7 @@ public class SimulationManager : MonoBehaviour
 
     private float totalYearSimulated;
     public float gameMinutesLength;
+    float secondsForAYearSimulated;
 
     private CompanyEntity playerCompany;
     private string playerCompanyName = "";
@@ -130,6 +131,9 @@ public class SimulationManager : MonoBehaviour
     {
         totalYearSimulated = gameData.totalYearSimulated;
         gameMinutesLength = gameData.gameMinutesLength;
+        
+        float yearSimulatedPerRealMinute = totalYearSimulated / gameMinutesLength;
+        secondsForAYearSimulated = 60f / yearSimulatedPerRealMinute;
 
         playerCompany = new CompanyEntity(gameData.companyTemplate, true);
         iaCompany = new CompanyEntity(gameData.companyTemplate, false);
@@ -157,8 +161,7 @@ public class SimulationManager : MonoBehaviour
 
         timePassed += Time.deltaTime;
 
-        float yearSimulatedPerRealMinute = totalYearSimulated / gameMinutesLength;
-        float secondsForAYearSimulated = 60f / yearSimulatedPerRealMinute;
+        gameManager.UpdateYearLoadingUI(timePassed / secondsForAYearSimulated);
 
         if (timePassed >= secondsForAYearSimulated)
         {
