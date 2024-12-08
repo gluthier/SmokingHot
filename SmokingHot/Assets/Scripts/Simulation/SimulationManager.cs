@@ -135,8 +135,8 @@ public class SimulationManager : MonoBehaviour
         float yearSimulatedPerRealMinute = totalYearSimulated / gameMinutesLength;
         secondsForAYearSimulated = 60f / yearSimulatedPerRealMinute;
 
-        playerCompany = new CompanyEntity(gameData.companyTemplate, true);
-        iaCompany = new CompanyEntity(gameData.companyTemplate, false);
+        playerCompany = new CompanyEntity(gameData.playerCompany, true);
+        iaCompany = new CompanyEntity(gameData.iaCompany, false);
     }
 
     public GameManager.GameState RetrievePlayerGameState()

@@ -99,7 +99,9 @@ public class GameUI : MonoBehaviour
     {
         isPlayerCompanyShown = !isPlayerCompanyShown;
 
-        SetValuesFromGameState(GetGameStateToShow(), GetPrevGameStateToShow(), true);
+        bool showChangeExceptFirstYear = prevPlayerGameState.year != 0;
+
+        SetValuesFromGameState(GetGameStateToShow(), GetPrevGameStateToShow(), showChangeExceptFirstYear);
         SetBackgroundColors();
         ShowIAStrategy();
         SetButtonText();
@@ -131,9 +133,6 @@ public class GameUI : MonoBehaviour
 
         switchViewButtonBackground.color =
             isPlayerCompanyShown ? Env.iaSwitchViewButtonBackgroundColor : Env.playerSwitchViewButtonBackgroundColor;
-
-        switchViewButtonText.color =
-            isPlayerCompanyShown ? Env.iaSwitchViewButtonTextColor : Env.playerSwitchViewButtonTextColor;
     }
 
     private void ShowIAStrategy()
@@ -206,7 +205,8 @@ public class GameUI : MonoBehaviour
         cigaretteToxicityLevel.text = currentData.GetToxicityDescription();
         cigaretteAddictionLevel.text = currentData.GetAddictionDescription();
 
-        if (showUpdate)
+        if (showUpdate &&
+            prevData != null)
         {
             int diffToxicity = (int)currentData.toxicity - (int)prevData.toxicity;
             SetDiffTextField(diffToxicity, cigaretteToxicityLevelDiff);

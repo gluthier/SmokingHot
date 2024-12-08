@@ -9,12 +9,10 @@ public class SocialInvestment : WorldEvent
 
     public SocialInvestment()
     {
-        title = "Investissement dans le social";
-
-        description = "Nos analystes ont décidé qu'il faisait investir dans un événements caritatifs pour améliorer l'image publique en promouvant une image d'entreprise socialement responsable.";
+        description = "Nos analystes ont décidé qu'il faisait investir dans un événement caritatif pour améliorer l'image publique en promouvant une image d'entreprise socialement responsable.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"+1 popularité";
 
         refusePriceDescription =

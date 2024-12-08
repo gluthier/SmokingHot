@@ -11,12 +11,10 @@ public class PopStarDied : WorldEvent
 
     public PopStarDied()
     {
-        title = "Reine de la pop décédée";
-
-        description = "La plus grande pop-star internationale est décédée suite à des problèmes de santé lié à la consommation de cigarettes. La réaction du publique est devastatrice. Nos analystes proposent de faire une campagnes publicitaires montrant nos efforts pour réduire les dégâts du tabac sur la santé.";
+        description = "La plus grande popstar est décédée à cause d'un cancer du poumon. La réaction du publique est dévastatrice. Nos analystes proposent de faire une campagne publicitaire pour mettre en avant notre attention concernant la santé publique.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"{acceptChanceGood}% +1 popularité\n" +
             $"{acceptChanceBad}% -1 popularité";
 

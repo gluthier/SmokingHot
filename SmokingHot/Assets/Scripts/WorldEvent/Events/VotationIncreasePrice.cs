@@ -11,12 +11,10 @@ public class VotationIncreasePrice : WorldEvent
 
     public VotationIncreasePrice()
     {
-        title = "Augmentation des prix des cigarettes";
-
         description = "Des votations sont en cours pour augmenter le prix des packs de cigarette. Nos analystes proposent du lutter en faisant des campagnes publicitaires ciblées et du lobbying politique.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"{acceptChance}% prix cigarettes inchangé";
 
         refusePriceDescription =

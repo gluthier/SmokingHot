@@ -9,12 +9,10 @@ public class UnethicalBonus : WorldEvent
 
     public UnethicalBonus()
     {
-        title = "Soutien inattendu";
-
         description = "Une fondation pro-tabac nous offre un prix pour nos cigarettes responsables.";
 
         acceptPriceDescription =
-            $"+{acceptMoney} argent";
+            $"+{acceptMoney} francs";
 
         refusePriceDescription =
             $"{refuseChance}% +1 popularité";

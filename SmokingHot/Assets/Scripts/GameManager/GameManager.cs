@@ -185,8 +185,8 @@ public class GameManager : MonoBehaviour
             if (simulationManager != null && simulationManager.isSimulationOn)
                 return;
 
-            FindFirstObjectByType<StartButtonClick>().gameObject.SetActive(false);
-            enterGame("Big Tobacco");
+            FindFirstObjectByType<MainMenuForm>().gameObject.SetActive(false);
+            enterGame("Hot Smokes");
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
             if (simulationManager == null || !simulationManager.isSimulationOn)
                 return;
 
-            enterGame("Big Tobacco");
+            enterGame("Hot Smokes");
 
             gameStateReports = new List<GameState>(50);
             simulationManager.gameMinutesLength = 1 / 200f;
@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
             if (simulationManager == null || !simulationManager.isSimulationOn)
                 return;
 
-            enterGame("Big Tobacco");
+            enterGame("Hot Smokes");
 
             gameStateReports = new List<GameState>(50);
             simulationManager.gameMinutesLength = 1 / 200f;
@@ -224,6 +224,16 @@ public class GameManager : MonoBehaviour
                 DEBUG_simulateGameGetReport());
         }
         #endregion
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            MainMenuForm mainMenuForm = FindFirstObjectByType<MainMenuForm>();
+
+            if (mainMenuForm.isActiveAndEnabled)
+            {
+                mainMenuForm.TaskOnClick();
+            }
+        }
 
         //Check for mouse click 
         if (Input.GetMouseButtonDown(0))
@@ -283,6 +293,16 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Event mode: {eventMode} -- CSV file report written to \"{filePath}\"");
     }
     #endregion
+
+    public void HandleSkillEffect(List<string> effects, int index)
+    {
+        simulationManager.ApplyEffect(effects, index);
+    }
+
+    public void PlaySimulation()
+    {
+        simulationManager.PlaySimulation();
+    }
 
     private void RestartSimulation()
     {

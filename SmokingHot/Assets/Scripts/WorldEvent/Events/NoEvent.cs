@@ -6,7 +6,6 @@ public class NoEvent : WorldEvent
 {
     public NoEvent()
     {
-        title = "Rien de spécial";
         description = "Il ne se passe rien.";
     }
 

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Entreprise...
+  m_text: Entrez un nom...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75998100b3b7142458fd8098082062ce, type: 2}
   m_sharedMaterial: {fileID: -7039432028948344650, guid: 75998100b3b7142458fd8098082062ce, type: 2}
@@ -341,9 +341,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Diriger un empire du tabac n'est pas mince affaire. Mais tant que les
-    gains sont maximis\xE9s, les actionnaires sont satisfaits. \n\nVous avez 50 ans
-    pour devenir le num\xE9ro un."
+  m_text: "Diriger un empire du tabac n'est pas mince affaire. Mais tant que le capital
+    est maximis\xE9, les actionnaires sont satisfaits.\n\nVous avez 50 ans pour devenir
+    le num\xE9ro un."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75998100b3b7142458fd8098082062ce, type: 2}
   m_sharedMaterial: {fileID: -7039432028948344650, guid: 75998100b3b7142458fd8098082062ce, type: 2}
@@ -584,7 +584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -24.9}
+  m_AnchoredPosition: {x: 0, y: -25.3}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6882883799658857904
@@ -798,7 +798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 29.6}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 240, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1098512163506703054
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.011764706, g: 0, b: 0.14117648, a: 0.9411765}
+  m_Color: {r: 0.011764706, g: 0, b: 0.14117648, a: 0.9607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1220,8 +1220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 17.6}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 19.7}
+  m_SizeDelta: {x: 240, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4602526549709111443
 CanvasRenderer:

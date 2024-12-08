@@ -1,17 +1,30 @@
 {
     "totalYearSimulated": 50,
     "gameMinutesLength": 10,
-    "companyTemplate" : {
-        "companyName": "Ignite Co.",
+    "playerCompany" : {
+        "companyName": "Hot Smokes",
         "startingMoneyMillion": 100,
         "startingConsumersMillion": 437,
         "startingManufacturingMillion": 11.5,
         "startingLobbyingMillion": 0.5,
-        "startingAdCampaignsMillion": 1,
+        "startingAdCampaignsMillion": 1.45,
         "cigarettePackPrice": 9.6,
         "newConsumers": 5,
         "lostConsumers": 5,
         "deadConsumers": 0.3,
         "bonusMoney": 25
+    },
+    "iaCompany" : {
+        "companyName": "Drift Smoke Co.",
+        "startingMoneyMillion": 131,
+        "startingConsumersMillion": 488,
+        "startingManufacturingMillion": 18.1,
+        "startingLobbyingMillion": 6.45,
+        "startingAdCampaignsMillion": 3.33,
+        "cigarettePackPrice": 9.6,
+        "newConsumers": 6,
+        "lostConsumers": 7,
+        "deadConsumers": 0.6,
+        "bonusMoney": 21
     }
 }

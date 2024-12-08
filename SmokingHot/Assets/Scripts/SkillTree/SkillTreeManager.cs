@@ -11,7 +11,6 @@ public class SkillTreeManager : MonoBehaviour
     public List<SkillTreeUI> skillTreePanel;
     private GameObject lastActive;
     public GameManager gameManager;
-    private SimulationManager simulationManager;
 
     public TextMeshProUGUI cigSkillName;
     public TextMeshProUGUI cigSkillDesc;
@@ -41,8 +40,6 @@ public class SkillTreeManager : MonoBehaviour
         {
             gameManager = FindFirstObjectByType<GameManager>();
         }
-
-        simulationManager = gameManager.GetSimulationManager();
     }
     
     public void UnlockSkill()
@@ -171,10 +168,9 @@ public class SkillTreeManager : MonoBehaviour
 
     private void ApplySkillEffect(Skill skill)
     {
-        if(simulationManager == null) { simulationManager = gameManager.GetSimulationManager(); }
         List<String> effect = skill.effects;
         effect.Add("Down money " + skill.cost);
-        simulationManager.ApplyEffect(effect, GetCurrentActivePanel());
+        gameManager.HandleSkillEffect(effect, GetCurrentActivePanel());
     }
 
     public int GetCurrentActivePanel()
@@ -222,7 +218,7 @@ public class SkillTreeManager : MonoBehaviour
         }
         ResetSkillDesc(index);
         lastActive = null;
-        simulationManager.PlaySimulation();
+        gameManager.PlaySimulation();
     }
 
     private void ResetSkillDesc(int index)

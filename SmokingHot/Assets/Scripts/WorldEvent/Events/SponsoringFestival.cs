@@ -10,12 +10,10 @@ public class SponsoringFestival : WorldEvent
 
     public SponsoringFestival()
     {
-        title = "Parrainage d'un festival";
-
         description = "Nos analystes proposent de parrainer un festival de concerts de musique pour permettre de vendre nos cigarettes aux festivaliers.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"+{acceptNewConsumers} nouveaux consommateurs";
 
         refusePriceDescription =

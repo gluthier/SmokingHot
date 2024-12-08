@@ -5,7 +5,6 @@ public class WorldEventUI : MonoBehaviour
 {
     private CompanyEntity playerCompany;
 
-    private TextMeshProUGUI eventTitle;
     private TextMeshProUGUI eventDescription;
     private TextMeshProUGUI acceptPriceDescription;
     private TextMeshProUGUI refusePriceDescription;
@@ -18,9 +17,6 @@ public class WorldEventUI : MonoBehaviour
     public void Init(CompanyEntity playerCompany)
     {
         this.playerCompany = playerCompany;
-
-        eventTitle = transform.Find(Env.UI_EventTitle)
-            .GetComponent<TextMeshProUGUI>();
 
         eventDescription = transform.Find(Env.UI_EventDescription)
             .GetComponent<TextMeshProUGUI>();
@@ -36,7 +32,6 @@ public class WorldEventUI : MonoBehaviour
     {
         this.worldEvent = worldEvent;
 
-        eventTitle.text = worldEvent.title;
         eventDescription.text = worldEvent.description;
         acceptPriceDescription.text = worldEvent.acceptPriceDescription;
         refusePriceDescription.text = worldEvent.refusePriceDescription;

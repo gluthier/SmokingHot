@@ -10,12 +10,10 @@ public class VotationAbolishAds : WorldEvent
 
     public VotationAbolishAds()
     {
-        title = "Interdiction des publicités";
-
         description = "Des votations sont en cours pour interdire les publicités sur le tabac. Nos analystes proposent du lutter en faisant du lobbying politique.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"{acceptChance}% publicités autorisées";
 
         refusePriceDescription =

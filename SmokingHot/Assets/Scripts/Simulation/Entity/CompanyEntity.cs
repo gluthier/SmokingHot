@@ -211,11 +211,9 @@ public class CompanyEntity
 
     private void LoadData(CompanyData companyData)
     {
-        float malus = isPlayer ? 1f : Env.iaMalusPercentage;
-
         companyName = companyData.companyName;
-        money = companyData.startingMoneyMillion * malus;
-        numConsumers = companyData.startingConsumersMillion * malus;
+        money = companyData.startingMoneyMillion;
+        numConsumers = companyData.startingConsumersMillion;
         manufacturingCosts = companyData.startingManufacturingMillion;
         lobbyingCosts = companyData.startingLobbyingMillion;
         adCampaignsCosts = companyData.startingAdCampaignsMillion;
@@ -224,7 +222,7 @@ public class CompanyEntity
         newConsumers = companyData.newConsumers;
         lostConsumers = companyData.lostConsumers;
         deadConsumers = companyData.deadConsumers;
-        bonusMoney = companyData.bonusMoney * malus;
+        bonusMoney = companyData.bonusMoney;
     }
 
     private float EndCompanyFiscalYear()

@@ -27,7 +27,6 @@ public abstract class WorldEvent
     public List<WorldEventImpact> refusePositiveImpacts = new();
     public List<WorldEventImpact> refuseNegativeImpacts = new();
 
-    public string title;
     public string description;
     public string acceptPriceDescription;
     public string refusePriceDescription;

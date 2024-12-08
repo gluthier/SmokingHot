@@ -12,12 +12,10 @@ public class MarketInvestment : WorldEvent
 
     public MarketInvestment()
     {
-        title = "Investissement dans de nouveaux marchés";
-
         description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"+{(100 * acceptConsumersIncrease) - 100}% consommateurs\n" +
             $"+{acceptNewConsumers} nouveaux consommateurs";
 

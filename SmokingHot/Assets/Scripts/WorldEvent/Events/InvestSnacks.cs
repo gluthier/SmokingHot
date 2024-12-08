@@ -10,12 +10,10 @@ public class InvestSnacks : WorldEvent
 
     public InvestSnacks()
     {
-        title = "Rachat d'entreprise agroalimentaire";
-
         description = "Une proposition de rachat d'entreprise agroalimentaire spécialisée dans les snacks addictifs. Nos analystes pensent que cela pourrait nous apporter de nouveaux clients sur le long terme. Refuser rendrait fâchés quelques actionnaires.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"+{acceptNewConsumers} nouveaux consommateurs";
 
         refusePriceDescription =

@@ -10,8 +10,6 @@ public static class Env
     public static int DaysInAYear = 365;
     public static int WorldEventFrequencyYear = 5;
 
-    public static float iaMalusPercentage = 0.8f;
-
     public static string PlayerButton = "Joueur";
     public static string IAButton = "Concurrent";
 
@@ -24,11 +22,9 @@ public static class Env
 
     public static Color playerBackgroundColor = new Color32(3, 0, 36, 240);
     public static Color playerSwitchViewButtonBackgroundColor = new Color32(219, 216, 242, 255);
-    public static Color playerSwitchViewButtonTextColor = new Color32(4, 1, 21, 255);
 
     public static Color iaBackgroundColor = new Color32(26, 10, 0, 240);
-    public static Color iaSwitchViewButtonBackgroundColor = new Color32(234, 223, 195, 255);
-    public static Color iaSwitchViewButtonTextColor = new Color32(46, 17, 0, 255);
+    public static Color iaSwitchViewButtonBackgroundColor = new Color32(242, 238, 227, 255);
 
     public static Color GetTextUIColorFromDiff(float diff)
     {
@@ -75,7 +71,6 @@ public static class Env
     public static string UI_iaStrategyGO = "GameData/IA_Strategy";
     public static string UI_iaStrategyText = "GameData/IA_Strategy/Strat";
 
-    public static string UI_EventTitle = "Background/Title";
     public static string UI_EventDescription = "Background/Description";
     public static string UI_AcceptPriceDescription = "Background/AcceptPrice";
     public static string UI_RefusePriceDescription = "Background/RefusePrice";

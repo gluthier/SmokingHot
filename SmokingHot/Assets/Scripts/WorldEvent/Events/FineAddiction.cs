@@ -12,16 +12,14 @@ public class FineAddiction : WorldEvent
 
     public FineAddiction()
     {
-        title = "Amende";
-
-        description = "Nous avons été amendé à cause du niveau d'addiciton trop élevé de nos cigarettes. Nos analystes proposent de se battre juridiquement, risquant le quitte ou double.";
+        description = "Nous avons été amendés à cause du niveau d'addiction trop élevé de nos cigarettes. Nos analystes proposent de se battre juridiquement, risquant le quitte ou double.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} argent\n" +
+            $"-{acceptMoney} francs\n" +
             $"{acceptChance}% -1 popularité";
 
         refusePriceDescription =
-            $"-{refuseMoney} argent\n" +
+            $"-{refuseMoney} francs\n" +
             $"{refuseChanceGood}% +1 popularité\n" +
             $"{refuseChanceBad}% -2 popularité";
 
