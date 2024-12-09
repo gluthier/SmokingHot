@@ -15,11 +15,11 @@ public class FineToxicity : WorldEvent
         description = "Nous avons été amendés à cause du niveau de toxicité trop élevé de nos cigarettes. Nos analystes proposent de refuser en luttant juridiquement contre, risquant le quitte ou double.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} francs\n" +
+            $"-{acceptMoney} millions\n" +
             $"{acceptChance}% -1 popularité";
 
         refusePriceDescription =
-            $"-{refuseMoney} francs\n" +
+            $"-{refuseMoney} millions\n" +
             $"{refuseChanceGood}% +1 popularité\n" +
             $"{refuseChanceBad}% -2 popularité";
 

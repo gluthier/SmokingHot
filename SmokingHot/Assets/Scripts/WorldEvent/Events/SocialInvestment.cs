@@ -12,7 +12,7 @@ public class SocialInvestment : WorldEvent
         description = "Nos analystes ont décidé qu'il faisait investir dans un événement caritatif pour améliorer l'image publique en promouvant une image d'entreprise socialement responsable.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} francs\n" +
+            $"-{acceptMoney} millions\n" +
             $"+1 popularité";
 
         refusePriceDescription =

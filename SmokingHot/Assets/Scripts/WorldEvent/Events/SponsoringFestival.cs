@@ -13,7 +13,7 @@ public class SponsoringFestival : WorldEvent
         description = "Nos analystes proposent de parrainer un festival de concerts de musique pour permettre de vendre nos cigarettes aux festivaliers.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} francs\n" +
+            $"-{acceptMoney} millions\n" +
             $"+{acceptNewConsumers} nouveaux consommateurs";
 
         refusePriceDescription =

@@ -12,7 +12,7 @@ public class UnethicalBonus : WorldEvent
         description = "Une fondation pro-tabac nous offre un prix pour nos cigarettes responsables.";
 
         acceptPriceDescription =
-            $"+{acceptMoney} francs";
+            $"+{acceptMoney} millions";
 
         refusePriceDescription =
             $"{refuseChance}% +1 popularité";
