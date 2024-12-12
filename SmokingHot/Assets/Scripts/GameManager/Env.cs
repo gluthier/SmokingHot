@@ -76,13 +76,17 @@ public static class Env
     public static string UI_AcceptPriceDescription = "Background/AcceptPrice";
     public static string UI_RefusePriceDescription = "Background/RefusePrice";
 
-    public static string UI_EndgameScreenTitle = "Endgame/Title";
-    public static List<string> UI_EndgameRankedConglomerates = new List<string>{
-        "Endgame/Rank1",
-        "Endgame/Rank2",
-        "Endgame/Rank3",
-        "Endgame/Rank4",
+    public static string UI_EndgameScreenTitle = "Title";
+    public static List<string> UI_EndgameRankedCompanies = new List<string>{
+        "Ranking/Row1/Company",
+        "Ranking/Row2/Company"
     };
+    public static List<string> UI_EndgameRankedMoney = new List<string>{
+        "Ranking/Row1/Money",
+        "Ranking/Row2/Money"
+    };
+    public static string VictoryMessage = "Vous avez gagné!";
+    public static string DefeatMessage = "Vous avez perdu.";
 
     public static string IA_Strategy_MaxMoney = "maximiser ses gains directs";
     public static string IA_Strategy_MaxCustommer = "maximiser le nombre de ses consommateurs";

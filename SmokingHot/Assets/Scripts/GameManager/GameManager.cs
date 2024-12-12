@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public WorldEventUI worldEventUI;
     public AudioSource audioSource;
     public AudioClip newEventSound;
+    public EndgameScreen endgameScreen;
 
     private SimulationManager simulationManager;
 
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        if (endgameScreen != null)
+        {
+            endgameScreen.gameObject.SetActive(false);
         }
     }
 
@@ -133,6 +139,17 @@ public class GameManager : MonoBehaviour
         }
 
         gameUI.PopulateMainUI(playerGameState, iaGameState, showUpdate);
+    }
+
+    public void DisplayEndScreen()
+    {
+        if (endgameScreen != null)
+        {
+            endgameScreen.gameObject.SetActive(true);
+
+            endgameScreen.PopulateUI(
+                simulationManager.GetSimulatedCompanies());
+        }
     }
 
     public float GetPlayerMoney()
@@ -314,10 +331,11 @@ public class GameManager : MonoBehaviour
         simulationManager.PlaySimulation();
     }
 
-    private void RestartSimulation()
+    public void RestartSimulation()
     {
         coinSpawner.ClearAllCoins();
         simulationManager.StartSimulation();
+        skillTreeManager.ResetSkillTreeManager();
     }
 
     private void OnApplicationQuit()

@@ -328,4 +328,9 @@ public class IA_Manager : MonoBehaviour
 
         return lastlast - last;
     }
+
+    public void ResetIAManager()
+    {
+        virtualSkillTreeManager.ResetAllVirtualTrees();
+    }
 }

@@ -179,7 +179,7 @@ public class GameUI : MonoBehaviour
     private void SetTextField(TextMeshProUGUI textField, TextMeshProUGUI diffField,
         float prevData, float currentData, bool showUpdate)
     {
-        textField.text = $"{GetDisplayableNum(currentData)}";
+        textField.text = $"{Utils.GetDisplayableNum(currentData)}";
 
         if (showUpdate)
         {
@@ -227,46 +227,14 @@ public class GameUI : MonoBehaviour
 
         if (diff > 0)
         {
-            field.text = $"+{GetDisplayableNum(diff)}";
+            field.text = $"+{Utils.GetDisplayableNum(diff)}";
         }
         else if (diff < 0)
         {
-            field.text = $"{GetDisplayableNum(diff)}"; // minus sign already present in diff
+            field.text = $"{Utils.GetDisplayableNum(diff)}"; // minus sign already present in diff
         }
 
         field.color = Env.GetTextUIColorFromDiff(diff);
-    }
-
-    private string GetDisplayableNum(float num)
-    {
-        string numDisplay = "";
-
-        if (num >= 100000 ||
-            num <= -100000 ||
-            IsNumDisplayedInteger(num))
-        {
-            numDisplay = ((int)num).ToString();
-        }
-        else
-        {
-            numDisplay = num.ToString("F2");
-
-            if (numDisplay.Contains('.'))
-            {
-                numDisplay = numDisplay.TrimEnd('0');
-            }
-        }
-
-        return numDisplay;
-    }
-
-    private bool IsNumDisplayedInteger(float num)
-    {
-        float parseNum = num;
-        float.TryParse(num.ToString("F2"), out parseNum);
-
-        // test if float is an integer
-        return parseNum == math.floor(parseNum);
     }
 
     private TextMeshProUGUI FindTextField(string gameObjectName)

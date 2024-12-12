@@ -230,6 +230,25 @@ public class SkillTreeManager : MonoBehaviour
         }
     }
 
+    public void ResetSkillTreeManager()
+    {
+        foreach (Transform skillTree in transform)
+        {
+            foreach (Skill skill in skillTree.GetComponentsInChildren<Skill>())
+            {
+                skill.isUnlocked = false;
+
+                GameObject border = skill.transform.GetChild(0).gameObject;
+
+                border.gameObject.GetComponent<UnityEngine.UI.Image>().color =
+                    new Color32(96, 96, 96, 255);
+                border.SetActive(false);
+            }
+        }
+
+        CloseAllPanels();
+    }
+
     public void ClosePanel()
     {
         int index = GetCurrentActivePanel();

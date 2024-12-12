@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Net.Http;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SimulationManager : MonoBehaviour
@@ -104,6 +101,15 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
+    public List<CompanyEntity> GetSimulatedCompanies()
+    {
+        return new List<CompanyEntity>
+        {
+            playerCompany,
+            iaCompany
+        };
+    }
+
     private void Awake()
     {
         PauseSimulation();
@@ -187,8 +193,7 @@ public class SimulationManager : MonoBehaviour
             else
             {
                 HandleEndOfGame();
-
-                gameManager.PopulateMainUI(false);
+                return;
             }
 
             iaManager.ProcessEndOfYear(
@@ -234,12 +239,15 @@ public class SimulationManager : MonoBehaviour
     private void HandleEndOfGame()
     {
         PauseSimulation();
+        gameManager.DisplayEndScreen();
     }
 
     private void ResetSimulation()
     {
         yearPassed = 0;
         timePassed = 0f;
+
+        iaManager.ResetIAManager();
 
         LoadData(
             GameDataLoader.Load());

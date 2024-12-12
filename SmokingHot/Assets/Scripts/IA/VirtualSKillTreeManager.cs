@@ -94,4 +94,15 @@ public class VirtualSkillTreeManager : MonoBehaviour
             }
         }
     }
+
+    public void ResetAllVirtualTrees()
+    {
+        foreach (List<VirtualSkill> virtualSkills in iaVirtualTree.Values)
+        {
+            foreach(VirtualSkill virtualSkill in virtualSkills)
+            {
+                virtualSkill.isUnlocked = false;
+            }
+        }
+    }
 }

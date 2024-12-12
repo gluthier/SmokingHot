@@ -4,44 +4,56 @@ using System.Collections.Generic;
 
 public class EndgameScreen : MonoBehaviour
 {
-    private List<TextMeshProUGUI> rankedConglomerates = new List<TextMeshProUGUI>{};
+    private List<TextMeshProUGUI> rankedCompanies = new List<TextMeshProUGUI> { };
+    private List<TextMeshProUGUI> rankedMoney = new List<TextMeshProUGUI> { };
     private TextMeshProUGUI title;
-    public SimulationManager simulationManager;
 
-    void Awake()
+    private void Init()
     {
         title = FindTextField(Env.UI_EndgameScreenTitle);
 
-        foreach (string conglomerate in Env.UI_EndgameRankedConglomerates)
+        foreach (string company in Env.UI_EndgameRankedCompanies)
         {
-            rankedConglomerates.Add(FindTextField(conglomerate));
+            rankedCompanies.Add(FindTextField(company));
+        }
+
+        foreach (string money in Env.UI_EndgameRankedMoney)
+        {
+            rankedMoney.Add(FindTextField(money));
         }
     }
 
-    void Start()
+    public void PopulateUI(List<CompanyEntity> sortedCompanies)
     {
-        CompanyEntity playerCompany = simulationManager.GetPlayerCompany();
-
-        List<CompanyEntity> sortedCompanies = new List<CompanyEntity>
+        if (title == null)
         {
-            playerCompany,
-            simulationManager.GetIACompany()
-        };
+            Init();
+        }
 
         sortedCompanies.Sort((a, b) => a.GetMoney().CompareTo(b.GetMoney()));
+        sortedCompanies.Reverse();
 
         if (sortedCompanies[0].IsPlayer())
         {
-            title.text = "You won!";
+            title.text = Env.VictoryMessage;
         }
         else
         {
-            title.text = "You lost!";
+            title.text = Env.DefeatMessage;
         }
 
-        for (int i = 0; i < rankedConglomerates.Count; ++i) {
-            rankedConglomerates[i].text = $"{sortedCompanies[i].GetCompanyName()}";
+        for (int i = 0; i < rankedCompanies.Count; ++i)
+        {
+            rankedCompanies[i].text = $"{sortedCompanies[i].GetCompanyName()}";
+            rankedMoney[i].text =
+                $"{Utils.GetDisplayableNum(sortedCompanies[i].GetMoney())} millions";
         }
+    }
+
+    public void RestartGame()
+    {
+        FindFirstObjectByType<GameManager>().RestartSimulation();
+        gameObject.SetActive(false);
     }
 
     private TextMeshProUGUI FindTextField(string gameObjectName)
