@@ -140,6 +140,11 @@ public class GameManager : MonoBehaviour
         return simulationManager.RetrievePlayerGameState().money;
     }
 
+    public float GetIAMoney()
+    {
+        return simulationManager.RetrieveIAGameState().money;
+    }
+
     public void PopulateWorldEventUI(WorldEvent worldEvent)
     {
         if (DEBUG_isHeadlessModeOnAcceptEvents)
@@ -294,9 +299,14 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void HandleSkillEffect(List<string> effects, int index, Building.TYPE buildingType)
+    public void HandleSkillEffect(List<string> effects, Building.TYPE buildingType,
+        bool isPlayer)
     {
-        simulationManager.ApplyEffect(effects, index, buildingType);
+        CompanyEntity company = isPlayer ?
+            simulationManager.GetPlayerCompany() :
+            simulationManager.GetIACompany();
+
+        simulationManager.ApplyEffect(effects, buildingType, company);
     }
 
     public void PlaySimulation()

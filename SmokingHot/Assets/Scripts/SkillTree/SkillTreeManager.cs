@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEditor.Experimental.GraphView;
 using System;
+using System.Linq;
+using NUnit.Framework.Constraints;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -41,7 +41,7 @@ public class SkillTreeManager : MonoBehaviour
             gameManager = FindFirstObjectByType<GameManager>();
         }
     }
-    
+
     public void UnlockSkill()
     {
         Skill skill = lastActive.GetComponent<Skill>();
@@ -143,6 +143,7 @@ public class SkillTreeManager : MonoBehaviour
                 break;
         }
     }
+
     private bool CanUnlockSkill(Skill skill)
     {
         bool isPrerequisiteUnlocked = false;
@@ -152,7 +153,7 @@ public class SkillTreeManager : MonoBehaviour
         if (skill.prerequisites.Count == 0) isPrerequisiteUnlocked = true;
         foreach (Skill prerequisite in skill.prerequisites)
         {
-            if(prerequisite.isUnlocked)
+            if (prerequisite.isUnlocked)
             {
                 isPrerequisiteUnlocked = true;
                 break;
@@ -161,8 +162,8 @@ public class SkillTreeManager : MonoBehaviour
 
         hasMoney = gameManager.GetPlayerMoney() >= skill.cost;
 
-        Debug.Log(isPrerequisiteUnlocked);
-        Debug.Log(hasMoney);
+        //Debug.Log(isPrerequisiteUnlocked);
+        //Debug.Log(hasMoney);
         return isPrerequisiteUnlocked && hasMoney;
     }
 
@@ -170,8 +171,11 @@ public class SkillTreeManager : MonoBehaviour
     {
         List<String> effect = skill.effects;
         effect.Add("Down money " + skill.cost);
-        int buildingIndex = GetCurrentActivePanel();
-        gameManager.HandleSkillEffect(effect, buildingIndex, GetBuildingTypeFromIndex(buildingIndex));
+        Building.TYPE buildingType =
+            GetBuildingTypeFromIndex(GetCurrentActivePanel());
+
+        gameManager.HandleSkillEffect(effect, buildingType, true);
+
     }
 
     public int GetCurrentActivePanel()
@@ -223,24 +227,6 @@ public class SkillTreeManager : MonoBehaviour
                 return Building.TYPE.LOBBYING;
             case 4:
                 return Building.TYPE.REPUTATION;
-        }
-    }
-
-    public void HandleIASkillTree(Building.TYPE skillTreeToInvest)
-    {
-        // TODO: how to handle the IA's virtual skill tree?
-        switch (skillTreeToInvest)
-        {
-            case Building.TYPE.CIGARETTE:
-                break;
-            case Building.TYPE.PUBLICITY:
-                break;
-            case Building.TYPE.REPUTATION:
-                break;
-            case Building.TYPE.LOBBYING:
-            default:
-                break;
-
         }
     }
 

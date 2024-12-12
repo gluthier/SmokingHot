@@ -12,6 +12,7 @@ public static class Env
 
     public static string PlayerButton = "Joueur";
     public static string IAButton = "Concurrent";
+    public static float MinCoefficientCostForIAToInvestSkill = 3f;
 
     public static int StartingYear = 2024;
     public static float YearLoadingMaxWidth = 72;

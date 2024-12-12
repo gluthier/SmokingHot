@@ -9,6 +9,7 @@ public class IA_Manager : MonoBehaviour
 {
     private EventStateMachine eventStateMachine;
     private SkillStateMachine skillStateMachine;
+    private VirtualSkillTreeManager virtualSkillTreeManager;
 
     private List<GameState> iaStateReports;
 
@@ -18,6 +19,14 @@ public class IA_Manager : MonoBehaviour
         skillStateMachine = new SkillStateMachine();
 
         iaStateReports = new List<GameState>();
+
+        InitVirtualSkillTreeManager();
+    }
+
+    private void InitVirtualSkillTreeManager()
+    {
+        virtualSkillTreeManager = gameObject.AddComponent<VirtualSkillTreeManager>();
+        virtualSkillTreeManager.Init();
     }
 
     public void ProcessEndOfYear(GameState iaStatReport, CompanyEntity iaCompany, WorldEvent worldEvent, List<Building.TYPE> firstPlayerInvestment)
@@ -25,7 +34,7 @@ public class IA_Manager : MonoBehaviour
         iaStateReports.Add(iaStatReport);
 
         HandleChangeOfEventState();
-        HandleChangeOfSkillState(firstPlayerInvestment);
+        HandleChangeOfSkillState(firstPlayerInvestment, iaCompany);
 
         HandleWorldEvent(iaCompany, worldEvent);
     }
@@ -85,7 +94,7 @@ public class IA_Manager : MonoBehaviour
         }
     }
 
-    private void HandleChangeOfSkillState(List<Building.TYPE> firstPlayerInvestment)
+    private void HandleChangeOfSkillState(List<Building.TYPE> firstPlayerInvestment, CompanyEntity iaCompany)
     {
         if (firstPlayerInvestment.Count == 0)
             return;
@@ -94,7 +103,6 @@ public class IA_Manager : MonoBehaviour
         {
             case SkillProcessState.NoSpecialisation:
                 ChooseSkillStrategy(firstPlayerInvestment.First());
-                HandleSkillTreeDeveloppment();
                 break;
             // IA stays in investement strategy once it has specialised
             case SkillProcessState.InvestInManufacturing:
@@ -103,6 +111,7 @@ public class IA_Manager : MonoBehaviour
             default:
                 break;
         }
+        HandleSkillTreeDeveloppment(iaCompany);
     }
 
     private void ChooseSkillStrategy(Building.TYPE buildingTypeFirstInvestmentByPlayer)
@@ -159,20 +168,20 @@ public class IA_Manager : MonoBehaviour
         }
     }
 
-    private void HandleSkillTreeDeveloppment()
+    private void HandleSkillTreeDeveloppment(CompanyEntity iaCompany)
     {
         SkillTreeManager skillTreeManager = FindFirstObjectByType<SkillTreeManager>();
 
         switch (skillStateMachine.CurrentState)
         {
             case SkillProcessState.InvestInManufacturing:
-                skillTreeManager.HandleIASkillTree(Building.TYPE.CIGARETTE);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.CIGARETTE, iaCompany);
                 break;
             case SkillProcessState.InvestInAds:
-                skillTreeManager.HandleIASkillTree(Building.TYPE.PUBLICITY);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.PUBLICITY, iaCompany);
                 break;
             case SkillProcessState.InvestInPopularity:
-                skillTreeManager.HandleIASkillTree(Building.TYPE.REPUTATION);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.REPUTATION, iaCompany);
                 break;
             case SkillProcessState.NoSpecialisation:
             default:

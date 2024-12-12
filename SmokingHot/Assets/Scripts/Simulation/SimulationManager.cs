@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -248,14 +249,25 @@ public class SimulationManager : MonoBehaviour
         firstPlayerInvestment = new List<Building.TYPE>();
     }
 
-    public void ApplyEffect(List<string> effects, int index, Building.TYPE buildingType)
+    public void ApplyEffect(List<string> effects, Building.TYPE buildingType,
+        CompanyEntity company)
     {
-        if (firstPlayerInvestment.Count == 0)
+        if (company.IsPlayer() &&
+            firstPlayerInvestment.Count == 0)
         {
             firstPlayerInvestment.Add(buildingType);
         }
 
-        CompanyEntity company = GetPlayerCompany();
+        // Debug only
+        if (!company.IsPlayer())
+        {
+            string msg = $"IA apply {effects.Count} effects:";
+            foreach (string effect in effects)
+            {
+                msg += effect + ", ";
+            }
+            Debug.Log(msg);
+        }
 
         foreach (string effect in effects)
         {
@@ -331,6 +343,7 @@ public class SimulationManager : MonoBehaviour
             }
         }
 
-        gameManager.PopulateMainUI(true);
+        if (company.IsPlayer())
+            gameManager.PopulateMainUI(true);
     }
 }
