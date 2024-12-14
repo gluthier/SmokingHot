@@ -32,8 +32,6 @@ public class CoinManager : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Capital Difference: {capitalDiff}");
-
         if (capitalDiff > 0)
         {
             SpawnCoins(capitalDiff);

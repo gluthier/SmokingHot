@@ -14,7 +14,7 @@ public static class Env
     public static string IAButton = "Concurrent";
     public static float MinCoefficientCostForIAToInvestSkill = 3f;
 
-    public static int StartingYear = 2024;
+    public static int StartingYear = 2025;
     public static float YearLoadingMaxWidth = 72;
 
     public static Color UI_IncreaseColor = new Color(29 / 255f, 163 / 255f, 56 / 255f);
@@ -76,14 +76,14 @@ public static class Env
     public static string UI_AcceptPriceDescription = "Background/AcceptPrice";
     public static string UI_RefusePriceDescription = "Background/RefusePrice";
 
-    public static string UI_EndgameScreenTitle = "Title";
+    public static string UI_EndgameScreenTitle = "Background/Title";
     public static List<string> UI_EndgameRankedCompanies = new List<string>{
-        "Ranking/Row1/Company",
-        "Ranking/Row2/Company"
+        "Background/Ranking/Row1/Company",
+        "Background/Ranking/Row2/Company"
     };
     public static List<string> UI_EndgameRankedMoney = new List<string>{
-        "Ranking/Row1/Money",
-        "Ranking/Row2/Money"
+        "Background/Ranking/Row1/Money",
+        "Background/Ranking/Row2/Money"
     };
     public static string VictoryMessage = "Vous avez gagné!";
     public static string DefeatMessage = "Vous avez perdu.";

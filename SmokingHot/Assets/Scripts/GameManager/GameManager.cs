@@ -147,6 +147,8 @@ public class GameManager : MonoBehaviour
     {
         if (endgameScreen != null)
         {
+            ResetGameTitleMaterial(); // to fix material animation at start
+
             endgameScreen.gameObject.SetActive(true);
 
             endgameScreen.PopulateUI(
