@@ -86,6 +86,7 @@ public class CoinManager : MonoBehaviour
         newSmoke.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
         Destroy(coin);
+        Destroy(newSmoke, 2);
     }
 
     public void ClearAllCoins()
