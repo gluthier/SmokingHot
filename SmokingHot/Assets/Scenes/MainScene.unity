@@ -2568,6 +2568,10 @@ PrefabInstance:
         r\xE9duisant le co\xFBt des futures pubs"
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+50 consommateurs\\n-10 co\xFBts publicit\xE9s"
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2641,6 +2645,10 @@ PrefabInstance:
         pubs plus efficace et moins cher"
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "-10 co\xFBts publicit\xE9s"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2692,6 +2700,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: "Votre nouveau slogan cartonne, la popularit\xE9 de votre cigarette
         est au plus haut"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+1 popularit\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2808,6 +2820,10 @@ PrefabInstance:
         consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: +10 consommateurs\n-10 prix cigarettes
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2879,6 +2895,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: "Vous lancez enfin une publicit\xE9 pour votre marque de cigarettes,
         cela vous rapporte des consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: +10 consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -3050,6 +3070,10 @@ PrefabInstance:
         vous rapportant beaucoup de consommateurs, mais baissant votre popularit\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "-1 popularit\xE9\\n+20 consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3104,6 +3128,10 @@ PrefabInstance:
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: Vous lancez une nouvelle pub sur votre insta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: +10 consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -5116,6 +5144,10 @@ PrefabInstance:
       value: "Un paquet achet\xE9 = un arbre plant\xE9. Cela marche du tonerre"
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+2 popularit\xE9\\n+20 consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5189,6 +5221,10 @@ PrefabInstance:
         pour l'ouverture des nouveaux bureaux"
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+1 popularit\xE9\\n+10 consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5233,6 +5269,10 @@ PrefabInstance:
       value: 460
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: cost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillName
       value: Politique agressive
       objectReference: {fileID: 0}
@@ -5240,6 +5280,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: "Vous lancez une politique de vente agressive, baissant votre popularit\xE9,
         mais augmentant le prix du paquet et le nombre de consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "-1 popularit\xE9\\n+10 consommateurs\\n+5 prix cigarettes"
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -5359,6 +5403,10 @@ PrefabInstance:
         r\xE9duisant le co\xFBt de fabrication, mais baissant grandement votre r\xE9putation"
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "-2 popularit\xE9\\n-2 co\xFBts productions"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5426,6 +5474,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: "Vous lancez une f\xEAte sur le lac avec des cigarettes gratuites pour
         annoncer le lancement de votre marque"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+1 popularit\xE9\\n+10 consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -5589,6 +5641,10 @@ PrefabInstance:
         image, mais perdant des consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+1 popularit\xE9\\n-20 consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5643,6 +5699,10 @@ PrefabInstance:
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous soutenez un \xE9v\xE9nement sportif, vous ramenant plus de consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: +10 consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -10883,6 +10943,10 @@ PrefabInstance:
         son addiction et le nombre de personnes touch\xE9es"
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: +3 prix cigarettes\n-1 consommateurs partis\n+3 consommateurs
+      objectReference: {fileID: 0}
+    - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -10960,6 +11024,10 @@ PrefabInstance:
         un nouveau tabac plus addictif et moins toxique
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "-3 consommateurs d\xE9c\xE9d\xE9s\\n-3 consommateurs partis"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -11015,6 +11083,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: "Vous utilisez un tabac moins cher, r\xE9duisant le co\xFBt d'un paquet,
         mais augmentant le nombre de consommateurs"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: -2 prix cigarettes\n+2 consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -11125,6 +11197,10 @@ PrefabInstance:
       value: "Augmente grandement l'addiction de votre cigarette, mais aussi la toxicit\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "+5 consommateurs d\xE9c\xE9d\xE9s\\n-3 consommateurs partis"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -11196,6 +11272,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: "Vos scientifiques ont trouv\xE9s un nouveau tabac, plus addictif et
         moins toxique"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: "-1 consommateurs partis\\n-1 consommateurs d\xE9c\xE9d\xE9s"
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -11359,6 +11439,10 @@ PrefabInstance:
         m\xE9contents"
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: -2 consommateurs\n+3 prix cigarettes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -11422,6 +11506,10 @@ PrefabInstance:
       propertyPath: skillDescription
       value: Vous utilisez un tabac de luxe, augmentant le prix du paquet, mais perdant
         des consommateurs
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
+      propertyPath: effectDescription
+      value: -2 consommateurs\n+2 prix cigarettes
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size

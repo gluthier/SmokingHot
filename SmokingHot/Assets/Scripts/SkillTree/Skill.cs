@@ -12,6 +12,7 @@ public class Skill : MonoBehaviour
     public bool isUnlocked;
     public List<string> effects;
     public bool tierUp;
+    public string effectDescription;
 
     public Skill(string skillName, string skillDesc, int skillCost)
     {
