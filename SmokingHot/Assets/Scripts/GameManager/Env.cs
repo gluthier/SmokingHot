@@ -48,29 +48,29 @@ public static class Env
     public static string UI_yearGO = "Background/Report/Year";
     public static string UI_yearLoaderGO = "Background/Report/Year/Loader";
 
-    public static string UI_moneyGO = "GameData/money/Value";
-    public static string UI_moneyDiffGO = "GameData/money/Diff";
-    public static string UI_consumersGO = "GameData/consumers/Value";
-    public static string UI_consumersDiffGO = "GameData/consumers/Diff";
-    public static string UI_deadsGO = "GameData/deads/Value";
-    public static string UI_deadsDiffGO = "GameData/deads/Diff";
-    public static string UI_popularityGO = "GameData/popularity/Value";
-    public static string UI_popularityDiffGO = "GameData/popularity/Diff";
+    public static string UI_moneyGO = "Background/GameData/money/Value";
+    public static string UI_moneyDiffGO = "Background/GameData/money/Diff";
+    public static string UI_consumersGO = "Background/GameData/consumers/Value";
+    public static string UI_consumersDiffGO = "Background/GameData/consumers/Diff";
+    public static string UI_deadsGO = "Background/GameData/deads/Value";
+    public static string UI_deadsDiffGO = "Background/GameData/deads/Diff";
+    public static string UI_popularityGO = "Background/GameData/popularity/Value";
+    public static string UI_popularityDiffGO = "Background/GameData/popularity/Diff";
 
-    public static string UI_manufacturingGO = "GameData/manufacturing/Value";
-    public static string UI_manufacturingDiffGO = "GameData/manufacturing/Diff";
-    public static string UI_lobbyingGO = "GameData/lobbying/Value";
-    public static string UI_lobbyingDiffGO = "GameData/lobbying/Diff";
-    public static string UI_adCampaignsGO = "GameData/adCampaigns/Value";
-    public static string UI_adCampaignsDiffGO = "GameData/adCampaigns/Diff";
+    public static string UI_manufacturingGO = "Background/GameData/manufacturing/Value";
+    public static string UI_manufacturingDiffGO = "Background/GameData/manufacturing/Diff";
+    public static string UI_lobbyingGO = "Background/GameData/lobbying/Value";
+    public static string UI_lobbyingDiffGO = "Background/GameData/lobbying/Diff";
+    public static string UI_adCampaignsGO = "Background/GameData/adCampaigns/Value";
+    public static string UI_adCampaignsDiffGO = "Background/GameData/adCampaigns/Diff";
 
-    public static string UI_cigaretteToxicityLevelGO = "GameData/cigaretteToxicityLevel/Value";
-    public static string UI_cigaretteToxicityLevelDiffGO = "GameData/cigaretteToxicityLevel/Diff";
-    public static string UI_cigaretteAddictionLevelGO = "GameData/cigaretteAddictionLevel/Value";
-    public static string UI_cigaretteAddictionLevelDiffGO = "GameData/cigaretteAddictionLevel/Diff";
+    public static string UI_cigaretteToxicityLevelGO = "Background/GameData/cigaretteToxicityLevel/Value";
+    public static string UI_cigaretteToxicityLevelDiffGO = "Background/GameData/cigaretteToxicityLevel/Diff";
+    public static string UI_cigaretteAddictionLevelGO = "Background/GameData/cigaretteAddictionLevel/Value";
+    public static string UI_cigaretteAddictionLevelDiffGO = "Background/GameData/cigaretteAddictionLevel/Diff";
 
-    public static string UI_iaStrategyGO = "GameData/IA_Strategy";
-    public static string UI_iaStrategyText = "GameData/IA_Strategy/Strat";
+    public static string UI_iaStrategyGO = "Background/GameData/IA_Strategy";
+    public static string UI_iaStrategyText = "Background/GameData/IA_Strategy/Strat";
 
     public static string UI_EventDescription = "Background/Description";
     public static string UI_AcceptPriceDescription = "Background/AcceptPrice";

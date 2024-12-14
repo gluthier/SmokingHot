@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using NUnit.Framework.Constraints;
+using UnityEditor.Experimental.GraphView;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class SkillTreeManager : MonoBehaviour
         if(CanUnlockSkill(skill))
         {
             skill.isUnlocked = true;
-            lastActive.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+            lastActive.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color = Env.UI_IncreaseColor;
             int index = GetCurrentActivePanel();
 
             Link link = null;
@@ -195,8 +196,27 @@ public class SkillTreeManager : MonoBehaviour
                 break;
 
         }
-        
+
         skillTreePanel[index].gameObject.SetActive(true);
+
+        // Set active a skill (first unlocked or last one if all unlocked)
+        Skill[] listSkills = skillTreePanel[GetCurrentActivePanel()]
+                .GetComponentsInChildren<Skill>();
+
+        for (int i = 0; i < listSkills.Length; i++)
+        {
+            Skill skill = listSkills[i];
+
+            if (!skill.isUnlocked || i == listSkills.Length - 1)
+            {
+                SetSkillActive(skill.gameObject);
+                break;
+            }
+        }
+
+        //SetSkillActive(
+        //    skillTreePanel[GetCurrentActivePanel()]
+        //        .GetComponentsInChildren<Skill>().First().gameObject);
     }
 
     public Building.TYPE GetBuildingTypeFromIndex(int index)
