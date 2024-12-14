@@ -260,6 +260,9 @@ public class GameManager : MonoBehaviour
         //Check for mouse click 
         if (Input.GetMouseButtonDown(0))
         {
+            if (worldEventUI.gameObject.activeInHierarchy)
+                return;
+
             RaycastHit raycastHit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out raycastHit, 100f))
