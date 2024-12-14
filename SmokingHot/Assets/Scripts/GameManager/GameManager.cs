@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private SimulationManager simulationManager;
 
-    public CoinSpawner coinSpawner;
+    public CoinManager coinManager;
     public CustomerManager customerManager;
 
     #region DEBUG ATTRIBUTES
@@ -333,7 +333,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartSimulation()
     {
-        coinSpawner.ClearAllCoins();
+        coinManager.ClearAllCoins();
         simulationManager.StartSimulation();
         skillTreeManager.ResetSkillTreeManager();
     }

@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.050000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.050000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08
+      value: 0.050000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.67
+      value: 0.098
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7609994
+      value: -1.547
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.583
+      value: 1.669
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,6 +59,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: 5ac64632cfbaa45f7ad6a9faaf3b19c8, type: 3}
       propertyPath: m_Name
@@ -167,7 +171,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

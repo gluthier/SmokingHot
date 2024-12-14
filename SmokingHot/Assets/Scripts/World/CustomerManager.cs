@@ -1,16 +1,39 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
-    public List<Customer> customers;
+    public Customer customerReference;
     public Color playerColor;
     public Color concurrentColor;
     public AudioClip winCustomerSound;
     public AudioClip looseCustomerSound;
     private AudioSource audioSource;
 
+    private List<Customer> customers = new List<Customer>();
+    public float margin;
+    private int numRow = 10;
+    private int numCol = 10;
     private int previousMarketShare;
+    private Transform initialTransform;
+
+    void Awake()
+    {
+        initialTransform = customerReference.transform;
+    
+        for (int row = 0; row < numRow; ++row)
+        {
+            for (int col = 0; col < numCol; ++col)
+            {
+                Customer customer = (row == 0 && col == 0) 
+                    ? customerReference 
+                    : Instantiate(customerReference, initialTransform.position + new Vector3(col * margin, 0, -row * margin), initialTransform.rotation, this.transform);
+
+                customers.Add(customer);
+            }
+        }
+    }
 
     void Start()
     {

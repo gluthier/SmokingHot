@@ -201,12 +201,10 @@ public class CompanyEntity
         ImpactPopularity(-1);
     }
 
-    public float EndFiscalYear()
+    public void EndFiscalYear()
     {
-        float moneyGained = EndCompanyFiscalYear();
+        EndCompanyFiscalYear();
         UpdateConsumersStats();
-
-        return moneyGained;
     }
 
     private void LoadData(CompanyData companyData)
@@ -225,7 +223,7 @@ public class CompanyEntity
         bonusMoney = companyData.bonusMoney;
     }
 
-    private float EndCompanyFiscalYear()
+    private void EndCompanyFiscalYear()
     {
         int cigarettePackSoldPerSmoker = 180; // ~= 10 cigarettes per day
         float cigarettePackPriceMillion = cigarettePackPrice / 1000000f;
@@ -235,8 +233,6 @@ public class CompanyEntity
             totalCigarettePackMoneyMillion + bonusMoney - manufacturingCosts - lobbyingCosts - adCampaignsCosts;
 
         money += moneyGained;
-
-        return moneyGained;
     }
 
     private void UpdateConsumersStats()

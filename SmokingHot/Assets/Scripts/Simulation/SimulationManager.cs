@@ -49,8 +49,8 @@ public class SimulationManager : MonoBehaviour
 
         float initialMarketShare = playerMarketShare();
         gameManager.customerManager.InitialColors(initialMarketShare);
-
         gameManager.PopulateMainUI(false);
+        gameManager.coinManager.SpawnOrDestroy(RetrievePlayerGameState().money);
 
         firstPlayerInvestment = new List<Building.TYPE>();
     }
@@ -182,13 +182,12 @@ public class SimulationManager : MonoBehaviour
             WorldEvent worldEvent = new NoEvent();
             if (yearPassed < totalYearSimulated)
             {
-                float moneyGained = HandleEndOfSimulatedYear();
-                gameManager.coinSpawner.spawnCoins(moneyGained);
+                HandleEndOfSimulatedYear();
                 StartCoroutine(HandleMarketShareWithDelay(2.0f));
 
                 worldEvent = HandleWorldEvent();
-
                 gameManager.PopulateMainUI(true);
+                gameManager.coinManager.SpawnOrDestroy(RetrievePlayerGameState().money);
             }
             else
             {
@@ -212,12 +211,10 @@ public class SimulationManager : MonoBehaviour
         return playerCompany.GetConsumers() / (playerCompany.GetConsumers() + iaCompany.GetConsumers());
     }
 
-    private float HandleEndOfSimulatedYear()
+    private void HandleEndOfSimulatedYear()
     {
-        float moneyGained = playerCompany.EndFiscalYear();
+        playerCompany.EndFiscalYear();
         iaCompany.EndFiscalYear();
-        
-        return moneyGained;
     }
 
     private WorldEvent HandleWorldEvent()
@@ -352,6 +349,9 @@ public class SimulationManager : MonoBehaviour
         }
 
         if (company.IsPlayer())
+        {
             gameManager.PopulateMainUI(true);
+            gameManager.coinManager.SpawnOrDestroy(RetrievePlayerGameState().money);
+        }
     }
 }
