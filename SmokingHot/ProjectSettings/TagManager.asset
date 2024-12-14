@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Building
   - SkillTree
+  - Chest
   layers:
   - Default
   - TransparentFX

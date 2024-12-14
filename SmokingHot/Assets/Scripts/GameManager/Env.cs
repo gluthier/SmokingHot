@@ -95,4 +95,6 @@ public static class Env
     public static string IA_Strategy_InvestInManufacturing = " et d'investir dans la production";
     public static string IA_Strategy_InvestInAds = " et d'investir dans les publicités";
     public static string IA_Strategy_InvestInPopularity = " et d'investir dans la popularité";
+
+    public static string ChestTag = "Chest";
 }

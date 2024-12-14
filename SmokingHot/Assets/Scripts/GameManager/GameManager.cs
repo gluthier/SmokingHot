@@ -336,6 +336,7 @@ public class GameManager : MonoBehaviour
         coinManager.ClearAllCoins();
         simulationManager.StartSimulation();
         skillTreeManager.ResetSkillTreeManager();
+        HideWorldEventUI();
     }
 
     private void OnApplicationQuit()
