@@ -5,7 +5,7 @@ public class BuildingsManager : MonoBehaviour
 {
     public List<Building> myBuildings = new List<Building>();
     public SkillTreeManager skillTreeManager;
-    private int[] tiers = { 1, 1, 1, 1 };
+    private int[] tiers = { 1, 1, 1 };
 
     private void Update()
     {

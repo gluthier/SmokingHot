@@ -119,7 +119,7 @@ public class IA_Manager : MonoBehaviour
         // it will choose at random one stategy that is not the first one choosen by the player
         switch (buildingTypeFirstInvestmentByPlayer)
         {
-            case Building.TYPE.CIGARETTE:
+            case Building.TYPE.MANUFACTURING:
                 ExecuteAtRandomSkillStrategyInvestment(
                     SkillCommand.SpecialiseInAds, SkillCommand.SpecialiseInPopularity);
                 break;
@@ -127,7 +127,7 @@ public class IA_Manager : MonoBehaviour
                 ExecuteAtRandomSkillStrategyInvestment(
                     SkillCommand.SpecialiseInManufacturing, SkillCommand.SpecialiseInPopularity);
                 break;
-            case Building.TYPE.REPUTATION:
+            case Building.TYPE.POPULARITY:
                 ExecuteAtRandomSkillStrategyInvestment(
                     SkillCommand.SpecialiseInAds, SkillCommand.SpecialiseInManufacturing);
                 break;
@@ -175,13 +175,13 @@ public class IA_Manager : MonoBehaviour
         switch (skillStateMachine.CurrentState)
         {
             case SkillProcessState.InvestInManufacturing:
-                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.CIGARETTE, iaCompany);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.MANUFACTURING, iaCompany);
                 break;
             case SkillProcessState.InvestInAds:
                 virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.PUBLICITY, iaCompany);
                 break;
             case SkillProcessState.InvestInPopularity:
-                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.REPUTATION, iaCompany);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.POPULARITY, iaCompany);
                 break;
             case SkillProcessState.NoSpecialisation:
             default:

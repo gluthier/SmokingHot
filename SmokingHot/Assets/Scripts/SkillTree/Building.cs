@@ -4,10 +4,10 @@ using System.Collections.Generic;
 public class Building : MonoBehaviour
 {
     public enum TYPE{
-        CIGARETTE,
+        MANUFACTURING,
         PUBLICITY,
         LOBBYING,
-        REPUTATION
+        POPULARITY
     }
 
     public TYPE type;

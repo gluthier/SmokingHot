@@ -12,11 +12,6 @@ public class SkillTreeManager : MonoBehaviour
     private GameObject lastActive;
     public GameManager gameManager;
 
-    public TextMeshProUGUI cigSkillName;
-    public TextMeshProUGUI cigSkillDesc;
-    public TextMeshProUGUI cigSkillCost;
-    public List<LineRenderer> cigLinks;
-    
     public TextMeshProUGUI pubSkillName;
     public TextMeshProUGUI pubSkillDesc;
     public TextMeshProUGUI pubSkillCost;
@@ -27,12 +22,12 @@ public class SkillTreeManager : MonoBehaviour
     public TextMeshProUGUI popSkillCost;
     public List<LineRenderer> popLinks;
 
-    public TextMeshProUGUI lobSkillName;
-    public TextMeshProUGUI lobSkillDesc;
-    public TextMeshProUGUI lobSkillCost;
-    public List<LineRenderer> lobLinks;
+    public TextMeshProUGUI cigSkillName;
+    public TextMeshProUGUI cigSkillDesc;
+    public TextMeshProUGUI cigSkillCost;
+    public List<LineRenderer> cigLinks;
 
-    public int[] tiers = {1,1,1,1};
+    public int[] tiers = {1,1,1};
 
     void Start()
     {
@@ -119,25 +114,20 @@ public class SkillTreeManager : MonoBehaviour
     {
         switch (index)
         {
-            case 0: // cig
-                cigSkillDesc.text = skill.skillDescription;
-                cigSkillName.text = skill.skillName;
-                cigSkillCost.text = "Prix: " + skill.cost;
-                break;
-            case 1: // pub
+            case 0: // publicity
                 pubSkillDesc.text = skill.skillDescription;
                 pubSkillName.text = skill.skillName;
                 pubSkillCost.text = "Prix: " + skill.cost;
                 break;
-            case 2: // lobby
-                lobSkillDesc.text = skill.skillDescription;
-                lobSkillName.text = skill.skillName;
-                lobSkillCost.text = "Prix: " + skill.cost;
-                break;
-            case 4: // rep
+            case 1: // popularity
                 popSkillDesc.text = skill.skillDescription;
                 popSkillName.text = skill.skillName;
                 popSkillCost.text = "Prix: " + skill.cost;
+                break;
+            case 2: // manufacturing
+                cigSkillDesc.text = skill.skillDescription;
+                cigSkillName.text = skill.skillName;
+                cigSkillCost.text = "Prix: " + skill.cost;
                 break;
             default:
                 break;
@@ -162,8 +152,6 @@ public class SkillTreeManager : MonoBehaviour
 
         hasMoney = gameManager.GetPlayerMoney() >= skill.cost;
 
-        //Debug.Log(isPrerequisiteUnlocked);
-        //Debug.Log(hasMoney);
         return isPrerequisiteUnlocked && hasMoney;
     }
 
@@ -196,17 +184,14 @@ public class SkillTreeManager : MonoBehaviour
 
         switch (b.type)
         {
-            case Building.TYPE.CIGARETTE:
+            case Building.TYPE.PUBLICITY:
                 index = 0;
                 break;
-            case Building.TYPE.PUBLICITY:
+            case Building.TYPE.POPULARITY:
                 index = 1;
                 break;
-            case Building.TYPE.LOBBYING:
+            case Building.TYPE.MANUFACTURING:
                 index = 2;
-                break;
-            case Building.TYPE.REPUTATION:
-                index = 3;
                 break;
 
         }
@@ -220,13 +205,11 @@ public class SkillTreeManager : MonoBehaviour
         {
             default:
             case 0:
-                return Building.TYPE.CIGARETTE;
-            case 1:
                 return Building.TYPE.PUBLICITY;
-            case 3:
-                return Building.TYPE.LOBBYING;
-            case 4:
-                return Building.TYPE.REPUTATION;
+            case 1:
+                return Building.TYPE.POPULARITY;
+            case 2:
+                return Building.TYPE.MANUFACTURING;
         }
     }
 
@@ -270,25 +253,21 @@ public class SkillTreeManager : MonoBehaviour
     {
         switch (index)
         {
-            case 0: // cig
-                cigSkillDesc.text = "";
-                cigSkillName.text = "";
-                cigSkillCost.text = "";
-                break;
-            case 1: // pub
+            case 0: // publicity
                 pubSkillDesc.text = "";
                 pubSkillName.text = "";
                 pubSkillCost.text = "";
                 break;
-            case 2: // lobby
-                lobSkillDesc.text = "";
-                lobSkillName.text = "";
-                lobSkillCost.text = "";
-                break;
-            case 4: // rep
+            case 1: // popularity
                 popSkillDesc.text = "";
                 popSkillName.text = "";
                 popSkillCost.text = "";
+                break;
+            case 2: 
+                // manufacturing
+                cigSkillDesc.text = "";
+                cigSkillName.text = "";
+                cigSkillCost.text = "";
                 break;
             default:
                 break;
