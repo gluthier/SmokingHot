@@ -286,7 +286,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &1452020022735618930
 GameObject:
@@ -1100,6 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7265a85cbd9b2a4bac5c32853a6d442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTreeBuildingType: 0
 --- !u!224 &7433160692349972093 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2714773124994168805, guid: 7d4f32515073d417a898c9a0090d26d3, type: 3}

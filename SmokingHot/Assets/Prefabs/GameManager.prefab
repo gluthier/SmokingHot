@@ -56,6 +56,7 @@ MonoBehaviour:
   worldEventUI: {fileID: 0}
   audioSource: {fileID: 0}
   newEventSound: {fileID: 0}
+  endgameScreen: {fileID: 0}
   coinSpawner: {fileID: 0}
   customerManager: {fileID: 0}
 --- !u!223 &2411680259045162715

@@ -166,7 +166,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8244811036534799928}
+  m_Father: {fileID: 7333737773873714798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -388,7 +388,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7312532441300774212, guid: 7d4f32515073d417a898c9a0090d26d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1951983664618227937}
-    - targetCorrespondingSourceObject: {fileID: 8274957295121302802, guid: 7d4f32515073d417a898c9a0090d26d3, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7312532441300774212, guid: 7d4f32515073d417a898c9a0090d26d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2451764999230178811}
     m_AddedComponents: []
@@ -396,10 +396,5 @@ PrefabInstance:
 --- !u!224 &7333737773873714798 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7312532441300774212, guid: 7d4f32515073d417a898c9a0090d26d3, type: 3}
-  m_PrefabInstance: {fileID: 53478206738266922}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &8244811036534799928 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8274957295121302802, guid: 7d4f32515073d417a898c9a0090d26d3, type: 3}
   m_PrefabInstance: {fileID: 53478206738266922}
   m_PrefabAsset: {fileID: 0}

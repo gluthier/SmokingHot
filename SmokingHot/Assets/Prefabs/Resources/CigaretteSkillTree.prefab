@@ -153,7 +153,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &436857396412872325
 GameObject:
@@ -426,7 +426,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -570,7 +570,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -925,7 +925,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &4495782300039144665
 GameObject:
@@ -1718,7 +1718,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &5160256583007538585
 GameObject:
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &5591279494990518948
 GameObject:
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &5682627765843863184
 GameObject:
@@ -3124,7 +3124,7 @@ MonoBehaviour:
   cost: 0
   prerequisites: []
   isUnlocked: 0
-  effect: Fait que le bien est mieux
+  effects: []
   tierUp: 0
 --- !u!1 &8125649555476880247
 GameObject:
@@ -3186,7 +3186,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3330,7 +3330,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3624,7 +3624,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3904,7 +3904,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

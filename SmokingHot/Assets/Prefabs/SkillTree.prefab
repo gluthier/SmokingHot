@@ -1309,6 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7265a85cbd9b2a4bac5c32853a6d442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTreeBuildingType: 0
 --- !u!1 &8571460745125587501
 GameObject:
   m_ObjectHideFlags: 0
