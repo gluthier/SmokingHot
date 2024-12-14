@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameUI gameUI;
     public CameraManager cameraManager;
     public SkillTreeManager skillTreeManager;
+    public MainMenuForm mainMenuForm;
     public WorldEventUI worldEventUI;
     public AudioSource audioSource;
     public AudioClip newEventSound;
@@ -260,17 +261,17 @@ public class GameManager : MonoBehaviour
         //Check for mouse click 
         if (Input.GetMouseButtonDown(0))
         {
-            if (worldEventUI.gameObject.activeInHierarchy)
-                return;
-
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f))
+            if (CanInteractWithBuildings())
             {
-                if (raycastHit.transform != null)
+                RaycastHit raycastHit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out raycastHit, 100f))
                 {
-                    //Our custom method. 
-                    CurrentClickedGameObject(raycastHit.transform.gameObject);
+                    if (raycastHit.transform != null)
+                    {
+                        //Our custom method. 
+                        CurrentClickedGameObject(raycastHit.transform.gameObject);
+                    }
                 }
             }
         }
@@ -340,6 +341,14 @@ public class GameManager : MonoBehaviour
         simulationManager.StartSimulation();
         skillTreeManager.ResetSkillTreeManager();
         HideWorldEventUI();
+    }
+
+    private bool CanInteractWithBuildings()
+    {
+        return simulationManager != null &&
+            simulationManager.isSimulationOn &&
+            mainMenuForm != null &&
+            !mainMenuForm.isActiveAndEnabled;
     }
 
     private void OnApplicationQuit()

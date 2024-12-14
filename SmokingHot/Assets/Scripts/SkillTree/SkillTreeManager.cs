@@ -118,17 +118,17 @@ public class SkillTreeManager : MonoBehaviour
             case 0: // publicity
                 pubSkillDesc.text = skill.skillDescription;
                 pubSkillName.text = skill.skillName;
-                pubSkillCost.text = "Prix: " + skill.cost;
+                pubSkillCost.text = $"-{skill.cost} millions";
                 break;
             case 1: // popularity
                 popSkillDesc.text = skill.skillDescription;
                 popSkillName.text = skill.skillName;
-                popSkillCost.text = "Prix: " + skill.cost;
+                popSkillCost.text = $"-{skill.cost} millions";
                 break;
             case 2: // manufacturing
                 cigSkillDesc.text = skill.skillDescription;
                 cigSkillName.text = skill.skillName;
-                cigSkillCost.text = "Prix: " + skill.cost;
+                cigSkillCost.text = $"-{skill.cost} millions";
                 break;
             default:
                 break;
