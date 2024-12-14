@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip newEventSound;
     public EndgameScreen endgameScreen;
+    public TooltipManager tooltipManager;
 
     private SimulationManager simulationManager;
 
@@ -191,6 +192,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowWorldEvent()
     {
+        tooltipManager.HideAllTooltips();
         audioSource.PlayOneShot(newEventSound);
         worldEventUI.gameObject.SetActive(true);
     }
@@ -258,20 +260,30 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //Check for mouse click 
-        if (Input.GetMouseButtonDown(0))
+        if (GameHasStarted())
         {
-            if (CanInteractWithBuildings())
+            RaycastHit raycastHit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out raycastHit, 100f))
             {
-                RaycastHit raycastHit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out raycastHit, 100f))
+                if (raycastHit.transform != null)
                 {
-                    if (raycastHit.transform != null)
+                    GameObject collider = raycastHit.transform.gameObject;
+
+                    //Check for mouse click 
+                    if (Input.GetMouseButtonDown(0))
                     {
                         //Our custom method. 
-                        CurrentClickedGameObject(raycastHit.transform.gameObject);
+                        CurrentClickedGameObject(collider);
                     }
+                    else
+                    {
+                        tooltipManager.ShowToolTipIfMatchTag(collider);
+                    }
+                }
+                else
+                {
+                    tooltipManager.HideAllTooltips();
                 }
             }
         }
@@ -285,10 +297,28 @@ public class GameManager : MonoBehaviour
 
     public void CurrentClickedGameObject(GameObject gameObject)
     {
-        if (gameObject.tag == "Building" && skillTreeManager.GetCurrentActivePanel() == -1)
+        if (IsTagAnyBuilding(gameObject) && skillTreeManager.GetCurrentActivePanel() == -1)
         {
+            tooltipManager.HideAllTooltips();
             skillTreeManager.ShowPanel(gameObject);
             simulationManager.PauseSimulation();
+        }
+    }
+
+    private bool IsTagAnyBuilding(GameObject collider)
+    {
+        return collider.CompareTag(Env.PublicityBuildingsTag) ||
+            collider.CompareTag(Env.PopularityBuildingsTag) ||
+            collider.CompareTag(Env.ManufacturingBuildingsTag);
+    }
+
+    private void ShowChestToolTipIfTagMatch(GameObject collider)
+    {
+        if (collider.CompareTag(Env.CustomerSharesTag) ||
+            collider.CompareTag(Env.ChestTag) ||
+            IsTagAnyBuilding(collider))
+        {
+            tooltipManager.ShowToolTipIfMatchTag(collider);
         }
     }
 
@@ -343,7 +373,7 @@ public class GameManager : MonoBehaviour
         HideWorldEventUI();
     }
 
-    private bool CanInteractWithBuildings()
+    private bool GameHasStarted()
     {
         return simulationManager != null &&
             simulationManager.isSimulationOn &&

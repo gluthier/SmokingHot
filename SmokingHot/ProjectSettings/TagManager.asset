@@ -9,6 +9,10 @@ TagManager:
   - Building
   - SkillTree
   - Chest
+  - CustomerShares
+  - PublicityBuildings
+  - PopularityBuildings
+  - ManufacturingBuildings
   layers:
   - Default
   - TransparentFX

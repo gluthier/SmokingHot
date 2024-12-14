@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 8593627234694356688}
   m_Layer: 0
   m_Name: ManufacturingBuildings
-  m_TagString: Building
+  m_TagString: ManufacturingBuildings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8908266591466203664}
   m_Layer: 0
   m_Name: PopularityBuildings
-  m_TagString: Building
+  m_TagString: PopularityBuildings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 5199810189362408366}
   m_Layer: 0
   m_Name: PublicityBuildings
-  m_TagString: Building
+  m_TagString: PublicityBuildings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,7 +284,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
