@@ -203,6 +203,23 @@ public class SkillTreeManager : MonoBehaviour
         Skill[] listSkills = skillTreePanel[GetCurrentActivePanel()]
                 .GetComponentsInChildren<Skill>();
 
+        ClearAlllockedBorders(listSkills);
+        SelectCorrectSkillToActivate(listSkills);
+    }
+
+    private void ClearAlllockedBorders(Skill[] listSkills)
+    {
+        foreach (Skill skill in listSkills)
+        {
+            if (!skill.isUnlocked)
+            {
+                ResetBorderSkill(skill);
+            }
+        }
+    }
+
+    private void SelectCorrectSkillToActivate(Skill[] listSkills)
+    {
         for (int i = 0; i < listSkills.Length; i++)
         {
             Skill skill = listSkills[i];
@@ -213,10 +230,6 @@ public class SkillTreeManager : MonoBehaviour
                 break;
             }
         }
-
-        //SetSkillActive(
-        //    skillTreePanel[GetCurrentActivePanel()]
-        //        .GetComponentsInChildren<Skill>().First().gameObject);
     }
 
     public Building.TYPE GetBuildingTypeFromIndex(int index)
@@ -240,16 +253,21 @@ public class SkillTreeManager : MonoBehaviour
             foreach (Skill skill in skillTree.GetComponentsInChildren<Skill>())
             {
                 skill.isUnlocked = false;
-
-                GameObject border = skill.transform.GetChild(0).gameObject;
-
-                border.gameObject.GetComponent<UnityEngine.UI.Image>().color =
-                    new Color32(96, 96, 96, 255);
-                border.SetActive(false);
+                ResetBorderSkill(skill);
             }
         }
 
         CloseAllPanels();
+    }
+
+    private void ResetBorderSkill(Skill skill)
+    {
+        GameObject border = skill.transform.GetChild(0).gameObject;
+
+        border.gameObject.GetComponent<UnityEngine.UI.Image>().color =
+            Env.UI_DecreaseColor;
+
+        border.SetActive(false);
     }
 
     public void ClosePanel()
