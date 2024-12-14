@@ -27,8 +27,6 @@ public class CustomerManager : MonoBehaviour
     {
         int roundedMarketShare = Mathf.RoundToInt(marketShare * 100);
 
-        //Debug.Log($"Initial market share: {roundedMarketShare}");
-
         previousMarketShare = roundedMarketShare;
 
         for (int i = 0; i < customers.Count; ++i)
@@ -49,10 +47,6 @@ public class CustomerManager : MonoBehaviour
         int roundedMarketShare = Mathf.RoundToInt(marketShare * 100);
         int marketShareDelta = roundedMarketShare - previousMarketShare;
 
-        //Debug.Log($"Market share: {marketShare}");
-        //Debug.Log($"Market share (rounded): {roundedMarketShare}");
-        //Debug.Log($"Market share (delta): {marketShareDelta}");
-
         if (marketShareDelta > 0)
         {
             HandleCustomerWin(previousMarketShare, roundedMarketShare, marketShareDelta);
@@ -71,7 +65,6 @@ public class CustomerManager : MonoBehaviour
 
         for (int i = previousMarketShare - 1; i >= roundedMarketShare && i >= 0; --i)
         {
-            //Debug.Log($"previousMarketShare: {previousMarketShare}");
             customers[i].Jump();
             customers[i].StartColorTransition(concurrentColor);
         }

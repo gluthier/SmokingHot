@@ -14,11 +14,12 @@ public class Customer : MonoBehaviour
 
     private float transitionDuration = 2f;
     private float transitionProgress = 0f;
-    private bool isTransitioning = false;
+    private bool isTransitioning;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        isTransitioning = false;
     }
 
     void Start()
