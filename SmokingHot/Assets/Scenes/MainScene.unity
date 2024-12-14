@@ -1677,7 +1677,7 @@ MonoBehaviour:
   coinGameObject: {fileID: 1498403948531744, guid: fa2c57d3f28a5e6419393e8bc3eeb32a, type: 3}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   coins: []
-  moneyWorldRatio: 0.2
+  moneyWorldRatio: 0.1
   shiftRange: 0.2
   coinDestroySound: {fileID: 8300000, guid: 358ae1fcd061f405a848da34825cba10, type: 3}
 --- !u!4 &1048517195 stripped
