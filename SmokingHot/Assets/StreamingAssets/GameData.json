@@ -1,6 +1,6 @@
 {
     "totalYearSimulated": 50,
-    "gameMinutesLength": 10,
+    "gameMinutesLength": 3,
     "playerCompany" : {
         "companyName": "Hot Smokes",
         "startingMoneyMillion": 100,
