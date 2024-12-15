@@ -23,6 +23,9 @@ public class CompanyEntity
     private float deadConsumers;
     private float bonusMoney;
 
+    // final stats
+    private float totalConsumerDeads;
+
     public enum Param
     {
         Money,
@@ -43,6 +46,7 @@ public class CompanyEntity
 
         cigarettePackProduced = new CigarettePackEntity();
         popularity = PopularityLevel.Neutral;
+        totalConsumerDeads = 0;
 
         LoadData(conglomerateData);
     }
@@ -70,6 +74,11 @@ public class CompanyEntity
     public bool IsPlayer()
     {
         return this.isPlayer;
+    }
+
+    public float GetTotalConsumerDeads()
+    {
+        return this.totalConsumerDeads;
     }
 
     public CigarettePackEntity GetCigarettePack()
@@ -244,6 +253,8 @@ public class CompanyEntity
     {
         float deadConsumersTotal =
             deadConsumers * cigarettePackProduced.GetToxicityRatio();
+
+        totalConsumerDeads += deadConsumersTotal;
 
         float lostConsumersTotal =
             lostConsumers / cigarettePackProduced.GetAddictionRatio();

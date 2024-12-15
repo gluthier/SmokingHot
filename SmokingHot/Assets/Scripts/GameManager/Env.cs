@@ -78,12 +78,16 @@ public static class Env
 
     public static string UI_EndgameScreenTitle = "Background/Title";
     public static List<string> UI_EndgameRankedCompanies = new List<string>{
-        "Background/Ranking/Row1/Company",
-        "Background/Ranking/Row2/Company"
+        "Background/Ranking1/Row1/Company",
+        "Background/Ranking2/Row2/Company"
     };
     public static List<string> UI_EndgameRankedMoney = new List<string>{
-        "Background/Ranking/Row1/Money",
-        "Background/Ranking/Row2/Money"
+        "Background/Ranking1/Row1/Money",
+        "Background/Ranking2/Row2/Money"
+    };
+    public static List<string> UI_EndgameRankedDead = new List<string>{
+        "Background/Ranking1/Row1Deads/Deads",
+        "Background/Ranking2/Row2Deads/Deads"
     };
     public static string VictoryMessage = "Vous avez gagné!";
     public static string DefeatMessage = "Vous avez perdu.";

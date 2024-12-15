@@ -6,6 +6,7 @@ public class EndgameScreen : MonoBehaviour
 {
     private List<TextMeshProUGUI> rankedCompanies = new List<TextMeshProUGUI> { };
     private List<TextMeshProUGUI> rankedMoney = new List<TextMeshProUGUI> { };
+    private List<TextMeshProUGUI> rankedDeads = new List<TextMeshProUGUI> { };
     private TextMeshProUGUI title;
 
     private void Init()
@@ -20,6 +21,11 @@ public class EndgameScreen : MonoBehaviour
         foreach (string money in Env.UI_EndgameRankedMoney)
         {
             rankedMoney.Add(FindTextField(money));
+        }
+
+        foreach (string dead in Env.UI_EndgameRankedDead)
+        {
+            rankedDeads.Add(FindTextField(dead));
         }
     }
 
@@ -46,7 +52,9 @@ public class EndgameScreen : MonoBehaviour
         {
             rankedCompanies[i].text = $"{sortedCompanies[i].GetCompanyName()}";
             rankedMoney[i].text =
-                $"{Utils.GetDisplayableNum(sortedCompanies[i].GetMoney())} millions";
+                $"{Utils.GetDisplayableNum(sortedCompanies[i].GetMoney())} millions de francs";
+            rankedDeads[i].text =
+                $"{Utils.GetDisplayableNum(sortedCompanies[i].GetTotalConsumerDeads())} millions de décès";
         }
     }
 
