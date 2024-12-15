@@ -382,8 +382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerReference: {fileID: 295844745}
-  playerColor: {r: 0.019121822, g: 0, b: 0.6509434, a: 0}
-  concurrentColor: {r: 1, g: 0, b: 0, a: 0}
+  playerColor: {r: 0.06367937, g: 0, b: 0.764151, a: 0}
+  concurrentColor: {r: 0.8773585, g: 0.10617862, b: 0.037246335, a: 0}
   winCustomerSound: {fileID: 8300000, guid: d24852b91879f4e71ad2f951ebd23c74, type: 3}
   looseCustomerSound: {fileID: 8300000, guid: d020e2a3fb6564c16a0edb5976c39e56, type: 3}
   margin: 0.11

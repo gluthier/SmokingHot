@@ -24,8 +24,8 @@ public static class Env
     public static Color playerBackgroundColor = new Color32(3, 0, 36, 240);
     public static Color playerSwitchViewButtonBackgroundColor = new Color32(219, 216, 242, 255);
 
-    public static Color iaBackgroundColor = new Color32(26, 10, 0, 240);
-    public static Color iaSwitchViewButtonBackgroundColor = new Color32(242, 238, 227, 255);
+    public static Color iaBackgroundColor = new Color32(75, 27, 0, 240);
+    public static Color iaSwitchViewButtonBackgroundColor = new Color32(231, 170, 165, 255);
 
     public static Color GetTextUIColorFromDiff(float diff)
     {
