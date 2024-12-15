@@ -70,6 +70,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SetupGame()
+    {
+        Screen.fullScreen = true;
+    }
+
     public SimulationManager GetSimulationManager() { return simulationManager; }
     public void enterGame(string companyName)
     {
@@ -261,6 +266,12 @@ public class GameManager : MonoBehaviour
             {
                 mainMenuForm.TaskOnClick();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            // Toggle fullscreen
+            Screen.fullScreen = !Screen.fullScreen;
         }
 
         if (GameHasStarted())

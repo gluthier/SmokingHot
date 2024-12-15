@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using System.Linq;
-using NUnit.Framework.Constraints;
-using UnityEditor.Experimental.GraphView;
 
 public class SkillTreeManager : MonoBehaviour
 {
