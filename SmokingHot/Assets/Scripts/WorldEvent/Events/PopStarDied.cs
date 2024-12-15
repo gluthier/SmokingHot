@@ -14,7 +14,7 @@ public class PopStarDied : WorldEvent
         description = "La plus grande popstar est décédée à cause d'un cancer du poumon. La réaction du publique est dévastatrice. Nos analystes proposent de faire une campagne publicitaire pour mettre en avant notre attention concernant la santé publique.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions\n" +
+            $"-{acceptMoney} millions de francs\n" +
             $"{acceptChanceGood}% +1 popularité\n" +
             $"{acceptChanceBad}% -1 popularité";
 

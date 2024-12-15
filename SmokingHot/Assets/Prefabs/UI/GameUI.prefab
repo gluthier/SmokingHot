@@ -2931,7 +2931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5779717740548110466, guid: cd097049d5dbe4d44bc751a752626b89, type: 3}
       propertyPath: m_text
-      value: Capital
+      value: Capital (francs)
       objectReference: {fileID: 0}
     - target: {fileID: 6704260590297072963, guid: cd097049d5dbe4d44bc751a752626b89, type: 3}
       propertyPath: m_Pivot.x

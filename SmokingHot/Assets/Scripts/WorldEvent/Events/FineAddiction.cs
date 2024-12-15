@@ -15,11 +15,11 @@ public class FineAddiction : WorldEvent
         description = "Nous avons été amendés à cause du niveau d'addiction trop élevé de nos cigarettes. Nos analystes proposent de se battre juridiquement, risquant le quitte ou double.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions\n" +
+            $"-{acceptMoney} millions de francs\n" +
             $"{acceptChance}% -1 popularité";
 
         refusePriceDescription =
-            $"-{refuseMoney} millions\n" +
+            $"-{refuseMoney} millions de francs\n" +
             $"{refuseChanceGood}% +1 popularité\n" +
             $"{refuseChanceBad}% -2 popularité";
 
