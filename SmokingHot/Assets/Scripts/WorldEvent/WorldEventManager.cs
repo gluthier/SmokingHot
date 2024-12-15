@@ -1,14 +1,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Rendering.GPUSort;
 
 public class WorldEventManager : MonoBehaviour
 {
     private GameManager gameManager;
+    private List<WorldEvent> worldEvents;
+    private int idx;
 
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
+
+        worldEvents = new List<WorldEvent>
+        {
+            new VotationAbolishAds(),
+            new InvestSnacks(),
+            new SponsoringFestival(),
+            new VotationIncreasePrice(),
+            new PopStarDied(),
+            new ScientificStudy(),
+            new SocialInvestment(),
+            new MarketInvestment()
+        };
+
+        ResetOrderEvents();
+    }
+
+    public void ResetOrderEvents()
+    {
+        System.Random rng = new System.Random();
+        worldEvents = worldEvents.OrderBy(_ => rng.Next()).ToList();
+        idx = 0;
     }
 
     public WorldEvent CreateWorldEvent(GameManager.GameState gameState)
@@ -18,21 +42,18 @@ public class WorldEventManager : MonoBehaviour
         switch (gameState.year)
         {
             case 5:
-                worldEvent = new VotationAbolishAds();
-                break;
             case 10:
-                worldEvent = new InvestSnacks();
-                break;
             case 15:
-                worldEvent = new SponsoringFestival();
-                break;
             case 20:
-                worldEvent = new VotationIncreasePrice();
-                break;
             case 25:
-                worldEvent = new PopStarDied();
-                break;
             case 30:
+            case 35:
+            case 40:
+                worldEvent = worldEvents[idx];
+                idx++;
+                break;
+
+            case 45:
                 if (gameState.cigarettePackProduced.toxicity == CigarettePackEntity.ToxicityLevel.VeryBad)
                 {
                     worldEvent = new FineToxicity();
@@ -46,15 +67,7 @@ public class WorldEventManager : MonoBehaviour
                     worldEvent = new UnethicalBonus();
                 }
                 break;
-            case 35:
-                worldEvent = new ScientificStudy();
-                break;
-            case 40:
-                worldEvent = new SocialInvestment();
-                break;
-            case 45:
-                worldEvent = new MarketInvestment();
-                break;
+
             default:
                 worldEvent = new NoEvent();
                 break;

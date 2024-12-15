@@ -245,6 +245,7 @@ public class SimulationManager : MonoBehaviour
         timePassed = 0f;
 
         iaManager.ResetIAManager();
+        worldEventManager.ResetOrderEvents();
 
         LoadData(
             GameDataLoader.Load());

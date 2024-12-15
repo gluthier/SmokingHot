@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnethicalBonus : WorldEvent
 {
-    private int acceptMoney = 5;
+    private int acceptMoney = 50;
     private int refuseChance = 50;
 
     public UnethicalBonus()

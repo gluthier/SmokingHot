@@ -72,6 +72,11 @@ public class CompanyEntity
         return this.isPlayer;
     }
 
+    public CigarettePackEntity GetCigarettePack()
+    {
+        return cigarettePackProduced;
+    }
+
     public GameManager.GameState RetrieveCompanyGameState(int yearPassed, string iaStrategy)
     {
         return new GameManager.GameState
