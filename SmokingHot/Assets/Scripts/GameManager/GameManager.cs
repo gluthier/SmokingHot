@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public AudioClip newEventSound;
     public EndgameScreen endgameScreen;
     public TooltipManager tooltipManager;
+    public Music musicManager;
 
     private SimulationManager simulationManager;
 
@@ -372,6 +373,7 @@ public class GameManager : MonoBehaviour
         coinManager.ClearAllCoins();
         simulationManager.StartSimulation();
         skillTreeManager.ResetSkillTreeManager();
+        musicManager.PlayRandomClip();
         HideWorldEventUI();
     }
 

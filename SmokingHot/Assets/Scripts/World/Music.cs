@@ -19,15 +19,7 @@ public class Music : MonoBehaviour
         PlayRandomClip();
     }
 
-    private void Update()
-    {
-        if (!audioSource.isPlaying)
-        {
-            PlayRandomClip();
-        }
-    }
-
-    private void PlayRandomClip()
+    public void PlayRandomClip()
     {
         if (audioClips.Length == 0)
         {
