@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
             if (simulationManager != null && simulationManager.isSimulationOn)
                 return;
 
-            FindFirstObjectByType<MainMenuForm>().gameObject.SetActive(false);
+            FindFirstObjectByType<MainMenuForm>()?.gameObject.SetActive(false);
             enterGame("Hot Smokes");
         }
         else if (Input.GetKeyDown(KeyCode.R))
@@ -385,6 +385,7 @@ public class GameManager : MonoBehaviour
         simulationManager.StartSimulation();
         skillTreeManager.ResetSkillTreeManager();
         musicManager.PlayRandomClip();
+        endgameScreen.gameObject.SetActive(false);
         HideWorldEventUI();
     }
 

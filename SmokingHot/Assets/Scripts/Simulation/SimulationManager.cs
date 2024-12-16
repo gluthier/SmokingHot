@@ -32,8 +32,6 @@ public class SimulationManager : MonoBehaviour
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
-    private List<Building.TYPE> firstPlayerInvestment;
-
     public void Init(GameManager gameManager, string companyName)
     {
         this.gameManager = gameManager;
@@ -51,8 +49,6 @@ public class SimulationManager : MonoBehaviour
         gameManager.customerManager.InitialColors(initialMarketShare);
         gameManager.PopulateMainUI(false);
         gameManager.coinManager.SpawnOrDestroy(RetrievePlayerGameState().money);
-
-        firstPlayerInvestment = new List<Building.TYPE>();
     }
 
     public CompanyEntity GetPlayerCompany()
@@ -196,7 +192,7 @@ public class SimulationManager : MonoBehaviour
             }
 
             iaManager.ProcessEndOfYear(
-                RetrieveIAGameState(), iaCompany, worldEvent, firstPlayerInvestment);
+                RetrieveIAGameState(), iaCompany, worldEvent, yearPassed);
         }
     }
 
@@ -247,34 +243,18 @@ public class SimulationManager : MonoBehaviour
         iaManager.ResetIAManager();
         worldEventManager.ResetOrderEvents();
 
+        float initialMarketShare = playerMarketShare();
+        gameManager.customerManager.InitialColors(initialMarketShare);
+
         LoadData(
             GameDataLoader.Load());
 
         SetPlayerCompanyName(playerCompanyName);
-
-        firstPlayerInvestment = new List<Building.TYPE>();
     }
 
     public void ApplyEffect(List<string> effects, Building.TYPE buildingType,
         CompanyEntity company)
     {
-        if (company.IsPlayer() &&
-            firstPlayerInvestment.Count == 0)
-        {
-            firstPlayerInvestment.Add(buildingType);
-        }
-
-        // Debug only
-        if (!company.IsPlayer())
-        {
-            string msg = $"IA apply {effects.Count} effects:";
-            foreach (string effect in effects)
-            {
-                msg += effect + ", ";
-            }
-            Debug.Log(msg);
-        }
-
         foreach (string effect in effects)
         {
             string[] skillParts = effect.Split(" ");

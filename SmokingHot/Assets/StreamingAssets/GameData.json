@@ -9,22 +9,22 @@
         "startingLobbyingMillion": 0,
         "startingAdCampaignsMillion": 0,
         "cigarettePackPrice": 9.6,
-        "newConsumers": 5,
+        "newConsumers": 8,
         "lostConsumers": 5,
-        "deadConsumers": 11,
+        "deadConsumers": 7,
         "bonusMoney": 25
     },
     "iaCompany" : {
         "companyName": "Iron Lung Co.",
         "startingMoneyMillion": 131,
         "startingConsumersMillion": 488,
-        "startingManufacturingMillion": 18.1,
-        "startingLobbyingMillion": 6.45,
-        "startingAdCampaignsMillion": 3.33,
+        "startingManufacturingMillion": 16.1,
+        "startingLobbyingMillion": 3.45,
+        "startingAdCampaignsMillion": 2.33,
         "cigarettePackPrice": 9.6,
         "newConsumers": 7,
-        "lostConsumers": 6,
-        "deadConsumers": 12,
-        "bonusMoney": 21
+        "lostConsumers": 5,
+        "deadConsumers": 8,
+        "bonusMoney": 33
     }
 }
