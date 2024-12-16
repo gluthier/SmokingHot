@@ -70,8 +70,11 @@ public class VirtualSkillTreeManager : MonoBehaviour
         gameManager.HandleSkillEffect(effect, buildingType, false);
     }
 
-    public void HandleIASkillTree(Building.TYPE skillTreeToInvest, CompanyEntity iaCompany)
+    public void HandleIASkillTree(Building.TYPE skillTreeToInvest, CompanyEntity iaCompany, int yearPassed)
     {
+        System.Random random = new System.Random();
+        int randChoice = random.Next(yearPassed);
+
         List<VirtualSkill> virtualSkills;
 
         if (iaVirtualTree.TryGetValue(skillTreeToInvest, out virtualSkills))
@@ -81,8 +84,8 @@ public class VirtualSkillTreeManager : MonoBehaviour
                 if (virtualSkill.isUnlocked)
                     continue;
 
-                if (iaCompany.GetMoney() > 
-                    virtualSkill.cost * Env.MinCoefficientCostForIAToInvestSkill)
+                if (randChoice < 20 && // always true until 20 years passed, then harded each year passed
+                    iaCompany.GetMoney() > virtualSkill.cost * Env.MinCoefficientCostForIAToInvestSkill)
                 {
                     if (CanUnlockVirtualSkill(virtualSkill))
                     {

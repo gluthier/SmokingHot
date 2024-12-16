@@ -13,6 +13,12 @@ public class IA_Manager : MonoBehaviour
 
     private List<GameState> iaStateReports;
 
+    private int yearPassed;
+
+    private float startMoneyChangeEventState = 0;
+    private float startConsummersChangeEventState = 0;
+    private float startCostsChangeEventState = 0;
+
     public void Init()
     {
         eventStateMachine = new EventStateMachine();
@@ -29,12 +35,14 @@ public class IA_Manager : MonoBehaviour
         virtualSkillTreeManager.Init();
     }
 
-    public void ProcessEndOfYear(GameState iaStatReport, CompanyEntity iaCompany, WorldEvent worldEvent, List<Building.TYPE> firstPlayerInvestment)
+    public void ProcessEndOfYear(GameState iaStatReport, CompanyEntity iaCompany,
+        WorldEvent worldEvent, int yearPassed)
     {
+        this.yearPassed = yearPassed;
         iaStateReports.Add(iaStatReport);
 
         HandleChangeOfEventState();
-        HandleChangeOfSkillState(firstPlayerInvestment, iaCompany);
+        HandleChangeOfSkillState(iaCompany);
 
         HandleWorldEvent(iaCompany, worldEvent);
     }
@@ -79,6 +87,10 @@ public class IA_Manager : MonoBehaviour
 
     private void HandleChangeOfEventState()
     {
+        // only offer a chance to switch state each 5 years
+        if (yearPassed % 5 != 0)
+            return;
+
         switch (eventStateMachine.CurrentState)
         {
             case EventProcessState.MaxMoney:
@@ -94,15 +106,14 @@ public class IA_Manager : MonoBehaviour
         }
     }
 
-    private void HandleChangeOfSkillState(List<Building.TYPE> firstPlayerInvestment, CompanyEntity iaCompany)
+    private void HandleChangeOfSkillState(CompanyEntity iaCompany)
     {
-        if (firstPlayerInvestment.Count == 0)
-            return;
-
         switch (skillStateMachine.CurrentState)
         {
             case SkillProcessState.NoSpecialisation:
-                ChooseSkillStrategy(firstPlayerInvestment.First());
+                System.Random random = new System.Random();
+                if (random.Next(10) < 2) // 20% chance
+                    ChooseSkillStrategy();
                 break;
             // IA stays in investement strategy once it has specialised
             case SkillProcessState.InvestInManufacturing:
@@ -114,40 +125,25 @@ public class IA_Manager : MonoBehaviour
         HandleSkillTreeDeveloppment(iaCompany);
     }
 
-    private void ChooseSkillStrategy(Building.TYPE buildingTypeFirstInvestmentByPlayer)
-    {
-        // it will choose at random one stategy that is not the first one choosen by the player
-        switch (buildingTypeFirstInvestmentByPlayer)
-        {
-            case Building.TYPE.MANUFACTURING:
-                ExecuteAtRandomSkillStrategyInvestment(
-                    SkillCommand.SpecialiseInAds, SkillCommand.SpecialiseInPopularity);
-                break;
-            case Building.TYPE.PUBLICITY:
-                ExecuteAtRandomSkillStrategyInvestment(
-                    SkillCommand.SpecialiseInManufacturing, SkillCommand.SpecialiseInPopularity);
-                break;
-            case Building.TYPE.POPULARITY:
-                ExecuteAtRandomSkillStrategyInvestment(
-                    SkillCommand.SpecialiseInAds, SkillCommand.SpecialiseInManufacturing);
-                break;
-            case Building.TYPE.LOBBYING:
-            default:
-                break;
-        }
-    }
-
-    private void ExecuteAtRandomSkillStrategyInvestment(SkillCommand optionOne, SkillCommand optionTwo)
+    private void ChooseSkillStrategy()
     {
         System.Random random = new System.Random();
+        int randChoice = random.Next(3);
 
-        if (random.Next(2) < 1)
+        // it will choose at random one stategy that is not the first one choosen by the player
+        switch (randChoice)
         {
-            skillStateMachine.MoveNext(optionOne);
-        }
-        else
-        {
-            skillStateMachine.MoveNext(optionTwo);
+            case 0:
+                skillStateMachine.MoveNext(SkillCommand.SpecialiseInAds);
+                break;
+            case 1:
+                skillStateMachine.MoveNext(SkillCommand.SpecialiseInPopularity);
+                break;
+            case 2:
+                skillStateMachine.MoveNext(SkillCommand.SpecialiseInManufacturing);
+                break;
+            default:
+                break;
         }
     }
 
@@ -170,18 +166,16 @@ public class IA_Manager : MonoBehaviour
 
     private void HandleSkillTreeDeveloppment(CompanyEntity iaCompany)
     {
-        SkillTreeManager skillTreeManager = FindFirstObjectByType<SkillTreeManager>();
-
         switch (skillStateMachine.CurrentState)
         {
             case SkillProcessState.InvestInManufacturing:
-                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.MANUFACTURING, iaCompany);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.MANUFACTURING, iaCompany, yearPassed);
                 break;
             case SkillProcessState.InvestInAds:
-                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.PUBLICITY, iaCompany);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.PUBLICITY, iaCompany, yearPassed);
                 break;
             case SkillProcessState.InvestInPopularity:
-                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.POPULARITY, iaCompany);
+                virtualSkillTreeManager.HandleIASkillTree(Building.TYPE.POPULARITY, iaCompany, yearPassed);
                 break;
             case SkillProcessState.NoSpecialisation:
             default:
@@ -223,110 +217,94 @@ public class IA_Manager : MonoBehaviour
 
     private void ProcessMaxConsumersState()
     {
-        float diffConsumers = GetDiffConsumers();
-        float diffMoney = GetDiffMoney();
-        float diffCosts = GetDiffCosts();
+        float lastConsumers = GetLastConsumers();
 
-        if (diffConsumers >= 0)
+        // Maximizing consumers is working, we switch startegy
+        if (lastConsumers < startConsummersChangeEventState)
         {
-            // Maximizing consumers is working, we switch startegy
-            if (diffMoney < 0)
-            {
-                eventStateMachine.MoveNext(EventCommand.GoMaxMoney);
-            }
-            else if (diffCosts < 0)
-            {
-                eventStateMachine.MoveNext(EventCommand.GoMinCosts);
-            }
+            eventStateMachine.MoveNext(Get50PercentChance() ?
+                EventCommand.GoMaxMoney : EventCommand.GoMinCosts);
         }
+
+        UpdateStartingValuesChangeEventState();
     }
 
     private void ProcessMaxMoneyState()
     {
-        float diffMoney = GetDiffMoney();
-        float diffConsumers = GetDiffConsumers();
-        float diffCosts = GetDiffCosts();
+        float lastMoney = GetLastMoney();
 
-        if (diffMoney >= 0)
+        // Maximizing money is working, we switch startegy
+        if (lastMoney < startMoneyChangeEventState)
         {
-            // Maximizing money is working, we switch startegy
-            if (diffConsumers < 0)
-            {
-                eventStateMachine.MoveNext(EventCommand.GoMaxConsumers);
-            }
-            else if (diffCosts < 0)
-            {
-                eventStateMachine.MoveNext(EventCommand.GoMinCosts);
-            }
+            eventStateMachine.MoveNext(Get50PercentChance() ?
+                EventCommand.GoMaxConsumers : EventCommand.GoMinCosts);
         }
+
+        UpdateStartingValuesChangeEventState();
     }
 
     private void ProcessMinCostsState()
     {
-        float diffCosts = GetDiffCosts();
-        float diffMoney = GetDiffMoney();
-        float diffConsumers = GetDiffConsumers();
+        float lastCosts = GetLastCosts();
 
-        if (diffCosts >= 0)
+        // Minimizing costs is working, we switch startegy
+        if (lastCosts < startCostsChangeEventState)
         {
-            // Minimizing costs is working, we switch startegy
-            if (diffMoney < 0)
-            {
-                eventStateMachine.MoveNext(EventCommand.GoMaxMoney);
-            }
-            else if (diffConsumers < 0)
-            {
-                eventStateMachine.MoveNext(EventCommand.GoMaxConsumers);
-            }
+            eventStateMachine.MoveNext(Get50PercentChance() ?
+                EventCommand.GoMaxConsumers : EventCommand.GoMaxMoney);
         }
+
+        UpdateStartingValuesChangeEventState();
     }
 
-    private float GetDiffMoney()
+    private bool Get50PercentChance()
     {
-        // No need to be precise, the diff of first two years can be ignored
+        System.Random random = new System.Random();
+        int randChoice = random.Next(2);
+
+        return randChoice < 1;
+    }
+
+    private void UpdateStartingValuesChangeEventState()
+    {
+        startConsummersChangeEventState = GetLastConsumers();
+        startMoneyChangeEventState = GetLastMoney();
+        startCostsChangeEventState = GetLastCosts();
+    }
+
+    private float GetLastMoney()
+    {
+        // No need to be precise, the diff of first year can be ignored
         float last =
             iaStateReports.Count < 1 ? 0 : iaStateReports[^1].money;
 
-        float lastlast =
-            iaStateReports.Count < 2 ? 0 : iaStateReports[^2].money;
-
-        return lastlast - last;
+        return last;
     }
 
-    private float GetDiffConsumers()
+    private float GetLastConsumers()
     {
-        // No need to be precise, the diff of first two years can be ignored
+        // No need to be precise, the diff of first year can be ignored
         float last =
             iaStateReports.Count < 1 ? 0 : iaStateReports[^1].numConsumers;
 
-        float lastlast =
-            iaStateReports.Count < 2 ? 0 : iaStateReports[^2].numConsumers;
-
-        return lastlast - last;
+        return last;
     }
 
-    private float GetDiffCosts()
+    private float GetLastCosts()
     {
-        // No need to be precise, the diff of first two years can be ignored
+        // No need to be precise, the diff of first year can be ignored
         float lastManufacturing =
             iaStateReports.Count < 1 ? 0 : iaStateReports[^1].manufacturingCosts;
-        float lastlastManufacturing =
-            iaStateReports.Count < 2 ? 0 : iaStateReports[^2].manufacturingCosts;
 
         float lastLobbying =
             iaStateReports.Count < 1 ? 0 : iaStateReports[^1].lobbyingCosts;
-        float lastlastLobbying =
-            iaStateReports.Count < 2 ? 0 : iaStateReports[^2].lobbyingCosts;
 
         float lastAdCampaigns =
             iaStateReports.Count < 1 ? 0 : iaStateReports[^1].adCampaignsCosts;
-        float lastlastAdCampaigns =
-            iaStateReports.Count < 2 ? 0 : iaStateReports[^2].adCampaignsCosts;
 
         float last = lastManufacturing + lastLobbying + lastAdCampaigns;
-        float lastlast = lastlastManufacturing + lastlastLobbying + lastlastAdCampaigns;
 
-        return lastlast - last;
+        return last;
     }
 
     public void ResetIAManager()
