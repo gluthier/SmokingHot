@@ -1082,7 +1082,8 @@ PrefabInstance:
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous refaites le design de votre paquet de cigarette, cela fait fureur,
-        r\xE9duisant le co\xFBt des futures pubs"
+        r\xE9duisant le co\xFBt des futures publicit\xE9s et rapportant un paquet
+        de nouveaux consommateurs."
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -1159,7 +1160,7 @@ PrefabInstance:
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Gr\xE2ce aux nouveaux b\xE2timents, vos employ\xE9s produisent des
-        pubs plus efficace et moins cher"
+        publicit\xE9s plus efficaces et moins ch\xE8res."
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -1215,8 +1216,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Votre nouveau slogan cartonne, la popularit\xE9 de votre cigarette
-        est au plus haut"
+      value: "Votre nouveau slogan cartonne, la popularit\xE9 de vos cigarettes 
+        est au plus haut."
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -1333,8 +1334,7 @@ PrefabInstance:
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous faites une nouvelle campagne annon\xE7ant une baisse du co\xFBt
-        du paquet dans les villes et villages, augmentant moyennement le nombre de
-        consommateurs"
+        du paquet dans les villes et villages, augmentant le nombre de consommateurs."
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -1406,12 +1406,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillName
-      value: "Premi\xE8re pub"
+      value: "Premi\xE8re publicit\xE9 "
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous lancez enfin une publicit\xE9 pour votre marque de cigarettes,
-        cela vous rapporte des consommateurs"
+        cela vous rapporte des consommateurs."
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -1583,8 +1583,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Vous cr\xE9ez une nouvelle pub ciblant toutes les personnes dans l'adolescence,
-        vous rapportant beaucoup de consommateurs, mais baissant votre popularit\xE9"
+      value: "Vous cr\xE9ez une nouvelle campagne publicitaire ciblant toutes les
+        personnes dans l'adolescence, vous rapportant beaucoup de consommateurs,
+        mais baissant votre popularit\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -1644,7 +1645,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: Vous lancez une nouvelle pub sur votre insta
+      value: Vous lancez une nouvelle campagne publicitaire sur Instagram vous rapportant
+        des nouveaux consommateurs.
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -2586,7 +2588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Un paquet achet\xE9 = un arbre plant\xE9. Cela marche du tonerre"
+      value: "Un paquet achet\xE9 = un arbre plant\xE9. Cela marche du tonnerre."
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -2662,8 +2664,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Vous d\xE9m\xE9nagez dans des bureaux plus grand et lancer une f\xEAte
-        pour l'ouverture des nouveaux bureaux"
+      value: "Vous d\xE9m\xE9nagez dans des bureaux plus grands et lancez une soir\xE9e
+        pour l'ouverture des nouveaux bureaux."
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -2724,7 +2726,7 @@ PrefabInstance:
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous lancez une politique de vente agressive, baissant votre popularit\xE9,
-        mais augmentant le prix du paquet et le nombre de consommateurs"
+        mais augmentant le prix du paquet et le nombre de consommateurs."
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -2844,8 +2846,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Vous ouvrez de nouvelles usines dans des pays peu d\xE9velopp\xE9es,
-        r\xE9duisant le co\xFBt de fabrication, mais baissant grandement votre r\xE9putation"
+      value: "Vous ouvrez de nouvelles usines dans des pays peu d\xE9velopp\xE9s,
+        r\xE9duisant le co\xFBt de fabrication, mais baissant grandement votre r\xE9putation."
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -2917,8 +2919,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Vous lancez une f\xEAte sur le lac avec des cigarettes gratuites pour
-        annoncer le lancement de votre marque"
+      value: "Vous organisez un festival sur le lac avec musique et alcool gratuit,
+        avec un stand vendant vos cigarettes judicieusement plac\xE9 \xE0 c\xF4t\xE9
+        pour promouvoir le lancement de votre nouvelle gamme de produit."
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -3087,7 +3090,7 @@ PrefabInstance:
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: Vous rentrez en relation avec un politicien connu, augmentant votre
-        image, mais perdant des consommateurs
+        image, mais perdant des consommateurs.
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -3147,7 +3150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Vous soutenez un \xE9v\xE9nement sportif, vous ramenant plus de consommateurs"
+      value: "Vous soutenez un \xE9v\xE9nement sportif, vous ramenant plus de consommateurs."
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6392,7 +6395,7 @@ PrefabInstance:
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Votre cigarette atteint la forme parfaite, augmentant son co\xFBt,
-        son addiction et le nombre de personnes touch\xE9es"
+        son addiction et le nombre de personnes touch\xE9es."
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6473,7 +6476,7 @@ PrefabInstance:
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: Vous augmentez les quartiers des scientifiques, leur permettant de trouver
-        un nouveau tabac plus addictif et moins toxique
+        un nouveau tabac encore plus addictif et moins toxique.
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6535,7 +6538,7 @@ PrefabInstance:
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous utilisez un tabac moins cher, r\xE9duisant le co\xFBt d'un paquet,
-        mais augmentant le nombre de consommateurs"
+        mais augmentant le nombre de consommateurs."
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6647,7 +6650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Augmente grandement l'addiction de votre cigarette, mais aussi la toxicit\xE9"
+      value: "Augmente grandement l'addiction de votre cigarette, mais aussi la toxicit\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6724,8 +6727,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
-      value: "Vos scientifiques ont trouv\xE9s un nouveau tabac, plus addictif et
-        moins toxique"
+      value: "Vos scientifiques ont cr\xE9\xE9 un nouveau m\xE9lange de tabac, plus
+        addictif et moins toxique."
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6891,7 +6894,7 @@ PrefabInstance:
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: "Vous d\xE9cidez d'augmenter le prix d'un paquet, perdant des clients
-        m\xE9contents"
+        m\xE9contents."
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
@@ -6960,7 +6963,7 @@ PrefabInstance:
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: skillDescription
       value: Vous utilisez un tabac de luxe, augmentant le prix du paquet, mais perdant
-        des consommateurs
+        des consommateurs.
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
