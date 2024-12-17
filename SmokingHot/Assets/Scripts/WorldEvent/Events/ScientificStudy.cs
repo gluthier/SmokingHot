@@ -10,7 +10,7 @@ public class ScientificStudy : WorldEvent
 
     public ScientificStudy()
     {
-        description = "Une nouvelle étude scientifique démontre les dégâts nocifs de la cigarette sur la santé. Nos analystes proposent de discrétiser l'étude et l'équipe de scientifiques derrière.";
+        description = "Une nouvelle étude scientifique démontre les dégâts nocifs de la cigarette sur la santé. Nos analystes proposent de discréditer l'étude et l'équipe de scientifiques derrière.";
 
         acceptPriceDescription =
             $"-{acceptMoney} millions de francs\n" +
