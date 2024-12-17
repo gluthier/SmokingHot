@@ -20,8 +20,8 @@ public class GameUI : MonoBehaviour
     private TextMeshProUGUI moneyDiff;
     private TextMeshProUGUI consumers;
     private TextMeshProUGUI consumersDiff;
-    private TextMeshProUGUI deads;
-    private TextMeshProUGUI deadsDiff;
+    private TextMeshProUGUI totalDeads;
+    private TextMeshProUGUI totalDeadsDiff;
     private TextMeshProUGUI popularity;
     private TextMeshProUGUI popularityDiff;
 
@@ -58,8 +58,8 @@ public class GameUI : MonoBehaviour
         moneyDiff = FindTextField(Env.UI_moneyDiffGO);
         consumers = FindTextField(Env.UI_consumersGO);
         consumersDiff = FindTextField(Env.UI_consumersDiffGO);
-        deads = FindTextField(Env.UI_deadsGO);
-        deadsDiff = FindTextField(Env.UI_deadsDiffGO);
+        totalDeads = FindTextField(Env.UI_deadsGO);
+        totalDeadsDiff = FindTextField(Env.UI_deadsDiffGO);
         popularity = FindTextField(Env.UI_popularityGO);
         popularityDiff = FindTextField(Env.UI_popularityDiffGO);
 
@@ -159,8 +159,8 @@ public class GameUI : MonoBehaviour
         SetTextField(consumers, consumersDiff,
             prevGameState.numConsumers, showGameState.numConsumers, showUpdate);
 
-        SetTextField(deads, deadsDiff,
-            prevGameState.deads, showGameState.deads, showUpdate);
+        SetTextField(totalDeads, totalDeadsDiff,
+            prevGameState.totalDeads, showGameState.totalDeads, showUpdate, false);
 
         SetTextField(manufacturing, manufacturingDiff,
             prevGameState.manufacturingCosts, showGameState.manufacturingCosts, showUpdate);
@@ -177,14 +177,14 @@ public class GameUI : MonoBehaviour
     }
 
     private void SetTextField(TextMeshProUGUI textField, TextMeshProUGUI diffField,
-        float prevData, float currentData, bool showUpdate)
+        float prevData, float currentData, bool showUpdate, bool positiveIsGood = true)
     {
         textField.text = $"{Utils.GetDisplayableNum(currentData)}";
 
         if (showUpdate)
         {
             float diff = currentData - prevData;
-            SetDiffTextField(diff, diffField);
+            SetDiffTextField(diff, diffField, positiveIsGood);
         }
     }
 
@@ -216,7 +216,7 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void SetDiffTextField(float diff, TextMeshProUGUI field)
+    private void SetDiffTextField(float diff, TextMeshProUGUI field, bool positiveIsGood = true)
     {
         if (math.abs(diff) < 0.01)
         {
@@ -234,7 +234,7 @@ public class GameUI : MonoBehaviour
             field.text = $"{Utils.GetDisplayableNum(diff)}"; // minus sign already present in diff
         }
 
-        field.color = Env.GetTextUIColorFromDiff(diff);
+        field.color = Env.GetTextUIColorFromDiff(diff, positiveIsGood);
     }
 
     private TextMeshProUGUI FindTextField(string gameObjectName)

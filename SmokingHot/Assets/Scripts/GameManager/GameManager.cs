@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         public float money;
         public float numConsumers;
         public float deads;
+        public float totalDeads;
         public PopularityLevel popularity;
         public float manufacturingCosts; // cout prod cigarette
         public float lobbyingCosts; // d�pense en lobbying

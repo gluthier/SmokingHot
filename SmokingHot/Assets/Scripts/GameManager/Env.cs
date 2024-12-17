@@ -27,15 +27,15 @@ public static class Env
     public static Color iaBackgroundColor = new Color32(75, 27, 0, 240);
     public static Color iaSwitchViewButtonBackgroundColor = new Color32(231, 170, 165, 255);
 
-    public static Color GetTextUIColorFromDiff(float diff)
+    public static Color GetTextUIColorFromDiff(float diff, bool positiveIsGood = true)
     {
         if (diff > 0)
         {
-            return UI_IncreaseColor;
+            return positiveIsGood ? UI_IncreaseColor : UI_DecreaseColor;
         }
         else if (diff < 0)
         {
-            return UI_DecreaseColor;
+            return positiveIsGood ? UI_DecreaseColor : UI_IncreaseColor;
         }
         else
         {

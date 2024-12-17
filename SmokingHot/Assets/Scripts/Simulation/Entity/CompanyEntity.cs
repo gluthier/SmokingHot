@@ -95,6 +95,7 @@ public class CompanyEntity
             money = money,
             numConsumers = numConsumers,
             deads = deadConsumers,
+            totalDeads = totalConsumerDeads,
             popularity = popularity,
             manufacturingCosts = manufacturingCosts,
             lobbyingCosts = lobbyingCosts,

@@ -520,8 +520,8 @@ RectTransform:
   - {fileID: 2217888618673569734}
   - {fileID: 735682157005925270}
   - {fileID: 8750502786464418702}
-  - {fileID: 4348739785335401544}
   - {fileID: 2459378915129066232}
+  - {fileID: 4348739785335401544}
   - {fileID: 1599711503791712952}
   - {fileID: 9092810392300959680}
   - {fileID: 2581790102625820540}
@@ -3215,7 +3215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5779717740548110466, guid: cd097049d5dbe4d44bc751a752626b89, type: 3}
       propertyPath: m_text
-      value: "D\xE9c\xE8s"
+      value: "D\xE9c\xE8s totaux"
       objectReference: {fileID: 0}
     - target: {fileID: 6704260590297072963, guid: cd097049d5dbe4d44bc751a752626b89, type: 3}
       propertyPath: m_Pivot.x
