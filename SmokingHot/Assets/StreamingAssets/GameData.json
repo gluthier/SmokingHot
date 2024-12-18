@@ -5,26 +5,26 @@
         "companyName": "Hot Smokes",
         "startingMoneyMillion": 100,
         "startingConsumersMillion": 437,
-        "startingManufacturingMillion": 14.5,
-        "startingLobbyingMillion": 0,
-        "startingAdCampaignsMillion": 0,
+        "startingManufacturingMillion": 30,
+        "startingLobbyingMillion": 10,
+        "startingAdCampaignsMillion": 20,
         "cigarettePackPrice": 9.6,
         "newConsumers": 8,
         "lostConsumers": 5,
         "deadConsumers": 7,
-        "bonusMoney": 25
+        "bonusMoney": 70
     },
     "iaCompany" : {
         "companyName": "Iron Lung Co.",
-        "startingMoneyMillion": 131,
+        "startingMoneyMillion": 150,
         "startingConsumersMillion": 488,
-        "startingManufacturingMillion": 16.1,
-        "startingLobbyingMillion": 3.45,
-        "startingAdCampaignsMillion": 2.33,
+        "startingManufacturingMillion": 35,
+        "startingLobbyingMillion": 5,
+        "startingAdCampaignsMillion": 25,
         "cigarettePackPrice": 9.6,
         "newConsumers": 7,
         "lostConsumers": 5,
         "deadConsumers": 8,
-        "bonusMoney": 33
+        "bonusMoney": 75
     }
 }
