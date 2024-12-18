@@ -1087,7 +1087,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+50 millions de consommateurs\\n-10 millions co\xFBts publicit\xE9"
+      value: "<color=#1DA338>+50 millions de consommateurs\\n-10 millions co\xFBts
+        publicit\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -1164,7 +1165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "-10 millions co\xFBts publicit\xE9"
+      value: "<color=#1DA338>-10 millions co\xFBts publicit\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -1221,7 +1222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+1 popularit\xE9"
+      value: "<color=#1DA338>+1 popularit\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -1338,7 +1339,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: +10 millions de consommateurs\n-2 francs prix cigarettes
+      value: <color=#1DA338>+10 millions de consommateurs\n<color=#E02F2F>-2 francs
+        prix cigarettes
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -1415,7 +1417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: +10 millions de consommateurs
+      value: <color=#1DA338>+10 millions de consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -1589,7 +1591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "-1 popularit\xE9\\n+20 millions de consommateurs"
+      value: "<color=#E02F2F>-1 popularit\xE9\\n<color=#1DA338>+20 millions de consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -1650,7 +1652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: +10 millions de consommateurs
+      value: <color=#1DA338>+10 millions de consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2592,7 +2594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+2 popularit\xE9\\n+20 millions de consommateurs"
+      value: "<color=#1DA338>+2 popularit\xE9\\n+20 millions de consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2669,7 +2671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+1 popularit\xE9\\n+10 millions de consommateurs"
+      value: "<color=#1DA338>+1 popularit\xE9\\n+10 millions de consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2730,7 +2732,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "-1 popularit\xE9\\n+10 millions de consommateurs\\n+3 francs prix cigarettes"
+      value: "<color=#E02F2F>-1 popularit\xE9\\n<color=#1DA338>+10 millions de consommateurs\\n+3
+        francs prix cigarettes"
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2851,7 +2854,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "-2 popularit\xE9\\n-2 millions co\xFBts production"
+      value: "<color=#E02F2F>-2 popularit\xE9\\n<color=#1DA338>-2 millions co\xFBts
+        production"
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -2925,7 +2929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+1 popularit\xE9\\n+10 millions de consommateurs"
+      value: "<color=#1DA338>+1 popularit\xE9\\n+10 millions de consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -3094,7 +3098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+1 popularit\xE9\\n-20 millions de consommateurs"
+      value: "<color=#1DA338>+1 popularit\xE9\\n<color=#E02F2F>-20 millions de consommateurs"
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -3154,7 +3158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: +10 millions de consommateurs
+      value: <color=#1DA338>+10 millions de consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6399,8 +6403,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: +3 francs prix cigarettes\n-1 million de consommateurs\nperdus annuels\n+3
-        millions de consommateurs
+      value: <color=#1DA338>+3 francs prix cigarettes\n-1 million de consommateurs\nperdus
+        annuels\n+3 millions de consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 392531070615763313, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6481,8 +6485,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "-3 millions de consommateurs\\nd\xE9c\xE9d\xE9s annuels\\n-3 millions
-        de consommateurs\\nperdus annuels"
+      value: "<color=#1DA338>-3 millions de consommateurs\\nd\xE9c\xE9d\xE9s annuels\\n-3
+        millions de consommateurs\\nperdus annuels"
       objectReference: {fileID: 0}
     - target: {fileID: 2231215204662595249, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6543,7 +6547,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: -2 francs prix cigarettes\n+2 millions de consommateurs
+      value: <color=#E02F2F>-2 francs prix cigarettes\n<color=#1DA338>+2 millions
+        de consommateurs
       objectReference: {fileID: 0}
     - target: {fileID: 3263693627053302962, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6655,8 +6660,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "+5 millions de consommateurs\\nd\xE9c\xE9d\xE9s annuels\\n-3 millions
-        de consommateurs\\nperdus annuels"
+      value: "<color=#E02F2F>+5 millions de consommateurs\\nd\xE9c\xE9d\xE9s annuels\\n<color=#1DA338>-3
+        millions de consommateurs\\nperdus annuels"
       objectReference: {fileID: 0}
     - target: {fileID: 5107639965232685392, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6733,8 +6738,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: "-1 million de consommateurs\\nperdus annuels\\n-1 million de consommateurs\\nd\xE9c\xE9d\xE9s
-        annuels"
+      value: "<color=#1DA338>-1 million de consommateurs\\nperdus annuels\\n-1 million
+        de consommateurs\\nd\xE9c\xE9d\xE9s annuels"
       objectReference: {fileID: 0}
     - target: {fileID: 5570344344855662772, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6899,7 +6904,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: -2 millions de consommateurs\n+3 francs prix cigarettes
+      value: <color=#E02F2F>-2 millions de consommateurs\n<color=#1DA338>+3 francs
+        prix cigarettes
       objectReference: {fileID: 0}
     - target: {fileID: 7375261288214178755, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size
@@ -6968,7 +6974,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effectDescription
-      value: -2 millions de consommateurs\n+2 francs prix cigarettes
+      value: <color=#E02F2F>-2 millions de consommateurs\n<color=#1DA338>+2 francs
+        prix cigarettes
       objectReference: {fileID: 0}
     - target: {fileID: 8531267295787439524, guid: 3f48f90b62faf1c40bd98ddc324fbe5f, type: 3}
       propertyPath: effects.Array.size

@@ -12,10 +12,10 @@ public class UnethicalBonus : WorldEvent
         description = "Une fondation pro-tabac nous offre un prix pour nos cigarettes responsables.";
 
         acceptPriceDescription =
-            $"+{acceptMoney} millions de francs";
+            Env.ColorizePositiveText($"+{acceptMoney} millions de francs");
 
         refusePriceDescription =
-            $"{refuseChance}% +1 popularité";
+            Env.ColorizePositiveText($"{refuseChance}% +1 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Money

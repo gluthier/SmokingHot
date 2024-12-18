@@ -13,12 +13,12 @@ public class ScientificStudy : WorldEvent
         description = "Une nouvelle étude scientifique démontre les dégâts nocifs de la cigarette sur la santé. Nos analystes proposent de discréditer l'étude et l'équipe de scientifiques derrière.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"{acceptChanceGood}% +1 popularité\n" +
-            $"{acceptChanceBad}% -2 popularité";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"{acceptChanceGood}% +1 popularité\n") +
+            Env.ColorizeNegativeText($"{acceptChanceBad}% -2 popularité");
 
         refusePriceDescription =
-            $"-1 popularité";
+            Env.ColorizeNegativeText($"-1 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

@@ -13,11 +13,11 @@ public class InvestSnacks : WorldEvent
         description = "Une proposition de rachat d'entreprise agroalimentaire spécialisée dans les snacks addictifs. Nos analystes pensent que cela pourrait nous apporter de nouveaux clients sur le long terme. Refuser rendrait fâchés quelques actionnaires.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"+{acceptNewConsumers} millions de nouveaux consommateurs annuels";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"+{acceptNewConsumers} millions de nouveaux consommateurs annuels");
 
         refusePriceDescription =
-            $"+{refuseBonusMoney} millions de francs annuels";
+            Env.ColorizePositiveText($"+{refuseBonusMoney} millions de francs annuels");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.NewConsumers

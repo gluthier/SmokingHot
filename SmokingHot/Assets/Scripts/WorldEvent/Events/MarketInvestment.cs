@@ -15,13 +15,13 @@ public class MarketInvestment : WorldEvent
         description = "Nos analystes ont décidé qu'il fallait investir dans de nouveaux marchés pour aller chercher de nouveaux consommateurs.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"+{(100 * acceptConsumersIncrease) - 100}% de consommateurs\n" +
-            $"+{acceptNewConsumers} millions de nouveaux consommateurs annuels";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"+{(100 * acceptConsumersIncrease) - 100}% de consommateurs\n") +
+            Env.ColorizePositiveText($"+{acceptNewConsumers} millions de nouveaux consommateurs annuels");
 
         refusePriceDescription =
-            $"-{refuseBonusMoney} millions de francs annuels\n" +
-            $"-{refuseNewConsumers} millions de nouveaux consommateurs annuels";
+            Env.ColorizeNegativeText($"-{refuseBonusMoney} millions de francs annuels\n") +
+            Env.ColorizeNegativeText($"-{refuseNewConsumers} millions de nouveaux consommateurs annuels");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Consumers,

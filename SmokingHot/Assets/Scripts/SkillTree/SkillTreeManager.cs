@@ -115,17 +115,17 @@ public class SkillTreeManager : MonoBehaviour
             case 0: // publicity
                 pubSkillDesc.text = skill.skillDescription;
                 pubSkillName.text = skill.skillName;
-                pubSkillCost.text = $"-{skill.cost} millions de francs\n{skill.effectDescription}";
+                pubSkillCost.text = Env.ColorizeNegativeText($"-{skill.cost} millions de francs\n{skill.effectDescription}");
                 break;
             case 1: // popularity
                 popSkillDesc.text = skill.skillDescription;
                 popSkillName.text = skill.skillName;
-                popSkillCost.text = $"-{skill.cost} millions de francs\n{skill.effectDescription}";
+                popSkillCost.text = Env.ColorizeNegativeText($"-{skill.cost} millions de francs\n{skill.effectDescription}");
                 break;
             case 2: // manufacturing
                 cigSkillDesc.text = skill.skillDescription;
                 cigSkillName.text = skill.skillName;
-                cigSkillCost.text = $"-{skill.cost} millions de francs\n{skill.effectDescription}";
+                cigSkillCost.text = Env.ColorizeNegativeText($"-{skill.cost} millions de francs\n{skill.effectDescription}");
                 break;
             default:
                 break;

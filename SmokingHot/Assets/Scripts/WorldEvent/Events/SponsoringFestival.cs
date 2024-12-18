@@ -13,11 +13,11 @@ public class SponsoringFestival : WorldEvent
         description = "Nos analystes proposent de parrainer un festival de concerts de musique pour permettre de vendre nos cigarettes aux festivaliers.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"+{acceptNewConsumers} millions de nouveaux consommateurs annuels";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"+{acceptNewConsumers} millions de nouveaux consommateurs annuels");
 
         refusePriceDescription =
-            $"-{refuseNewConsumers} millions de nouveaux consommateurs annuels";
+            Env.ColorizeNegativeText($"-{refuseNewConsumers} millions de nouveaux consommateurs annuels");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.NewConsumers

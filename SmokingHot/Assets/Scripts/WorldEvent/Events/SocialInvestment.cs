@@ -12,11 +12,11 @@ public class SocialInvestment : WorldEvent
         description = "Nos analystes ont décidé qu'il faisait investir dans un événement caritatif pour améliorer l'image publique en promouvant une image d'entreprise socialement responsable.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"+1 popularité";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"+1 popularité");
 
         refusePriceDescription =
-            $"{refuseChance}% -1 popularité";
+            Env.ColorizeNegativeText($"{refuseChance}% -1 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

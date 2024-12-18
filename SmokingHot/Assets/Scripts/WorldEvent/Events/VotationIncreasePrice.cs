@@ -7,18 +7,18 @@ public class VotationIncreasePrice : WorldEvent
     private int acceptMoney = 30;
     private int acceptChance = 75;
     private int refuseChance = 90;
-    private float cigarettePackPriceIncrease = 1.2f;
+    private float cigarettePackPriceDecease = 1.2f;
 
     public VotationIncreasePrice()
     {
-        description = "Des votations sont en cours pour augmenter le prix des packs de cigarette. Nos analystes proposent du lutter en faisant des campagnes publicitaires ciblées et du lobbying politique.";
+        description = "Des votations sont en cours pour augmenter la taxe sur le prix des packs de cigarette. Nos analystes proposent du lutter en faisant des campagnes publicitaires ciblées et du lobbying politique.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"{acceptChance}% prix cigarettes inchangé";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"{acceptChance}% taxe cigarettes inchangé");
 
         refusePriceDescription =
-            $"{refuseChance}% prix cigarettes +{(100 * cigarettePackPriceIncrease) - 100}%";
+            Env.ColorizeNegativeText($"{refuseChance}% taxe cigarettes +{(100 * cigarettePackPriceDecease) - 100}%");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.CigarettePackPrice
@@ -37,13 +37,13 @@ public class VotationIncreasePrice : WorldEvent
     {
         company.DecreaseParam(CompanyEntity.Param.Money, acceptMoney);
 
-        DoActionIfPercent(100 - acceptChance, company.MultiplyParam,
-            CompanyEntity.Param.cigarettePackPrice, cigarettePackPriceIncrease);
+        DoActionIfPercent(100 - acceptChance, company.DivideParam,
+            CompanyEntity.Param.cigarettePackPrice, cigarettePackPriceDecease);
     }
 
     public override void RefuseEvent(CompanyEntity company)
     {
-        DoActionIfPercent(refuseChance, company.MultiplyParam,
-            CompanyEntity.Param.cigarettePackPrice, cigarettePackPriceIncrease);
+        DoActionIfPercent(refuseChance, company.DivideParam,
+            CompanyEntity.Param.cigarettePackPrice, cigarettePackPriceDecease);
     }
 }

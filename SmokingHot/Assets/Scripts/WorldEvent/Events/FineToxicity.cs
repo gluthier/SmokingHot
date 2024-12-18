@@ -15,13 +15,13 @@ public class FineToxicity : WorldEvent
         description = "Nous avons été amendés à cause du niveau de toxicité trop élevé de nos cigarettes. Nos analystes proposent de refuser en luttant juridiquement contre, risquant le quitte ou double.";
 
         acceptPriceDescription =
-            $"-{acceptMoney} millions de francs\n" +
-            $"{acceptChance}% -1 popularité";
+            Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
+            Env.ColorizeNegativeText($"{acceptChance}% -1 popularité");
 
         refusePriceDescription =
-            $"-{refuseMoney} millions de francs\n" +
-            $"{refuseChanceGood}% +1 popularité\n" +
-            $"{refuseChanceBad}% -2 popularité";
+            Env.ColorizeNegativeText($"-{refuseMoney} millions de francs\n") +
+            Env.ColorizePositiveText($"{refuseChanceGood}% +1 popularité\n") +
+            Env.ColorizeNegativeText($"{refuseChanceBad}% -2 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> { };
         acceptNegativeImpacts = new List<WorldEventImpact> {

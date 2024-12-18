@@ -43,6 +43,16 @@ public static class Env
         }
     }
 
+    public static string ColorizePositiveText(string txt)
+    {
+        return $"<color=#1DA338>{txt}</color>";
+    }
+
+    public static string ColorizeNegativeText(string txt)
+    {
+        return $"<color=#E02F2F>{txt}</color>";
+    }
+
     public static string UI_companyGO = "Background/CompanyName";
 
     public static string UI_yearGO = "Background/Report/Year";
