@@ -14,10 +14,10 @@ public class SponsoringFestival : WorldEvent
 
         acceptPriceDescription =
             $"-{acceptMoney} millions de francs\n" +
-            $"+{acceptNewConsumers} nouveaux consommateurs annuels";
+            $"+{acceptNewConsumers} millions de nouveaux consommateurs annuels";
 
         refusePriceDescription =
-            $"-{refuseNewConsumers} nouveaux consommateurs annuels";
+            $"-{refuseNewConsumers} millions de nouveaux consommateurs annuels";
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.NewConsumers

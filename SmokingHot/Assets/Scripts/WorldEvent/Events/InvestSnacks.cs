@@ -14,7 +14,7 @@ public class InvestSnacks : WorldEvent
 
         acceptPriceDescription =
             $"-{acceptMoney} millions de francs\n" +
-            $"+{acceptNewConsumers} nouveaux consommateurs annuels";
+            $"+{acceptNewConsumers} millions de nouveaux consommateurs annuels";
 
         refusePriceDescription =
             $"+{refuseBonusMoney} millions de francs annuels";
