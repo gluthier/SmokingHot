@@ -257,8 +257,11 @@ public class CompanyEntity
         float cigarettePackPriceMillion = cigarettePackPrice / 1000000f;
         float totalCigarettePackMoneyMillion = numConsumers * cigarettePackSoldPerSmoker * cigarettePackPriceMillion;
 
+        float bonusMoneyBasedOnPopularity = GetBonusMoneyBasedOnPopularity();
+
         float moneyGained = 
-            totalCigarettePackMoneyMillion + bonusMoney - manufacturingCosts - lobbyingCosts - adCampaignsCosts;
+            totalCigarettePackMoneyMillion + bonusMoneyBasedOnPopularity + bonusMoney
+            - manufacturingCosts - lobbyingCosts - adCampaignsCosts;
 
         money += moneyGained;
     }
@@ -273,11 +276,50 @@ public class CompanyEntity
         float lostConsumersTotal =
             lostConsumers / cigarettePackProduced.GetAddictionRatio();
 
-        numConsumers += newConsumers - lostConsumersTotal - deadConsumersTotal;
+        float consummersBasedOnPopularity = GetConsumersBasedOnPopularity();
+
+        numConsumers += newConsumers + consummersBasedOnPopularity
+                        - lostConsumersTotal - deadConsumersTotal;
 
         if (numConsumers < 0)
         {
             numConsumers = 0;
+        }
+    }
+
+    private float GetBonusMoneyBasedOnPopularity()
+    {
+        switch (popularity)
+        {
+            case PopularityLevel.Hated:
+                return -2f;
+            case PopularityLevel.Disliked:
+                return -1f;
+            case PopularityLevel.Appreciated:
+                return 1f;
+            case PopularityLevel.Loved:
+                return 2f;
+            case PopularityLevel.Neutral:
+            default:
+                return 0f;
+        }
+    }
+
+    private float GetConsumersBasedOnPopularity()
+    {
+        switch (popularity)
+        {
+            case PopularityLevel.Hated:
+                return -1f;
+            case PopularityLevel.Disliked:
+                return -0.5f;
+            case PopularityLevel.Appreciated:
+                return 0.5f;
+            case PopularityLevel.Loved:
+                return 1f;
+            case PopularityLevel.Neutral:
+            default:
+                return 0f;
         }
     }
 }
