@@ -109,7 +109,6 @@ public class CompanyEntity
             iaStrategy = iaStrategy
         };
     }
-
     public void IncreaseParam(Param param, float amount)
     {
         switch (param)
@@ -121,33 +120,40 @@ public class CompanyEntity
                 bonusMoney += amount;
                 break;
             case Param.cigarettePackPrice:
-                cigarettePackPrice += amount;
+                cigarettePackPrice = AddAmountMinZero(cigarettePackPrice, amount);
                 break;
             case Param.NewConsumers:
-                newConsumers += amount;
+                newConsumers = AddAmountMinZero(newConsumers, amount);
                 break;
             case Param.LostConsumers:
-                lostConsumers += amount;
+                lostConsumers = AddAmountMinZero(lostConsumers, amount);
                 break;
             case Param.DeadConsumers:
-                deadConsumers += amount;
+                deadConsumers = AddAmountMinZero(deadConsumers, amount);
                 break;
             case Param.Consumers:
-                numConsumers += amount;
+                numConsumers = AddAmountMinZero(numConsumers, amount);
                 break;
             case Param.AdCampaignsCosts:
-                adCampaignsCosts += amount;
+                adCampaignsCosts = AddAmountMinZero(adCampaignsCosts, amount);
                 break;
             case Param.ManufacturingCosts:
-                manufacturingCosts += amount;
+                manufacturingCosts = AddAmountMinZero(manufacturingCosts, amount);
                 break;
             case Param.LobbyingCosts:
-                lobbyingCosts += amount;
+                lobbyingCosts = AddAmountMinZero(lobbyingCosts, amount);
                 break;
             default:
                 break;
         }
     }
+
+    private float AddAmountMinZero(float amount, float addAmount)
+    {
+        float addResult = amount + addAmount;
+        return addResult >= 0 ? addResult : 0;
+    }
+
 
     public void DecreaseParam(Param param, float amount)
     {
@@ -165,33 +171,40 @@ public class CompanyEntity
                 bonusMoney *= amount;
                 break;
             case Param.cigarettePackPrice:
-                cigarettePackPrice *= amount;
+                cigarettePackPrice = MultiplyAmountMinZero(cigarettePackPrice, amount);
                 break;
             case Param.NewConsumers:
-                newConsumers *= amount;
+                newConsumers = MultiplyAmountMinZero(newConsumers, amount);
                 break;
             case Param.LostConsumers:
-                lostConsumers *= amount;
+                lostConsumers = MultiplyAmountMinZero(lostConsumers, amount);
                 break;
             case Param.DeadConsumers:
-                deadConsumers *= amount;
+                deadConsumers = MultiplyAmountMinZero(deadConsumers, amount);
                 break;
             case Param.Consumers:
-                numConsumers *= amount;
+                numConsumers = MultiplyAmountMinZero(numConsumers, amount);
                 break;
             case Param.AdCampaignsCosts:
-                adCampaignsCosts *= amount;
+                adCampaignsCosts = MultiplyAmountMinZero(adCampaignsCosts, amount);
                 break;
             case Param.ManufacturingCosts:
-                manufacturingCosts *= amount;
+                manufacturingCosts = MultiplyAmountMinZero(manufacturingCosts, amount);
                 break;
             case Param.LobbyingCosts:
-                lobbyingCosts *= amount;
+                lobbyingCosts = MultiplyAmountMinZero(lobbyingCosts, amount);
                 break;
             default:
                 break;
         }
     }
+
+    private float MultiplyAmountMinZero(float amount, float addAmount)
+    {
+        float addResult = amount * addAmount;
+        return addResult >= 0 ? addResult : 0;
+    }
+
 
     public void DivideParam(Param param, float amount)
     {
