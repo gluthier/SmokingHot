@@ -15,11 +15,14 @@ public class PopStarDied : WorldEvent
 
         acceptPriceDescription =
             Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
-            Env.ColorizePositiveText($"{acceptChanceGood}% +1 popularité\n") +
-            Env.ColorizeNegativeText($"{acceptChanceBad}% -1 popularité");
+            Env.ColorizePositiveText(
+                $"{Env.GetChanceDescription(acceptChanceGood)} +1 popularité\n") +
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(acceptChanceBad)} -1 popularité");
 
         refusePriceDescription =
-            Env.ColorizeNegativeText($"{refuseChance}% -1 popularité");
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(refuseChance)} -1 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

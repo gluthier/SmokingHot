@@ -15,10 +15,12 @@ public class VotationIncreasePrice : WorldEvent
 
         acceptPriceDescription =
             Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
-            Env.ColorizePositiveText($"{acceptChance}% taxe cigarettes inchangé");
+            Env.ColorizePositiveText(
+                $"{Env.GetChanceDescription(acceptChance)} taxe\ncigarettes inchangé");
 
         refusePriceDescription =
-            Env.ColorizeNegativeText($"{refuseChance}% taxe cigarettes +{(100 * cigarettePackPriceDecease) - 100}%");
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(refuseChance)} taxe\ncigarettes +{(100 * cigarettePackPriceDecease) - 100}%");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.CigarettePackPrice

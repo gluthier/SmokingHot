@@ -14,10 +14,12 @@ public class VotationAbolishAds : WorldEvent
 
         acceptPriceDescription =
             Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
-            Env.ColorizePositiveText($"{acceptChance}% publicités autorisées");
+            Env.ColorizePositiveText(
+                $"{Env.GetChanceDescription(acceptChance)} publicités autorisées");
 
         refusePriceDescription =
-            Env.ColorizeNegativeText($"{refuseChance}% publicités interdites");
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(refuseChance)} publicités interdites");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.AdCampaignExistence

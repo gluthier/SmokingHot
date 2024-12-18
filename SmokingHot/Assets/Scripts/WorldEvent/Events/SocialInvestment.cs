@@ -16,7 +16,8 @@ public class SocialInvestment : WorldEvent
             Env.ColorizePositiveText($"+1 popularité");
 
         refusePriceDescription =
-            Env.ColorizeNegativeText($"{refuseChance}% -1 popularité");
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(refuseChance)} -1 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Popularity

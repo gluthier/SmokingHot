@@ -53,6 +53,35 @@ public static class Env
         return $"<color=#E02F2F>{txt}</color>";
     }
 
+    public static string GetChanceDescription(float percentage)
+    {
+        if (percentage >= 90)
+        {
+            return "Éventualité élevée:";
+        }
+        else if (percentage >= 60)
+        {
+            return "Éventualité grande:";
+        }
+        else if (percentage >= 40)
+        {
+            return "Éventualité moyenne:";
+        }
+        else if (percentage >= 20)
+        {
+            return "Éventualité faible:";
+        }
+        else
+        {
+            return "Éventualité inexistente:";
+        }
+    }
+    
+    public static string GetRiskDescription(float percentage)
+    {
+        return GetChanceDescription(percentage);
+    }
+
     public static string UI_companyGO = "Background/CompanyName";
 
     public static string UI_yearGO = "Background/Report/Year";

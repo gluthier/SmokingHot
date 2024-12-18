@@ -16,12 +16,15 @@ public class FineAddiction : WorldEvent
 
         acceptPriceDescription =
             Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
-            Env.ColorizeNegativeText($"{acceptChance}% -1 popularité");
+            Env.ColorizeNegativeText(
+                $"{Env.GetChanceDescription(acceptChance)} -1 popularité");
 
         refusePriceDescription =
             Env.ColorizeNegativeText($"-{refuseMoney} millions de francs\n") +
-            Env.ColorizePositiveText($"{refuseChanceGood}% +1 popularité\n") +
-            Env.ColorizeNegativeText($"{refuseChanceBad}% -2 popularité");
+            Env.ColorizePositiveText(
+                $"{Env.GetChanceDescription(refuseChanceGood)} +1 popularité\n") +
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(refuseChanceBad)} -2 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> { };
         acceptNegativeImpacts = new List<WorldEventImpact> {

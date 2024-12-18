@@ -15,7 +15,8 @@ public class UnethicalBonus : WorldEvent
             Env.ColorizePositiveText($"+{acceptMoney} millions de francs");
 
         refusePriceDescription =
-            Env.ColorizePositiveText($"{refuseChance}% +1 popularité");
+            Env.ColorizePositiveText(
+                $"{Env.GetChanceDescription(refuseChance)} +1 popularité");
 
         acceptPositiveImpacts = new List<WorldEventImpact> {
             WorldEventImpact.Money

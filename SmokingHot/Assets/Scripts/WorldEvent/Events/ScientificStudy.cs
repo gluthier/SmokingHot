@@ -14,8 +14,10 @@ public class ScientificStudy : WorldEvent
 
         acceptPriceDescription =
             Env.ColorizeNegativeText($"-{acceptMoney} millions de francs\n") +
-            Env.ColorizePositiveText($"{acceptChanceGood}% +1 popularité\n") +
-            Env.ColorizeNegativeText($"{acceptChanceBad}% -2 popularité");
+            Env.ColorizePositiveText(
+                $"{Env.GetChanceDescription(acceptChanceGood)} +1 popularité\n") +
+            Env.ColorizeNegativeText(
+                $"{Env.GetRiskDescription(acceptChanceBad)} -2 popularité");
 
         refusePriceDescription =
             Env.ColorizeNegativeText($"-1 popularité");
