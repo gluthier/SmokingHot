@@ -5,7 +5,8 @@ public class TooltipManager : MonoBehaviour
     public GameObject PublicityBuildingsTooltip;
     public GameObject PopularityBuildingsTooltip;
     public GameObject ManufacturingBuildingsTooltip;
-    public GameObject CustomerSharesTooltip;
+    public GameObject PlayerSharesTooltip;
+    public GameObject ConcurrentSharesTooltip;
     public GameObject ChestTooltip;
 
     void Start()
@@ -18,19 +19,26 @@ public class TooltipManager : MonoBehaviour
         HideAllTooltips();
 
         if (collider.CompareTag(Env.PublicityBuildingsTag))
+        {
             PublicityBuildingsTooltip.SetActive(true);
-
+        }
         else if (collider.CompareTag(Env.PopularityBuildingsTag))
+        {
             PopularityBuildingsTooltip.SetActive(true);
-
+        }
         else if (collider.CompareTag(Env.ManufacturingBuildingsTag))
+        {
             ManufacturingBuildingsTooltip.SetActive(true);
-
+        }
         else if (collider.CompareTag(Env.CustomerSharesTag))
-            CustomerSharesTooltip.SetActive(true);
-
+        {
+            PlayerSharesTooltip.SetActive(true);
+            ConcurrentSharesTooltip.SetActive(true);
+        }
         else if (collider.CompareTag(Env.ChestTag))
+        {
             ChestTooltip.SetActive(true);
+        }
     }
 
     public void HideAllTooltips()
@@ -38,7 +46,8 @@ public class TooltipManager : MonoBehaviour
         PublicityBuildingsTooltip.SetActive(false);
         PopularityBuildingsTooltip.SetActive(false);
         ManufacturingBuildingsTooltip.SetActive(false);
-        CustomerSharesTooltip.SetActive(false);
+        PlayerSharesTooltip.SetActive(false);
+        ConcurrentSharesTooltip.SetActive(false);
         ChestTooltip.SetActive(false);
     }
 }

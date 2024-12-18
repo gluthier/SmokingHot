@@ -10,7 +10,7 @@ public static class Env
     public static int DaysInAYear = 365;
     public static int WorldEventFrequencyYear = 5;
 
-    public static string PlayerButton = "Joueur";
+    public static string PlayerButton = "Vous";
     public static string IAButton = "Concurrent";
     public static float MinCoefficientCostForIAToInvestSkill = 4f;
 
