@@ -175,17 +175,9 @@ public class SimulationManager : MonoBehaviour
             yearPassed += 1;
             timePassed = 0;
 
-            WorldEvent worldEvent = new NoEvent();
-            if (yearPassed < totalYearSimulated)
-            {
-                HandleEndOfSimulatedYear();
-                StartCoroutine(HandleMarketShareWithDelay(2.0f));
+            WorldEvent worldEvent = HandleEndOfSimulatedYear();
 
-                worldEvent = HandleWorldEvent();
-                gameManager.PopulateMainUI(true);
-                gameManager.coinManager.SpawnOrDestroy(RetrievePlayerGameState().money);
-            }
-            else
+            if (yearPassed >= totalYearSimulated)
             {
                 HandleEndOfGame();
                 return;
@@ -207,10 +199,17 @@ public class SimulationManager : MonoBehaviour
         return playerCompany.GetConsumers() / (playerCompany.GetConsumers() + iaCompany.GetConsumers());
     }
 
-    private void HandleEndOfSimulatedYear()
+    private WorldEvent HandleEndOfSimulatedYear()
     {
         playerCompany.EndFiscalYear();
         iaCompany.EndFiscalYear();
+
+        StartCoroutine(HandleMarketShareWithDelay(2.0f));
+
+        gameManager.PopulateMainUI(true);
+        gameManager.coinManager.SpawnOrDestroy(RetrievePlayerGameState().money);
+
+        return HandleWorldEvent();
     }
 
     private WorldEvent HandleWorldEvent()
@@ -222,15 +221,20 @@ public class SimulationManager : MonoBehaviour
 
         WorldEvent worldEvent =
             worldEventManager.CreateWorldEvent(RetrievePlayerGameState());
-
-        gameManager.PopulateWorldEventUI(worldEvent);
-        gameManager.ShowWorldEvent();
+        
+        // Show event only if it is not a NoEvent
+        if (worldEvent as NoEvent == null)
+        {
+            gameManager.PopulateWorldEventUI(worldEvent);
+            gameManager.ShowWorldEvent();
+        }
 
         return worldEvent;
     }
 
     private void HandleEndOfGame()
     {
+        gameManager.UpdateYearLoadingUI(timePassed / secondsForAYearSimulated);
         PauseSimulation();
         gameManager.DisplayEndScreen();
     }

@@ -68,7 +68,6 @@ public class WorldEventManager : MonoBehaviour
                 break;
 
             default:
-                worldEvent = new NoEvent();
                 break;
         }
 
