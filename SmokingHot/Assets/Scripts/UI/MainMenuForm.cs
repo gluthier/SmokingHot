@@ -6,7 +6,10 @@ using NUnit.Framework.Constraints;
 
 public class MainMenuForm : MonoBehaviour
 {
-	public Button startButton;
+    public Button easyButton;
+    public Button normalButton;
+    public Button hardButton;
+    public Button startButton;
 	public TMP_InputField companyNameInput;
 	public GameManager gameManager;
 
@@ -15,6 +18,9 @@ public class MainMenuForm : MonoBehaviour
     {
 		startButton.onClick.AddListener(TaskOnClick);
 		gameManager = FindFirstObjectByType<GameManager>();
+
+        SelectNormalDifficulty();
+        normalButton.Select();
     }
 
     public void TaskOnClick()
@@ -30,5 +36,32 @@ public class MainMenuForm : MonoBehaviour
 			Debug.Log($"The company name input content is empty.", this);
 			companyNameInput.gameObject.GetComponent<Image>().color = new Color32(232, 189, 189, 255);
 		}
-	}
+    }
+
+    public void SelectEasyDifficulty()
+    {
+        SetButtonHighlighted(easyButton);
+        gameManager.SetGameDifficulty(GameManager.GameDifficulty.Easy);
+    }
+
+    public void SelectNormalDifficulty()
+    {
+        SetButtonHighlighted(normalButton);
+        gameManager.SetGameDifficulty(GameManager.GameDifficulty.Normal);
+    }
+
+    public void SelectHardDifficulty()
+    {
+        SetButtonHighlighted(hardButton);
+        gameManager.SetGameDifficulty(GameManager.GameDifficulty.Hard);
+    }
+
+    private void SetButtonHighlighted(Button button)
+    {
+        easyButton.GetComponent<Image>().color = Color.white;
+        normalButton.GetComponent<Image>().color = Color.white;
+        hardButton.GetComponent<Image>().color = Color.white;
+
+        button.GetComponent<Image>().color = Env.UI_IncreaseColor;
+    }
 }

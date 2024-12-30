@@ -17,8 +17,12 @@ public class GameData
 {
     public float totalYearSimulated;
     public float gameMinutesLength;
-    public CompanyData playerCompany;
-    public CompanyData iaCompany;
+    public CompanyData playerEasyCompany;
+    public CompanyData playerNormalCompany;
+    public CompanyData playerHardCompany;
+    public CompanyData iaEasyCompany;
+    public CompanyData iaNormalCompany;
+    public CompanyData iaHardCompany;
 }
 
 public class CompanyData

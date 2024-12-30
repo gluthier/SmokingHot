@@ -1,7 +1,20 @@
 {
     "totalYearSimulated": 50,
     "gameMinutesLength": 3,
-    "playerCompany" : {
+    "playerEasyCompany" : {
+        "companyName": "Mild Smokes",
+        "startingMoneyMillion": 200,
+        "startingConsumersMillion": 437,
+        "startingManufacturingMillion": 30,
+        "startingLobbyingMillion": 5,
+        "startingAdCampaignsMillion": 20,
+        "cigarettePackPrice": 9.6,
+        "newConsumers": 9,
+        "lostConsumers": 5,
+        "deadConsumers": 6,
+        "bonusMoney": 80
+    },
+    "playerNormalCompany" : {
         "companyName": "Hot Smokes",
         "startingMoneyMillion": 100,
         "startingConsumersMillion": 437,
@@ -14,9 +27,48 @@
         "deadConsumers": 7,
         "bonusMoney": 70
     },
-    "iaCompany" : {
+    "playerHardCompany" : {
+        "companyName": "Volcano Smokes",
+        "startingMoneyMillion": 50,
+        "startingConsumersMillion": 437,
+        "startingManufacturingMillion": 35,
+        "startingLobbyingMillion": 15,
+        "startingAdCampaignsMillion": 25,
+        "cigarettePackPrice": 9.6,
+        "newConsumers": 7,
+        "lostConsumers": 5,
+        "deadConsumers": 8,
+        "bonusMoney": 60
+    },
+    "iaEasyCompany" : {
+        "companyName": "Paper Lung Co.",
+        "startingMoneyMillion": 100,
+        "startingConsumersMillion": 488,
+        "startingManufacturingMillion": 35,
+        "startingLobbyingMillion": 5,
+        "startingAdCampaignsMillion": 25,
+        "cigarettePackPrice": 9.6,
+        "newConsumers": 7,
+        "lostConsumers": 5,
+        "deadConsumers": 8,
+        "bonusMoney": 75
+    },
+    "iaNormalCompany" : {
         "companyName": "Iron Lung Co.",
         "startingMoneyMillion": 150,
+        "startingConsumersMillion": 488,
+        "startingManufacturingMillion": 35,
+        "startingLobbyingMillion": 5,
+        "startingAdCampaignsMillion": 25,
+        "cigarettePackPrice": 9.6,
+        "newConsumers": 7,
+        "lostConsumers": 5,
+        "deadConsumers": 8,
+        "bonusMoney": 75
+    },
+    "iaHardCompany" : {
+        "companyName": "Platinium Lung Co.",
+        "startingMoneyMillion": 200,
         "startingConsumersMillion": 488,
         "startingManufacturingMillion": 35,
         "startingLobbyingMillion": 5,

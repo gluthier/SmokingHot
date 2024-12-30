@@ -7,6 +7,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameDifficulty
+    {
+        Easy,
+        Normal,
+        Hard
+    }
+    private GameDifficulty gameDifficulty;
+
     public GameUI gameUI;
     public CameraManager cameraManager;
     public SkillTreeManager skillTreeManager;
@@ -39,8 +47,8 @@ public class GameManager : MonoBehaviour
         public float totalDeads;
         public PopularityLevel popularity;
         public float manufacturingCosts; // cout prod cigarette
-        public float lobbyingCosts; // d�pense en lobbying
-        public float adCampaignsCosts;  // d�pense en campagne
+        public float lobbyingCosts; // dépense en lobbying
+        public float adCampaignsCosts;  // dépense en campagne
         public CigarettePackEntity cigarettePackProduced;
         public float cigarettePackPrice; // +
         public float deadConsumers; // -
@@ -53,6 +61,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ResetGameTitleMaterial();
+        gameDifficulty = GameDifficulty.Normal;
     }
 
     private void Start()
@@ -85,9 +94,14 @@ public class GameManager : MonoBehaviour
         cameraManager.SwitchPlayingCamera();
 
         SetupSimulationManager(companyName);
-        simulationManager.StartSimulation();
+        simulationManager.StartSimulation(gameDifficulty);
 
         SetupWorldEventUI();
+    }
+
+    public void SetGameDifficulty(GameDifficulty difficulty)
+    {
+        gameDifficulty = difficulty;
     }
 
     private IEnumerator FadeOutTitle()
@@ -133,7 +147,7 @@ public class GameManager : MonoBehaviour
             simulationManager = gameObject.AddComponent<SimulationManager>();
         }
 
-        simulationManager.Init(this, companyName);
+        simulationManager.Init(this, companyName, gameDifficulty);
     }
 
     public void PopulateMainUI(bool showUpdate)
@@ -383,7 +397,7 @@ public class GameManager : MonoBehaviour
     public void RestartSimulation()
     {
         coinManager.ClearAllCoins();
-        simulationManager.StartSimulation();
+        simulationManager.StartSimulation(gameDifficulty);
         skillTreeManager.ResetSkillTreeManager();
         musicManager.PlayRandomClip();
         endgameScreen.gameObject.SetActive(false);

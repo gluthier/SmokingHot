@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static GameManager;
 
 public class SimulationManager : MonoBehaviour
 {
@@ -32,13 +33,13 @@ public class SimulationManager : MonoBehaviour
     private GameManager gameManager;
     private WorldEventManager worldEventManager;
 
-    public void Init(GameManager gameManager, string companyName)
+    public void Init(GameManager gameManager, string companyName, GameDifficulty gameDifficulty)
     {
         this.gameManager = gameManager;
         yearPassed = 0;
 
         LoadData(
-            GameDataLoader.Load());
+            GameDataLoader.Load(), gameDifficulty);
 
         SetPlayerCompanyName(companyName);
 
@@ -61,11 +62,11 @@ public class SimulationManager : MonoBehaviour
         return iaCompany;
     }
 
-    public void StartSimulation()
+    public void StartSimulation(GameDifficulty gameDifficulty)
     {
         isSimulationOn = true;
 
-        ResetSimulation();
+        ResetSimulation(gameDifficulty);
     }
 
     public void PauseSimulation()
@@ -134,7 +135,7 @@ public class SimulationManager : MonoBehaviour
         playerCompany.SetCompanyName(playerCompanyName);
     }
 
-    private void LoadData(GameData gameData)
+    private void LoadData(GameData gameData, GameDifficulty gameDifficulty)
     {
         totalYearSimulated = gameData.totalYearSimulated;
         gameMinutesLength = gameData.gameMinutesLength;
@@ -142,8 +143,22 @@ public class SimulationManager : MonoBehaviour
         float yearSimulatedPerRealMinute = totalYearSimulated / gameMinutesLength;
         secondsForAYearSimulated = 60f / yearSimulatedPerRealMinute;
 
-        playerCompany = new CompanyEntity(gameData.playerCompany, true);
-        iaCompany = new CompanyEntity(gameData.iaCompany, false);
+        switch (gameDifficulty)
+        {
+            case GameDifficulty.Easy:
+                playerCompany = new CompanyEntity(gameData.playerEasyCompany, true);
+                iaCompany = new CompanyEntity(gameData.iaEasyCompany, false);
+                break;
+            case GameDifficulty.Hard:
+                playerCompany = new CompanyEntity(gameData.playerHardCompany, true);
+                iaCompany = new CompanyEntity(gameData.iaHardCompany, false);
+                break;
+            case GameDifficulty.Normal:
+            default:
+                playerCompany = new CompanyEntity(gameData.playerNormalCompany, true);
+                iaCompany = new CompanyEntity(gameData.iaNormalCompany, false);
+                break;
+        }
     }
 
     public GameManager.GameState RetrievePlayerGameState()
@@ -239,7 +254,7 @@ public class SimulationManager : MonoBehaviour
         gameManager.DisplayEndScreen();
     }
 
-    private void ResetSimulation()
+    private void ResetSimulation(GameDifficulty gameDifficulty)
     {
         yearPassed = 0;
         timePassed = 0f;
@@ -251,7 +266,7 @@ public class SimulationManager : MonoBehaviour
         gameManager.customerManager.InitialColors(initialMarketShare);
 
         LoadData(
-            GameDataLoader.Load());
+            GameDataLoader.Load(), gameDifficulty);
 
         SetPlayerCompanyName(playerCompanyName);
     }
