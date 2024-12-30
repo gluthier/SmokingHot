@@ -31,11 +31,11 @@ public class GameManager : MonoBehaviour
     public CoinManager coinManager;
     public CustomerManager customerManager;
 
-    #region DEBUG ATTRIBUTES
+#if DEBUG
     private bool DEBUG_isHeadlessModeOnAcceptEvents;
     private bool DEBUG_isHeadlessModeOnRefuseEvents;
     private List<GameState> gameStateReports;
-    #endregion
+#endif
 
     public struct GameState
     {
@@ -155,11 +155,13 @@ public class GameManager : MonoBehaviour
         GameState playerGameState = simulationManager.RetrievePlayerGameState();
         GameState iaGameState = simulationManager.RetrieveIAGameState();
 
+#if DEBUG
         if (DEBUG_isHeadlessModeOnAcceptEvents || DEBUG_isHeadlessModeOnRefuseEvents)
         {
             gameStateReports.Add(playerGameState);
             return;
         }
+#endif
 
         gameUI.PopulateMainUI(playerGameState, iaGameState, showUpdate);
     }
@@ -189,6 +191,7 @@ public class GameManager : MonoBehaviour
 
     public void PopulateWorldEventUI(WorldEvent worldEvent)
     {
+#if DEBUG
         if (DEBUG_isHeadlessModeOnAcceptEvents)
         {
             worldEvent.AcceptEvent(simulationManager.GetPlayerCompany());
@@ -201,6 +204,7 @@ public class GameManager : MonoBehaviour
             HandleEndEvent();
             return;
         }
+#endif
 
         worldEventUI.DisplayEvent(worldEvent, HandleEndEvent);
     }
@@ -227,7 +231,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        #region DEBUG
+#if DEBUG
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (simulationManager != null && simulationManager.isSimulationOn)
@@ -271,7 +275,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(
                 DEBUG_simulateGameGetReport());
         }
-        #endregion
+#endif
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -351,7 +355,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region DEBUG METHODS
+#if DEBUG
     private IEnumerator DEBUG_simulateGameGetReport()
     {
         yield return new WaitForSeconds(1);
@@ -377,7 +381,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"Event mode: {eventMode} -- CSV file report written to \"{filePath}\"");
     }
-    #endregion
+#endif
 
     public void HandleSkillEffect(List<string> effects, Building.TYPE buildingType,
         bool isPlayer)
